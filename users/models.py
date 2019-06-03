@@ -33,10 +33,10 @@ class CustomUser(AbstractUser):
         verbose_name = "ECellUser"
         verbose_name_plural = "ECellUsers"
 
-class CampusAmbassadur(models.Model):
+class CampusAmbassadorProfile(models.Model):
 
     user        = models.OneToOneField(CustomUser, on_delete=models.CASCADE,
-                                related_name='CampusAmbassadur')
+                                related_name='campus_ambassador_profile')
     college     = models.CharField(max_length=128, null=False, blank=False)
 
     # Scores for Campus Ambassadors
