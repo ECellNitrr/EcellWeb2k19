@@ -36,7 +36,7 @@ class CustomUser(AbstractUser):
 class CampusAmbassadurProfile(models.Model):
 
     user        = models.OneToOneField(CustomUser, on_delete=models.CASCADE,
-                                related_name='CampuCampusAmbassadurProfile')
+                                related_name='CampusAmbassadurProfile')
     college     = models.CharField(max_length=128, null=False, blank=False)
 
     # Scores for Campus Ambassadors
