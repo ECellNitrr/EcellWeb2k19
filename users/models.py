@@ -40,9 +40,15 @@ class CampusAmbassadurProfile(models.Model):
     college     = models.CharField(max_length=128, null=False, blank=False)
 
     # Scores for Campus Ambassadors
-    total_score = models.IntegerField(default=0)        #Total Score
-    fb_score    = models.IntegerField(default=0)        #Facebook Score
-    tw_score    = models.IntegerField(default=0)        #Twitter Score
-    li_score    = models.IntegerField(default=0)        #LinkedIn Score
-    wp_score    = models.IntegerField(default=0)        #Whatsapp Score
+    total_score = models.PositiveIntegerField(default=0)        #Total Score
+    fb_score    = models.PositiveIntegerField(default=0)        #Facebook Score
+    tw_score    = models.PositiveIntegerField(default=0)        #Twitter Score
+    li_score    = models.PositiveIntegerField(default=0)        #LinkedIn Score
+    wp_score    = models.PositiveIntegerField(default=0)        #Whatsapp Score
+    
+    @property
+    def total_score(self):
+       "Returns the total"
+       return self.fb_score + self.tw_score + self.li_score + self.wp_score
+    
 
