@@ -31,15 +31,19 @@ To Setup this Project and contribute follow below guidelines.
     >USERNAME : ecellnitrr
     
     >PASSWORD : ECellWeb2k19
-    
-7. Run Migration command
+
+7. Make all the Migrations
+
+    `python manage.py makemigrations`
+
+8. Run Migration command
     
     `python manage.py migrate`
 
-8. Make a superuser for admin panel
+9. Make a superuser for admin panel
 
     `python manage.py createsuperuser`
     
-9. Run the server
+10. Run the server
   
     `python manage.py runserver`
