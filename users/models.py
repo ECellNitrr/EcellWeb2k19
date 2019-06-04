@@ -44,7 +44,7 @@ class CampusAmbassadorProfile(models.Model):
     user        = models.OneToOneField(CustomUser, on_delete=models.CASCADE,
                                 related_name='campus_ambassador_profile')
     college     = models.CharField(max_length=128, null=False, blank=False)
-
+    random      = models.CharField(max_length=10)
     # Scores for Campus Ambassadors
     total_score = models.PositiveIntegerField(default=0)        #Total Score
     fb_score    = models.PositiveIntegerField(default=0)        #Facebook Score
