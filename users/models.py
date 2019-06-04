@@ -12,9 +12,12 @@ class CustomUser(AbstractUser):
         ('OCO', 'Overall Co-ordinator'),
         ('CAB', 'Campus Ambassador'),
     )
-
-    username    = models.CharField(max_length=32, unique=True)
-    email       = models.CharField(max_length=64, unique=True)
+    
+    ## since unique is true we can't have blank values as having '' in more than one column will be contradictory against
+    ## the purposes of unique filed option
+    username    = models.CharField(max_length=32, unique=True, required=True) 
+    email       = models.CharField(max_length=64, unique=True, required=True)
+    
     otp         = models.CharField(max_length=4, blank=True, null=True)
     verified    = models.BooleanField(default=False)
     contact     = models.CharField(max_length=10)
