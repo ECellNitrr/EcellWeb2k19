@@ -13,8 +13,8 @@ class CustomUser(AbstractUser):
         ('CAB', 'Campus Ambassador'),
     )
 
-    username    = models.CharField(max_length=32, unique=True)
-    email       = models.CharField(max_length=64, unique=True)
+    username    = models.CharField(max_length=32, unique=True, blank=False)
+    email       = models.CharField(max_length=64, unique=True, blank=False)
     otp         = models.CharField(max_length=4, blank=True, null=True)
     verified    = models.BooleanField(default=False)
     contact     = models.CharField(max_length=10)
