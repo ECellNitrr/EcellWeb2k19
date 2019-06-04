@@ -14,7 +14,9 @@ class CustomUser(AbstractUser):
     )
 
     username    = models.CharField(max_length=32, unique=True)
-    email       = models.CharField(max_length=64, unique=True)
+    first_name  = models.CharField(max_length=100)
+    last_name   = models.CharField(max_length=100)
+    email       = models.EmailField(max_length=64, unique=True)
     otp         = models.CharField(max_length=4, blank=True, null=True)
     verified    = models.BooleanField(default=False)
     contact     = models.CharField(max_length=10)
@@ -26,6 +28,10 @@ class CustomUser(AbstractUser):
     linkedin    = models.URLField(max_length=64, null=True, blank=True)
     facebook    = models.URLField(max_length=64, null=True, blank=True)
     
+    def save(self, *args, **kwargs):
+        self.username = self.email
+        super(CustomUser, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.email
 
@@ -51,4 +57,10 @@ class CampusAmbassadorProfile(models.Model):
        "Returns the total"
        return self.fb_score + self.tw_score + self.li_score + self.wp_score
     
+    def save(self,*args,**kwargs):
+        self.user.user_type = 'CAB'
+        self.user.save()
+        super(CampusAmbassadorProfile, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return str(self.user)
