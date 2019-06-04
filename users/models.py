@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
     verified    = models.BooleanField(default=False)
     contact     = models.CharField(max_length=10)
     bquiz_score = models.IntegerField(default=0)
-    avatar      = models.ImageField(upload_to='static/uploads/avatar',
+    avatar      = models.ImageField(upload_to='/static/uploads/avatar',
                                     null=True, blank=True)
     user_type   = models.CharField(max_length = 3,choices=USER_TYPE,
                                     default='GST')
