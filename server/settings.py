@@ -87,7 +87,7 @@ DATABASES = {
     
 }
 
-if 'test' in sys.argv or 'test_coverage' in sys.argv: #Covers regular testing and django-coverage
+if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ: #Covers regular testing and django-coverage
     print('Using sqlite db for testing')
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
