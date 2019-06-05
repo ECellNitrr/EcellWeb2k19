@@ -10,6 +10,8 @@ install:
   - pip install -r requirements.txt
 
 before_script:
+  - psql -c "CREATE DATABASE ecellweb;" -U postgres
+  - psql -c "CREATE USER ecellnitrr WITH PASSWORD 'ECellWeb2k19';" -U postgres
   - python manage.py makemigrations
   - python manage.py migrate
 
