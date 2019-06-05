@@ -1,5 +1,7 @@
 # EcellWeb2k19
+API for ECell NIT Raipur android application and website.
 
+[![Build Status](https://travis-ci.com/ECellNitrr/EcellWeb2k19.svg?branch=master)](https://travis-ci.com/ECellNitrr/EcellWeb2k19)
 ## Setup
 To Setup this Project and contribute follow below guidelines.
 
