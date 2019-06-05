@@ -9,13 +9,7 @@ python:
 install:
   - pip install -r requirements.txt
 
-# services:
-#   -postgresql
-
 before_script:
-  # - psql -c "CREATE DATABASE ecellweb;"
-  # - psql -c "CREATE USER ecellnitrr WITH ENCRYPTED PASSWORD 'ECellWeb2k19';"
-  # - psql -c "GRANT ALL PRIVILEGES ON DATABASE yourdbname TO ecellnitrr;"
   - export DJANGO_SETTINGS_MODULE=server.settings
   - export PYTHONPATH=$HOME/builds/ECellNitrr/EcellWeb2k19/
   - export PIP_USE_MIRRORS=true
