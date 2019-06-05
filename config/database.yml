@@ -1,0 +1,6 @@
+test:
+  adapter: postgresql
+  database: ecellweb
+  username: ecellnitrr
+  password: ECellWeb2k19
+  encoding: utf8

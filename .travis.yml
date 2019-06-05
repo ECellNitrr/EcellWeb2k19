@@ -9,14 +9,16 @@ python:
 install:
   - pip install -r requirements.txt
 
+services:
+  -postgresql
+
 before_script:
-  - psql -c "CREATE DATABASE ecellweb;" -U postgres
-  - psql -c "CREATE USER ecellnitrr WITH PASSWORD 'ECellWeb2k19';" -U postgres
+  - psql -c "CREATE DATABASE ecellweb;"
+  - psql -c "CREATE USER ecellnitrr WITH ENCRYPTED PASSWORD 'ECellWeb2k19';"
+  - psql -c "GRANT ALL PRIVILEGES ON DATABASE yourdbname TO ecellnitrr;"
   - python manage.py makemigrations
   - python manage.py migrate
 
 script:
   - python manage.py test 
 
-services:
-  -postgresql
