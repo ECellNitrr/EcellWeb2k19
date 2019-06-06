@@ -83,13 +83,17 @@ DATABASES = {
         'PASSWORD':'ECellWeb2k19',
         'HOST':'localhost',
         'PORT':'',
+    },
+    'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
     
 }
 
-if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ: #Covers regular testing and django-coverage
+if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ: #Covers regular testing and django-coverage and travis-ci
     print('Using sqlite db for testing')
-    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['default'] = DATABASES['test']
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
