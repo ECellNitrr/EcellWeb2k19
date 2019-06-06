@@ -91,7 +91,8 @@ DATABASES = {
     
 }
 
-if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ: #Covers regular testing and django-coverage and travis-ci
+#Covers regular testing and django-coverage and travis-ci
+if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ:
     print('Using sqlite db for testing')
     DATABASES['default'] = DATABASES['test']
 
