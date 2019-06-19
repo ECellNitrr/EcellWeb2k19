@@ -11,5 +11,3 @@ db.sqlite3
 #Cache Files
 **/__pycache__
 *.pyc
-
-/migrations
