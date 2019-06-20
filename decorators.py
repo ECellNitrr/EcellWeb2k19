@@ -24,8 +24,6 @@ def ecell_user(function):
             else:
                 return INCORRECT_TOKEN
         except:
-            """
-            """
             if request.user.is_authenticated:    
                 request.ecelluser = request.user
             else:
