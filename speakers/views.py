@@ -4,20 +4,27 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from .models import Speaker
 from .serializers import SpeakerSerializer
+from decorators import ecell_user
 from django.http import HttpResponse
 import csv
 
 
 @api_view(['GET',])
+@ecell_user
 def get_speakers(request, year):
-    
+    if request.ecelluser.user_type in ['GST','VLT','CAB']:
+        return Response({
+            "message":"Unauthorized to view this page"
+        }, status=HTTP_401_UNAUTHORIZED)
+
     res_message = ""
     res_status = ""
     res_data = []
 
     speakers = Speaker.objects.filter(year=year, verified=True)
     if len(speakers)>0:
-        res_data    = SpeakerSerializer(speakers, many=True, context={'request':request}).data
+        res_data    = SpeakerSerializer(speakers, many=True,
+                             context={'request':request}).data
         res_message = "Speakers Fetched successfully."
         res_status  = status.HTTP_200_OK
     else:
@@ -32,7 +39,7 @@ def get_speakers(request, year):
 
 @api_view(['POST',])
 def add_speaker(request): 
-    
+
     res_message = ""
     res_data    = []
     
@@ -58,9 +65,11 @@ def generate_spreadsheet(request):
     response['Content-Disposition'] = 'attachment; filename="speakers.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Name', 'Company', 'Contact', 'Email', 'Experience', 'Year', 'Verified', 'Description', 'Profile Pic', 'Social Media'])
+    writer.writerow(['Name', 'Company', 'Contact', 'Email', 'Experience', 'Year',
+                         'Verified', 'Description', 'Profile Pic', 'Social Media'])
 
-    speakers = Speaker.objects.all().values_list('name', 'company', 'contact', 'email', 'experience', 'year', 'verified', 'description', 'profile_pic', 'social_media')
+    speakers = Speaker.objects.all().values_list('name', 'company', 'contact', 'email', 'experience',
+                                     'year', 'verified', 'description', 'profile_pic', 'social_media')
     for speaker in speakers:
         writer.writerow(speaker)
 
