@@ -10,12 +10,7 @@ import csv
 
 
 @api_view(['GET',])
-@ecell_user
 def get_speakers(request, year):
-    if request.ecelluser.user_type in ['GST','VLT','CAB']:
-        return Response({
-            "message":"Unauthorized to view this page"
-        }, status=HTTP_401_UNAUTHORIZED)
 
     res_message = ""
     res_status = ""
@@ -38,7 +33,12 @@ def get_speakers(request, year):
 
 
 @api_view(['POST',])
+@ecell_user
 def add_speaker(request): 
+    if request.ecelluser.user_type in ['GST','VLT','CAB']:
+        return Response({
+            "message":"Unauthorized to view this page"
+        }, status=HTTP_401_UNAUTHORIZED)
 
     res_message = ""
     res_data    = []
