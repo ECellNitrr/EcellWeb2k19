@@ -1,6 +1,21 @@
+#Virtual Environments
 env
+venv
+virtualenv
+ENV
+VENV
+
+#Database
 db.sqlite3
+
+#Cache Files
 **/__pycache__
+<<<<<<< HEAD
 */migrations
 static/
 .env
+=======
+*.pyc
+
+/migrations
+>>>>>>> 7ee6a751deef6e75d828e10c296717d88f2caf00
