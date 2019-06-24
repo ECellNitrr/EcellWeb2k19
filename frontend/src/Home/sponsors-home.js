@@ -59,8 +59,8 @@ export default class Responsive extends Component {
     };
     return (
       <div className="spons">
-        <Parallax blur={5} bgImage={require('../Images/sp2.jpg')} bgImageAlt="sponsors" strength={700}>
-          <h2 className="heading-4">Our Sponsors</h2>
+        <Parallax blur={1} bgImage={require('../Images/spons.jpg')} bgImageAlt="sponsors" strength={700}>
+          <h2 className="heading-4">SPONSORS 2019</h2>
           <Slider {...settings}>
             <div className="col">
               <div className="cont">

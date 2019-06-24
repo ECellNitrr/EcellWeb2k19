@@ -9,6 +9,7 @@ const navbar = () =>{
            $('.toggle').toggleClass('active')
            $('.sidebar').toggleClass('active')
            $('.logo').toggleClass('active')
+           
        }) 
     })
 

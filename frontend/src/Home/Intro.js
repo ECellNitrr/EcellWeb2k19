@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import Business_chr from '../Images/busi-chr.png';
+import bulb from '../Images/bulb.svg';
 
 import banner from '../Images/banner.png';
 
@@ -63,7 +63,7 @@ const intro = () => {
                         </div>
 
                         <div className ="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-                            <p className="busi-text"><img className="image-1" src={Business_chr}></img></p>
+                            <p className="bulb"><iframe className="image-1" src={bulb}></iframe></p>
                         </div>
                     </div>
                     <div className ="wave"></div>
