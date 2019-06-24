@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'rest_framework'
+    'rest_framework',
+    'startup',
 ]
 
 MIDDLEWARE = [
@@ -79,9 +80,9 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ecellweb',
-        'USER': 'ecellnitrr',
-        'PASSWORD':'ECellWeb2k19',
+        'NAME': config('ecellweb'),
+        'USER': config('ecellnitrr'),
+        'PASSWORD':config('ECellWeb2k19'),
         'HOST':'localhost',
         'PORT':'',
     },
@@ -89,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-    
+
 }
 
 #Covers regular testing and django-coverage and travis-ci

@@ -4,7 +4,7 @@ venv
 virtualenv
 ENV
 VENV
-myenv
+.env
 
 #Database
 db.sqlite3
