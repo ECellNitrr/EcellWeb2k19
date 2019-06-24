@@ -4,13 +4,14 @@ venv
 virtualenv
 ENV
 VENV
-.env
 
 #Database
 db.sqlite3
 
 #Cache Files
 **/__pycache__
+*/migrations
+static/
+.env
 *.pyc
 
-/migrations
