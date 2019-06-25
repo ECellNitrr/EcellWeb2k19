@@ -11,7 +11,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECURITY_KEY')
+if 'TRAVIS' not in os.environ:
+    SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -62,20 +63,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('db_name'),
-        'USER': config('db_user'),
-        'PASSWORD': config('db_password'),
-        'HOST':'localhost',
-        'PORT':'',
-    },
-    'test': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }   
-}
+DATABASES = {}
+
+if 'TRAVIS' not in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ecellweb',
+            'USER': 'ecellnitrr',
+            'PASSWORD':'ECellWeb2k19',
+            'HOST':'localhost',
+            'PORT':'',
+        },
+        'test': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+        
+    }
 
 #Covers regular testing and django-coverage and travis-ci
 if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ:
