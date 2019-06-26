@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    
+
     USER_TYPE = (
         ('GST', 'Guest'),
         ('VLT', 'Voluteer'),
@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
         ('CAB', 'Campus Ambassador'),
     )
 
-    username    = models.CharField(max_length=32, unique=True)
+    username    = models.CharField(max_length=64, unique=True)
     first_name  = models.CharField(max_length=100)
     last_name   = models.CharField(max_length=100)
     email       = models.EmailField(max_length=64, unique=True)
@@ -27,7 +27,7 @@ class CustomUser(AbstractUser):
                                     default='GST')
     linkedin    = models.URLField(max_length=64, null=True, blank=True)
     facebook    = models.URLField(max_length=64, null=True, blank=True)
-    
+
     def save(self, *args, **kwargs):
         self.username = self.email
         super(CustomUser, self).save(*args, **kwargs)
@@ -51,12 +51,12 @@ class CampusAmbassadorProfile(models.Model):
     tw_score    = models.PositiveIntegerField(default=0)        #Twitter Score
     li_score    = models.PositiveIntegerField(default=0)        #LinkedIn Score
     wp_score    = models.PositiveIntegerField(default=0)        #Whatsapp Score
-    
+
     @property
     def total_score(self):
        "Returns the total"
        return self.fb_score + self.tw_score + self.li_score + self.wp_score
-    
+
     def save(self,*args,**kwargs):
         self.user.user_type = 'CAB'
         self.user.save()
