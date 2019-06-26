@@ -4,13 +4,17 @@ venv
 virtualenv
 ENV
 VENV
+<<<<<<< HEAD
 .env
+=======
+>>>>>>> 3fdac8b5559fed0046afb098b523c5f7103ba576
 
 #Database
 db.sqlite3
 
 #Cache Files
 **/__pycache__
+*/migrations
+static/
+.env
 *.pyc
-
-/migrations
