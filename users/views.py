@@ -1,33 +1,17 @@
 from django.shortcuts import render
 import jwt
-
-from datetime import datetime, timedelta
-
 from django.conf import settings
 
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from .serializers import RegistrationSerializer
 
-# Create your views here.
-def token(self):
-
-        return self._generate_jwt_token()
 
 def _generate_jwt_token(self):
-        """
-        Generates a JSON Web Token that stores this user's ID and has an expiry
-        date set to 60 days into the future.
-        """
-        dt = datetime.now() + timedelta(days=60)
 
-        token = jwt.encode({
-            'id': self.pk,
-            'exp': int(dt.strftime('%s'))
-        }, settings.SECRET_KEY, algorithm='HS256')
+        token = jwt.encode({'id': self.pk}, settings.SECRET_KEY, algorithm='HS256')
 
         return token.decode('utf-8')
 
