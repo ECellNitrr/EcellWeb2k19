@@ -35,9 +35,12 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
+
+
     class Meta:
         verbose_name = "ECellUser"
         verbose_name_plural = "ECellUsers"
+
 
 class CampusAmbassadorProfile(models.Model):
 
