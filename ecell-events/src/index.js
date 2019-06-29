@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 import "./styles.css";
-import "./bootstrap.css";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <td>
             <div class="icons">
               <figure>
-                <img src="./1.png" alt="user" />
+                <img src={require("./assets/imgs/1.png")} alt="user" />
               </figure>
               <span>Ignition</span>
             </div>
@@ -28,7 +28,7 @@ function App() {
           <td>
             <div class="icons">
               <figure>
-                <img src="2.png" alt="user" />
+                <img src={require("./assets/imgs/2.png")} alt="user" />
               </figure>
               <span>Startup Camp</span>
             </div>
@@ -36,7 +36,7 @@ function App() {
           <td>
             <div class="icons">
               <figure>
-                <img src="3.png" alt="user" />
+                <img src={require("./assets/imgs/3.png")} alt="user" />
               </figure>
               <span>Cricnometrica</span>
             </div>
@@ -47,7 +47,7 @@ function App() {
             <td>
               <div class="icons">
                 <figure>
-                  <img src="./4.png" alt="user" />
+                  <img src={require("./assets/imgs/4.png")} alt="user" />
                 </figure>
                 <span>B-Quiz</span>
               </div>
@@ -55,7 +55,7 @@ function App() {
             <td>
               <div class="icons">
                 <figure>
-                  <img src="5.png" alt="user" />
+                  <img src={require("./assets/imgs/5.png")} alt="user" />
                 </figure>
                 <span>Wall Street</span>
               </div>
@@ -63,7 +63,7 @@ function App() {
             <td>
               <div class="icons">
                 <figure>
-                  <img src="6.png" alt="user" />
+                  <img src={require("./assets/imgs/6.png")} alt="user" />
                 </figure>
                 <span>Uthkristh</span>
               </div>
@@ -74,7 +74,7 @@ function App() {
           <td>
             <div class="icons">
               <figure>
-                <img src="./7.png" alt="user" />
+                <img src={require("./assets/imgs/7.png")} alt="user" />
               </figure>
               <span>Entropy</span>
             </div>
@@ -82,7 +82,7 @@ function App() {
           <td>
             <div class="icons">
               <figure>
-                <img src="8.png" alt="user" />
+                <img src={require("./assets/imgs/8.png")} alt="user" />
               </figure>
               <span>E - Gathering</span>
             </div>
@@ -90,7 +90,7 @@ function App() {
           <td>
             <div class="icons">
               <figure>
-                <img src="9.png" alt="user" />
+                <img src={require("./assets/imgs/9.png")} alt="user" />
               </figure>
               <span>B-Case Study</span>
             </div>

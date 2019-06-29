@@ -2,7 +2,7 @@
   font-family: sans-serif;
   text-align: center;
   padding: 5vw;
-  background: url(wp.jpg);
+  background: url('./assets/imgs/wp.jpg');
   background-position: cover;
 }
 
