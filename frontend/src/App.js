@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Navbar from './Home/navbar';
-import Intro from './Home/Intro';
-import About from './Home/about';
-import Vision from './Home/vision'
-import Spons from './Home/sponsors-home';
-import Speakers from './Home/speaker';
-import Glimpses from './Home/glimpses';
+import Home from './Components/Home/home';
+import Speakers from './Components/Speakers/speakers';
+import Sponsors from './Components/Sponsors/sponsors';
 
 
 
@@ -14,14 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Intro/>
-        <Navbar/>
-        <About/>
-        <Vision/>
-        <Spons/>
-        <Speakers/>
-      
-
+        <Home/>
       </div>
     );
   }

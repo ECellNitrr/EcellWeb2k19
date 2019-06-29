@@ -1,0 +1,50 @@
+.ctn-5{
+    max-width: 1500px;
+    margin-top: 100px;
+  }
+  
+  .col4{
+    background: white;
+  }
+  
+  .center{
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+  .textblock1{
+    z-index: 3;
+  }
+  
+  .text{
+    position: relative;
+    display: block;
+    font-size: 7em;
+    font-weight: 800;
+    line-height: 0.70em;
+    text-shadow: 0 10px 5px rgba(0,0,0,0.2);
+    color: gray;
+  }
+  
+  .textblock1:hover{
+    color: #262626;
+  }
+  
+  .textblock2:hover{
+    color: #262626;
+  }
+  
+  @media(max-width:1250px){
+    .text{
+      font-size: 5.5em;
+    }
+  }
+  
+  @media(max-width:525px){
+    .text{
+      font-size: 4.5em;
+    }
+  }
