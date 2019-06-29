@@ -48,7 +48,6 @@ class CampusAmbassadorProfile(models.Model):
     college = models.CharField(max_length=128, null=False, blank=False)
 
     # Scores for Campus Ambassadors
-
     total_score = models.PositiveIntegerField(default=0)        #Total Score
     fb_score    = models.PositiveIntegerField(default=0)        #Facebook Score
     tw_score    = models.PositiveIntegerField(default=0)        #Twitter Score
