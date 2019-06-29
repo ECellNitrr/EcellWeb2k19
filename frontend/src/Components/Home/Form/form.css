@@ -1,0 +1,58 @@
+.ctn-6{
+    max-width: 1500px;
+    margin-top: 100px;
+  }
+  
+  .map{
+    border: 15px solid skyblue;
+    outline: 2px dashed white;
+    outline-offset: -8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  input{
+    margin: 5px;
+    width: 90%;
+    padding: 8px;
+    font-weight: 600;
+    color: gray;
+  }
+  
+  input:valid{
+    border: 3px solid green;
+    color: #000;
+  }
+  
+  input:invalid{
+    border: 3px solid black;
+  }
+  
+  textarea{
+    margin: 5px;
+    width: 90%;
+    padding: 8px;
+    font-weight: 600;
+    color: gray;
+  }
+  
+  textarea:valid{
+    border: 3px solid green;
+    color: #000;
+  }
+  
+  textarea:invalid{
+    border: 3px solid black;
+  }
+  
+  .submit{
+    margin: 15px;
+    padding: 10px 15px;
+    color: white;
+    background: maroon;
+    font-weight: 600;
+    font-size: 20px;
+    border: none;
+  }
+  

@@ -1,0 +1,91 @@
+.anim{
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  .anim::before,.anim::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: 1;
+    
+  }
+  
+  .anim::before{
+    background-color: yellow;
+    animation: showText 0.8s ease;
+  }
+  
+  .anim::after{
+    background-color: black;
+    animation-delay: 0.5s;
+    animation: showText 0.6s ease;
+  }
+  
+  .heading-1{
+    margin: 15px;
+    font-weight: 800;
+    opacity: 0;
+    animation: animateText 0.7s forwards;
+  }
+  
+  @keyframes animateText {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes showText{
+    0%{
+      width: 0;
+      left: 0;
+    }
+  
+    50%{
+      width: 100%;
+      left: 0;
+    }
+  
+    100%{
+      width: 0;
+      left: 100%;
+    }
+  }
+  
+  
+  .heading-2{
+    margin: 15px 15px 25px;
+    font-weight: 600;
+  }
+  
+  .text-5{
+    text-align: justify;
+    margin: 15px;
+    line-height: 30px;
+  }
+  
+  .ctn-2{
+    max-width: 1300px;
+    margin-top: 120px;
+    
+  }
+  
+  .fb-1{
+    margin-top: 100px ;
+    text-align: center;
+  }
+  
+  .fb-page{
+    border: 15px solid skyblue;
+    outline: 2px dashed white;
+    outline-offset: -8px;
+    box-sizing: border-box;
+    box-shadow: 0 14px 15px rgba(0,0,0,0.2);
+  }
