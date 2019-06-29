@@ -14,36 +14,20 @@ class CustomUser(AbstractUser):
         ('CAB', 'Campus Ambassador'),
     )
 
-    username    = models.CharField(max_length=64, unique=True)
-    first_name  = models.CharField(max_length=100)
-    last_name   = models.CharField(max_length=100)
-    email       = models.EmailField(max_length=64, unique=True)
-    otp         = models.CharField(max_length=4, blank=True, null=True)
-    verified    = models.BooleanField(default=False)
-    contact     = models.CharField(max_length=10)
+    username = models.CharField(max_length=64, unique=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=64, unique=True)
+    otp = models.CharField(max_length=4, blank=True, null=True)
+    verified = models.BooleanField(default=False)
+    contact = models.CharField(max_length=10)
     bquiz_score = models.IntegerField(default=0)
-    avatar      = models.ImageField(upload_to='static/uploads/avatar',
+    avatar = models.ImageField(upload_to='static/uploads/avatar',
                                     null=True, blank=True)
-    user_type   = models.CharField(max_length = 3,choices=USER_TYPE,
+    user_type = models.CharField(max_length = 3,choices=USER_TYPE,
                                     default='GST')
-    linkedin    = models.URLField(max_length=64, null=True, blank=True)
-    facebook    = models.URLField(max_length=64, null=True, blank=True)
-
-    username    = models.CharField(max_length=64, unique=True)
-    first_name  = models.CharField(max_length=100)
-    last_name   = models.CharField(max_length=100)
-    email       = models.EmailField(max_length=64, unique=True)
-    otp         = models.CharField(max_length=4, blank=True, null=True)
-    verified    = models.BooleanField(default=False)
-    contact     = models.CharField(max_length=10)
-    bquiz_score = models.IntegerField(default=0)
-    avatar      = models.ImageField(upload_to='static/uploads/avatar',
-                                    null=True, blank=True)
-    user_type   = models.CharField(max_length = 3,choices=USER_TYPE,
-                                    default='GST')
-    linkedin    = models.URLField(max_length=64, null=True, blank=True)
-    facebook    = models.URLField(max_length=64, null=True, blank=True)
-
+    linkedin= models.URLField(max_length=64, null=True, blank=True)
+    facebook = models.URLField(max_length=64, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.username = self.email
