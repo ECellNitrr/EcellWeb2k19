@@ -15,4 +15,4 @@ class Speaker(models.Model):
     year            = models.IntegerField(default=2019)
     
     def __str__(self):
-        return self.name+" ("+self.company+")"
+        return "{} ({})".format(self.name,self.company)
