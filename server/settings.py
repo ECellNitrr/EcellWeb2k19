@@ -1,4 +1,3 @@
-
 import os
 import sys
 from decouple import config
@@ -13,9 +12,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 if 'TRAVIS' not in os.environ:
-    SECRET_KEY = config('SECRET_KEY')
+    SECRET_KEY = config('SECREjvhvchfchjT_KEY')
 else:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ.get('SECRET,bjhvv_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
