@@ -18,8 +18,8 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    min-width: 150px;
-    height: 150px;
+    min-width: 120px;
+    height: 120px;
     transition: 0.5s;
     z-index: 890;
   }
@@ -128,7 +128,7 @@
   .logo.active{
     position: fixed;
     top: 7%;
-    left: 47%;
+    left: 48%;
     z-index: 900;
   }
   
@@ -160,8 +160,8 @@
   @media (max-width:768px){
     .logo{
       margin:7px;
-      min-width: 100px;
-      height: 100px;
+      min-width: 80px;
+      height: 80px;
     }
   
     .logo.active{
@@ -169,6 +169,30 @@
       left: 42%;
     }
   
+  }
+
+  @media(min-height:1024px){
+    .logo.active{
+      left: 45.5%;
+    }
+  }
+
+  @media(min-height:1025px){
+    .logo.active{
+      left: 42%;
+    }
+  }
+
+  @media(min-height:1366px){
+    .logo.active{
+      left: 46.5%;
+    }
+  }
+
+  @media(min-height:1367px){
+    .logo.active{
+      left: 42%;
+    }
   }
   
   .toggle:before{
@@ -218,10 +242,16 @@
     padding: 5px;
     text-transform: uppercase;
     color: #fff;
-    font-size: 2em;
+    font-size: 1.65em;
     letter-spacing: 1px;
     font-weight: 800;
     transition: 0.8s;
+  }
+
+  @media(max-width:500px){
+    ul li a{
+      font-size: 1.2em;
+    }
   }
   
   ul li a:hover{

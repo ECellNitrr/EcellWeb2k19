@@ -69,6 +69,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={asso1}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -80,6 +81,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={asso2}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -91,6 +93,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={asso3}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -102,6 +105,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={asso4}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
                 </div>             </div>
@@ -112,6 +116,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={plat1}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -123,6 +128,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={plat2}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -134,6 +140,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={plat3}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -145,6 +152,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={plat4}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -157,6 +165,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={gold1}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -168,6 +177,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={gold2}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -179,6 +189,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={gold3}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>
@@ -190,6 +201,7 @@ export default class Responsive extends Component {
               <div className="front"><img className="spons-Image" src={gold4}></img></div>
               <div className="back">
                 <div className="inner">
+                  <h4 style={{fontWeight:"800"}}>Name</h4>
                 <p className="ph-no">1234567890</p>
                 <p><a className="web" href="#">Website</a></p>
               </div>

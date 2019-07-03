@@ -1,19 +1,20 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './footer.css';
 import logo from '../../Images/logo-white.png';
 
 const footer = ()=>{
     return(
-        <div className="footer" style={{background:"#0A0908",textAlign:'center'}}>
+        <div className="footer" style={{background:"#0A0908",textAlign:'center',marginTop:"100px"}}>
             <div className="container-fluid" style={{maxWidth:"1500px",padding:"50px"}}>
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-lg-4 col5">
                         <h3 style={{color:"white",fontWeight:'800',padding:"8px", background:"#0A0908"}}>Quick Links</h3>
-                        <div className="f-links" ><a href="#">Home</a></div>
-                        <div className="f-links" ><a href="#">Events</a></div>
-                        <div className="f-links" ><a href="#">Speakers</a></div>
-                        <div className="f-links" ><a href="#">Sponsors</a></div>
-                        <div className="f-links" ><a href="#">Team</a></div>           
+                        <div className="f-links" ><Link to="/">Home</Link></div>
+                        <div className="f-links" ><Link to="/events">Events</Link></div>
+                        <div className="f-links" ><Link to="/speakers">Speakers</Link></div>
+                        <div className="f-links" ><Link to="/sponsors">Sponsors</Link></div>
+                        <div className="f-links" ><Link to="/team">Team</Link></div>           
                     </div>
 
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col6">
