@@ -1,6 +1,7 @@
 from users.models import CustomUser, CampusAmbassadorProfile
 
-def create_user(*args,**kwargs):
+
+def create_user(*args, **kwargs):
     """Create an user with optional kwargs."""
     create_user.i += 1
 
@@ -17,7 +18,8 @@ def create_user(*args,**kwargs):
         **kwargs
     )
 
-def save_user(*args,**kwargs):
+
+def save_user(*args, **kwargs):
     """Saves or modifies an user with optional kwargs."""
     create_user.i += 1
 
@@ -40,7 +42,8 @@ def save_user(*args,**kwargs):
     user.save()
     return user
 
-def create_campus_ambassador(*args,**kwargs):
+
+def create_campus_ambassador(*args, **kwargs):
     """Creates a campus ambassador with optional kwargs."""
     create_campus_ambassador.i += 1
 
@@ -52,6 +55,7 @@ def create_campus_ambassador(*args,**kwargs):
     return CampusAmbassadorProfile.objects.create(
         **kwargs
     )
+
 
 create_user.i = 0
 create_campus_ambassador.i = 0
