@@ -1,3 +1,4 @@
+
 import os
 import sys
 from decouple import config
@@ -67,8 +68,8 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'test': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -79,8 +80,8 @@ if 'TRAVIS' not in os.environ:
             'NAME': config('db_name'),
             'USER': config('db_user'),
             'PASSWORD': config('db_password'),
-            'HOST':'localhost',
-            'PORT':'',
+            'HOST': 'localhost',
+            'PORT': '',
         },
         'test': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -88,7 +89,7 @@ if 'TRAVIS' not in os.environ:
         }
     }
 
-#Covers regular testing and django-coverage and travis-ci
+# Covers regular testing and django-coverage and travis-ci
 if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ:
     print('Using sqlite db for testing')
     DATABASES['default'] = DATABASES['test']
