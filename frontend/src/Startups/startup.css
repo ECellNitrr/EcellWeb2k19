@@ -1,0 +1,104 @@
+.section-header h3 {
+  font-size: 36px;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  position: relative;
+}
+
+.section-header p {
+  text-align: center;
+  margin: auto;
+  font-size: 15px;
+  padding-bottom: 60px;
+  color: #fff;
+  width: 50%;
+  
+}
+
+#start {
+  background:url(../Images/start/wp.jpg);
+  background-position:center;
+  padding: 60px 0;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+}
+
+#start .member {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  height:200px;
+  width:200px;
+  border-radius: 25%;
+  
+}
+
+#start .member .member-info {
+  opacity: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: 0.2s;
+}
+
+#start .member .member-info-content {
+  margin-top: 50px;
+  transition: margin 0.2s;
+}
+
+#start .member:hover .member-info {
+  background: rgba(0, 62, 128, 0.7);
+  opacity: 1;
+  transition: 0.4s;
+}
+
+#start .member:hover .member-info-content {
+  margin-top: 0;
+  transition: margin 0.4s;
+}
+
+#start .member h4 {
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 18px;
+  color: #fff;
+}
+
+#start .member span {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
+  color: #fff;
+}
+
+#start .member .social {
+  margin-top: 15px;
+}
+
+#start .member .social a {
+  transition: none;
+  color: #fff;
+}
+
+#start .member .social a:hover {
+  color: #DC143C;
+}
+
+#start .member .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
