@@ -14,7 +14,6 @@ class CustomUser(AbstractUser):
         ('CAB', 'Campus Ambassador'),
     )
 
-
     username = models.CharField(max_length=64, unique=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -30,15 +29,12 @@ class CustomUser(AbstractUser):
     linkedin = models.URLField(max_length=64, null=True, blank=True)
     facebook = models.URLField(max_length=64, null=True, blank=True)
 
-
     def save(self, *args, **kwargs):
         self.username = self.email
         super(CustomUser, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.email
-
-
 
     class Meta:
         verbose_name = "ECellUser"
@@ -50,9 +46,6 @@ class CampusAmbassadorProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,
                                 related_name='campus_ambassador_profile')
     college = models.CharField(max_length=128, null=False, blank=False)
-
-    # Scores for Campus Ambassadors
-
     total_score = models.PositiveIntegerField(default=0)  # Total Score
     fb_score = models.PositiveIntegerField(default=0)  # Facebook Score
     tw_score = models.PositiveIntegerField(default=0)  # Twitter Score
@@ -65,7 +58,6 @@ class CampusAmbassadorProfile(models.Model):
         return self.fb_score + self.tw_score + self.li_score + self.wp_score
 
     def save(self, *args, **kwargs):
-
         self.user.user_type = 'CAB'
         self.user.save()
         super(CampusAmbassadorProfile, self).save(*args, **kwargs)
