@@ -1,0 +1,59 @@
+.ctn-3{
+
+    margin-top: 100px;
+    background: #292826; 
+   
+  max-width: 1500px;
+  
+  }
+  
+  .heading-5{
+    margin: 30px;
+    font-weight: 800;
+    color: white
+  }
+  
+  .text-6{
+    text-align: justify;
+    margin: 30px;
+    line-height: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .running-man{
+    width: 450px;
+    height: 450px;
+  }
+  
+  @media(max-width:576){
+    .running-man{
+      width: 350px;
+      height: 350px;
+    }
+  }
+  
+  .run{
+    text-align: center;
+  }
+  
+  .col3{
+    -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+    background: #F9D342;
+  }
+  
+  @media(max-width:991px){
+    .col3{
+      -webkit-clip-path: polygon(0 12%, 100% 0, 100% 88%, 0% 100%);
+      clip-path: polygon(0 12%, 100% 0, 100% 88%, 0% 100%);
+     
+    }
+  
+    .ctn-3{
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+  
+    }
+  }

@@ -10,6 +10,7 @@
     "react-image-gallery": "^0.8.17",
     "react-parallax": "^2.2.0",
     "react-reveal": "^1.2.2",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "0.9.5",
     "react-simple-parallax": "^0.2.6",
     "react-slick": "^0.24.0",

@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
 import './App.css';
-import Navbar from './Home/navbar';
-import Intro from './Home/Intro';
-import About from './Home/about';
-import Vision from './Home/vision'
-import Spons from './Home/sponsors-home';
-import Speakers from './Home/speaker';
-import Glimpses from './Home/glimpses';
+import { BrowserRouter,Route,Switch} from 'react-router-dom';
+import Home from './Components/Home/home';
+import Speakers from './Components/Speakers/speakers';
+import Sponsors from './Components/Sponsors/sponsors';
+import Events from './Components/Events/events';
+import Startups from './Components/Startup/startup';
+import Mentors from './Components/Mentors/mentors';
+import Gallery from './Components/Gallery/gallery';
+import Register from './Components/Register/register';
+import LeaderBoard from './Components/LeaderBoard/leaderboard';
+import CaPortal from './Components/CA Portal/caportal';
+import Team from './Components/Team/team';
 
 
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Intro/>
-        <Navbar/>
-        <About/>
-        <Vision/>
-        <Spons/>
-        <Speakers/>
-      
-
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/speakers' component={Speakers} />
+            <Route path='/sponsors' component={Sponsors} />
+            <Route path='/events' component={Events} />
+            <Route path='/startups' component={Startups} />
+            <Route path='/mentors' component={Mentors} />
+            <Route path='/gallery' component={Gallery} />
+            <Route path='/register' component={Register} />
+            <Route path='/leaderboard' component={LeaderBoard} />
+            <Route path='/caportal' component={CaPortal} />
+            <Route path='/team' component={Team} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
