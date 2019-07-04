@@ -11,7 +11,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_^#*3c-8a3$9kfe422r6in6t$3-rlvcb_0l&faiv*wgo9^h^d-'
+if 'TRAVIS' not in os.environ:
+    SECRET_KEY = config('SECRET_KEY')
+else:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -62,29 +65,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
-
-db = {}
-if config('db')=='production':
-    db = {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ecellweb',
-        'USER': 'ecellnitrr',
-        'PASSWORD':'ECellWeb2k19',
-        'HOST':'localhost',
-        'PORT':'',
-    }
-elif config('db')=='local':
-    db = {
+DATABASES = {
+    'test': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-
-DATABASES = {
-    'default': db
 }
-    
 
-#Covers regular testing and django-coverage and travis-ci
+if 'TRAVIS' not in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('db_name'),
+            'USER': config('db_user'),
+            'PASSWORD': config('db_password'),
+            'HOST': 'localhost',
+            'PORT': '',
+        },
+        'test': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+# Covers regular testing and django-coverage and travis-ci
 if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ:
     print('Using sqlite db for testing')
     DATABASES['default'] = DATABASES['test']

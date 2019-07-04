@@ -3,6 +3,6 @@ from django.dispatch import receiver
 from .models import CustomUser
 
 @receiver(pre_save, sender=CustomUser)
-    def create_username(sender, instance, **kwargs):
-        instance.username = instance.email
+def create_username(sender, instance, **kwargs):
+    instance.username = instance.email
         
