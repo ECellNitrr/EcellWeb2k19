@@ -1,13 +1,20 @@
-import React from 'react';
+import React,{Component} from 'react';
+import faxios from '../../axios';
 import './gallery.css';
 import Navbar from '../Navbar/navbar';
 
-const gallery=()=>(
-    <div>
-        <Navbar/>
-        <div className="gallery">
-            Site Under Construction
-        </div>
-    </div>
-)
+class gallery extends Component{
+
+    render(){
+        return(
+            <div>
+                <Navbar/>
+                <div className="gallery">
+                Site Under Construction
+                </div>
+            </div>
+        )
+    }
+}
+
 export default gallery;
