@@ -46,8 +46,8 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    min-height: 100px;
-    min-width: 100px;
+    min-height: 150px;
+    min-width: 150px;
     width: auto;
     height: auto;
     font-size: 1rem;
@@ -64,10 +64,8 @@
     height: auto;
     color: white;
     font-size: 1rem;
-    background: #FF512F;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #F09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+    background-color: #000000;
+background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
     position: absolute;
     top: 0;
     left:0;

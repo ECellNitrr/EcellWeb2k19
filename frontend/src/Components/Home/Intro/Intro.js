@@ -2,9 +2,9 @@ import React from 'react';
 import './intro.css';
 import $ from 'jquery';
 
-import bulb from '../../../Images/bulb.svg';
+import bulb from '../../../assets/bulb.svg';
 
-import banner from '../../../Images/banner.png';
+import banner from '../../../assets/banner.png';
 
 const intro = () => {
 

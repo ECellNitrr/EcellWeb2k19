@@ -1,6 +1,6 @@
  import React from 'react';
  import './vision.css';
- import run from '../../../Images/run.png';
+ import run from '../../../assets/run.png';
 
 
  const vision = () =>(

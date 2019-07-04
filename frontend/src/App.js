@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter,Route} from 'react-router-dom';
+import { BrowserRouter,Route,Switch} from 'react-router-dom';
 import Home from './Components/Home/home';
 import Speakers from './Components/Speakers/speakers';
 import Sponsors from './Components/Sponsors/sponsors';
@@ -20,17 +20,19 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Route exact path='/' component={Home} />
-          <Route path='/speakers' component={Speakers} />
-          <Route path='/sponsors' component={Sponsors} />
-          <Route path='/events' component={Events} />
-          <Route path='/startups' component={Startups} />
-          <Route path='/mentors' component={Mentors} />
-          <Route path='/gallery' component={Gallery} />
-          <Route path='/register' component={Register} />
-          <Route path='/leaderboard' component={LeaderBoard} />
-          <Route path='/caportal' component={CaPortal} />
-          <Route path='/team' component={Team} />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/speakers' component={Speakers} />
+            <Route path='/sponsors' component={Sponsors} />
+            <Route path='/events' component={Events} />
+            <Route path='/startups' component={Startups} />
+            <Route path='/mentors' component={Mentors} />
+            <Route path='/gallery' component={Gallery} />
+            <Route path='/register' component={Register} />
+            <Route path='/leaderboard' component={LeaderBoard} />
+            <Route path='/caportal' component={CaPortal} />
+            <Route path='/team' component={Team} />
+          </Switch>
         </div>
       </BrowserRouter>
     );

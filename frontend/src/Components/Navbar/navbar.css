@@ -23,6 +23,13 @@
     transition: 0.5s;
     z-index: 890;
   }
+
+  .active{
+    color: black;
+    background: white;
+    padding: 1.5px;
+    border-radius: 0 10px;
+  }
   
   .header{
     position: absolute;
@@ -125,7 +132,7 @@
     }
   }
   
-  .logo.active{
+  .logo.active1{
     position: fixed;
     top: 7%;
     left: 48%;
@@ -133,25 +140,25 @@
   }
   
   @media(max-width:1530px){
-    .logo.active{
+    .logo.active1{
       left: 46%;
     }
   }
   
   @media(max-width:1300px){
-    .logo.active{
+    .logo.active1{
       left: 45%;
     }
   }
   
   @media(max-width:1000px){
-    .logo.active{
+    .logo.active1{
       left: 44%;
     }
   }
   
   @media(max-width:830px){
-    .logo.active{
+    .logo.active1{
       left: 44%;
     }
   }
@@ -164,7 +171,7 @@
       height: 80px;
     }
   
-    .logo.active{
+    .logo.active1{
       top: 80%;
       left: 42%;
     }
@@ -172,25 +179,25 @@
   }
 
   @media(min-height:1024px){
-    .logo.active{
+    .logo.active1{
       left: 45.5%;
     }
   }
 
   @media(min-height:1025px){
-    .logo.active{
+    .logo.active1{
       left: 42%;
     }
   }
 
   @media(min-height:1366px){
-    .logo.active{
+    .logo.active1{
       left: 46.5%;
     }
   }
 
   @media(min-height:1367px){
-    .logo.active{
+    .logo.active1{
       left: 42%;
     }
   }
@@ -223,7 +230,7 @@
     z-index: 890;
   }
   
-  .sidebar.active{
+  .sidebar.active1{
     left: 0;
   }
   

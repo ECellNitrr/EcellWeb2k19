@@ -4,22 +4,22 @@ import Slider from "react-slick";
 import { Parallax, Background } from 'react-parallax';
 
 
-import asso1 from '../../../Images/1.png';
-import asso2 from '../../../Images/2.png';
-import asso3 from '../../../Images/3.png';
-import asso4 from '../../../Images/4.png';
-import plat1 from '../../../Images/5.png';
-import plat2 from '../../../Images/6.png';
-import plat3 from '../../../Images/7.png';
-import plat4 from '../../../Images/8.png';
-import gold1 from '../../../Images/9.png';
-import gold2 from '../../../Images/10.png';
-import gold3 from '../../../Images/11.png';
-import gold4 from '../../../Images/12.png';
-import title1 from '../../../Images/title1.jpeg';
-import title2 from '../../../Images/title2.png';
-import title3 from '../../../Images/title3.png';
-import title4 from '../../../Images/title4.svg';
+import asso1 from '../../../assets/1.png';
+import asso2 from '../../../assets/2.png';
+import asso3 from '../../../assets/3.png';
+import asso4 from '../../../assets/4.png';
+import plat1 from '../../../assets/5.png';
+import plat2 from '../../../assets/6.png';
+import plat3 from '../../../assets/7.png';
+import plat4 from '../../../assets/8.png';
+import gold1 from '../../../assets/9.png';
+import gold2 from '../../../assets/10.png';
+import gold3 from '../../../assets/11.png';
+import gold4 from '../../../assets/12.png';
+import title1 from '../../../assets/title1.jpeg';
+import title2 from '../../../assets/title2.png';
+import title3 from '../../../assets/title3.png';
+import title4 from '../../../assets/title4.svg';
 
 export default class Responsive extends Component {
   render() {
@@ -61,7 +61,7 @@ export default class Responsive extends Component {
     return (
       <div className="spons">
 
-        <Parallax blur={3} bgImage={require('../../../Images/spons.jpg')} bgImageAlt="sponsors" strength={700}>
+        <Parallax blur={3} bgImage={require('../../../assets/spons.jpg')} bgImageAlt="sponsors" strength={700}>
           <h2 className="heading-4">SPONSORS 2019</h2>
           <Slider {...settings}>
             <div className="col">
