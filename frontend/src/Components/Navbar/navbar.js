@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink,Link} from 'react-router-dom';
 import './navbar.css';
 import $ from 'jquery';
 import logo from '../../assets/logo-white.png';
@@ -24,7 +24,7 @@ const navbar = () =>{
             <div className="toggle"></div>
             <div className='sidebar'>
                 <ul>
-                    <li><NavLink to="/" data-text="Home" >Home</NavLink></li>
+                    <li><Link to="/" data-text="Home" >Home</Link></li>
                     <li><NavLink to="/events" data-text="events" >Events</NavLink></li>
                     <li><NavLink to="/team" data-text="Team" >Team</NavLink></li>
                     <li><NavLink to="/gallery" data-text="Gallery" >Gallery</NavLink></li>
