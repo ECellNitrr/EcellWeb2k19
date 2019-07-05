@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React,{Component} from 'react';
 import faxios from '../../axios';
 import './team.css';
@@ -18,18 +17,4 @@ class team extends Component{
     }
 }
 
-=======
-import React from 'react';
-import './team.css';
-import Navbar from '../Navbar/navbar';
-
-const team=()=>(
-    <div>
-        <Navbar/>
-        <div className="team">
-            Site Under Construction
-        </div>
-    </div>
-)
->>>>>>> ecell/master
 export default team;
