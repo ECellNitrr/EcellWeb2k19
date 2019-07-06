@@ -14,7 +14,3 @@ db.sqlite3
 static/
 .env
 *.pyc
-<<<<<<< HEAD
-=======
-
->>>>>>> f28d413a2755702742f3142531adddc5f41474ba
