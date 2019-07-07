@@ -16,5 +16,4 @@ class startup extends Component{
         )
     }
 }
-
 export default startup;

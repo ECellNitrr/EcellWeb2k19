@@ -16,5 +16,4 @@ class register extends Component{
         )
     }
 }
-
 export default register;
