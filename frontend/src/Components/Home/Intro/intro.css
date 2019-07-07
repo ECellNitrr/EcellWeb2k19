@@ -14,7 +14,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   .countdown{
     font-size: 25px;
     display: flex;
-    margin-left: 50%;
+    margin-left: 30%;
     align-items: center;
     text-align: center;
   }
@@ -189,7 +189,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   
   .banner{
-    margin-top: 15%;
+    margin-top: 20%;
     margin-left: 20%;
   }
   
