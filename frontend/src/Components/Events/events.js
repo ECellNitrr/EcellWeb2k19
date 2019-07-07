@@ -4,6 +4,7 @@ import './events.css';
 import Navbar from '../Navbar/navbar';
 
 class events extends Component{
+    
 
     render(){
         return(

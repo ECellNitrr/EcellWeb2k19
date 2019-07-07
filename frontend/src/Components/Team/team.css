@@ -1,4 +1,8 @@
 .team{
     text-align: center;
     padding: 200px;
+    background:#000000;
+}
+#design {
+    background:white;
 }
