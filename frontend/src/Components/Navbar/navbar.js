@@ -31,7 +31,7 @@ const navbar = () =>{
                     <li><NavLink to="/sponsors" data-text="Sponsors" >Sponsors</NavLink></li>
                     <li><NavLink to="/speakers" data-text="Speakers" >Speakers</NavLink></li>
                     <li><NavLink to="/startups" data-text="Startups" >Startups</NavLink></li>
-                    <li><NavLink to="/Mentors" data-text="Mentors" >Mentors</NavLink></li>
+                    <li><NavLink to="/mentors" data-text="Mentors" >Mentors</NavLink></li>
                     <li><NavLink to="/leaderboard" data-text="Leaderboard" >LeaderBoard</NavLink></li>
                     <li><NavLink to="/caportal" data-text="Caportal" >CaPortal</NavLink></li>
                     <li><NavLink to="/register" data-text="Register" >Register</NavLink></li>

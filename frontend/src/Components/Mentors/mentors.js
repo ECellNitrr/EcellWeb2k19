@@ -12,6 +12,7 @@ class mentors extends Component {
 
   componentDidMount() {
     this.axios.get("/mentors/list/").then(fromserver => {
+      console.log(fromserver);
       const data = fromserver.data;
       const mentors = data.mentors;
       const yearwise_mentors = {}
@@ -32,7 +33,6 @@ class mentors extends Component {
 
       console.log(yearwise_mentors)
 
-      console.log(data);
       this.setState({
         mentors: yearwise_mentors,
         loading: false
