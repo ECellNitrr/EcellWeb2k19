@@ -111,6 +111,53 @@
     }
   }
 
+  .head,.head2{
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%,0);
+    z-index: 100;
+    color: white;
+    font-weight: 800;
+    font-size: 30px;
+    border-radius: 5px;
+    background: black;
+    padding: 8px;
+    border-radius: 8px;
+  
+    
+  }
+
+  .head2{
+    display: none;
+  }
+
+  @media(max-width:671px){
+    .head{
+      display: none;
+    }
+    .head2{
+      display: block;
+    }
+  }
+
+  @media(max-width:496px){
+    .head2{
+      display: block;
+      font-size: 24px;
+    }
+  }
+
+  @media(max-width:407px){
+    .head2{
+      display: block;
+      font-size: 18px;
+    }
+  }
+
+
+
+
   @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
   html {
     position: relative;
@@ -126,20 +173,22 @@
   a, a:hover {
     text-decoration: none;
   }
+
   
   .wrapper {
+    
     width: 100%;
     height: auto;
-    min-height: 100vh;
+    min-height: 10vh;
     padding: 50px 20px;
-    padding-top: 100px;
+    margin-top: 300px;
     display: flex;
   }
   @media screen and (max-width: 768px) {
     .wrapper {
       height: auto;
-      min-height: 100vh;
-      padding-top: 100px;
+      min-height: 10vh;
+      margin-top: 100px;
     }
   }
   .profile-card {
