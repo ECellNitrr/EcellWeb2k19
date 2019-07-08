@@ -9,7 +9,7 @@ import someone from '../../assets/speakers/2018/kg.jpg';
 
 class speaker extends Component{
 
-  /*axios=faxios();
+  axios=faxios();
   state={
     speaker:{}
   }
@@ -32,130 +32,65 @@ class speaker extends Component{
         const year = years[x]
         yearwise_speakers[year] = speakers.filter(speakers => speakers.year===year)
       }
-
-      this.setState={
+      this.setState({
         speaker: yearwise_speakers
-      }
-
-      console.log(yearwise_speakers);
+      })
       
     })
-  }*/
+  }
 
   render(){
-    return(
-      <div className="speaker">
-        <Navbar/>
-        <div className="header">E-SUMMIT'19,&nbsp;NIT RAIPUR</div>
-        <div className="head">MEET OUR SPEAKERS</div>
-        <div className="head2">OUR SPEAKERS</div>
-        {/*This is one container*/}
-        <div className="container-fluid ctn7">
+
+    let speakers_html=[]
+
+    for(const year in this.state.speaker){
+      let speakers= this.state.speakers[year]
+      speakers=speakers.map(speaker=>
+        
+        <div className="container-fluid ctn7" key={speaker.id} >
 
         <div class="wrapper">
 
   
           <div class="profile-card js-profile-card">
             <div class="profile-card__img">
-              <img src={Daniel} alt="Daniel Ramamoorthy"></img>
+              <img src={speaker.profile_pic} alt={speaker.name}></img>
             </div>
 
             <div class="profile-card__cnt js-profile-cnt">
-              <div class="profile-card__name">Daniel Ramamoorthy</div>
-              <div class="profile-card__txt"><strong>Startup Coach</strong></div>
-              <div class="profile-card__year">SPEAKER 2018</div>
+              <div class="profile-card__name">{speaker.name}</div>
+              <div class="profile-card__txt"><strong>{speaker.company}</strong></div>
+              <div class="profile-card__year">SPEAKER {speaker.year}</div>
 
               <div class="profile-card-loc">
                 <span class="profile-card-loc__txt">
-                  An eclectic person who is a box of wonder, excelling the entrepreneurial domain: from being an entrepreneur and a motivational speaker, coaching others to being a world famous host and speaker!
+                  {speaker.description}
                 </span>
               </div>
 
-              
-
               <div class="profile-card-ctr">
-                <a href="#"><button class="profile-card__button button--orange">Follow</button></a>
+                <a href={speaker.social_media}><button class="profile-card__button button--orange">Follow</button></a>
               </div>
             </div>
-
           </div>
-
           </div>
-          
         </div>
-        {/*First container ends*/}
+        )
 
-        {/*Second container starts*/}
-        
+        const yearwise_html= <div key={year}>
+          {speakers}
+        </div>
 
-        <div className="container-fluid ctn7">
+        speakers_html.push(yearwise_html)
+    }
 
-          <div class="wrapper">
-
-
-            <div class="profile-card js-profile-card">
-              <div class="profile-card__img">
-                <img src={anyone} alt="Daniel Ramamoorthy"></img>
-              </div>
-
-              <div class="profile-card__cnt js-profile-cnt">
-                <div class="profile-card__name">Daniel Ramamoorthy</div>
-                <div class="profile-card__txt"><strong>Startup Coach</strong></div>
-                <div class="profile-card__year">SPEAKER 2018</div>
-
-                <div class="profile-card-loc">
-                  <span class="profile-card-loc__txt">
-                    An eclectic person who is a box of wonder, excelling the entrepreneurial domain: from being an entrepreneur and a motivational speaker, coaching others to being a world famous host and speaker!
-                  </span>
-                </div>
-
-                
-
-                <div class="profile-card-ctr">
-                  <a href="#"><button class="profile-card__button button--orange">Follow</button></a>
-                </div>
-              </div>
-
-            </div>
-
-            </div>
-            
-          </div>
-          {/*second container ends*/}
-
-          <div className="container-fluid ctn7">
-
-          <div class="wrapper">
-
-
-            <div class="profile-card js-profile-card">
-              <div class="profile-card__img">
-                <img src={someone} alt="Daniel Ramamoorthy"></img>
-              </div>
-
-              <div class="profile-card__cnt js-profile-cnt">
-                <div class="profile-card__name">Daniel Ramamoorthy</div>
-                <div class="profile-card__txt"><strong>Startup Coach</strong></div>
-                <div class="profile-card__year">SPEAKER 2018</div>
-
-                <div class="profile-card-loc">
-                  <span class="profile-card-loc__txt">
-                    An eclectic person who is a box of wonder, excelling the entrepreneurial domain: from being an entrepreneur and a motivational speaker, coaching others to being a world famous host and speaker!
-                  </span>
-                </div>
-
-                
-
-                <div class="profile-card-ctr">
-                  <a href="#"><button class="profile-card__button button--orange">Follow</button></a>
-                </div>
-              </div>
-
-            </div>
-
-            </div>
-            
-          </div>
+    return(
+      <div className="speaker">
+        <Navbar/>
+        <div className="header">E-SUMMIT'19,&nbsp;NIT RAIPUR</div>
+        <div className="head">MEET OUR SPEAKERS</div>
+        <div className="head2">OUR SPEAKERS</div>
+        {speakers_html}
         <Footer/>
       </div>
     )
