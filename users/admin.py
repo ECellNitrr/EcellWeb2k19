@@ -39,6 +39,6 @@ class CampusAmbassadorProfileAdmin(admin.ModelAdmin):
     get_last_name.admin_order_field = 'user__last_name'
 
     list_display = ('get_email','get_first_name','get_last_name','get_contact','college')
-    
+
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(CampusAmbassadorProfile, CampusAmbassadorProfileAdmin)

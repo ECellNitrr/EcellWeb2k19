@@ -181,7 +181,11 @@
     height: auto;
     min-height: 10vh;
     padding: 50px 20px;
+<<<<<<< HEAD
     margin-top:100px;
+=======
+    margin-top: 300px;
+>>>>>>> master
     display: flex;
   }
   @media screen and (max-width: 768px) {
