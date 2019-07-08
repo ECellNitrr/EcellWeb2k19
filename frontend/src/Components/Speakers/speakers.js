@@ -40,7 +40,7 @@ class speaker extends Component{
   }
 
   render(){
-
+    console.log(this.state.speaker)
     let speakers_html=[]
 
     for(const year in this.state.speaker){
