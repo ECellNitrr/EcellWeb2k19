@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import faxios from '../../axios';
+
 import './events.css';
 import Navbar from '../Navbar/navbar';
 

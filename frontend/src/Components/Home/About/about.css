@@ -77,12 +77,13 @@
     
   }
   
-  .fb-1{
-    margin-top: 100px ;
-    text-align: center;
-  }
+  
   
   .fb-page{
+    position: relative;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,0);
     border: 15px solid skyblue;
     outline: 2px dashed white;
     outline-offset: -8px;

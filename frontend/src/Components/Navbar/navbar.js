@@ -17,8 +17,8 @@ const navbar = () =>{
 
 
     return(
-        <div nav-bar>
-            <img className="logo" src={logo}></img>
+        <div className="Navbar">
+            <img className="logo" alt='' src={logo}></img>
             
 
             <div className="toggle"></div>

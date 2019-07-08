@@ -32,7 +32,7 @@ export default class Parallax extends Component {
                   
                   <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                      <p className="im-text"><img className="image-3" src={trans}></img></p>
+                      <p className="im-text"><img alt='' className="image-3" src={trans}></img></p>
                     </div>
 
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8">
@@ -47,7 +47,7 @@ export default class Parallax extends Component {
                   
                   <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                      <p className="im-text"><img className="image-3" src={trans}></img></p>
+                      <p className="im-text"><img alt='' className="image-3" src={trans}></img></p>
                     </div>
 
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8">

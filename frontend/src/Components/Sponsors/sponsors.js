@@ -21,7 +21,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -36,7 +36,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -51,7 +51,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -66,7 +66,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -81,7 +81,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -96,7 +96,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -111,7 +111,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -126,7 +126,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -141,7 +141,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
@@ -156,7 +156,7 @@ class Sponsors extends Component{
                         <div className="col-xs-12 xol-sm-12 col-md-4 col-lg-3">
                             <div className="col">
                                 <div className="cont">
-                                    <div className="front"><img className="spons-Image" src={inc36}></img></div>
+                                    <div className="front"><img alt='' className="spons-Image" src={inc36}></img></div>
                                     <div className="back">
                                         <div className="inner">
                                             <h4 style={{fontWeight:"800"}}>36Inc</h4>
