@@ -48,11 +48,10 @@ class speaker extends Component{
       speakers=speakers.map(speaker=>
         
         <div className="container-fluid ctn7" key={speaker.id} >
-
         <div class="wrapper">
 
-  
           <div class="profile-card js-profile-card">
+
             <div class="profile-card__img">
               <img src={speaker.profile_pic} alt={speaker.name}></img>
             </div>
@@ -72,7 +71,9 @@ class speaker extends Component{
                 <a href={speaker.social_media}><button class="profile-card__button button--orange">Follow</button></a>
               </div>
             </div>
+
           </div>
+          
           </div>
         </div>
         )
