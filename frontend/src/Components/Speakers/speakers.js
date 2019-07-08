@@ -1,11 +1,8 @@
 import React,{Component} from 'react';
-import faxios from '../../axios';
+import faxios from '../../axios'
 import './speakers.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
-import Daniel from '../../assets/speakers/2018/dr.jpg';
-import anyone from '../../assets/speakers/2018/gk.jpg';
-import someone from '../../assets/speakers/2018/kg.jpg';
 
 class speaker extends Component{
 
