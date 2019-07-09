@@ -12,6 +12,7 @@ from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 from utils.auth_utils import send_otp
 
+
 class RegistrationAPIView(APIView):
     permission_classes = (AllowAny,)
     serializer_class = RegistrationSerializer
@@ -48,7 +49,6 @@ class RegistrationAPIView(APIView):
             res_message = "Registration Successful!"
             res_token = token
             res_status = status.HTTP_200_OK
-        
 
         return Response({
             "message": res_message,
