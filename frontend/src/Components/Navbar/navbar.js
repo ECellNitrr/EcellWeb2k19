@@ -18,11 +18,7 @@ const navbar = () =>{
 
     return(
         <div className="Navbar">
-<<<<<<< HEAD
-            <img className="logo" src={logo}></img>
-=======
-            <img className="logo" alt='' src={logo}></img>
->>>>>>> 72380ebc9d7d91bd11b5c3a46815c31564b04604
+            <div className="logoback"><img className="logo" alt='' src={logo}></img></div>
             
 
             <div className="toggle"></div>
