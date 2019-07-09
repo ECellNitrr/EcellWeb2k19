@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './sponsorHome.css';
 import Slider from "react-slick";
-import { Parallax, Background } from 'react-parallax';
+import { Parallax } from 'react-parallax';
 
 
 import asso1 from '../../../assets/1.png';
@@ -16,10 +16,6 @@ import gold1 from '../../../assets/9.png';
 import gold2 from '../../../assets/10.png';
 import gold3 from '../../../assets/11.png';
 import gold4 from '../../../assets/12.png';
-import title1 from '../../../assets/title1.jpeg';
-import title2 from '../../../assets/title2.png';
-import title3 from '../../../assets/title3.png';
-import title4 from '../../../assets/title4.svg';
 
 export default class Responsive extends Component {
   render() {
@@ -28,8 +24,8 @@ export default class Responsive extends Component {
       infinite: true,
       speed: 500,
       slidesToShow: 6,
-      autoplay:true,
-      autoplaySpeed:3000,
+      autoplay: true,
+      autoplaySpeed: 3000,
       slidesToScroll: 6,
       initialSlide: 0,
       responsive: [
@@ -66,149 +62,149 @@ export default class Responsive extends Component {
           <Slider {...settings}>
             <div className="col">
               <div className="cont">
-              <div className="front"><img className="spons-Image" src={asso1}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-              <div className="front"><img className="spons-Image" src={asso2}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
+                <div className="front"><img alt='' className="spons-Image" src={asso1}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="col">
               <div className="cont">
-              <div className="front"><img className="spons-Image" src={asso3}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-              <div className="front"><img className="spons-Image" src={asso4}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-                </div>             </div>
-            </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-              <div className="front"><img className="spons-Image" src={plat1}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
+                <div className="front"><img alt='' className="spons-Image" src={asso2}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="col">
               <div className="cont">
-              <div className="front"><img className="spons-Image" src={plat2}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-              <div className="front"><img className="spons-Image" src={plat3}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
+                <div className="front"><img alt='' className="spons-Image" src={asso3}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="col">
               <div className="cont">
-              <div className="front"><img className="spons-Image" src={plat4}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
+                <div className="front"><img alt='' className="spons-Image" src={asso4}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>             </div>
               </div>
+            </div>
+            <div className="col">
+              <div className="cont">
+                <div className="front"><img alt='' className="spons-Image" src={plat1}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
               </div>
+            </div>
+            <div className="col">
+              <div className="cont">
+                <div className="front"><img alt='' className="spons-Image" src={plat2}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="cont">
+                <div className="front"><img alt='' className="spons-Image" src={plat3}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div className="cont">
+                <div className="front"><img alt='' className="spons-Image" src={plat4}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div className="col">
               <div className="cont">
-              <div className="front"><img className="spons-Image" src={gold1}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-              <div className="front"><img className="spons-Image" src={gold2}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
+                <div className="front"><img alt='' className="spons-Image" src={gold1}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="col">
               <div className="cont">
-              <div className="front"><img className="spons-Image" src={gold3}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
+                <div className="front"><img alt='' className="spons-Image" src={gold2}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="col">
               <div className="cont">
-              <div className="front"><img className="spons-Image" src={gold4}></img></div>
-              <div className="back">
-                <div className="inner">
-                  <h4 style={{fontWeight:"800"}}>Name</h4>
-                <p className="ph-no">1234567890</p>
-                <p><a className="web" href="#">Website</a></p>
-              </div>
-              </div>
+                <div className="front"><img alt='' className="spons-Image" src={gold3}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
               </div>
             </div>
-            
+            <div className="col">
+              <div className="cont">
+                <div className="front"><img alt='' className="spons-Image" src={gold4}></img></div>
+                <div className="back">
+                  <div className="inner">
+                    <h4 style={{ fontWeight: "800" }}>Name</h4>
+                    <p className="ph-no">1234567890</p>
+                    <p><a className="web" href="#">Website</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </Slider>
         </Parallax>
       </div>

@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import faxios from '../../axios';
+
+ 
 import './leaderboard.css';
 import Navbar from '../Navbar/navbar';
 

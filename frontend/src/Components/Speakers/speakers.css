@@ -181,7 +181,15 @@
     height: auto;
     min-height: 10vh;
     padding: 50px 20px;
+<<<<<<< HEAD
     margin-top:100px;
+=======
+<<<<<<< HEAD
+    margin-top:100px;
+=======
+    margin-top: 300px;
+>>>>>>> master
+>>>>>>> 72380ebc9d7d91bd11b5c3a46815c31564b04604
     display: flex;
   }
   @media screen and (max-width: 768px) {

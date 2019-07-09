@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import faxios from "../../axios";
+import faxios from '../../axios'
 import "./mentors.css";
 import Navbar from "../Navbar/navbar";
 
