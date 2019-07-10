@@ -19,7 +19,7 @@ class speaker extends Component{
       
       const data= res.data
       const speakers= data.speakers;
-      const yearwise_speakers={}
+      const yearwise_speakers=[];
 
       let years= [];
       for(const x in speakers){
@@ -34,9 +34,12 @@ class speaker extends Component{
         yearwise_speakers[year] = speakers.filter(speakers => speakers.year===year)
       }
 
+      let rev_yearwise_speakers= yearwise_speakers.reverse();
+      
+
       
       this.setState({
-        speaker: yearwise_speakers,
+        speaker: rev_yearwise_speakers,
         loading:false
       })
       
