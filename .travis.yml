@@ -2,9 +2,7 @@ language: python
 dist: xenial
 
 python:
-  - 3.7
   - 3.6
-  - 3.5
 
 install:
   - pip install -r requirements.txt
@@ -13,7 +11,7 @@ before_script:
   - export DJANGO_SETTINGS_MODULE=server.settings
   - export PYTHONPATH=$HOME/builds/ECellNitrr/EcellWeb2k19/
   - export PIP_USE_MIRRORS=true
-  
+
   - python manage.py makemigrations
   - python manage.py migrate
 
