@@ -15,7 +15,7 @@ before_script:
   - export PIP_USE_MIRRORS=true
 
   - python manage.py makemigrations
-  - python manage.py migrate
+  - python manage.py migrate --run-syncdb 
 
 script:
   - python manage.py test 
