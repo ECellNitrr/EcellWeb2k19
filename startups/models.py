@@ -2,8 +2,6 @@ from django.db import models
 from users.models import CustomUser
 #from appprofile.models import Profile
 # Create your models here.
-default_user = CustomUser.objects.get(email='ecell@gmail.com')
-
 
 class Startup(models.Model):
     name = models.CharField(max_length=256, )
@@ -25,8 +23,7 @@ class Startup(models.Model):
     modified_at = models.DateTimeField(auto_now=True, editable=False)
     ecell_user = models.ForeignKey(
         CustomUser,
-        on_delete=models.SET_DEFAULT,
-        default=default_user.id)
+        on_delete=models.CASCADE)
     year = models.IntegerField(default=2019)
 
     def __str__(self):
