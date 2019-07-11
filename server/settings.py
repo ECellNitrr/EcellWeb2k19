@@ -69,28 +69,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
+# DATABASES = {
+#     'test': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# if 'TRAVIS' not in os.environ:
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('db_name'),
+        'USER': config('db_user'),
+        'PASSWORD': config('db_password'),
+        'HOST': 'localhost',
+        'PORT': '',
+    },
     'test': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-if 'TRAVIS' not in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('db_name'),
-            'USER': config('db_user'),
-            'PASSWORD': config('db_password'),
-            'HOST': 'localhost',
-            'PORT': '',
-        },
-        'test': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
 
 # Covers regular testing and django-coverage and travis-ci
 if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ:
