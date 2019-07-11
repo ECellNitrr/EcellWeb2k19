@@ -9,30 +9,37 @@ class Sponsors extends Component{
     
     axios = faxios();
     state={
-        sponsors_18:[]
+        sponsors_18:{}
     }
 
     componentDidMount(){
         this.axios.get("/sponsors/list/").then(res=>{
             const data = res.data;
             const spons= data.spons;
+            const year=2018;
+            const dict_year={};
             
-            const section_list=[];
-            for(const x in spons){
-                const section= spons[x].section_name;
-                if(section_list.indexOf(section)===-1){
-                    section_list.push(section);
-                }
-            }
-
-            let spons18=[];
-            for(const x in spons){
+            
+            spons.forEach((particular)=>{
+                let type = particular.section_name;
+                let sub_array =particular.sponsors;
+                let filtered_sub_array=sub_array.filter((individual_sponsor)=>{
+                    return(individual_sponsor.year===year);
                 
-            }
+                });
+                dict_year[type]=filtered_sub_array;
+            });
+          
 
-            
+            this.setState({
+                sponsors_18:dict_year
+            })
+
+            console.log(this.state);
         })
     }
+
+    
 
     render(){
         return(
