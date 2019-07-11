@@ -14,7 +14,7 @@ before_script:
   - export PYTHONPATH=$HOME/builds/ECellNitrr/EcellWeb2k19/
   - export PIP_USE_MIRRORS=true
 
-  - python manage.py makemigrations users
+  - python manage.py makemigrations
   - python manage.py migrate
 
 script:
