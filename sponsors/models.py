@@ -4,11 +4,11 @@ from users.models import CustomUser
 
 class Sponsor(models.Model):
     SPONS_TYPE = (
-        ('AS', 'Associate Sponsors'),
-        ('PLTS', 'Platinum Sponsors'),
-        ('GS', 'Gold Sponsors'),
-        ('TS', 'Title Sponsors'),
-        ('PRTS', 'Partner Sponsors'),
+        ('ATS', 'Associate Sponsors'),
+        ('PLS', 'Platinum Sponsors'),
+        ('GDS', 'Gold Sponsors'),
+        ('TLS', 'Title Sponsors'),
+        ('PRS', 'Partner Sponsors'),
     )
 
     name = models.CharField(max_length=256, unique=True)
