@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from .serializers import RegistrationSerializer, LoginSerializer
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
+from utils.auth_utils import send_otp
 
 
 class RegistrationAPIView(APIView):
@@ -40,6 +41,7 @@ class RegistrationAPIView(APIView):
             payload = {
                 'email': serializer.validated_data['email']
             }
+            send_otp(serializer.validated_data['contact'])
             token = jwt.encode(
                 payload,
                 settings.SECRET_KEY,
@@ -97,3 +99,17 @@ class LoginAPIView(APIView):
             "detail": res_detail,
             "token": res_token
         }, status=res_status)
+
+    # class SendOTPAPIView(APIView):
+    #     permission_classes = (AllowAny,)
+    #     serializer_class = SendOTPSerializer
+    #     def send_otp(contact):
+    #         otp = str(randint(1000, 9999))
+    #         url = "http://www.merasandesh.com/api/sendsms"
+    #         message = "Your OTP for E-Cell NIT Raipur APP is " + otp + "Please do not share this with anyone"
+    #         querystring = {"username": config('MSG_USERNAME'), "password": config('MSG_PASSWORD'), "senderid": "SUMMIT",
+    #                         "message": message, "numbers": contact, "unicode": "0"}
+
+    #         response = requests.request("GET", url, params=querystring)
+    #         print(response.text)
+    #         print(response)

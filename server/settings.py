@@ -32,7 +32,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'rest_framework'
+    'rest_framework',
+    'events',
+    'sponsors',
+    'mentors',
+    'startups'
 ]
 
 MIDDLEWARE = [
@@ -66,27 +70,19 @@ TEMPLATES = [
 WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('db_name',None),
+        'USER': config('db_user',None),
+        'PASSWORD': config('db_password',None),
+        'HOST': 'localhost',
+        'PORT': '',
+    },
     'test': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-if 'TRAVIS' not in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('db_name'),
-            'USER': config('db_user'),
-            'PASSWORD': config('db_password'),
-            'HOST': 'localhost',
-            'PORT': '',
-        },
-        'test': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
 
 # Covers regular testing and django-coverage and travis-ci
 if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ:
