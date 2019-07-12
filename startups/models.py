@@ -3,7 +3,7 @@ from users.models import CustomUser
 
 
 class Startup(models.Model):
-    name = models.CharField(max_length=256, unique=True)
+    name = models.CharField(max_length=200, unique=True)
     email = models.EmailField(max_length=256, null=True, blank=True)
     pic = models.ImageField(
         upload_to='static/uploads/startups',

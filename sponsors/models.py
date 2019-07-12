@@ -11,7 +11,7 @@ class Sponsor(models.Model):
         ('PRTS', 'Partner Sponsors'),
     )
 
-    name = models.CharField(max_length=256, unique=True)
+    name = models.CharField(max_length=200, unique=True)
     details = models.TextField(blank=True, null=True)
     pic = models.ImageField(
         upload_to='static/uploads/sponsors',

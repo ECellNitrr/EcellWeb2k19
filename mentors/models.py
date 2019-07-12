@@ -3,7 +3,7 @@ from users.models import CustomUser
 
 
 class Mentor(models.Model):
-    name = models.CharField(max_length=256, unique=True)
+    name = models.CharField(max_length=200, unique=True)
     contact = models.TextField(max_length=13, null=True, blank=True)
     email = models.CharField(max_length=256)
     detail = models.TextField()
