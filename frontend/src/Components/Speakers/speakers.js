@@ -5,7 +5,6 @@ import './speakers.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 
-
 class speaker extends Component{
 
   axios=faxios();
