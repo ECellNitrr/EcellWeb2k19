@@ -77,7 +77,7 @@ class speaker extends Component{
               </div>
 
               <div className="profile-card-ctr">
-                <a href={speaker.social_media}><button className="profile-card__button button--orange">Follow</button></a>
+                <a href={speaker.social_media} target="_blank" ><button className="profile-card__button button--orange">Follow</button></a>
               </div>
             </div>
 
@@ -98,9 +98,6 @@ class speaker extends Component{
       <div className="speaker">
         <Navbar/>
         <div className="header1">SPEAKERS</div>
-
-        
-        
         {speakers_html}
         <Footer/>
       </div>
