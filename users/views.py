@@ -33,7 +33,6 @@ class RegistrationAPIView(APIView):
             last_name_msg = error.get('lastname', ['', ])
             email_msg = error.get('email', ['', ])
             contact_msg = error.get('contact', ['', ])
-            print(error)
             res_detail = email_msg[0] + " " + first_name_msg[0] + \
                 " " + last_name_msg[0] + " " + contact_msg[0]
 
