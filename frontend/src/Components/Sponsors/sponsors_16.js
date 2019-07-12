@@ -69,7 +69,7 @@ class Sponsors extends Component{
                 
                 )
 
-                const section_html =<div className="col-xs-12 col-sm-6 col-md-4 col-lg-3 col7"   key={section}>
+                const section_html =<div className="box" key={section}>
                     {sponsors}
                 </div>
 
@@ -79,10 +79,10 @@ class Sponsors extends Component{
             <div className="sponsors">
                 <Navbar/>
                 <div className="header1">SPONSORS {this.state.year}</div>
-                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"200px"}} >
-                    <div className="row justify-content-center ">
+                <div className="container-fluid ctn9" style={{maxWidth:"1200px",paddingTop:"200px"}} >
+                    
                         {sponsors_html}
-                    </div>
+                    
                 </div>
                 <Footer/>
             </div>

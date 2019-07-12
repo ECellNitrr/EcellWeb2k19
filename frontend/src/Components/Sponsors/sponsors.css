@@ -7,6 +7,12 @@
     
 }
 
-.col7{
- padding: auto;
+.ctn9{
+    display: flex;
+    flex-wrap: wrap;
 }
+
+.box{
+    flex: 1 0 23%;
+}
+
