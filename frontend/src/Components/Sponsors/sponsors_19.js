@@ -3,22 +3,21 @@ import './sponsors.css';
 import faxios from '../../axios';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
-import Header_Links from './header_links';
 
 
 class Sponsors extends Component{
     
     axios = faxios();
     state={
-        sponsors_17:{},
-        year:2017
+        sponsors_19:{},
+        year:2019
     }
-
+    /*
     componentDidMount(){
         this.axios.get("/sponsors/list/").then(res=>{
             const data = res.data;
             const spons= data.spons;
-            const year=2017;
+            const year=2019;
             const dict_year={};
             
             
@@ -34,19 +33,19 @@ class Sponsors extends Component{
           
 
             this.setState({
-                sponsors_17:dict_year
+                sponsors_19:dict_year
             })
 
             console.log(this.state);
         })
-    }
+    }*/
 
     
 
     render(){
-        let sponsors_html=[];
-        for(const section in this.state.sponsors_17){
-            let sponsors= this.state.sponsors_17[section]
+        /*let sponsors_html=[];
+        for(const section in this.state.sponsors_19){
+            let sponsors= this.state.sponsors_18[section]
             sponsors=sponsors.map(sponsor=>
                 
                 
@@ -75,21 +74,28 @@ class Sponsors extends Component{
                 </div>
 
                 sponsors_html.push(section_html)
-        }
+        }*/
         return(
             <div className="sponsors">
                 <Navbar/>
-                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"250px"}}>
-                    <Header_Links/>
+                <div className="container-fluid ctn10" style={{maxWidth:"1200px",paddingTop:"250px"}}>
+                    <div><a className="links" href="#">Yearwise Sponsors</a></div>
+                    <div><a className="links" href="#">Sponsorship Gallery</a></div>
+                    <div><a className="links" href="#">Head Co-ordinators of Sponsorship</a></div>
                 </div>
                 <div className="header1">SPONSORS {this.state.year}</div>
-                <div className="container-fluid ctn9" style={{maxWidth:"1200px",paddingTop:"0px"}} >
+               
+                {/*<div className="container-fluid ctn9" style={{maxWidth:"1200px",paddingTop:"0px"}} >
                     
                         {sponsors_html}
-                    
-                </div>
-                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"50px"}}>
-                    <Header_Links/>
+                   
+        </div>*/}
+
+                <div style={{textAlign:"center",marginTop:"50px",color:"white"}}>Will be released soon</div>
+                <div className="container-fluid ctn10" style={{maxWidth:"1200px",paddingTop:"50px"}}>
+                    <div><a className="links" href="#">Yearwise Sponsors</a></div>
+                    <div><a className="links" href="#">Sponsorship Gallery</a></div>
+                    <div><a className="links" href="#">Head Co-ordinators of Sponsorship</a></div>
                 </div>
                 <Footer/>
             </div>

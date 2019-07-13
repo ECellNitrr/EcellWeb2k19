@@ -1,9 +1,9 @@
 /*css of this page and the sponsors-home are same, so most of the css is there in the sponsors-home section of home page*/
 
 .sponsors{
-    background: #7b4397;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(20deg, #dc2430, #7b4397);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #7b4397 !important;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(20deg, #dc2430, #7b4397) !important;  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(20deg, #dc2430, #7b4397) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
 }
 
@@ -15,4 +15,40 @@
 .box{
     flex: 1 0 23%;
 }
+
+.ctn10{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+.links{
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+    transition: 0.2s;
+    font-weight: 800;
+}
+
+.links:hover{
+    color: black;
+    text-decoration: none;
+    background: white;
+    padding: 5px;
+    border-radius: 0 8px;
+}
+
+@media(max-width:425px){
+    .links{
+        font-size: 15px;
+    }
+}
+
+@media(max-width:330px){
+    .link-text{
+        font-size: 14px;
+    }
+}
+
+
 

@@ -3,6 +3,7 @@ import './sponsors.css';
 import faxios from '../../axios';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
+import Header_Links from './header_links';
 
 
 class Sponsors extends Component{
@@ -78,11 +79,17 @@ class Sponsors extends Component{
         return(
             <div className="sponsors">
                 <Navbar/>
+                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"250px"}}>
+                    <Header_Links/>
+                </div>
                 <div className="header1">SPONSORS {this.state.year}</div>
-                <div className="container-fluid ctn9" style={{maxWidth:"1200px",paddingTop:"200px"}} >
+                <div className="container-fluid ctn9" style={{maxWidth:"1200px",paddingTop:"0px"}} >
                     
                         {sponsors_html}
                     
+                </div>
+                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"50px"}}>
+                    <Header_Links/>
                 </div>
                 <Footer/>
             </div>
