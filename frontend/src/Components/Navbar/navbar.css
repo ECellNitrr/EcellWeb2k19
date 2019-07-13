@@ -336,6 +336,57 @@
     font-weight: 800;
     letter-spacing: 1px;
   }
+
+  .brand-header3{
+    position: absolute;
+    top:60px;
+    z-index: 20;
+    left: 50%;
+    transform: translate(-50%,0);
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: none;
+  }
+
+  
+
+  @media(max-width:1125px){
+    .brand-header{
+      display: none;
+    }
+
+    .brand-header3{
+      display: block;
+    }
+  }
+
+  @media(max-width:800px){
+    .brand-header3{
+      font-size: 28px;
+    }
+
+    .brand-header2{
+      font-size: 23px;
+    }
+
+  }
+
+  @media(max-width:400px){
+    .brand-header3{
+      font-size: 25px;
+    }
+
+    .brand-header2{
+      font-size: 20px;
+    }
+
+  }
+
+
   
   
   

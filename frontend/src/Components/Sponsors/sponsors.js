@@ -82,7 +82,7 @@ class Sponsors extends Component{
         return(
             <div className="sponsors">
                 <Navbar/>
-                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"250px"}}>
+                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"300px"}}>
                     <Header_Links/>
                 </div>
 

@@ -189,7 +189,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   
   .banner{
-    margin-top: 20%;
+    margin-top: 25%;
     margin-left: 20%;
   }
   
@@ -244,7 +244,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:850px){
     .banner{
-      margin-top: 25%;
+      margin-top: 28%;
       width: 480px;
     }
   
