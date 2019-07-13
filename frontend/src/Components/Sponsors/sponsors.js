@@ -17,7 +17,7 @@ class Sponsors extends Component{
         this.axios.get("/sponsors/list/").then(res=>{
             const data = res.data;
             const spons= data.spons;
-            console.log({data,spons})
+            
             const year=Number(this.props.match.params.year);
             const dict_year={};
             
@@ -30,19 +30,17 @@ class Sponsors extends Component{
                     return(individual_sponsor.year===year);
                 
                 });
-                console.log(filtered_sub_array)
+                
                 dict_year[type]=filtered_sub_array;
             });
 
-            console.log(dict_year)
-          
-
+           
             this.setState({
                 sponsors:dict_year,
                 year
             })
 
-            console.log(this.state);
+            
         })
     }
 
