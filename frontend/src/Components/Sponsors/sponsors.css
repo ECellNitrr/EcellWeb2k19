@@ -52,7 +52,14 @@
 
 .ctn11{
     display: flex;
-    padding-top: 200px;
+    padding-top: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctn15{
+    display: flex;
+    padding-top: 180px;
     justify-content: center;
     align-items: center;
 }
@@ -165,7 +172,7 @@
 .header4{
     text-align: center;
     position: absolute;
-    top: 100px;
+    top: 200px;
     left: 50%;
     transform: translate(-50%,0);
     color: white;

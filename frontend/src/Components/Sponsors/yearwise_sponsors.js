@@ -26,7 +26,7 @@ class Sponsors extends Component{
                 </div>
 
                 <h2 className="header3">SPONSORSHIP GALLERY</h2>
-                <div className="container-fluid ctn11">
+                <div className="container-fluid ctn15">
                     <div>
                         <div><a href="#"><button className="btn" >Sponsors Of E-Summit'19</button></a></div>
                         <div><a href="#"><button className="btn" >Sponsors Of E-Summit'18</button></a></div>

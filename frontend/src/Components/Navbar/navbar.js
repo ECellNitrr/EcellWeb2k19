@@ -19,6 +19,8 @@ const navbar = () =>{
     return(
         <div className="Navbar">
             <div className="logoback"><img className="logo" alt='' src={logo}></img></div>
+            <h3 className="brand-header">THE ENTREPRENEURSHIP CELL</h3>
+            <h4 className="brand-header2">NIT RAIPUR</h4>
             
 
             <div className="toggle"></div>

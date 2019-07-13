@@ -17,7 +17,7 @@ class Sponsors extends Component{
             <div className="sponsors">
                 <Navbar/>
                 <div className="header4">SPONSORSHIP HEAD CO-ORDINATORS</div>
-                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"250px"}}>
+                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"350px"}}>
                     <Header_Links/>
                 </div>
 

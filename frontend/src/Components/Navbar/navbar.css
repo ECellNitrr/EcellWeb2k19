@@ -31,7 +31,7 @@
     border-radius: 0 10px;
   }
   
-  .header{
+  /*.header{
     position: absolute;
     top: 80px;
     left: 50%;
@@ -130,7 +130,7 @@
       top: 160px;
       font-size: 17px;
     }
-  }
+  }*/
   
   .logo.active1{
     position: fixed;
@@ -307,6 +307,34 @@
   ul li a:hover:before{
     opacity: 0.1;
     top: 50%;
+  }
+
+  .brand-header{
+    position: absolute;
+    top:60px;
+    z-index: 20;
+    left: 50%;
+    transform: translate(-50%,0);
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  .brand-header2{
+    position: absolute;
+    top:100px;
+    z-index: 20;
+    left: 50%;
+    transform: translate(-50%,0);
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 1px;
   }
   
   
