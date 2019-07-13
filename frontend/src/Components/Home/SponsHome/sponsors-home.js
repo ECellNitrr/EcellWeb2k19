@@ -6,7 +6,7 @@ import { Parallax } from 'react-parallax';
 import something from '../../../assets/jk.jpg';
 
 
-import asso1 from '../../../assets/1.png';
+// import asso1 from '../../../assets/1.png';
 import asso2 from '../../../assets/2.png';
 import asso3 from '../../../assets/3.png';
 import asso4 from '../../../assets/4.png';

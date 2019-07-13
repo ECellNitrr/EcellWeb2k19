@@ -28,7 +28,7 @@ const navbar = () =>{
                     <li><NavLink to="/events" data-text="events" >Events</NavLink></li>
                     <li><NavLink to="/team" data-text="Team" >Team</NavLink></li>
                     <li><NavLink to="/gallery" data-text="Gallery" >Gallery</NavLink></li>
-                    <li><NavLink to="/sponsors/2018" data-text="Sponsors" >Sponsors</NavLink></li>
+                    <li><NavLink to="/sponsors" data-text="Sponsors" >Sponsors</NavLink></li>
                     <li><NavLink to="/speakers" data-text="Speakers" >Speakers</NavLink></li>
                     <li><NavLink to="/startups" data-text="Startups" >Startups</NavLink></li>
                     <li><NavLink to="/mentors" data-text="Mentors" >Mentors</NavLink></li>

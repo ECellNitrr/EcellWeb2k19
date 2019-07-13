@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter,Route,Switch} from 'react-router-dom';
+import { BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
 import Home from './Components/Home/home';
 import Speakers from './Components/Speakers/speakers';
-import Sponsors from './Components/Sponsors/sponsors_18';
+import Sponsors from './Components/Sponsors/sponsors';
 import Events from './Components/Events/events';
 import Startups from './Components/Startup/startup';
 import Mentors from './Components/Mentors/mentors';
@@ -23,7 +23,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/speakers' component={Speakers} />
-            <Route path='/sponsors/2018' component={Sponsors} />
+            <Route path='/sponsors/:year' component={Sponsors} />
+            <Route path='/sponsors' component={()=><Redirect to='/sponsors/2018'/>} />
             <Route path='/events' component={Events} />
             <Route path='/startups' component={Startups} />
             <Route path='/mentors' component={Mentors} />
