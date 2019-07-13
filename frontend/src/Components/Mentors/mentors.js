@@ -55,7 +55,7 @@ class mentors extends Component {
             </div>
             )
         
-        const yearwise_html = <div className="flex-container" key={year}>
+        const yearwise_html = <div className="flex-containerr" key={year}>
           {mentors}
         </div>
         mentors_html.push(yearwise_html)
