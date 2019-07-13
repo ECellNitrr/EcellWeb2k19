@@ -42,17 +42,76 @@ class team extends Component{
   }
 
   render() {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 6,
+        autoplay:true,
+        autoplaySpeed:3000,
+        slidesToScroll: 6,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              infinite: true
+            }
+          }
+        ]
+      };
       console.log(this.state.student)
     let team_html = []
     for(const member_type in this.state.student){
         let student = this.state.student[member_type]
+        if(member_type==="OC")
+        {
+            
+            student = student.map(member => 
+                <div>
+                <div>
+                <img src={member.image} alt={member.name} width="200" height="200"/>
+                </div>
+                <div>
+                <h6>{member.name}</h6>
+                </div>
+                </div>
+               
+                    
+            )
         
-        student = student.map(member => 
+        const teams_html = <div key={member_type}>
+            
+            <div>
+            <br/><br/><br/>
+            <h2>Overall Coordinators</h2>
+            </div>
+            <div className="flex-container">
+            {student}
+            </div>
+            
+           
+            
+            
+        </div>
+        
+        team_html.push(teams_html)
+        
+            
+        }
+        else if(member_type==="HC")
+        {
+            
+            student = student.map(member => 
                 
-                <div class="design">
-                <div className="col-md-2">
-                <img src={member.image} height='200' width='200' alt={member.name}/>
-                <p>{member.name}</p>
+                <div>
+                <div>
+                <img src={member.image} alt={member.name} width="200" height="200"/>
+                </div>
+                <div>
+                <h6>{member.name}</h6>
                 </div>
                 </div>
                     
@@ -61,20 +120,93 @@ class team extends Component{
         const teams_html = <div key={member_type}>
 
             
-            <h2>{member_type}</h2>
-            <div className="row">
+            <div className="flex-container">
+            <span><h2>Head Coordinators</h2></span>
+            </div>
+            <div className="flex-container">
             {student}
             </div>
            
             
             
         </div>
+        
         team_html.push(teams_html)
+        
+            
+        }
+        else if(member_type==="MNG")
+        {
+            
+            student = student.map(member => 
+                
+                <div>
+                <div>
+                <h6>{member.name}</h6>
+                </div>
+                </div>
+                    
+            )
+        
+        const teams_html = <div key={member_type}>
+
+            
+            <div className="flex-container">
+            <span><h2>Managers</h2></span>
+            </div>
+            <div className="flex-container">
+            {student}
+            </div>
+           
+            
+            
+        </div>
+        
+        team_html.push(teams_html)
+        
+            
+        }
+        else{
+
+       
+        
+        student = student.map(member => 
+                
+            <div>
+            <div>
+            <h6>{member.name}</h6>
+            </div>
+            </div>
+                
+                    
+            )
+        
+        const teams_html = <div key={member_type}>
+
+            <div className="flex-container">
+            <span><h2>Executives</h2></span>
+            </div>
+            <div className="flex-container">
+            {student}
+            </div>
+        
+           
+            
+            
+        </div>
+        
+        team_html.push(teams_html)
+        }
     }
         return(
             <div>
                 <Navbar/>
-                <div className="team">{this.state.loading? 'Loading...':team_html}</div>
+                
+                <div className="team">{this.state.loading? 'Loading...':team_html[0]}</div>
+                <div className="team">{this.state.loading? 'Loading...':team_html[1]}</div>
+                <div className="team">{this.state.loading? 'Loading...':team_html[2]}</div>
+                <div className="team">{this.state.loading? 'Loading...':team_html[3]}</div>
+
             </div>
         )
     }
