@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import faxios from '../../axios'
 import './speakers.css';
+
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 
@@ -8,7 +9,8 @@ class speaker extends Component{
 
   axios=faxios();
   state={
-    speaker:{}
+    speaker:{},
+    loading:true
   }
 
   componentDidMount(){
@@ -16,7 +18,7 @@ class speaker extends Component{
       
       const data= res.data
       const speakers= data.speakers;
-      const yearwise_speakers={}
+      const yearwise_speakers=[];
 
       let years= [];
       for(const x in speakers){
@@ -31,16 +33,22 @@ class speaker extends Component{
         yearwise_speakers[year] = speakers.filter(speakers => speakers.year===year)
       }
 
-      console.log(yearwise_speakers)
+      let rev_yearwise_speakers= yearwise_speakers.reverse();
+      
+
+      
       this.setState({
-        speaker: yearwise_speakers
+        speaker: rev_yearwise_speakers,
+        loading:false
       })
       
     })
   }
 
   render(){
-    console.log(this.state.speaker)
+
+
+    
     let speakers_html=[]
 
     for(const year in this.state.speaker){
@@ -68,7 +76,7 @@ class speaker extends Component{
               </div>
 
               <div className="profile-card-ctr">
-                <a href={speaker.social_media}><button className="profile-card__button button--orange">Follow</button></a>
+                <a href={speaker.social_media} target="_blank" ><button className="profile-card__button button--orange">Follow</button></a>
               </div>
             </div>
 
@@ -88,9 +96,7 @@ class speaker extends Component{
     return(
       <div className="speaker">
         <Navbar/>
-        <div className="header">E-SUMMIT'19,&nbsp;NIT RAIPUR</div>
-        <div className="head">MEET OUR SPEAKERS</div>
-        <div className="head2">OUR SPEAKERS</div>
+        <div className="header1">SPEAKERS</div>
         {speakers_html}
         <Footer/>
       </div>

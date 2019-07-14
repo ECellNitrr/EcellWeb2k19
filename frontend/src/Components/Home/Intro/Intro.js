@@ -16,7 +16,7 @@ const intro = () => {
 
 
     //Set Launch Date
-    const launchDate = new Date('Aug 31, 2019 8:00:00').getTime();
+    const launchDate = new Date('Aug 31, 2019 00:00:00').getTime();
 
     //Update Every Second
     const intvl = setInterval(() => {

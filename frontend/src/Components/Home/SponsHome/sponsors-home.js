@@ -3,8 +3,10 @@ import './sponsorHome.css';
 import Slider from "react-slick";
 import { Parallax } from 'react-parallax';
 
+import something from '../../../assets/jk.jpg';
 
-import asso1 from '../../../assets/1.png';
+
+// import asso1 from '../../../assets/1.png';
 import asso2 from '../../../assets/2.png';
 import asso3 from '../../../assets/3.png';
 import asso4 from '../../../assets/4.png';
@@ -23,33 +25,33 @@ export default class Responsive extends Component {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 6,
+      slidesToShow: 5,
       autoplay: true,
       autoplaySpeed: 3000,
-      slidesToScroll: 6,
+      slidesToScroll: 5,
       initialSlide: 0,
       responsive: [
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToShow: 3,
+            slidesToScroll: 3,
             infinite: true
           }
         },
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 2,
+            slidesToScroll: 2,
             initialSlide: 2
           }
         },
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
           }
         }
       ]
@@ -62,8 +64,8 @@ export default class Responsive extends Component {
           <Slider {...settings}>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={asso1}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={something}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -74,8 +76,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={asso2}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={asso2}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -86,8 +88,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={asso3}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={asso3}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -98,8 +100,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={asso4}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={asso4}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -109,8 +111,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={plat1}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={plat1}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -121,8 +123,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={plat2}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={plat2}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -133,8 +135,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={plat3}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={plat3}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -145,8 +147,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={plat4}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={plat4}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -158,8 +160,8 @@ export default class Responsive extends Component {
 
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={gold1}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={gold1}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -170,8 +172,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={gold2}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={gold2}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -182,8 +184,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={gold3}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={gold3}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>
@@ -194,8 +196,8 @@ export default class Responsive extends Component {
             </div>
             <div className="col">
               <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={gold4}></img></div>
-                <div className="back">
+                <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt='' className="spons-Image" src={gold4}></img></div>
+                <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                     <h4 style={{ fontWeight: "800" }}>Name</h4>
                     <p className="ph-no">1234567890</p>

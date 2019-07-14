@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import faxios from '../../axios'
 import "./mentors.css";
 import Navbar from "../Navbar/navbar";
+import Footer from '../Footer/footer';
 
 class mentors extends Component {
   axios = faxios();
@@ -47,24 +48,31 @@ class mentors extends Component {
     for(const year in this.state.mentors){
         let mentors = this.state.mentors[year]
         mentors = mentors.map(mentor => 
-            <div>
-                <div>{mentor.name}</div>
-                <img src={mentor.profile_pic} height='300' width='300' alt={mentor.name}/>
+            <div className="individual_mentors">
+                <div><img className="mentors_pic shadow-lg p-3 mb-5 bg-white rounded" src={mentor.profile_pic} alt={mentor.name}/></div>
+                <h3 className="mentors_name">{mentor.name}</h3>
+                <p className="center2">{mentor.detail}</p>
             </div>
             )
         
-        const yearwise_html = <div key={year}>
-            <h2>{year}</h2>
-            {mentors}
+        const yearwise_html = <div className="flex-containerr" key={year}>
+          {mentors}
         </div>
         mentors_html.push(yearwise_html)
     }
 
     return (
-      <div>
+      <div className="mentors">
         <Navbar />
-        <div className="mentors">{this.state.loading? 'loading...':mentors_html}</div>
+        <div className="header4">PREVIOUS MENTORS</div>          
+            <div className="container-fluid ctn13">
+              {this.state.loading? 'loading...':mentors_html}
+            </div>
+                  
+        <Footer/>
+
       </div>
+      
     );
   }
 }
