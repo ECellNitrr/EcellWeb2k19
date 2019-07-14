@@ -3,6 +3,7 @@ import {NavLink,Link} from 'react-router-dom';
 import './navbar.css';
 import $ from 'jquery';
 import logo from '../../assets/logo-white.png';
+import Form from '../Form/form';
 
 const navbar = () =>{
 
@@ -19,7 +20,11 @@ const navbar = () =>{
     return(
         <div className="Navbar">
             <div className="logoback"><img className="logo" alt='' src={logo}></img></div>
-            <h3 className="brand-header">THE ENTREPRENEURSHIP CELL</h3>
+            <Form/>
+            <div class="login-button1">
+                <a href="" class="btn btn1" data-toggle="modal" data-target="#modalLRForm">LogIn/SignUp</a>
+            </div>
+            <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>
             <h3 className="brand-header3">E-CELL</h3>
             <h4 className="brand-header2">NIT RAIPUR</h4>
             
