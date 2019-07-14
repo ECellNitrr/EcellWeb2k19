@@ -1,4 +1,40 @@
-.events{
+.events {
+    font-family: sans-serif;
     text-align: center;
-    padding: 200px;
-}
+    padding: 5vw;
+    background: url('../../assets/events/wp.jpg');
+    background-position: center cover;
+    background-attachment: fixed;
+  }
+  
+  .event1 h2 {
+    font-size: 3vw;
+    padding-top: 2vw;
+    padding-bottom: 0.8vw;
+  }
+  
+  .event1 {
+    padding: 1vw;
+    font-size: 1.5vw;
+    color: white;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+  }
+  
+  .icons {
+    padding: 5.5vw;
+    padding-bottom: 5vw;
+    margin-right: 1vw;
+  }
+  
+  .icons figure img{
+    width: 8vw;
+    height: 8vw;
+    border: 0.25vw solid #fff;
+    background-size: cover;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 30%;
+  }

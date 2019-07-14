@@ -1,4 +1,24 @@
 .team{
     text-align: center;
-    padding: 200px;
+    padding: 50px;
+    padding-top:100px;
+    background:#000000;
+    font-family:"Raleway";
 }
+h2 {
+    font-size:20px;
+}
+.flex-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+
