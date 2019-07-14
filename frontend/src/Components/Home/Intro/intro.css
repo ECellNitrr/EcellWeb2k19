@@ -1,5 +1,8 @@
 .intro .container-fluid{
-    background-image: linear-gradient(to right, #e63e71, #ffbca0);
+  background: #7b4397;  /* fallback for old browsers */
+background: -webkit-linear-gradient(20deg, #dc2430, #7b4397);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   }
   
      /*text*/
@@ -11,7 +14,7 @@
   .countdown{
     font-size: 25px;
     display: flex;
-    margin-left: 50%;
+    margin-left: 30%;
     align-items: center;
     text-align: center;
   }
@@ -186,7 +189,7 @@
   
   
   .banner{
-    margin-top: 15%;
+    margin-top: 25%;
     margin-left: 20%;
   }
   
@@ -241,7 +244,7 @@
   
   @media (max-width:850px){
     .banner{
-      margin-top: 25%;
+      margin-top: 28%;
       width: 480px;
     }
   

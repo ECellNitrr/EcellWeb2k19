@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import faxios from '../../axios';
 import './caportal.css';
 import Navbar from '../Navbar/navbar';
 
