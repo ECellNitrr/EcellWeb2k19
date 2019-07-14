@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './speakerHome.css';
 import Swiper from 'react-id-swiper/lib/ReactIdSwiper.full';
-import trans from '../../../assets/man.svg';
+import trans from '../../../assets/speakers/2018/dr.jpg';
     
 
 export default class Parallax extends Component {

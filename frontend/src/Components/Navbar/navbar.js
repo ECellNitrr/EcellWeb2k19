@@ -38,7 +38,6 @@ export default class navbar extends Component {
                         <li><a href='https://medium.com/e-cell-nit-raipur' data-text="Blogs" >Blogs</a></li>
                     </ul>
                 </div>
-
             </div>
         )
     }
