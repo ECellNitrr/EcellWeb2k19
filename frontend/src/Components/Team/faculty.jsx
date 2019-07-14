@@ -50,12 +50,12 @@ class faculty extends Component{
             
             faculty = faculty.map(member => 
                 <div>
-                <div>
-                <img src={member.image} alt={member.name} width="200" height="200"/>
-                </div>
-                <div>
-                <h6>{member.name}</h6>
-                </div>
+                    <div>
+                        <img src={member.image} alt={member.name} width="200" height="200"/>
+                    </div>
+                    <div>
+                        <h6>{member.name}</h6>
+                    </div>
                 </div>
                
                     

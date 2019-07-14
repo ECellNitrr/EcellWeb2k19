@@ -29,6 +29,8 @@
     transform: translate(-50%,0);
 }
 
+
+
 .mentors_name{
     text-align: center;
     color: white;
@@ -43,6 +45,48 @@
     margin-right: auto;
     text-transform: uppercase;
 }
+
+@media(max-width:375px){
+    .individual_mentors{
+        flex: 1 0 250px;
+        justify-content: center;
+        margin: 30px;
+    }
+    
+    .mentors_pic{
+        max-height: 250px;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%,0);
+    }
+
+    .mentors_name{
+        font-size: 20px;
+        width: 220px;
+    }
+}
+
+@media(max-width:320px){
+    .individual_mentors{
+        flex: 1 0 200px;
+        justify-content: center;
+        margin: 30px;
+    }
+    
+    .mentors_pic{
+        max-height: 200px;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%,0);
+    }
+
+    .mentors_name{
+        font-size: 20px;
+        width: 200px;
+    }
+}
+
+
 
 .center2{
     text-align: center;

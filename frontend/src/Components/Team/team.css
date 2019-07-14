@@ -5,9 +5,10 @@
     background:#000000;
     font-family:"Raleway";
 }
-h2 {
+
+/*h2 {
     font-size:20px;
-}
+}*/
 .flex-container {
     display: flex;
     justify-content: center;
