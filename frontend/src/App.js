@@ -9,8 +9,7 @@ import Startups from './Components/Startup/startup';
 import Mentors from './Components/Mentors/mentors';
 import Gallery from './Components/Gallery/gallery';
 import Register from './Components/Register/register';
-import LeaderBoard from './Components/LeaderBoard/leaderboard';
-import CaPortal from './Components/CA Portal/caportal';
+// import CaPortal from './Components/CA Portal/caportal';
 import Team from './Components/Team/team';
 
 
@@ -30,8 +29,7 @@ class App extends Component {
             <Route path='/mentors' component={Mentors} />
             <Route path='/gallery' component={Gallery} />
             <Route path='/register' component={Register} />
-            <Route path='/leaderboard' component={LeaderBoard} />
-            <Route path='/caportal' component={CaPortal} />
+            {/* <Route path='/caportal' component={CaPortal} /> */}
             <Route path='/team' component={Team} />
           </Switch>
         </div>

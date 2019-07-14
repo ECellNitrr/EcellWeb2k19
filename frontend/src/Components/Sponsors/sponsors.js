@@ -3,7 +3,7 @@ import './sponsors.css';
 import faxios from '../../axios';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
-import Header_Links from './header_links';
+import HeaderLinks from './header_links';
 
 
 class Sponsors extends Component{
@@ -11,6 +11,7 @@ class Sponsors extends Component{
     axios = faxios();
     state={
         sponsors:{},
+        loading: true
     }
 
     componentDidMount(){
@@ -37,7 +38,8 @@ class Sponsors extends Component{
            
             this.setState({
                 sponsors:dict_year,
-                year
+                year,
+                loading: false
             })
 
             
@@ -54,7 +56,7 @@ class Sponsors extends Component{
                 
                 
                         
-                        <div className="col">
+                        <div className="col mx-3" key={sponsor.id}>
                             <div className="cont">
                                 <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt={sponsor.name} className="spons-Image" src={sponsor.pic}></img></div>
                                 <div className="back shadow-lg p-3 mb-5 bg-white rounded">
@@ -73,30 +75,26 @@ class Sponsors extends Component{
                 
                 )
 
-                const section_html =<div className="box" key={section}>
-                    {sponsors}
-                </div>
-
-                sponsors_html.push(section_html)
+                sponsors_html.push(sponsors)
         }
         return(
             <div className="sponsors">
                 <Navbar/>
                 <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"300px"}}>
-                    <Header_Links/>
+                    <HeaderLinks/>
                 </div>
 
 
                 <div className="header1">SPONSORS {this.state.year}</div>
                 <div className="container-fluid ctn9" style={{maxWidth:"1200px",paddingTop:"0px"}} >
                     
-                        {sponsors_html}
+                        {this.state.loading? <h1 className='text-center text-white w-100 my-5'>loading...</h1>:sponsors_html}
                     
                 </div>
                 
 
                 <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"50px"}}>
-                    <Header_Links/>
+                    <HeaderLinks/>
                 </div>
                 <Footer/>
             </div>
