@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {NavLink,Link} from 'react-router-dom';
 import './navbar.css';
 import logo from '../../assets/logo-white.png';
+import Form from '../Form/form';
 
 export default class navbar extends Component {
     state = {
@@ -12,9 +13,13 @@ export default class navbar extends Component {
         return(
             <div className="Navbar">
                 <div className="logoback"><img className={`logo ${this.state.active? 'active1': ''}`} alt='' src={logo}></img></div>
-                <h3 className="brand-header">THE ENTREPRENEURSHIP CELL</h3>
+                <Form/>
+                <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>
                 <h3 className="brand-header3">E-CELL</h3>
                 <h4 className="brand-header2">NIT RAIPUR</h4>
+                <div className="login-button1">
+                    <a href="" className="btn btn1" data-toggle="modal" data-target="#modalLRForm">LogIn/SignUp</a>
+                </div>
                 
     
                 <div className={`toggle ${this.state.active? 'active1': ''}`} onClick={() => this.setState({active: !this.state.active})}></div>

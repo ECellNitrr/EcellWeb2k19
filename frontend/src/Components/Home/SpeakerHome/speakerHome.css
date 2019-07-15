@@ -42,22 +42,26 @@
   
   .speaker-name{
     text-align: center;
-    width:280px;
+    width:300px;
     font-weight: 800;
     margin-bottom: 20px;
     background: white;
     color: black;
     padding: 5px;
+    border-radius: 0 10px 0 10px;
   }
+
   
   .speaker-title{
+    text-align: center;
     font-weight: 500;
     margin-bottom: 20px;
     background: #000;
     color: white;
     font-weight: 600;
     padding: 5px;
-    width: 195px;
+    width: 300px;
+    border-radius: 0 10px 0 10px;
   }
   
   .speaker-text{
@@ -68,4 +72,26 @@
     padding: 15px;
     font-weight: 600;
     border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
   }
+
+  .follow-btn{
+    background: white;
+    color: black !important ;
+    font-size: 20px;
+    border-radius: 0 10px 0 10px;
+    width: 200px;
+  }
+
+  @media(max-width:450px){
+    .follow-btn{
+      position: relative;
+      left: 50%;
+      transform: translate(-50%,0);      
+    }
+  }
+

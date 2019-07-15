@@ -32,10 +32,21 @@
     margin-top: 100px;
     text-align: center;
     font-weight: 800;
-    padding-bottom: 30px;
+    /*padding-bottom: 30px;*/
     margin-bottom: 20px;
     color: white;
     text-shadow: 0 10px 5px rgba(0,0,0,0.2);
+    border: 2px solid white;
+    padding: 10px;
+    background: black;
+    border-radius: 0 0 10px 10px;
+
+  }
+
+  .heading4-cont{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   

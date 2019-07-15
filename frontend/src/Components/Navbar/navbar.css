@@ -27,7 +27,7 @@
   .active{
     color: black;
     background: white;
-    padding: 0.7px;
+    padding: 5px;
     border-radius: 0 10px;
   }
   
@@ -318,14 +318,14 @@
     color: white;
     text-transform: uppercase;
     text-align: center;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 5px;
   }
 
   .brand-header2{
     position: absolute;
-    top:100px;
+    top:115px;
     z-index: 20;
     left: 50%;
     transform: translate(-50%,0);
@@ -354,22 +354,31 @@
 
   
 
-  @media(max-width:1125px){
+  @media(max-width:1257px){
     .brand-header{
       display: none;
     }
 
     .brand-header3{
       display: block;
+      top: 40px;
+    }
+
+    .brand-header2{
+      top: 80px;
     }
   }
+
+  
 
   @media(max-width:800px){
     .brand-header3{
       font-size: 28px;
+      top: 70px;
     }
 
     .brand-header2{
+      top: 100px;
       font-size: 23px;
     }
 
@@ -385,6 +394,84 @@
     }
 
   }
+
+  .login-button1{
+    position: absolute;
+    z-index: 10;
+    top: 35px;
+    right: 120px;
+  }
+
+
+  @media(max-width:1370px){
+    .btn1{
+      padding: 10px;
+      font-size: 18px !important;
+    }
+
+    .login-button1{
+      top: 40px;
+    }
+  }
+  
+  @media(max-width:795px){
+    .login-button1{
+      left: 38%;
+      top: 120px;
+    }
+  }
+
+  @media(max-width:767px){
+    .login-button1{
+      left: 39%;
+      top: 100px;
+    }
+  }
+
+  @media(max-width:700px){
+    .login-button1{
+      left: 36%;
+      top: 100px;
+    }
+  }
+
+  @media(max-width:600px){
+    .login-button1{
+      left: 34%;
+      top: 100px;
+    }
+  }
+
+  @media(max-width:520px){
+    .login-button1{
+      left: 32%;
+      top: 100px;
+    }
+  }
+
+  @media(max-width:470px){
+    .login-button1{
+      left: 28%;
+      top: 130px;
+    }
+  }
+
+  @media(max-width:400px){
+    .login-button1{
+      left: 26%;
+      top: 120px;
+    }
+  }
+
+  @media(max-width:320px){
+    .login-button1{
+      left: 21%;
+      top: 120px;
+    }
+  }
+
+
+
 
 
   
