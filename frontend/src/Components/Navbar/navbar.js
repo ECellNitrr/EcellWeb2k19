@@ -17,8 +17,8 @@ export default class navbar extends Component {
                 <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>
                 <h3 className="brand-header3">E-CELL</h3>
                 <h4 className="brand-header2">NIT RAIPUR</h4>
-                <div class="login-button1">
-                    <a href="" class="btn btn1" data-toggle="modal" data-target="#modalLRForm">LogIn/SignUp</a>
+                <div className="login-button1">
+                    <a href="" className="btn btn1" data-toggle="modal" data-target="#modalLRForm">LogIn/SignUp</a>
                 </div>
                 
     

@@ -28,6 +28,8 @@ class speaker extends Component{
         }
       }
 
+      
+
       for(const x in years){
         const year = years[x]
         yearwise_speakers[year] = speakers.filter(speakers => speakers.year===year)
@@ -42,6 +44,7 @@ class speaker extends Component{
         loading:false
       })
       
+      console.log(this.state);
     })
   }
 

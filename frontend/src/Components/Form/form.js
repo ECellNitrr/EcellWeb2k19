@@ -13,7 +13,7 @@ export default class form extends Component{
 
       login_btn.addEventListener('click',(e)=>{
         e.preventDefault();
-        login_btn.innerHTML='<i class="fa fa-cog fa-spin"></i>'
+        login_btn.innerHTML='<i className="fa fa-cog fa-spin"></i>'
         login_btn.disabled = true;
 
         this.componentDidMount(){
@@ -40,102 +40,102 @@ export default class form extends Component{
         return(
             <div>
               
-<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
+<div className="modal fade" id="modalLRForm" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div className="modal-dialog cascading-modal" role="document">
     
-    <div class="modal-content">
+    <div className="modal-content">
 
       
-      <div class="modal-c-tabs">
+      <div className="modal-c-tabs">
 
         
-        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+        <ul className="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+          <li className="nav-item">
+            <a className="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i className="fas fa-user mr-1"></i>
               Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+          <li className="nav-item">
+            <a className="nav-link" data-toggle="tab" href="#panel8" role="tab"><i className="fas fa-user-plus mr-1"></i>
               Signup</a>
           </li>
         </ul>
 
         
-        <div class="tab-content">
+        <div className="tab-content">
           
-          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+          <div className="tab-pane fade in show active" id="panel7" role="tabpanel">
 
             
-            <div class="modal-body mb-1">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput10 user-email" class="form-control form-control-sm validate" placeholder="Your email"></input>
-                <label data-error="wrong" data-success="right" for="modalLRInput10"></label>
+            <div className="modal-body mb-1">
+              <div className="md-form form-sm mb-5">
+                <i className="fas fa-envelope prefix"></i>
+                <input type="email" id="mlr_10 user-email" className="form-control form-control-sm validate" placeholder="Your email"></input>
+                <label data-error="wrong" data-success="right" htmlFor="mlr_10"></label>
               </div>
 
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput11 user-password" class="form-control form-control-sm validate" placeholder="Your password"></input>
-                <label data-error="wrong" data-success="right" for="modalLRInput11"></label>
+              <div className="md-form form-sm mb-4">
+                <i className="fas fa-lock prefix"></i>
+                <input type="password" id="mlr_11 user-password" className="form-control form-control-sm validate" placeholder="Your password"></input>
+                <label data-error="wrong" data-success="right" htmlFor="mlr_11"></label>
               </div>
-              <div class="text-center mt-2">
-                <button class="btn btn-info login-button">Log in <i class="fas fa-sign-in ml-1"></i></button>
+              <div className="text-center mt-2">
+                <button className="btn btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>
               </div>
             </div>
             
-            <div class="modal-footer">
-              <div class="options text-center text-md-right mt-1">
-                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
-                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+            <div className="modal-footer">
+              <div className="options text-center text-md-right mt-1">
+                <p>Not a member? <a href="#" className="blue-text">Sign Up</a></p>
+                <p>Forgot <a href="#" className="blue-text">Password?</a></p>
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
             </div>
 
           </div>
           
 
           
-          <div class="tab-pane fade" id="panel8" role="tabpanel">
+          <div className="tab-pane fade" id="panel8" role="tabpanel">
 
             
-            <div class="modal-body">
+            <div className="modal-body">
 
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-user prefix"></i>
-                <input type="text" id="modalLRInput12" class="form-control form-control-sm validate" placeholder="Your Name"></input>
-                <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+              <div className="md-form form-sm mb-5">
+                <i className="fas fa-user prefix"></i>
+                <input type="text" id="mlr_12" className="form-control form-control-sm validate" placeholder="Your Name"></input>
+                <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
               </div>
 
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-phone prefix"></i>
-                <input type="tel" id="modalLRInput12" class="form-control form-control-sm validate" placeholder="Your Contact"></input>
-                <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+              <div className="md-form form-sm mb-5">
+                <i className="fas fa-phone prefix"></i>
+                <input type="tel" id="mlr_12" className="form-control form-control-sm validate" placeholder="Your Contact"></input>
+                <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
               </div>
 
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate" placeholder="Your email"></input>
-                <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+              <div className="md-form form-sm mb-5">
+                <i className="fas fa-envelope prefix"></i>
+                <input type="email" id="mlr_12" className="form-control form-control-sm validate" placeholder="Your email"></input>
+                <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
               </div>
 
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate" placeholder="Your password"></input>
-                <label data-error="wrong" data-success="right" for="modalLRInput13"></label>
+              <div className="md-form form-sm mb-5">
+                <i className="fas fa-lock prefix"></i>
+                <input type="password" id="mlr_13" className="form-control form-control-sm validate" placeholder="Your password"></input>
+                <label data-error="wrong" data-success="right" htmlFor="mlr_13"></label>
               </div>
 
 
-              <div class="text-center form-sm mt-2">
-                <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+              <div className="text-center form-sm mt-2">
+                <button className="btn btn-info">Sign up <i className="fas fa-sign-in ml-1"></i></button>
               </div>
 
             </div>
             
-            <div class="modal-footer">
-              <div class="options text-right">
-                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+            <div className="modal-footer">
+              <div className="options text-right">
+                <p className="pt-1">Already have an account? <a href="#" className="blue-text">Log In</a></p>
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
             </div>
           </div>
           
