@@ -9,7 +9,7 @@ export default class Parallax extends Component {
 
       axios=faxios();
       state={
-        speaker:{},
+        speakers:[],
       }
 
       componentDidMount(){
@@ -19,9 +19,9 @@ export default class Parallax extends Component {
           const yearwise_speakers=[];
           let year=2018;
 
-          console.log(speakers);
-
-          
+          this.setState({
+            speakers: data.speakers
+          })
         })
       }
 
@@ -41,11 +41,12 @@ export default class Parallax extends Component {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
           }
-        };
+		};
+		
+		console.log(this.state.speakers)
 
-        /*
-          
-              <div className="container-fluid ctn-4" key={speaker.id}>
+        const speakers_html = this.state.speakers.map(speaker=>
+          <div className="container-fluid ctn-4" key={speaker.id}>
                   
                   <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
@@ -60,15 +61,15 @@ export default class Parallax extends Component {
                     </div>
                   </div>
                 </div>
+          )
 
-          )*/
 
 
         return (
          <div>
           <h2 className="heading-3">MEET OUR SPEAKERS</h2>
           <Swiper {...params}>
-                {/*speakers_html*/}
+                {speakers_html}
           </Swiper>
           </div>
         )
