@@ -378,3 +378,6 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     }
   }
   
+  .countdown div{
+    border-radius: 10px 10px 10px 10px;
+  }

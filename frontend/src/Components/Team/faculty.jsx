@@ -22,16 +22,16 @@ class faculty extends Component{
               member_types.push(member_type)
           }
       }
-      console.log(member_types)
+      /*console.log(member_types)*/
 
       for(const x in member_types){
           const member_type = member_types[x]
           members[member_type] = faculty.filter(member => member.member_type===member_type)
       }
 
-      console.log(members)
+      /*console.log(members)
 
-      console.log(data);
+      console.log(data);*/
       this.setState({
         faculty: members,
         loading: false
@@ -41,7 +41,7 @@ class faculty extends Component{
 
   render() {
     
-      console.log(this.state.faculty)
+      /*console.log(this.state.faculty)*/
     let team_html = []
     for(const member_type in this.state.faculty){
         let faculty = this.state.faculty[member_type]
@@ -50,11 +50,11 @@ class faculty extends Component{
             
             faculty = faculty.map(member => 
                 <div>
-                    <div>
-                        <img src={member.image} alt={member.name} width="200" height="200"/>
+                    <div className="member-image-div">
+                        <img className="member-image shadow-lg p-3 mb-5 bg-white rounded" src={member.image} alt={member.name} width="280" height="280"/>
                     </div>
                     <div>
-                        <h6>{member.name}</h6>
+                        <h6 className="member-name">{member.name}</h6>
                     </div>
                 </div>
                
@@ -63,8 +63,10 @@ class faculty extends Component{
         
         const teams_html = <div key={member_type}>
             
+            <div className="flex-container">
             <div>
-            <h2>Head of Career Development Cell</h2>
+                <h2 className="position shadow p-3 mb-5 bg-white rounded">Head of Career Development Cell</h2>
+            </div>
             </div>
             <div className="flex-container">
             {faculty}
@@ -85,11 +87,11 @@ class faculty extends Component{
             faculty = faculty.map(member => 
                 
                 <div>
-                <div>
-                <img src={member.image} alt={member.name} width="200" height="200"/>
+                <div className="member-image-div">
+                    <img className="member-image shadow-lg p-3 mb-5 bg-white rounded" src={member.image} alt={member.name} width="280" height="280"/>
                 </div>
                 <div>
-                <h6>{member.name}</h6>
+                    <h6 className="member-name">{member.name}</h6>
                 </div>
                 </div>
                     
@@ -99,7 +101,7 @@ class faculty extends Component{
 
             <br/><br/><br/>
             <div className="flex-container">
-            <span><h2>Director NIT Raipur</h2></span>
+            <div><h2 className="position shadow p-3 mb-5 bg-white rounded">Director NIT Raipur</h2></div>
             </div>
             <div className="flex-container">
             {faculty}
@@ -118,11 +120,11 @@ class faculty extends Component{
             
             faculty = faculty.map(member => 
                 <div>
-                <div>
-                <img src={member.image} alt={member.name} width="200" height="200"/>
+                <div className="member-image-div">
+                <img className="shadow-lg p-3 mb-5 bg-white rounded member-image" src={member.image} alt={member.name} width="280" height="280"/>
                 </div>
                 <div>
-                <h6>{member.name}</h6>
+                    <h6 className="member-name">{member.name}</h6>
                 </div>
                 </div>
                
@@ -131,9 +133,11 @@ class faculty extends Component{
         
         const teams_html = <div key={member_type}>
             
+            <div className="flex-container">
             <div>
             
-            <h2>Faculty Incharge</h2>
+            <h2 className="position shadow p-3 mb-5 bg-white rounded">Faculty Incharge</h2>
+            </div>
             </div>
             <div className="flex-container">
             {faculty}
@@ -156,7 +160,7 @@ class faculty extends Component{
             <div>
                 <Navbar/>
                 
-                <div className="team">{this.state.loading? 'Loading...':team_html[2]}</div>
+                <div className="team1">{this.state.loading? 'Loading...':team_html[2]}</div>
                 <div className="team">{this.state.loading? 'Loading...':team_html[1]}</div>
                 <div className="team">{this.state.loading? 'Loading...':team_html[0]}</div>
             </div>

@@ -3,6 +3,7 @@ import faxios from '../../axios';
 import "./team.css";
 import Navbar from '../Navbar/navbar';
 import Faculty from './faculty';
+import Footer from '../Footer/footer';
 
 class team extends Component{
     axios = faxios();
@@ -25,16 +26,16 @@ class team extends Component{
               member_types.push(member_type)
           }
       }
-      console.log(member_types)
+      /*console.log(member_types)*/
 
       for(const x in member_types){
           const member_type = member_types[x]
           members[member_type] = student.filter(member => member.member_type===member_type)
       }
 
-      console.log(members)
+      /*console.log(members)
 
-      console.log(data);
+      console.log(data);*/
       this.setState({
         student: members,
         loading: false
@@ -44,7 +45,7 @@ class team extends Component{
 
   render() {
     
-      console.log(this.state.student)
+      /*console.log(this.state.student)*/
     let team_html = []
     for(const member_type in this.state.student){
         let student = this.state.student[member_type]
@@ -53,12 +54,12 @@ class team extends Component{
             
             student = student.map(member => 
                 <div>
-                <div>
-                <img src={member.image} alt={member.name} width="200" height="200"/>
-                </div>
-                <div>
-                <h6>{member.name}</h6>
-                </div>
+                    <div>
+                        <img className="member-image shadow-lg p-3 mb-5 bg-white rounded" src={member.image} alt={member.name} width="250" height="250"/>
+                    </div>
+                    <div>
+                        <h6 className="member-name">{member.name}</h6>
+                    </div>
                 </div>
                
                     
@@ -66,8 +67,10 @@ class team extends Component{
         
         const teams_html = <div key={member_type}>
             
+            <div className="flex-container">
             <div>
-            <h2>Overall Coordinators</h2>
+            <h2 className="position shadow p-3 mb-5 bg-white rounded">Overall Coordinators</h2>
+            </div>
             </div>
             <div className="flex-container">
             {student}
@@ -88,12 +91,12 @@ class team extends Component{
             student = student.map(member => 
                 
                 <div>
-                <div>
-                <img src={member.image} alt={member.name} width="200" height="200"/>
-                </div>
-                <div>
-                <h6>{member.name}</h6>
-                </div>
+                    <div>
+                        <img className="member-image shadow-lg p-3 mb-5 bg-white rounded" src={member.image} alt={member.name} width="250" height="250"/>
+                    </div>
+                    <div>
+                        <h6 className="member-name">{member.name}</h6>
+                    </div>
                 </div>
                     
             )
@@ -102,10 +105,10 @@ class team extends Component{
 
             
             <div className="flex-container">
-            <span><h2>Head Coordinators</h2></span>
+                <div ><h2 className="position-exec shadow p-3 mb-5 bg-white rounded">Head Coordinators</h2></div>
             </div>
             <div className="flex-container">
-            {student}
+                {student}
             </div>
            
             
@@ -122,9 +125,9 @@ class team extends Component{
             student = student.map(member => 
                 
                 <div>
-                <div>
-                <h6>{member.name}</h6>
-                </div>
+                    <div>
+                        <h6 className="member-name-mng">{member.name}</h6>
+                    </div>
                 </div>
                     
             )
@@ -133,10 +136,10 @@ class team extends Component{
 
             
             <div className="flex-container">
-            <span><h2>Managers</h2></span>
+                <div ><h2 className="position-exec shadow p-3 mb-5 bg-white rounded">Managers</h2></div>
             </div>
             <div className="flex-container">
-            {student}
+                {student}
             </div>
            
             
@@ -154,9 +157,9 @@ class team extends Component{
         student = student.map(member => 
                 
             <div>
-            <div>
-            <h6>{member.name}</h6>
-            </div>
+                <div>
+                    <h6 className="member-name-exec">{member.name}</h6>
+                </div>
             </div>
                 
                     
@@ -165,10 +168,10 @@ class team extends Component{
         const teams_html = <div key={member_type}>
 
             <div className="flex-container">
-            <span><h2>Executives</h2></span>
+            <div ><h2 className="position-exec shadow p-3 mb-5 bg-white rounded">Executives</h2></div>
             </div>
             <div className="flex-container">
-            {student}
+                {student}
             </div>
         
            
@@ -180,14 +183,14 @@ class team extends Component{
         }
     }
         return(
-            <div>
+            <div className="team-whole">
                 <Navbar/>
                 <Faculty/>
                 <div className="team">{this.state.loading? 'Loading...':team_html[0]}</div>
                 <div className="team">{this.state.loading? 'Loading...':team_html[1]}</div>
                 <div className="team">{this.state.loading? 'Loading...':team_html[2]}</div>
                 <div className="team">{this.state.loading? 'Loading...':team_html[3]}</div>
-
+                <Footer/>
             </div>
         )
     }
