@@ -43,10 +43,7 @@ export default class Parallax extends Component {
           }
         };
 
-        /*let speakers_html=[];
-
-        let speakers=this.state.speaker[year];
-        speakers=speakers.map(speaker=>
+        /*
           
               <div className="container-fluid ctn-4" key={speaker.id}>
                   
@@ -64,9 +61,7 @@ export default class Parallax extends Component {
                   </div>
                 </div>
 
-          )
-
-          speakers_html.push(speakers);*/
+          )*/
 
 
         return (
