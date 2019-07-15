@@ -374,11 +374,11 @@
   @media(max-width:800px){
     .brand-header3{
       font-size: 28px;
-      top: 70px;
+      top: 60px;
     }
 
     .brand-header2{
-      top: 100px;
+      top: 90px;
       font-size: 23px;
     }
 
@@ -417,35 +417,35 @@
   @media(max-width:795px){
     .login-button1{
       left: 38%;
-      top: 120px;
+      top: 110px;
     }
   }
 
   @media(max-width:767px){
     .login-button1{
-      left: 39%;
-      top: 100px;
+      left: 38%;
+      top: 110px;
     }
   }
 
   @media(max-width:700px){
     .login-button1{
       left: 36%;
-      top: 100px;
+      top: 110px;
     }
   }
 
-  @media(max-width:600px){
+  @media(max-width:620px){
     .login-button1{
-      left: 34%;
-      top: 100px;
+      left: 33%;
+      top: 110px;
     }
   }
 
   @media(max-width:520px){
     .login-button1{
       left: 32%;
-      top: 100px;
+      top: 110px;
     }
   }
 
