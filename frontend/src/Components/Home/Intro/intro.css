@@ -69,6 +69,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   }
   
   
+  
   @media(max-width:510px){
     .countdown div:nth-child(4){
       display: none;

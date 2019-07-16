@@ -3,7 +3,7 @@ import faxios from "../../axios";
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
 
-export default class event_detail extends Component {
+export default class event_detail extends Component{
     axios = faxios();
     state = {
         event_detail: null,
@@ -39,10 +39,10 @@ export default class event_detail extends Component {
                     <div className="event-item2">
                         <div className="event-content">
                             <div className="event-detail-name"><h4 className="e-name">{event.name}</h4></div><br></br>
-                            <div className="event-venue"><i class="fas fa-map-marker-alt"></i>&nbsp;Venue:&nbsp;<span style={{color:'black'}}>{event.venue}</span></div><br></br>
-                            <div className="event-time"><span><i class="far fa-clock"></i>&nbsp;Time:</span>&nbsp;<span style={{color:"black"}}>{event.time}</span></div><br></br>
+                            <div className="event-venue"><i className="fas fa-map-marker-alt"></i>&nbsp;Venue:&nbsp;<span style={{color:'black'}}>{event.venue}</span></div><br></br>
+                            <div className="event-time"><span><i className="far fa-clock"></i>&nbsp;Time:</span>&nbsp;<span style={{color:"black"}}>{event.time}</span></div><br></br>
                             <div className="event-details">{event.details}</div><br></br>
-                            <div className="event-email"><i class="far fa-paper-plane"></i>&nbsp;Email:&nbsp;<a className="e-email" href={`mailto:${event.email}`}>{event.email}</a></div>
+                            <div className="event-email"><i className="far fa-paper-plane"></i>&nbsp;Email:&nbsp;<a className="e-email" href={`mailto:${event.email}`}>{event.email}</a></div>
                         </div>
                     </div>
                 </div>
@@ -52,9 +52,9 @@ export default class event_detail extends Component {
         return (
             <div className="events">
                 <Navbar/>
-                <div>
-                    {this.state.loading ? "loading" : event_detail}
-                </div> 
+                    <div>
+                        {this.state.loading ? "loading" : event_detail}
+                    </div> 
                 <Footer/>
             </div>
         );
