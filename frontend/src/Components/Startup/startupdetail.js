@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import faxios from "../../axios";
+import Navbar from '../Navbar/navbar';
+import Footer from '../Footer/footer';
 
 export default class startupdetail extends Component {
     axios = faxios();
@@ -32,15 +34,29 @@ export default class startupdetail extends Component {
             const startup = this.state.startup_detail;
             startup_detail = (
                 <div className="startup_detail">
-                    <div>{startup.name}</div>
-                    <div>
-                        <img src={startup.pic} />
+                    
+                    <div className="startup-item1">
+                        <img className="shadow-lg p-3 mb-5 bg-white rounded startup-detail-pic" src={startup.pic} />
                     </div>
-                    <div dangerouslySetInnerHTML={{__html: startup.details}} />
+                    <div className="startup-item2">
+                        <div className="startup-content">
+                            <div className="startup-detail-name"><h4 className="s-name">{startup.name}</h4></div><br></br>
+                            <div className="startup-details"><div dangerouslySetInnerHTML={{__html: startup.details}} /></div><br></br>
+                            
+                        </div>
+                    </div>
                 </div>
             );
         }
 
-        return <div>{this.state.loading ? "loading" : startup_detail}</div>;
+        return (
+            <div className="startups">
+                <Navbar/>
+                    <div>
+                        {this.state.loading ? "loading" : startup_detail}
+                    </div> 
+                <Footer/>
+            </div>
+        );
     }
 }
