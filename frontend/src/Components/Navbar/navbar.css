@@ -374,11 +374,11 @@
   @media(max-width:800px){
     .brand-header3{
       font-size: 28px;
-      top: 70px;
+      top: 60px;
     }
 
     .brand-header2{
-      top: 100px;
+      top: 90px;
       font-size: 23px;
     }
 
@@ -417,49 +417,70 @@
   @media(max-width:795px){
     .login-button1{
       left: 38%;
-      top: 120px;
+      top: 110px;
     }
   }
 
   @media(max-width:767px){
     .login-button1{
-      left: 39%;
-      top: 100px;
+      left: 38%;
+      top: 110px;
     }
   }
 
   @media(max-width:700px){
     .login-button1{
       left: 36%;
-      top: 100px;
+      top: 110px;
     }
   }
 
   @media(max-width:600px){
     .login-button1{
       left: 34%;
-      top: 100px;
+      top: 110px;
     }
   }
 
   @media(max-width:520px){
     .login-button1{
       left: 32%;
-      top: 100px;
+      top: 110px;
     }
   }
 
   @media(max-width:470px){
     .login-button1{
-      left: 28%;
-      top: 130px;
+      left: 30%;
+      top: 110px;
     }
   }
 
-  @media(max-width:400px){
+  @media(max-width:450px){
+    .login-button1{
+      left: 29%;
+      top: 110px;
+    }
+  }
+
+  @media(max-width:410px){
     .login-button1{
       left: 26%;
-      top: 120px;
+      top: 115px;
+    }
+  }
+
+  @media(max-width:370px){
+    .login-button1{
+      left: 25%;
+      top: 115px;
+    }
+  }
+
+  @media(max-width:350px){
+    .login-button1{
+      left: 24%;
+      top: 115px;
     }
   }
 

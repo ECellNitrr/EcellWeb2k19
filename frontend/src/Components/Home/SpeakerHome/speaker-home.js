@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './speakerHome.css';
 import faxios from '../../../axios';
 import Swiper from 'react-id-swiper/lib/ReactIdSwiper.full';
-import trans from '../../../assets/speakers/2018/dr.jpg';
     
 
 export default class Parallax extends Component {
@@ -13,15 +12,14 @@ export default class Parallax extends Component {
       }
 
       componentDidMount(){
-        this.axios.get("/speakers/list").then(res=>{
+        this.axios.get("/speakers/list/").then(res=>{
           const data = res.data
           const speakers = data.speakers;
-          const yearwise_speakers=[];
-          let year=2018;
 
           this.setState({
-            speakers: data.speakers
+            speakers: speakers
           })
+
         })
       }
 
@@ -46,7 +44,7 @@ export default class Parallax extends Component {
 		console.log(this.state.speakers)
 
         const speakers_html = this.state.speakers.map(speaker=>
-          <div className="container-fluid ctn-4" key={speaker.id}>
+              <div className="container-fluid ctn-4" key={speaker.id}>
                   
                   <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
@@ -60,7 +58,7 @@ export default class Parallax extends Component {
                       <div className="follow-link" ><a href={speaker.social_media}><button className="btn follow-btn">Follow</button></a></div>
                     </div>
                   </div>
-                </div>
+              </div>
           )
 
 
@@ -69,7 +67,7 @@ export default class Parallax extends Component {
          <div>
           <h2 className="heading-3">MEET OUR SPEAKERS</h2>
           <Swiper {...params}>
-                {speakers_html}
+              {speakers_html}
           </Swiper>
           </div>
         )
