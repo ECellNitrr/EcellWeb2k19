@@ -49,10 +49,22 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
       margin-left: 20%;
     }
   }
+
+  @media(max-width:767px){
+    .countdown{
+      margin-left: 15%;
+    }
+  }
   
   @media(max-width:670px){
     .countdown{
       margin-left: 13%;
+    }
+  }
+
+  @media(max-width:605px){
+    .countdown{
+      margin-left: 2%;
     }
   }
   
@@ -245,7 +257,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:850px){
     .banner{
-      margin-top: 36%;
+      margin-top: 40%;
       width: 480px;
     }
   

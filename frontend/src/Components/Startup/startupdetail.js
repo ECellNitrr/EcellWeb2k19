@@ -12,7 +12,7 @@ export default class startupdetail extends Component {
         this.startup_id = this.props.match.params.id;
         console.log(this.startup_id);
 
-        this.axios.get("/startups/list").then(d => {
+        this.axios.get("/startups/list/").then(d => {
             let data = d.data;
             let startup_detail = data.startups.find(
                 startup => startup.id == this.startup_id

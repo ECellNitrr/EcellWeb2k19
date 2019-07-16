@@ -11,7 +11,7 @@ class Startup extends Component{
   }
 
   componentDidMount() {
-    this.axios.get('/startups/list')
+    this.axios.get('/startups/list/')
       .then(d=>{
         const startups = d.data.startups
         console.log({startups})
