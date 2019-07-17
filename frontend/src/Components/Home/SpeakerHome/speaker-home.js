@@ -25,20 +25,21 @@ export default class Parallax extends Component {
 
       render() {
         const params = {
-          speed: 600,
-          parallax: true,
-          parallaxEl: {
-            el: '.parallax-bg',
-            value: '-23%'
-          },
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          }
+          spaceBetween: 30,
+      centeredSlides: true,
+      loop:true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
 		};
 		
 		console.log(this.state.speakers)
