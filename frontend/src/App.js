@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
 import Home from './Components/Home/home';
 import Speakers from './Components/Speakers/speakers';
-import Sponsors from './Components/Sponsors/sponsorship_heads';
+import Sponsors from './Components/Sponsors/sponsors';
 import Events from './Components/Events/events';
 import EventDetail from './Components/Events/event_detail'
 import Startups from './Components/Startup/startup';
