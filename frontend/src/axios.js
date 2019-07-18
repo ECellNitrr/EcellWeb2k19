@@ -1,12 +1,16 @@
 import axios from "axios";
 
+let baseURL = "http://localhost:8000"
+
+if( process.env.NODE_ENV == 'production'){
+    baseURL = ""
+}
+
 export default () => {
     return axios.create({
-        baseURL: "https://ecell.nitrr.ac.in",
+        baseURL,
         headers: {
             authorization: sessionStorage["token"]
         }
     });
 };
-
-/*baseURL: 'https://cb5ce7da.ngrok.io',*/
