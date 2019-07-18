@@ -8,5 +8,5 @@ class App(models.Model):
 	version = models.IntegerField(default=1, blank=False, null=False)
 	flag=models.BooleanField(default=False)
         
-    def __str__(self):
-        return self.name
+	def __str__(self):
+		return self.name

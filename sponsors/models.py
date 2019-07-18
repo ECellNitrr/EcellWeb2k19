@@ -5,7 +5,11 @@ from users.models import CustomUser
 class Sponsor(models.Model):
     SPONS_TYPE = (
         ('ATS', 'Associate Sponsors'),
+<<<<<<< HEAD
         ('PTS', 'Platinum Sponsors'),
+=======
+        ('PLS', 'Platinum Sponsors'),
+>>>>>>> 1817b5f3414a08ec302152d081ddca19513a28d4
         ('GDS', 'Gold Sponsors'),
         ('TLS', 'Title Sponsors'),
         ('PRS', 'Partner Sponsors'),
