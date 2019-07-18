@@ -5,15 +5,9 @@ from users.models import CustomUser
 class Startup(models.Model):
     name = models.CharField(max_length=200, unique=True)
     email = models.EmailField(max_length=256, null=True, blank=True)
-    pic = models.ImageField(
-        upload_to='static/uploads/startups',
-        null=True,
-        blank=True)
+    pic = models.ImageField(upload_to='static/uploads/startups',null=True,blank=True)
     contact = models.TextField(max_length=13, null=True, blank=True)
-    url = models.URLField(
-        null=False,
-        blank=False,
-        default="https://ecell.nitrr.ac.in")
+    url = models.URLField(null=False,blank=False,default="https://ecell.nitrr.ac.in")
     founder = models.CharField(max_length=256)
     address = models.TextField(null=True, blank=True)
     flag = models.BooleanField(default=False)

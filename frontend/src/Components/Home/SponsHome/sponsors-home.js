@@ -2,208 +2,113 @@ import React, { Component } from "react";
 import './sponsorHome.css';
 import Slider from "react-slick";
 import { Parallax } from 'react-parallax';
+import faxios from '../../../axios';
 
 
-import asso1 from '../../../assets/1.png';
-import asso2 from '../../../assets/2.png';
-import asso3 from '../../../assets/3.png';
-import asso4 from '../../../assets/4.png';
-import plat1 from '../../../assets/5.png';
-import plat2 from '../../../assets/6.png';
-import plat3 from '../../../assets/7.png';
-import plat4 from '../../../assets/8.png';
-import gold1 from '../../../assets/9.png';
-import gold2 from '../../../assets/10.png';
-import gold3 from '../../../assets/11.png';
-import gold4 from '../../../assets/12.png';
 
 export default class Responsive extends Component {
+
+  axios=faxios();
+  state={
+    sponsors:{},
+    loading:true,
+    year:2018
+  }
+
+  componentDidMount(){
+    this.axios.get("/sponsors/list/").then(res=>{
+      const data = res.data;
+      const spons = data.spons;
+      const year=2018;
+      const dict_year={};
+
+      spons.forEach((particular)=>{
+        let type = particular.section_name;
+        let sub_array = particular.sponsors;
+
+        let filtered_sub_array=sub_array.filter((individual_sponsors)=>{
+          return(individual_sponsors.year===year);
+        });
+
+        dict_year[type]=filtered_sub_array;
+      });
+
+      this.setState({
+        sponsors:dict_year,
+        loading:false
+      })
+    })
+  }
+
   render() {
     const settings = {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 6,
+      slidesToShow: 5,
       autoplay: true,
       autoplaySpeed: 3000,
-      slidesToScroll: 6,
+      slidesToScroll: 5,
       initialSlide: 0,
       responsive: [
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToShow: 3,
+            slidesToScroll: 3,
             infinite: true
           }
         },
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 2,
+            slidesToScroll: 2,
             initialSlide: 2
           }
         },
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
           }
         }
       ]
     };
+
+    let sponsors_html=[];
+    for(const section in this.state.sponsors){
+      let sponsors = this.state.sponsors[section]
+      sponsors=sponsors.map(sponsor=>
+        
+        <div className="col" key={sponsor.id}>
+          <div className="cont">
+              <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt={sponsor.name} className="spons-Image" src={sponsor.pic}></img></div>
+              <div className="back shadow-lg p-3 mb-5 bg-white rounded">
+                  <div className="inner">
+                      <h6 style={{ fontWeight: "800" }}>{sponsor.name}</h6>
+                      <p className="ph-no">{sponsor.contact}</p>
+                      <p>{sponsor.details}</p>
+                      <p><a className="web" href={sponsor.website}>Website</a></p>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        )
+
+        sponsors_html.push(sponsors)
+    }
+
     return (
       <div className="spons">
 
         <Parallax blur={3} bgImage={require('../../../assets/spons.jpg')} bgImageAlt="sponsors" strength={700}>
-          <h2 className="heading-4">SPONSORS 2019</h2>
+          <div className="heading4-cont"><h2 className="heading-4">SPONSORS {this.state.year}</h2></div>
           <Slider {...settings}>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={asso1}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={asso2}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={asso3}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={asso4}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>             </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={plat1}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={plat2}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={plat3}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={plat4}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={gold1}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={gold2}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={gold3}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="cont">
-                <div className="front"><img alt='' className="spons-Image" src={gold4}></img></div>
-                <div className="back">
-                  <div className="inner">
-                    <h4 style={{ fontWeight: "800" }}>Name</h4>
-                    <p className="ph-no">1234567890</p>
-                    <p><a className="web" href="#">Website</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
+            {this.state.loading? <h1 className='text-center text-white w-100 my-5'>loading...</h1>:sponsors_html}
 
           </Slider>
         </Parallax>
