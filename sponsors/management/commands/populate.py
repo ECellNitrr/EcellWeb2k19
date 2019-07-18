@@ -9,46 +9,49 @@ from events.models import *
 
 import pickle
 
+
+SPONS_TYPE = {
+        'Associate Sponsors' : 'ATS',
+        'Platinum Sponsors' : 'PLS',
+        'Gold Sponsors' : 'GDS',
+        'Title Sponsors' : 'TLS',
+        'Partner Sponsors' : 'PRS',
+}
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        URL = "https://ecell.nitrr.ac.in/mentors/list/"
+        appname = 'sponsors'
+        URL = "https://ecell.nitrr.ac.in/{}/list/".format(appname)
         r = requests.get(URL)
         data = r.json()
-        image_url = 'https://ecell.nitrr.ac.in/static/uploads/mentors/'
-        mentors = data['mentors']
-        for mentor in mentors:
-            # image_name = mentor['profile_pic'].replace(image_url,'')
-            name = mentor['name']
-            email = mentor['email']
-            detail = mentor['detail']
-            description = mentor['detail']
-            year = mentor['year']
-            
-            image_name = name+'.jpeg'
-            image_location = 'static/uploads/mentors/'+image_name
-            req = requests.get(mentor['profile_pic'], stream=True)
-            with open(image_location, 'wb') as out_file:
-                shutil.copyfileobj(req.raw, out_file)
-            del req
+        image_url = 'https://ecell.nitrr.ac.in/static/uploads/{}/'.format(
+            appname)
 
-            profile_pic = image_location
-            new_mentor = Mentor()
-            new_mentor.name = name
-            new_mentor.detail = detail
-            new_mentor.description = description
-            new_mentor.year = year
-            new_mentor.flag = True
-            new_mentor.profile_pic = profile_pic
-            new_mentor.save()
+        data = data['spons']
 
-        #     temp = Event()
-        #     temp.name = x['name']
-        #     temp.venue = x['venue']
-        #     temp.date = x['date']
-        #     temp.time = x['time']
-        #     temp.details = x['details']
-        #     temp.cover_pic = x['cover_pic']
-        #     temp.icon = x['cover_pic']
-        #     temp.email = x['email']
-        #     temp.flag = x['flag']
-        #     temp.save()
+        for category in data:
+            category_name = category['section_name']
+            category_name = SPONS_TYPE[category_name]
+
+            for obj in category['sponsors']:
+                print(obj['name'])
+
+                # img files
+                image_name = obj['pic'].split('/').pop()
+                image_location = 'static/uploads/{}/'.format(appname)+image_name
+                req = requests.get(obj['pic'], stream=True)
+                with open(image_location, 'wb') as out_file:
+                    shutil.copyfileobj(req.raw, out_file)
+                del req
+
+                temp = Sponsor()
+
+                temp.name = obj['name']
+                temp.details = obj['details']
+                temp.contact = obj['contact']
+                temp.website = obj['website']
+                temp.year = obj['year']
+                temp.spons_type = category_name
+                temp.flag = True
+                temp.pic = image_location
+                temp.save()
