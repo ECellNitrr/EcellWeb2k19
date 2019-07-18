@@ -1,21 +1,13 @@
-<<<<<<< HEAD
 asn1crypto==0.24.0
 certifi==2019.6.16
 cffi==1.12.3
 chardet==3.0.4
 cryptography==2.7
-=======
-certifi==2019.6.16
-chardet==3.0.4
->>>>>>> 1817b5f3414a08ec302152d081ddca19513a28d4
 Django==2.2.2
 django-filter==2.1.0
 djangorestframework==3.9.4
 idna==2.8
-<<<<<<< HEAD
 jwt==0.6.1
-=======
->>>>>>> 1817b5f3414a08ec302152d081ddca19513a28d4
 Markdown==3.1.1
 mysqlclient==1.4.2.post1
 Pillow==6.0.0
@@ -25,9 +17,6 @@ PyJWT==1.7.1
 python-decouple==3.1
 pytz==2019.1
 requests==2.22.0
-<<<<<<< HEAD
 six==1.12.0
-=======
->>>>>>> 1817b5f3414a08ec302152d081ddca19513a28d4
 sqlparse==0.3.0
 urllib3==1.25.3

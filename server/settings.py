@@ -72,11 +72,7 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-=======
-        'ENGINE': 'django.db.backends.mysql',
->>>>>>> 1817b5f3414a08ec302152d081ddca19513a28d4
         'NAME': config('db_name',None),
         'USER': config('db_user',None),
         'PASSWORD': config('db_password',None),
