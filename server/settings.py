@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'mentors',
     'startups',
     'team',
-    'speakers'
+    'speakers',
+    'android_app'
 ]
 
 MIDDLEWARE = [
