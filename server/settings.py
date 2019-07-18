@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'startups',
     'team',
     'speakers',
-    'android_app'
 ]
 
 MIDDLEWARE = [

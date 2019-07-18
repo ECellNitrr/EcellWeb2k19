@@ -4,7 +4,6 @@ from django.views.generic import TemplateView
 from team.views import get_members
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import url
-from android_app import views as app_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,7 +14,5 @@ urlpatterns = [
     path('mentors/', include('mentors.urls')),
     path('team/', include('team.urls')),
     path('speakers/', include('speakers.urls')),
-    url(r'^is_update_available', app_views.latest_build),
-    # path('events/list/2019/^static/(?P<path>.*)$/')
 ]
 urlpatterns+=staticfiles_urlpatterns()

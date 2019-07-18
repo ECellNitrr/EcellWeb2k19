@@ -4,8 +4,10 @@ import requests
 import http.client
 
 
-def send_otp(contact):
+def send_otp(contact, **kwargs):
     otp = str(randint(1000, 9999))
+    if 'otp' in kwargs:
+        otp = kwargs['otp']
     # url = config('otp_service_url')
     message = f"Your OTP for E-Cell NIT Raipur portal is {otp}."
     # querystring = {
@@ -26,3 +28,5 @@ def send_otp(contact):
     res = conn.getresponse()
     data = res.read()
     print(data.decode("utf-8"))
+    
+    return otp

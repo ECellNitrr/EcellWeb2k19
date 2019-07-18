@@ -2,7 +2,6 @@ from django.shortcuts import render
 import jwt
 import json
 from django.conf import settings
-
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -11,6 +10,10 @@ from .serializers import RegistrationSerializer, LoginSerializer
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 from utils.auth_utils import send_otp
+from rest_framework.decorators import api_view
+from decorators import ecell_user
+from random import randint
+from .models import CustomUser
 
 
 class RegistrationAPIView(APIView):
@@ -23,25 +26,26 @@ class RegistrationAPIView(APIView):
         res_token = ""
         res_status = status.HTTP_400_BAD_REQUEST
         user = request.data
+        otp = str(randint(1000, 9999))
         user['password'] = make_password(user['password'])
+        user['otp'] = otp
         serializer = self.serializer_class(data=user)
         try:
             serializer.is_valid(raise_exception=True)
         except Exception as e:
             error = serializer.errors
-            first_name_msg = error.get('firstname', ['', ])
-            last_name_msg = error.get('lastname', ['', ])
-            email_msg = error.get('email', ['', ])
-            contact_msg = error.get('contact', ['', ])
-            res_detail = email_msg[0] + " " + first_name_msg[0] + \
-                " " + last_name_msg[0] + " " + contact_msg[0]
+            error_msg = ""
+            for err in error:
+                error_msg += "Error in field: " + \
+                    str(err) + "- " + str(error[err][0]) + " "
+            res_detail = error_msg
 
         else:
             serializer.save()
             payload = {
                 'email': serializer.validated_data['email']
             }
-            send_otp(serializer.validated_data['contact'])
+            otp = send_otp(serializer.validated_data['contact'], otp=otp)
             token = jwt.encode(
                 payload,
                 settings.SECRET_KEY,
@@ -100,5 +104,117 @@ class LoginAPIView(APIView):
             "token": res_token
         }, status=res_status)
 
-# def otp_verify(request):
-#     otp
+@api_view(['POST'])
+def forgot_password(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    req_data = json.loads(request.body.decode('UTF-8'))
+    email = req_data['email']
+    try:
+        user = CustomUser.objects.get(email=email)
+        print(user)
+    except:
+        message = "Account with this email id doesn't exists. Kindly signup."
+    else:
+        contact = user.contact
+        otp = send_otp(contact)
+        user.otp = otp
+        user.save()
+        message = "An otp has been sent to your mobile no to reset your password"
+        res_status = status.HTTP_200_OK
+
+    return Response({
+            "message": message,
+        }, status=res_status)
+
+@api_view(['POST'])
+@ecell_user
+def verify_otp(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    user = request.ecelluser
+    req_data = json.loads(request.body.decode('UTF-8'))
+    if 'otp' not in req_data:
+        message='Please enter otp to verify your account'
+    else:
+        otp = req_data['otp']
+        if str(otp)==user.otp:
+            user.verified=True
+            user.save()
+            message = 'Account verified successfully'
+            res_status = status.HTTP_200_OK
+        else:
+            message = 'Invalid otp'
+
+    return Response({
+            "message": message,
+        }, status=res_status)
+
+@api_view(['POST'])
+def change_password(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    req_data = json.loads(request.body.decode('UTF-8'))
+    email = req_data['email']
+    otp = req_data['otp']
+    password = req_data['password']
+    try:
+        user = CustomUser.objects.get(email=email)
+    except:
+        message = "Account with this email id doesn't exists. Kindly signup."
+    else:
+        contact = user.contact
+        user_otp = user.otp
+        if str(otp)==user_otp:
+            user.set_password(password)
+            user.save()
+            message = 'Password changed successfully'
+            res_status = status.HTTP_200_OK
+        else:
+            message = 'Invalid otp'
+            
+    return Response({
+            "message": message,
+        }, status=res_status)
+
+@api_view(['GET'])
+@ecell_user
+def resend_otp(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    user = request.ecelluser
+    otp = user.otp
+    contact = user.contact
+    if otp:
+        duration = user.last_modified
+        print(duration)
+        if duration<=10000:
+            otp = send_otp(contact, otp=otp)
+        else:
+            otp = send_otp(contact)
+            user.otp = otp
+            user.save()
+        message = "An otp has been sent to your mobile no to reset your password"
+        res_status = status.HTTP_200_OK
+
+    return Response({
+            "message": message,
+        }, status=res_status)
+
+@api_view(['POST'])
+def change_contact(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    req_data = json.loads(request.body.decode('UTF-8'))
+    email = req_data['email']
+    try:
+        user = CustomUser.objects.get(email=email)
+    except:
+        message = "Account with this email id doesn't exists. Kindly signup."
+    else:
+        new_contact = req_data['contact']
+        otp = send_otp(new_contact)
+        user.otp = otp
+        user.contact = new_contact
+        user.verified = False
+        user.save()
+        message = "An otp has been sent to new mobile no."
+        res_status = status.HTTP_200_OK
+    return Response({
+            "message": message,
+        }, status=res_status)
