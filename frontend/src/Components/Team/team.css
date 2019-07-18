@@ -1,0 +1,123 @@
+.team-whole{
+  background: #7b4397 !important;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(20deg, #dc2430, #7b4397) !important;  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(20deg, #dc2430, #7b4397) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.team1{
+  text-align: center;
+  padding: 50px;
+  padding-top:200px;
+  
+  font-family:"Raleway";
+}
+
+.team{
+    text-align: center;
+    padding: 50px;
+    padding-top:50px;
+    
+    font-family:"Raleway";
+}
+
+/*h2 {
+    font-size:20px;
+}*/
+.flex-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+  }
+
+  .flex-container div{
+    flex: 1 0 20%;
+  }
+  
+  .member-name{
+    text-align: center;
+    color: white;
+    font-size: 23px;
+    font-weight: 800;
+    margin-top: -30px;
+    border: 2px solid white;
+    background: black;
+    border-radius: 0 0 8px 8px;
+    padding: 8px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .member-name-mng{
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: -30px;
+    border: 2px solid white;
+    background: black;
+    border-radius: 0 0 8px 8px;
+    padding: 8px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .member-name-exec{
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: -30px;
+    border: 2px solid white;
+    background: black;
+    border-radius: 0 0 8px 8px;
+    padding: 8px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .position{
+    position: relative;
+    top: -50px;
+    text-align: center;
+    margin-top: 50px;
+    color: #7C4295;
+    background: white;
+    border: 1px dotted black;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 1px;
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+
+  }
+
+  .position-exec/*managers,hc's*/{
+    position: relative;
+    top: -50px;
+    text-align: center;
+    margin-top: 50px;
+    color: #7C4295;
+    background: white;
+    border: 1px dotted black;
+    padding: 10px;
+    font-weight: 800 !important;
+    font-size: 30px;
+    letter-spacing: 1px;
+    width: 400px !important;
+    margin-right: auto;
+    margin-left: auto;
+
+
+  }
+

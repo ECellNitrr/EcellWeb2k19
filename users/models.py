@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+
 class CustomUser(AbstractUser):
-    
+
     USER_TYPE = (
         ('GST', 'Guest'),
         ('VLT', 'Voluteer'),
@@ -13,21 +14,31 @@ class CustomUser(AbstractUser):
         ('CAB', 'Campus Ambassador'),
     )
 
-    username    = models.CharField(max_length=32, unique=True)
-    first_name  = models.CharField(max_length=100)
-    last_name   = models.CharField(max_length=100)
-    email       = models.EmailField(max_length=64, unique=True)
-    otp         = models.CharField(max_length=4, blank=True, null=True)
-    verified    = models.BooleanField(default=False)
-    contact     = models.CharField(max_length=10)
-    bquiz_score = models.IntegerField(default=0)
-    avatar      = models.ImageField(upload_to='static/uploads/avatar',
-                                    null=True, blank=True)
-    user_type   = models.CharField(max_length = 3,choices=USER_TYPE,
-                                    default='GST')
-    linkedin    = models.URLField(max_length=64, null=True, blank=True)
-    facebook    = models.URLField(max_length=64, null=True, blank=True)
+    username = models.CharField(max_length=64, unique=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=64, unique=True)
+    otp = models.CharField(max_length=4, blank=True, null=True)
+    verified = models.BooleanField(default=False)
+    contact = models.CharField(max_length=10)
     
+    #Score for Bquiz
+    bquiz_score = models.IntegerField(default=0)
+    # Scores for Campus Ambassadors
+    ca_score = models.IntegerField(default=0)       #Total Score
+    ca_fb_score = models.IntegerField(default=0)    #Facebook Score
+    ca_tw_score = models.IntegerField(default=0)    #Twitter Score
+    ca_li_score = models.IntegerField(default=0)    #LinkedIn Score
+    ca_wp_score = models.IntegerField(default=0)    #Whatsapp Score
+
+    avatar = models.ImageField(upload_to='static/uploads/avatar',
+                               null=True, blank=True)
+    user_type = models.CharField(max_length=3, choices=USER_TYPE,
+                                 default='GST')
+    linkedin = models.URLField(max_length=64, null=True, blank=True)
+    facebook = models.URLField(max_length=64, null=True, blank=True)
+
+
     def save(self, *args, **kwargs):
         self.username = self.email
         super(CustomUser, self).save(*args, **kwargs)
@@ -39,25 +50,24 @@ class CustomUser(AbstractUser):
         verbose_name = "ECellUser"
         verbose_name_plural = "ECellUsers"
 
+
 class CampusAmbassadorProfile(models.Model):
 
-    user        = models.OneToOneField(CustomUser, on_delete=models.CASCADE,
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE,
                                 related_name='campus_ambassador_profile')
-    college     = models.CharField(max_length=128, null=False, blank=False)
+    college = models.CharField(max_length=128, null=False, blank=False)
+    total_score = models.PositiveIntegerField(default=0)  # Total Score
+    fb_score = models.PositiveIntegerField(default=0)  # Facebook Score
+    tw_score = models.PositiveIntegerField(default=0)  # Twitter Score
+    li_score = models.PositiveIntegerField(default=0)  # LinkedIn Score
+    wp_score = models.PositiveIntegerField(default=0)  # Whatsapp Score
 
-    # Scores for Campus Ambassadors
-    total_score = models.PositiveIntegerField(default=0)        #Total Score
-    fb_score    = models.PositiveIntegerField(default=0)        #Facebook Score
-    tw_score    = models.PositiveIntegerField(default=0)        #Twitter Score
-    li_score    = models.PositiveIntegerField(default=0)        #LinkedIn Score
-    wp_score    = models.PositiveIntegerField(default=0)        #Whatsapp Score
-    
     @property
     def total_score(self):
-       "Returns the total"
-       return self.fb_score + self.tw_score + self.li_score + self.wp_score
-    
-    def save(self,*args,**kwargs):
+        "Returns the total"
+        return self.fb_score + self.tw_score + self.li_score + self.wp_score
+
+    def save(self, *args, **kwargs):
         self.user.user_type = 'CAB'
         self.user.save()
         super(CampusAmbassadorProfile, self).save(*args, **kwargs)

@@ -1,15 +1,16 @@
 #Virtual Environments
 env
 venv
-virtualenv
-ENV
-VENV
 
 #Database
 db.sqlite3
 
 #Cache Files
 **/__pycache__
+*/migrations
+static/
+.env
 *.pyc
 
-/migrations
+#Vscode
+.vscode
