@@ -6,7 +6,7 @@ import requests
 def send_otp(contact):
     otp = str(randint(1000, 9999))
     url = config('otp_service_url')
-    message = f"Your OTP for E-Cell NIT Raipur APP is {otp}."
+    message = "Your OTP for E-Cell NIT Raipur APP is {}.".format(otp)
     querystring = {
         "username": config('MSG_USERNAME'),
         "password": config('MSG_PASSWORD'),

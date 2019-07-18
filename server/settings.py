@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'events',
     'sponsors',
     'mentors',
-    'startups'
+    'startups',
 ]
 
 MIDDLEWARE = [
@@ -129,5 +129,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = ['./frontend/build/static/']
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, './')
 
 AUTH_USER_MODEL = 'users.CustomUser'
