@@ -1,20 +1,18 @@
 from django.db import models
 from users.models import CustomUser
 
-default_user = CustomUser.objects.get(email='ecell@gmail.com')
-
 
 class Sponsor(models.Model):
     SPONS_TYPE = (
-        ('AS', 'Associate Sponsors'),
-        ('PLTS', 'Platinum Sponsors'),
-        ('GS', 'Gold Sponsors'),
-        ('TS', 'Title Sponsors'),
-        ('PRTS', 'Partner Sponsors'),
+        ('ATS', 'Associate Sponsors'),
+        ('PTS', 'Platinum Sponsors'),
+        ('GDS', 'Gold Sponsors'),
+        ('TLS', 'Title Sponsors'),
+        ('PRS', 'Partner Sponsors'),
     )
 
-    name = models.CharField(max_length=256, unique=True)
-    details = models.TextField()
+    name = models.CharField(max_length=200, unique=True)
+    details = models.TextField(blank=True, null=True)
     pic = models.ImageField(
         upload_to='static/uploads/sponsors',
         null=True,
@@ -22,18 +20,15 @@ class Sponsor(models.Model):
     contact = models.TextField(max_length=13, null=True, blank=True)
     website = models.URLField(null=True, blank=True)
     spons_type = models.CharField(
-        max_length=4,
+        max_length=3,
         choices=SPONS_TYPE,
         default='AS')
     flag = models.BooleanField(default=False)
     year = models.IntegerField(default=2019)
-    ecell_user = models.ForeignKey(
-        CustomUser,
-        on_delete=models.SET_DEFAULT,
-        default=default_user.id)
+    ecell_user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    modified_at = models.DateTimeField(auto_now=True, editable=False)
 
     def __str__(self):
         return self.name
 
-    # def url(self):
-    # return self.url

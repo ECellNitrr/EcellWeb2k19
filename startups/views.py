@@ -51,7 +51,8 @@ def add_startup(request):
         error = startup.errors
         error_msg = ""
         for err in error:
-            error_msg += str(error[err][0]) + " "
+            error_msg += "Error in field: " + \
+                str(err) + "- " + str(error[err][0]) + " "
         res_message = error_msg
         res_status = status.HTTP_400_BAD_REQUEST
     else:
@@ -71,32 +72,11 @@ def generate_spreadsheet(request):
     response['Content-Disposition'] = 'attachment; filename="startups.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Name',
-                     'Email',
-                     'Picture',
-                     'Contact',
-                     'URL',
-                     'Founder',
-                     'Address',
-                     'Flag',
-                     'Details',
-                     'Created_at',
-                     'Modified_at',
-                     'Year'])
+    writer.writerow(['Name','Email','Picture','Contact','URL','Founder',
+                    'Address','Flag','Details','Created_at','Modified_at','Year'])
 
-    startups = Startup.objects.all().values_list(
-        'name',
-        'email',
-        'pic',
-        'contact',
-        'url',
-        'founder',
-        'address',
-        'flag',
-        'details',
-        'created_at',
-        'modified_at',
-        'year')
+    startups = Startup.objects.all().values_list('name','email','pic','contact','url','founder',
+                                        'address','flag','details','created_at','modified_at','year')
     for startup in startups:
         writer.writerow(startup)
 

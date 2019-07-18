@@ -51,7 +51,8 @@ def add_sponsor(request):
         error = sponsor.errors
         error_msg = ""
         for err in error:
-            error_msg += str(error[err][0]) + " "
+            error_msg += "Error in field: " + \
+                str(err) + "- " + str(error[err][0]) + " "
         res_message = error_msg
         res_status = status.HTTP_400_BAD_REQUEST
     else:
@@ -74,15 +75,8 @@ def generate_spreadsheet(request):
     writer.writerow(['Name', 'Details', 'Pic', 'Contact',
                      'Website', 'Spons_type', 'Flag', 'Year'])
 
-    sponsors = Sponsor.objects.all().values_list(
-        'name',
-        'details',
-        'pic',
-        'contact',
-        'website',
-        'spons_type',
-        'flag',
-        'year')
+    sponsors = Sponsor.objects.all().values_list('name','details','pic','contact','website',
+                                                'spons_type','flag','year')
     for sponsor in sponsors:
         writer.writerow(sponsor)
 

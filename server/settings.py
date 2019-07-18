@@ -5,8 +5,7 @@ from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
+STATIC_DIR = os.path.join(BASE_DIR,'static')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -36,7 +35,9 @@ INSTALLED_APPS = [
     'events',
     'sponsors',
     'mentors',
-    'startups'
+    'startups',
+    'team',
+    'speakers'
 ]
 
 MIDDLEWARE = [
@@ -70,27 +71,19 @@ TEMPLATES = [
 WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('db_name',None),
+        'USER': config('db_user',None),
+        'PASSWORD': config('db_password',None),
+        'HOST': 'localhost',
+        'PORT': '',
+    },
     'test': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-if 'TRAVIS' not in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('db_name'),
-            'USER': config('db_user'),
-            'PASSWORD': config('db_password'),
-            'HOST': 'localhost',
-            'PORT': '',
-        },
-        'test': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
 
 # Covers regular testing and django-coverage and travis-ci
 if 'test' in sys.argv or 'test_coverage' in sys.argv or 'TRAVIS' in os.environ:
@@ -133,9 +126,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATICFILES_DIRS = [STATIC_DIR,]
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATICFILES_DIRS = ['./frontend/build/static/']
+STATIC_ROOT = '/static/'
+
 
 
 AUTH_USER_MODEL = 'users.CustomUser'

@@ -1,9 +1,6 @@
 #Virtual Environments
 env
 venv
-virtualenv
-ENV
-VENV
 
 #Database
 db.sqlite3
@@ -14,3 +11,6 @@ db.sqlite3
 static/
 .env
 *.pyc
+
+#Vscode
+.vscode
