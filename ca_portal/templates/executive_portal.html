@@ -1,0 +1,128 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ECell NITrr : CA Portal</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="/static/assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="/static/assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="/static/assets/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+     
+           
+          
+    <div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="fa fa-square-o "></i>&nbsp;Entrepreneuship Cell NIT Raipur [Admin Panel]</a>
+                </div>
+
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center user-image-back">
+                        <img src="/static/assets/img/find_user.png" class="img-responsive" />
+                    </li>
+
+                    {% block sidebar %}
+                        <li>
+                            <a href="#"><i class="fa fa-desktop "></i>Dashboard</a>
+                        </li>
+                        {% if users.count != 0 %}
+                            {% for user in users %}
+                            <li>
+                            <a href="{% url 'confirm_approval' user.id %}">   
+                                <h3>{{user.first}} {{ user.last}}</h3>
+                                <small><kbd>{{user.email}}</kbd></small>
+                            </a>
+                            </li>
+                            {% endfor %}
+                        {% else %}
+                            <li>
+                            No more requests to check
+                            </li>
+                        {% endif %}
+                    {% endblock %}
+                            <li>
+                                <a href="{% url 'logout' %}">Logout</a>
+                            </li>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                {% block main_content %}
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if ca_requests %}
+                            {% if ca_requests.count != 0 %}
+                                {% for ca_request in ca_requests %}
+                                    <div class="sswrapper">
+                                    <img src="/{{ ca_request.screenshot.url}}" alt="Screenshot" style="width:50%;margin:0 auto;" id="ss">
+                                    <h3>
+                                        {% if ca_request.social_platform == 'FB' %}
+                                            Facebook
+                                        {% elif ca_request.social_platform == 'WP' %}
+                                            Whatsapp
+                                        {% elif ca_request.social_platform == 'TW' %}
+                                            Twitter
+                                        {% else %}
+                                            Whatsapp
+                                        {% endif %}
+                                    </h3>
+                                    <a href="{% url 'approve_request' userid=user_id id=ca_request.pk %}" class="btn btn-success">Approve</a>
+                                    <a href="{% url 'decline_request' userid=user_id id=ca_request.pk %}" class="btn btn-danger"> Reject</a>    
+                                    </div>
+                                    <br><br>
+                                {% endfor %}
+                            {% else %}
+                            <h2>No more requests to check.</h2>
+                            {% endif %}   
+                        {% else %}
+                            <h2>Select a user from sidebar to continue.</h2>
+                        {% endif %}
+                    </div>
+                </div>    
+                {% endblock %}          
+                <!-- /. ROW  -->
+                <hr />
+                <!-- /. ROW  -->           
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+         <!-- /. PAGE WRAPPER  -->
+    </div>
+    
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    
+   
+</body>
+</html>
