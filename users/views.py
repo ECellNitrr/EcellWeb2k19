@@ -107,7 +107,7 @@ class LoginAPIView(APIView):
 @api_view(['POST'])
 def forgot_password(request):
     res_status = status.HTTP_400_BAD_REQUEST
-    req_data = json.loads(request.body.decode('UTF-8'))
+    req_data = request.data
     email = req_data['email']
     try:
         user = CustomUser.objects.get(email=email)
@@ -131,7 +131,7 @@ def forgot_password(request):
 def verify_otp(request):
     res_status = status.HTTP_400_BAD_REQUEST
     user = request.ecelluser
-    req_data = json.loads(request.body.decode('UTF-8'))
+    req_data = request.data
     if 'otp' not in req_data:
         message='Please enter otp to verify your account'
     else:
@@ -151,7 +151,7 @@ def verify_otp(request):
 @api_view(['POST'])
 def change_password(request):
     res_status = status.HTTP_400_BAD_REQUEST
-    req_data = json.loads(request.body.decode('UTF-8'))
+    req_data = request.data
     email = req_data['email']
     otp = req_data['otp']
     password = req_data['password']
@@ -200,7 +200,7 @@ def resend_otp(request):
 @api_view(['POST'])
 def change_contact(request):
     res_status = status.HTTP_400_BAD_REQUEST
-    req_data = json.loads(request.body.decode('UTF-8'))
+    req_data = request.data
     email = req_data['email']
     try:
         user = CustomUser.objects.get(email=email)
