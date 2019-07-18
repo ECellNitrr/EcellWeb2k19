@@ -6,52 +6,64 @@ from startups.models import *
 from mentors.models import *
 from sponsors.models import *
 from events.models import *
+from team.models import *
+from speakers.models import *
+
 
 import pickle
 
 
 SPONS_TYPE = {
-        'Associate Sponsors' : 'ATS',
-        'Platinum Sponsors' : 'PLS',
-        'Gold Sponsors' : 'GDS',
-        'Title Sponsors' : 'TLS',
-        'Partner Sponsors' : 'PRS',
+    'Associate Sponsors': 'ATS',
+    'Platinum Sponsors': 'PLS',
+    'Gold Sponsors': 'GDS',
+    'Title Sponsors': 'TLS',
+    'Partner Sponsors': 'PRS',
 }
+
+MEMBER_TYPE = {
+    'Dir' :'DIR',
+    'HCD' :'HCD',
+    'Fclty' :'FCT',
+    'MNG' :'MNG',
+    'HC' :'HCO',
+    'OC' :'OCO',
+    'EXEC' :'EXC',
+}
+
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        appname = 'sponsors'
+        appname = 'speakers'
         URL = "https://ecell.nitrr.ac.in/{}/list/".format(appname)
         r = requests.get(URL)
         data = r.json()
         image_url = 'https://ecell.nitrr.ac.in/static/uploads/{}/'.format(
             appname)
 
-        data = data['spons']
 
-        for category in data:
-            category_name = category['section_name']
-            category_name = SPONS_TYPE[category_name]
+        for obj in data['speakers']:
+            print(obj['name'])
 
-            for obj in category['sponsors']:
-                print(obj['name'])
+            # img files
+            image_name = obj['profile_pic'].split('/').pop()
+            image_location = 'static/uploads/{}/'.format(
+                appname)+image_name
+            req = requests.get(obj['profile_pic'], stream=True)
+            with open(image_location, 'wb') as out_file:
+                shutil.copyfileobj(req.raw, out_file)
+            del req
 
-                # img files
-                image_name = obj['pic'].split('/').pop()
-                image_location = 'static/uploads/{}/'.format(appname)+image_name
-                req = requests.get(obj['pic'], stream=True)
-                with open(image_location, 'wb') as out_file:
-                    shutil.copyfileobj(req.raw, out_file)
-                del req
+            temp = Speaker()
 
-                temp = Sponsor()
+            temp.name = obj['name']
+            temp.company = obj['company']
+            temp.email = obj['email']
+            temp.contact = obj['contact']
+            temp.description = obj['description']
+            temp.year = obj['year']
+            temp.social_media = obj['social_media']
+            temp.profile_pic = image_location
+            temp.flag = True
 
-                temp.name = obj['name']
-                temp.details = obj['details']
-                temp.contact = obj['contact']
-                temp.website = obj['website']
-                temp.year = obj['year']
-                temp.spons_type = category_name
-                temp.flag = True
-                temp.pic = image_location
-                temp.save()
+            temp.save()
