@@ -27,11 +27,11 @@
   .active{
     color: black;
     background: white;
-    padding: 0.7px;
+    padding: 5px;
     border-radius: 0 10px;
   }
   
-  .header{
+  /*.header{
     position: absolute;
     top: 80px;
     left: 50%;
@@ -130,7 +130,7 @@
       top: 160px;
       font-size: 17px;
     }
-  }
+  }*/
   
   .logo.active1{
     position: fixed;
@@ -236,6 +236,7 @@
   
   ul{
     position: relative;
+    top: 0%;
   }
   
   ul li{
@@ -307,5 +308,194 @@
     opacity: 0.1;
     top: 50%;
   }
+
+  .brand-header{
+    position: absolute;
+    top:60px;
+    z-index: 20;
+    left: 50%;
+    transform: translate(-50%,0);
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 5px;
+  }
+
+  .brand-header2{
+    position: absolute;
+    top:115px;
+    z-index: 20;
+    left: 50%;
+    transform: translate(-50%,0);
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  .brand-header3{
+    position: absolute;
+    top:60px;
+    z-index: 20;
+    left: 50%;
+    transform: translate(-50%,0);
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: none;
+  }
+
+  
+
+  @media(max-width:1257px){
+    .brand-header{
+      display: none;
+    }
+
+    .brand-header3{
+      display: block;
+      top: 40px;
+    }
+
+    .brand-header2{
+      top: 80px;
+    }
+  }
+
+  
+
+  @media(max-width:800px){
+    .brand-header3{
+      font-size: 28px;
+      top: 60px;
+    }
+
+    .brand-header2{
+      top: 90px;
+      font-size: 23px;
+    }
+
+  }
+
+  @media(max-width:400px){
+    .brand-header3{
+      font-size: 25px;
+    }
+
+    .brand-header2{
+      font-size: 20px;
+    }
+
+  }
+
+  .login-button1{
+    position: absolute;
+    z-index: 10;
+    top: 35px;
+    right: 120px;
+  }
+
+
+  @media(max-width:1370px){
+    .btn1{
+      padding: 10px;
+      font-size: 18px !important;
+    }
+
+    .login-button1{
+      top: 40px;
+    }
+  }
+  
+  @media(max-width:795px){
+    .login-button1{
+      left: 38%;
+      top: 110px;
+    }
+  }
+
+  @media(max-width:767px){
+    .login-button1{
+      left: 38%;
+      top: 110px;
+    }
+  }
+
+  @media(max-width:700px){
+    .login-button1{
+      left: 36%;
+      top: 110px;
+    }
+  }
+
+  @media(max-width:600px){
+    .login-button1{
+      left: 34%;
+      top: 110px;
+    }
+  }
+
+  @media(max-width:520px){
+    .login-button1{
+      left: 32%;
+      top: 110px;
+    }
+  }
+
+  @media(max-width:470px){
+    .login-button1{
+      left: 30%;
+      top: 110px;
+    }
+  }
+
+  @media(max-width:450px){
+    .login-button1{
+      left: 29%;
+      top: 110px;
+    }
+  }
+
+  @media(max-width:410px){
+    .login-button1{
+      left: 26%;
+      top: 115px;
+    }
+  }
+
+  @media(max-width:370px){
+    .login-button1{
+      left: 25%;
+      top: 115px;
+    }
+  }
+
+  @media(max-width:350px){
+    .login-button1{
+      left: 24%;
+      top: 115px;
+    }
+  }
+
+  @media(max-width:320px){
+    .login-button1{
+      left: 21%;
+      top: 120px;
+    }
+  }
+
+
+
+
+
+  
+  
   
   

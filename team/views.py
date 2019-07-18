@@ -11,6 +11,13 @@ from .serializer import HigherSerializer, LowerSerializer
 def get_members(request):
     res_message = ""
     res_status = ""
+    dir_data=""
+    hcd_data=""
+    fct_data=""
+    oco_data=""
+    hco_data=""
+    mng_data=""
+    exc_data=""
     if Member.objects.all().exists():
         dir= Member.objects.filter(member_type='DIR').values()
         dir_data=HigherSerializer(dir,many=True, context={'request': request}).data

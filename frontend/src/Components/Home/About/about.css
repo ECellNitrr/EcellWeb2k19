@@ -81,7 +81,7 @@
   
   .fb-page{
     position: relative;
-    top: 10%;
+    top: 50px;
     left: 50%;
     transform: translate(-50%,0);
     border: 15px solid skyblue;
