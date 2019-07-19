@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic import TemplateView
+from team.views import get_members
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -9,5 +12,7 @@ urlpatterns = [
     path('startups/', include('startups.urls')),
     path('sponsors/', include('sponsors.urls')),
     path('mentors/', include('mentors.urls')),
-    re_path('', TemplateView.as_view(template_name="index.html")),
+    path('team/', include('team.urls')),
+    path('speakers/', include('speakers.urls')),
 ]
+urlpatterns+=staticfiles_urlpatterns()

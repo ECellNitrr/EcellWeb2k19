@@ -78,7 +78,7 @@ def generate_spreadsheet(request):
         'name',
         'contact',
         'email',
-        'details',
+        'detail',
         'description',
         'profile_pic',
         'flag',
