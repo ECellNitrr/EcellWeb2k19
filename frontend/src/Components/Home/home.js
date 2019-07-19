@@ -15,7 +15,7 @@ const Home=()=>(
         <About/>
         <Vision/>
         <Spons/>
-        <SpeakersHome/>
+        {/* <SpeakersHome/> */}
         <Form/>
         <Footer/>
     </div>

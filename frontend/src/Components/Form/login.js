@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import faxios from '../../axios'
 
 export default class login extends Component {
+
+    
     render() {
         return (
             <div className="tab-pane fade in show active" id="panel7" role="tabpanel">
