@@ -11,44 +11,33 @@ class mentors extends Component {
     loading: true
   };
 
-  componentDidMount() {
-    this.axios.get("/mentors/list/").then(fromserver => {
-      console.log(fromserver);
-      const data = fromserver.data;
-      const mentors = data.mentors;
-      const yearwise_mentors = {}
-
-      let years = [];
-      for(const x in mentors){
-          const year = mentors[x].year
-          if(years.indexOf(year)===-1){
-              years.push(year)
-          }
-      }
-      console.log(years)
-
-      for(const x in years){
-          const year = years[x]
-          yearwise_mentors[year] = mentors.filter(mentor => mentor.year===year)
-      }
-
-      console.log(yearwise_mentors)
-
-      this.setState({
-        mentors: yearwise_mentors,
-        loading: false
-      });
-    });
+  componentDidMount(){
+    for(let i=2016; i<=2018;i++){
+      this.axios.get(`/mentors/list/${i}/`).then(res=>{
+        console.log(res)
+        let  data = res.data.data
+        if(data.length>0){
+          this.setState({
+            loading: false,
+            mentors: {
+              ...this.state.mentors,
+              [i]: data
+            }
+          })
+        }
+      })
+    }
   }
 
+
   render() {
-      console.log(this.state.mentors)
+    console.log(this.state.mentors)
     let mentors_html = []
 
     for(const year in this.state.mentors){
         let mentors = this.state.mentors[year]
         mentors = mentors.map(mentor => 
-            <div className="individual_mentors">
+            <div className="individual_mentors" key={mentor.id}>
                 <div><img className="mentors_pic shadow-lg p-3 mb-5 bg-white rounded" src={mentor.profile_pic} alt={mentor.name}/></div>
                 <h3 className="mentors_name">{mentor.name}</h3>
                 <p className="center2">{mentor.detail}</p>

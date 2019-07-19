@@ -56,7 +56,7 @@ class Command(BaseCommand):
                     shutil.copyfileobj(req.raw, out_file)
                 del req
 
-            temp = Event()
+            temp = Mentor()
 
             temp.name = obj['name'] 
             temp.contact = obj['contact'] 
