@@ -14,9 +14,9 @@ export default class event_detail extends Component{
         this.event_id = this.props.match.params.id;
         console.log(this.event_id)
 
-        this.axios.get("/events/list/").then(d => {
-            let data = d.data;
-            let event_detail = data.events.find(event => event.id==this.event_id)
+        this.axios.get("/events/list/2019/").then(d => {
+            let data = d.data.data;
+            let event_detail = data.find(event => event.id==this.event_id)
             
             console.log({ data,event_detail });
             this.setState({
