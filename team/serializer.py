@@ -5,9 +5,9 @@ from .models import Member
 class HigherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Member
-        fields = ('name','profile_url','image')
+        fields = '__all__'
 
 class LowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Member
-        fields = ('name',)
+        fields = '__all__'

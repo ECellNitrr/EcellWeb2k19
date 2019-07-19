@@ -6,7 +6,7 @@ from django.db import models
 class Speaker(models.Model):
     name = models.CharField(max_length=256)
     company = models.CharField(max_length=256)
-    experience = models.IntegerField()
+    experience = models.IntegerField(null=True)
     profile_pic = models.ImageField(upload_to='static/uploads/speakers', null=True, blank=True)
     email = models.EmailField()
     contact = models.TextField(max_length=13, null=True, blank=True)

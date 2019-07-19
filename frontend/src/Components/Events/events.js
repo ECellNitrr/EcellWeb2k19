@@ -12,9 +12,9 @@ class events extends Component{
   }
 
   componentDidMount() {
-    this.axios.get('/events/list/')
+    this.axios.get('/events/list/2019/')
       .then(d=>{
-        const events = d.data.events
+        const events = d.data.data
         console.log({events})
         this.setState({events})
       })

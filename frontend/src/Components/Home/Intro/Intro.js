@@ -35,10 +35,10 @@ const intro = () => {
         const seconds = Math.floor((distance % (1000 * 60)) / (1000));
 
         //Display Result
-        countdown.innerHTML = `<div>${days}<span>Days</span></div>
-        <div>${hours}<span>Hours</span></div>
-        <div>${mins}<span>Minutes</span></div>        
-        <div>${seconds}<span>Seconds</span></div>`;
+        countdown.innerHTML = `<div className="shadow-lg p-3 mb-5 bg-white rounded">${days}<span>Days</span></div>
+        <div className="shadow-lg p-3 mb-5 bg-white rounded">${hours}<span>Hours</span></div>
+        <div className="shadow-lg p-3 mb-5 bg-white rounded">${mins}<span>Minutes</span></div>        
+        <div className="shadow-lg p-3 mb-5 bg-white rounded">${seconds}<span>Seconds</span></div>`;
 
         //if launch date passed 
         if (distance < 0) {
@@ -46,7 +46,7 @@ const intro = () => {
             clearInterval(intvl);
 
             //Style and output text
-            countdown.style.color = '#17a2b8';
+            countdown.style.color = 'white';
             countdown.innerHTML = 'The Summit is On!';
         }
 
@@ -58,13 +58,15 @@ const intro = () => {
                 <div className="container-fluid ctn-1">
 
                     <div className="row">
-                        <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-1">
-                            <div className="anims"><img alt='' className="banner" src={banner}></img></div>
-                            <div className="countdown"></div>
+                        <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 banner-col">
+                            <div>
+                                <div ><img alt='' className="banner" src={banner}></img></div>
+                                <div className="countdown"></div>
+                            </div>
                         </div>
 
-                        <div className="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-                            <p className="bulb"><iframe className="image-1" src={bulb}></iframe></p>
+                        <div className="col-xs-12 col-sm-12 col-md-5 col-lg-5 bulb-col">
+                            <p className="bulb"><img className="image-1" src={bulb}></img></p>
                         </div>
                     </div>
                     <div className="wave"></div>

@@ -14,44 +14,21 @@ class speaker extends Component{
   }
 
   componentDidMount(){
-    this.axios.get("/speakers/list/").then(res=>{
-      
-      const data= res.data
-      const speakers= data.speakers;
-      const yearwise_speakers=[];
-
-      let years= [];
-      for(const x in speakers){
-        const year = speakers[x].year
-        if(years.indexOf(year)===-1){
-          years.push(year);
-        }
-      }
-
-      
-
-      for(const x in years){
-        const year = years[x]
-        yearwise_speakers[year] = speakers.filter(speakers => speakers.year===year)
-      }
-
-      let rev_yearwise_speakers= yearwise_speakers.reverse();
-      
-
-      
-      this.setState({
-        speaker: rev_yearwise_speakers,
-        loading:false
+    for(let i=2016; i<=2020;i++){
+      this.axios.get(`/speakers/list/${i}/`).then(res=>{
+        let  data = res.data.data
+        this.setState({
+          speaker: {
+            ...this.state.speaker,
+            [i]: data
+          }
+        })
+        console.log()
       })
-      
-      console.log(this.state);
-    })
+    }
   }
 
   render(){
-
-
-    
     let speakers_html=[]
 
     for(const year in this.state.speaker){

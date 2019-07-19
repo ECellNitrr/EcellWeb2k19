@@ -19,19 +19,19 @@ def get_members(request):
     mng_data=""
     exc_data=""
     if Member.objects.all().exists():
-        dir= Member.objects.filter(member_type='DIR').values()
+        dir= Member.objects.filter(member_type='DIR')
         dir_data=HigherSerializer(dir,many=True, context={'request': request}).data
-        hcd = Member.objects.filter(member_type='HCD').values()
+        hcd = Member.objects.filter(member_type='HCD')
         hcd_data=HigherSerializer(hcd,many=True, context={'request': request}).data
-        fct= Member.objects.filter(member_type='FCT').values()
+        fct= Member.objects.filter(member_type='FCT')
         fct_data=HigherSerializer(fct,many=True, context={'request': request}).data
-        oco= Member.objects.filter(member_type='OCO').values()
+        oco= Member.objects.filter(member_type='OCO')
         oco_data=HigherSerializer(oco,many=True, context={'request': request}).data
-        hco= Member.objects.filter(member_type='HCO').values()
+        hco= Member.objects.filter(member_type='HCO')
         hco_data=HigherSerializer(hco,many=True, context={'request': request}).data
-        mng= Member.objects.filter(member_type='MNG').values()
+        mng= Member.objects.filter(member_type='MNG')
         mng_data=LowerSerializer(mng,many=True, context={'request': request}).data
-        exc= Member.objects.filter(member_type='EXC').values()
+        exc= Member.objects.filter(member_type='EXC')
         exc_data=LowerSerializer(exc,many=True, context={'request': request}).data
         res_message="Team Members are available"
         res_status=status.HTTP_200_OK

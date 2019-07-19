@@ -17,6 +17,7 @@ class Member(models.Model):
     profile_url = models.URLField(blank=True, null=True)
     image = models.ImageField(upload_to='static/uploads/team', null=True, blank = True)
     member_type = models.CharField(max_length=3, choices= MEMBER_TYPE, default='EXEC')
+    year = models.IntegerField(default=2018)
 
     def __str__(self):
         return self.member_type + '-' + self.name

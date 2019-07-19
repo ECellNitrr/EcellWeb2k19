@@ -24,6 +24,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,11 +37,14 @@ INSTALLED_APPS = [
     'sponsors',
     'mentors',
     'startups',
-    'team',
     'speakers',
+    'team',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'server.urls'
 
@@ -80,7 +86,7 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # if 'TRAVIS' not in os.environ:
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': config('db_name',None),
         'USER': config('db_user',None),
         'PASSWORD': config('db_password',None),
@@ -139,5 +145,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, './')
 
 AUTH_USER_MODEL = 'users.CustomUser'

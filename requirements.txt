@@ -4,6 +4,7 @@ cffi==1.12.3
 chardet==3.0.4
 cryptography==2.7
 Django==2.2.2
+django-cors-headers==3.0.2
 django-filter==2.1.0
 djangorestframework==3.9.4
 idna==2.8
