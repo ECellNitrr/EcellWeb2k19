@@ -2,20 +2,23 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
-from .models import Event
+from .models import Event, EventRegister
 from .serializers import EventSerializer
 from decorators import ecell_user
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+# from django.utils.six.moves.urllib.parse import urlsplit
 import csv
 
 
 @api_view(['GET', ])
 def get_events(request, year):
-
+    # print(request.META['SERVER_PROTOCOL'])
     res_message = ""
     res_status = ""
     res_data = []
-
+    # scheme = urlsplit(request.build_absolute_uri(None)).scheme
+    # print(scheme)
     events = Event.objects.filter(year=year, flag=True)
     if len(events) > 0:
         res_data = EventSerializer(
@@ -32,10 +35,30 @@ def get_events(request, year):
         "data": res_data
     }, status=res_status)
 
+@ecell_user
+@csrf_exempt
+@api_view(['POST', ])
+def event_register(request, id):
+    eventregister = EventRegister()
+    eventregister.profile = request.ecelluser
+    try:
+        eventregister.event = Event.objects.get(id=id)
+    except:
+        res_message="Registration Failed! Event does not exist"
+        res_status=status.HTTP_404_NOT_FOUND
+        
+    else:
+        eventregister.save()
+        res_message= "Registration Successful"
+        res_status=status.HTTP_200_OK
+    return Response({
+        "message": res_message
+    }, status=res_status)
 
 @api_view(['POST', ])
 @ecell_user
 def add_event(request):
+    
     if request.ecelluser.user_type in ['GST', 'VLT', 'CAB']:
         return Response({
             "message": "Unauthorized to view this page"

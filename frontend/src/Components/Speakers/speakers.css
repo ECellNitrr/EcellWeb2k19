@@ -6,158 +6,42 @@
 }
 
 .ctn7{
-    padding-top: 200px;
+    padding-top: 250px;
 
 }
 
-.header{
+.header1{
+    text-align: center;
     position: absolute;
-    top: 80px;
+    top: 200px;
     left: 50%;
     transform: translate(-50%,0);
     color: white;
-    font-weight: 800;
-    font-size: 40px;
-    letter-spacing: 1px;
-  }
-  
-  @media(max-width:1458px){
-    .header{
-      font-size: 35px;
-    }
-  }
-  
-  @media(max-width:1307px){
-    .header{
-      font-size: 30px;
-    }
-  }
-  
-  @media(max-width:1156px){
-    .header{
-      font-size: 25px;
-    }
-  }
-  
-  @media(max-width:1006px){
-    .header{
-      font-size: 20px;
-    }
-  }
-  
-  @media(max-width:854px){
-    .header{
-      display: none;
-    }
-  }
-  
-  .header2{
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    transform: translate(-50%,0);
-    color: white;
-    font-weight: 800;
-    font-size: 40px;
-    letter-spacing: 5px;
-    display: none;
-  }
-  
-  @media(max-width:854px){
-    .header2{
-      display: block;
-    }
-  }
-  
-  @media(max-width:705px){
-    .header2{
-      top: 130px;
-      font-size: 35px;
-    }
-  }
-  
-  @media(max-width:610px){
-    .header2{
-      top: 130px;
-      font-size: 25px;
-    }
-  }
-  
-  @media(max-width:520px){
-    .header2{
-      top: 130px;
-      font-size: 20px;
-    }
-  }
-  
-  @media(max-width:470px){
-    .header2{
-      top: 160px;
-      font-size: 25px;
-    }
-  }
-  
-  @media(max-width:388px){
-    .header2{
-      top: 160px;
-      font-size: 20px;
-    }
-  }
-  
-  @media(max-width:327px){
-    .header2{
-      top: 160px;
-      font-size: 17px;
-    }
-  }
-
-  .head,.head2{
-    position: absolute;
-    left: 50%;
-    top: 5%;
-    transform: translate(-50%,0);
-    z-index: 100;
-    color: white;
-    font-weight: 800;
-    font-size: 30px;
-    border-radius: 5px;
     background: black;
-    padding: 8px;
-    border-radius: 8px;
-  
+    border: 1px dotted black;
+    border-radius: 20px 0;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 25px;
+    letter-spacing: 1px;
+    box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5);
     
   }
+  
 
-  .head2{
-    display: none;
-  }
-
-  @media(max-width:671px){
-    .head{
-      display: none;
-    }
-    .head2{
-      display: block;
+  @media(max-width:1006px){
+    .header1{
+      font-size: 20px;
     }
   }
 
-  @media(max-width:496px){
-    .head2{
-      display: block;
-      font-size: 24px;
+  @media(max-width:405px){
+    .header1{
+      font-size: 15px;
     }
   }
-
-  @media(max-width:407px){
-    .head2{
-      display: block;
-      font-size: 18px;
-    }
-  }
-
-
-
-
+  
+  
   @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
   html {
     position: relative;
@@ -181,11 +65,7 @@
     height: auto;
     min-height: 10vh;
     padding: 50px 20px;
-<<<<<<< HEAD
     margin-top:100px;
-=======
-    margin-top: 300px;
->>>>>>> master
     display: flex;
   }
   @media screen and (max-width: 768px) {
@@ -207,8 +87,8 @@
   }
 
   .profile-card__img {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     margin-left: auto;
     margin-right: auto;
     transform: translateY(-50%);
@@ -253,6 +133,10 @@
   .profile-card__txt strong {
     font-weight: 700;
 
+  }
+
+  .profile-card-loc__txt{
+    padding: 20px;
   }
 
   .profile-card__year{

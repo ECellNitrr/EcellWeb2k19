@@ -49,12 +49,26 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
       margin-left: 20%;
     }
   }
+
+  @media(max-width:767px){
+    .countdown{
+      margin-left: 15%;
+    }
+  }
   
   @media(max-width:670px){
     .countdown{
       margin-left: 13%;
     }
   }
+
+  @media(max-width:605px){
+    .countdown{
+      margin-left: 2%;
+    }
+  }
+  
+  
   
   @media(max-width:510px){
     .countdown div:nth-child(4){
@@ -189,7 +203,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   
   .banner{
-    margin-top: 20%;
+    margin-top: 25%;
     margin-left: 20%;
   }
   
@@ -244,20 +258,21 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:850px){
     .banner{
-      margin-top: 25%;
+      margin-top: 40%;
       width: 480px;
     }
   
   }
   
-  @media (max-width:766px){
+  @media (max-width:767px){
     .banner{
-      margin-top: 25%;
+      margin-top: 30%;
       margin-left: 10%;
       width: 550px;
     }
   
   }
+  
   
   @media (max-width:670px){
     .banner{
@@ -267,36 +282,36 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   }
   
-  @media (max-width:575px){
+  @media (max-width:605px){
     .banner{
-      margin-top: 10em;
+      margin-top: 12em;
       margin-left: 0.2em;
       width: 480px;
     }
   
   }
   
-  @media (max-width:480px){
+  @media (max-width:515px){
     .banner{
-      margin-top: 10em;
+      margin-top: 14em;
       margin-left: 0.2em;
       width: 440px;
     }
   
   }
   
-  @media (max-width:450px){
+  @media (max-width:480px){
     .banner{
-      margin-top: 10em;
-      margin-left: -1em;
-      width: 440px;
+      margin-top: 13em;
+      margin-left: 0em;
+      width: 410px;
     }
   
   }
   
   @media (max-width:440px){
     .banner{
-      margin-top: 10em;
+      margin-top: 17em;
       margin-left: -1em;
       width: 400px;
     }
@@ -305,7 +320,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:400px){
     .banner{
-      margin-top: 10em;
+      margin-top: 14em;
       margin-left: -2em;
       width: 400px;
     }
@@ -314,8 +329,8 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:380px){
     .banner{
-      margin-top: 10em;
-      margin-left: -1em;
+      margin-top: 14em;
+      margin-left: -0.7em;
       width: 350px;
     }
   
@@ -323,9 +338,9 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:340px){
     .banner{
-      margin-top: 10em;
-      margin-left: -2em;
-      width: 350px;
+      margin-top: 14em;
+      margin-left: -1em;
+      width: 320px;
     }
   
   }
@@ -363,7 +378,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     }
   }
   
-  @media(max-width:766px){
+  @media(max-width:767px){
     .image-1{
       width: 350px;
       height: 350px;
@@ -376,3 +391,6 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     }
   }
   
+  .countdown div{
+    border-radius: 10px 10px 10px 10px;
+  }

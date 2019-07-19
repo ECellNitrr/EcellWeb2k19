@@ -72,32 +72,11 @@ def generate_spreadsheet(request):
     response['Content-Disposition'] = 'attachment; filename="startups.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Name',
-                     'Email',
-                     'Picture',
-                     'Contact',
-                     'URL',
-                     'Founder',
-                     'Address',
-                     'Flag',
-                     'Details',
-                     'Created_at',
-                     'Modified_at',
-                     'Year'])
+    writer.writerow(['Name','Email','Picture','Contact','URL','Founder',
+                    'Address','Flag','Details','Created_at','Modified_at','Year'])
 
-    startups = Startup.objects.all().values_list(
-        'name',
-        'email',
-        'pic',
-        'contact',
-        'url',
-        'founder',
-        'address',
-        'flag',
-        'details',
-        'created_at',
-        'modified_at',
-        'year')
+    startups = Startup.objects.all().values_list('name','email','pic','contact','url','founder',
+                                        'address','flag','details','created_at','modified_at','year')
     for startup in startups:
         writer.writerow(startup)
 
