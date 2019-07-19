@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import faxios from '../../axios';
-import Login from './login'
-import Signup from './signup'
+// import Login from './login'
+// import Signup from './signup'
 
 export default class form extends Component{
 
@@ -27,8 +27,8 @@ export default class form extends Component{
 
 					
 							<div className="tab-content">
-								<Login/>
-								<Signup/>
+								{/* <Login/>
+								<Signup/> */}
 							</div>
 						</div>
 					</div>

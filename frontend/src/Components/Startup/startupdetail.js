@@ -19,7 +19,7 @@ export default class startupdetail extends Component {
             let data = d.data.data;
             console.log(data)
             let startup_detail = data.find(
-                startup => startup.id == this.startup_id
+                startup => startup.id === this.startup_id
             );
 
             console.log({ data, startup_detail });
@@ -38,7 +38,7 @@ export default class startupdetail extends Component {
                 <div className="startup_detail">
                     
                     <div className="startup-item1">
-                        <img className="shadow-lg p-3 mb-5 bg-white rounded startup-detail-pic" src={startup.pic} />
+                        <img alt='startup' className="shadow-lg p-3 mb-5 bg-white rounded startup-detail-pic" src={startup.pic} />
                     </div>
                     <div className="startup-item2">
                         <div className="startup-content">
