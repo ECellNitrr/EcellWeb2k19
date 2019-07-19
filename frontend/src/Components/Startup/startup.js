@@ -10,17 +10,28 @@ class Startup extends Component{
     startups: []
   }
 
-  componentDidMount() {
-    this.axios.get('/startups/list/')
-      .then(d=>{
-        const startups = d.data.startups
-        console.log({startups})
-        this.setState({startups})
+  componentDidMount(){
+    for(let i=2016; i<=2020;i++){
+      this.axios.get(`/startups/list/${i}/`).then(res=>{
+        console.log(res)
+        let  data = res.data.data
+        if(data.length>0){
+          this.setState({
+            loading: false,
+            startups: [
+              ...this.state.startups,
+              ...data
+            ]
+          })
+        }
       })
+    }
   }
+
   
   
   render(){
+    console.log(this.state.startups)
     const startups = this.state.startups.map(startup => 
         <div key={startup.id} className="startup">
 			<img src={startup.pic} alt=""/>

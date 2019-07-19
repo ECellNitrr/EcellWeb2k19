@@ -12,7 +12,7 @@ class mentors extends Component {
   };
 
   componentDidMount(){
-    for(let i=2016; i<=2018;i++){
+    for(let i=2016; i<=2020;i++){
       this.axios.get(`/mentors/list/${i}/`).then(res=>{
         console.log(res)
         let  data = res.data.data
