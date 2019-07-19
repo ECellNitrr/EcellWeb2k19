@@ -75,15 +75,8 @@ def generate_spreadsheet(request):
     writer.writerow(['Name', 'Details', 'Pic', 'Contact',
                      'Website', 'Spons_type', 'Flag', 'Year'])
 
-    sponsors = Sponsor.objects.all().values_list(
-        'name',
-        'details',
-        'pic',
-        'contact',
-        'website',
-        'spons_type',
-        'flag',
-        'year')
+    sponsors = Sponsor.objects.all().values_list('name','details','pic','contact','website',
+                                                'spons_type','flag','year')
     for sponsor in sponsors:
         writer.writerow(sponsor)
 

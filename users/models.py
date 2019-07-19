@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django.utils.timezone import utc
+import datetime
 
 class CustomUser(AbstractUser):
 
@@ -28,6 +29,15 @@ class CustomUser(AbstractUser):
                                  default='GST')
     linkedin = models.URLField(max_length=64, null=True, blank=True)
     facebook = models.URLField(max_length=64, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now=True, editable=False)
+    modified_at = models.DateTimeField(auto_now_add=True, editable=False)
+    
+    @property
+    def last_modified(self):
+        if self.modified_at:
+            now =datetime.datetime.utcnow().replace(tzinfo=utc)
+            timediff = now - self.modified_at
+            return timediff.total_seconds()
 
     def save(self, *args, **kwargs):
         self.username = self.email

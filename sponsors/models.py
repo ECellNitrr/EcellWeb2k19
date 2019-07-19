@@ -5,7 +5,7 @@ from users.models import CustomUser
 class Sponsor(models.Model):
     SPONS_TYPE = (
         ('ATS', 'Associate Sponsors'),
-        ('PLS', 'Platinum Sponsors'),
+        ('PTS', 'Platinum Sponsors'),
         ('GDS', 'Gold Sponsors'),
         ('TLS', 'Title Sponsors'),
         ('PRS', 'Partner Sponsors'),
@@ -20,7 +20,7 @@ class Sponsor(models.Model):
     contact = models.TextField(max_length=13, null=True, blank=True)
     website = models.URLField(null=True, blank=True)
     spons_type = models.CharField(
-        max_length=4,
+        max_length=3,
         choices=SPONS_TYPE,
         default='AS')
     flag = models.BooleanField(default=False)
