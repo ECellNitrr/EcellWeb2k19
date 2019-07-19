@@ -198,23 +198,19 @@ def resend_otp(request):
         }, status=res_status)
 
 @api_view(['POST'])
+@ecell_user
 def change_contact(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
-    email = req_data['email']
-    try:
-        user = CustomUser.objects.get(email=email)
-    except:
-        message = "Account with this email id doesn't exists. Kindly signup."
-    else:
-        new_contact = req_data['contact']
-        otp = send_otp(new_contact)
-        user.otp = otp
-        user.contact = new_contact
-        user.verified = False
-        user.save()
-        message = "An otp has been sent to new mobile no."
-        res_status = status.HTTP_200_OK
+    new_contact = req_data['contact']
+    user = request.ecelluser
+    otp = send_otp(new_contact)
+    user.otp = otp
+    user.contact = new_contact
+    user.verified = False
+    user.save()
+    message = "An otp has been sent to new mobile no."
+    res_status = status.HTTP_200_OK
     return Response({
             "message": message,
         }, status=res_status)
