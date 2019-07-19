@@ -12,6 +12,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   }
   
   .countdown{
+    position: relative;
     font-size: 25px;
     display: flex;
     margin-left: 30%;
@@ -45,8 +46,30 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
       display: block;
     }
   
-    .countdown{
+    /*.countdown{
       margin-left: 20%;
+    }*/
+  }
+
+  @media(max-width:1080px){
+    .countdown div{
+      padding: 15px;;
+    }
+
+    .countdown{
+      font-size: 20px;
+    }
+  }
+
+  @media(max-width:850px){
+    .countdown{
+      margin-left: 15%;
+    }
+  }
+
+  @media(max-width:767px){
+    .countdown{
+      margin-left: 17%;
     }
   }
 
@@ -71,40 +94,68 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   
   @media(max-width:510px){
-    .countdown div:nth-child(4){
-      display: none;
+    .countdown div{
+      
+      padding: 10px;
     }
   
     .countdown{
-      margin-left: 2em;
-    }
-  }
-  
-  @media(max-width:440px){
-    .countdown div:nth-child(3){
-      display: none;
-    }
-  
-    .countdown{
+      font-size: 15px;
       margin-left: 4em;
     }
   }
-  
-  @media(max-width:380px){
+
+  @media(max-width:480px){
     .countdown{
       margin-left: 3em;
     }
   }
   
+  @media(max-width:440px){
+  
+    .countdown{
+      margin-left: 1.5em;
+    }
+  }
+
+  @media(max-width:400px){
+  
+    .countdown{
+      margin-left: 1em;
+    }
+  }
+  
+  @media(max-width:380px){
+    .countdown{
+      margin-left: 0em;
+    }
+  }
+  
   @media(max-width:340px){
     .countdown{
-      margin-left: 2em;
+      margin-left: -0.5em;
+    }
+  }
+
+  @media(max-width:360px){
+    .countdown div{
+      padding: 8px;;
+    }
+
+    .countdown{
+      font-size: 12px;
     }
   }
   
   .countdown span{
     display: block;
     font-size: 20px;
+  }
+
+  @media(max-width:510px){
+    .countdown span{
+      font-size: 15px;
+    }
   }
   
   
@@ -182,9 +233,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   
   .bulb{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   text-align: center;
     margin-top: 30%;
   }
   
@@ -209,35 +258,17 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:1480px){
     .banner{
-      width: 800px;
-    }
-  
-  }
-  
-  @media (max-width:1350px){
-    .banner{
-      width: 750px;
-    }
-  
-  }
-  
-  @media (max-width:1250px){
-    .banner{
-      width: 700px;
-    }
-  
-  }
-  
-  @media (max-width:1150px){
-    .banner{
       width: 650px;
+      margin-left: 15%;
     }
   
   }
+  
   
   @media (max-width:1080px){
     .banner{
       width: 600px;
+      margin-left: 12%;;
     }
   
   }
@@ -318,11 +349,20 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   }
   
+  @media (max-width:415px){
+    .banner{
+      margin-top: 14em;
+      margin-left: 0.5em;
+      width: 350px;
+    }
+  
+  }
+
   @media (max-width:400px){
     .banner{
       margin-top: 14em;
-      margin-left: -2em;
-      width: 400px;
+      margin-left: 0em;
+      width: 350px;
     }
   
   }
@@ -331,7 +371,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     .banner{
       margin-top: 14em;
       margin-left: -0.7em;
-      width: 350px;
+      width: 330px;
     }
   
   }
@@ -384,13 +424,14 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
       height: 350px;
     }
   }
-  
-  @media(max-width:700px){
+
+  @media(max-width:400px){
     .image-1{
-      margin-left: 10%;
+      width: 300px;
+      height: 300px;
     }
   }
   
-  .countdown div{
-    border-radius: 10px 10px 10px 10px;
-  }
+  
+
+  

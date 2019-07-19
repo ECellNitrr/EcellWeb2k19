@@ -9,7 +9,6 @@ class team extends Component{
     axios = faxios();
     state = {
     student: {},
-    faculty: {},
     loading: true
   };
   componentDidMount() {
