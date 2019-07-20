@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
-import faxios from '../../axios';
 import Modal from './modal'
-import Login from './login'
+// import Login from './login'
 import Signup from './signup'
 
 export default class form extends Component{

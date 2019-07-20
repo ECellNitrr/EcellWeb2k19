@@ -21,16 +21,16 @@ export default class login extends Component {
                     </div>
                     <div className="text-center mt-2">
                         <button className="btn btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>
+                        <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
-                    </div>
+                </div>
 
-                    <div className="modal-footer">
+                    {/* <div className="modal-footer">
                     <div className="options text-center text-md-right mt-1">
                         <p>Not a member? <a href="#" className="blue-text">Sign Up</a></p>
                         <p>Forgot <a href="#" className="blue-text">Password?</a></p>
                     </div>
-                    <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-                </div>
+                </div> */}
             </div>
         )
     }

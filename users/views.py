@@ -45,7 +45,7 @@ class RegistrationAPIView(APIView):
             payload = {
                 'email': serializer.validated_data['email']
             }
-            otp = send_otp(serializer.validated_data['contact'], otp=otp)
+            # otp = send_otp(serializer.validated_data['contact'], otp=otp)
             token = jwt.encode(
                 payload,
                 settings.SECRET_KEY,
