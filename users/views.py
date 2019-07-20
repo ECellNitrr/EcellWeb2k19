@@ -133,7 +133,9 @@ def verify_otp(request):
     user = request.ecelluser
     req_data = request.data
     if 'otp' not in req_data:
-        message='Please enter otp to verify your account'
+        message ='Please enter otp to verify your account'
+    elif user.verified==True:
+        message = 'Account already verified'
     else:
         otp = req_data['otp']
         if str(otp)==user.otp:
@@ -214,3 +216,13 @@ def change_contact(request):
     return Response({
             "message": message,
         }, status=res_status)
+    
+@api_view(['GET'])
+@ecell_user
+def is_user_verified(request):
+    user = request.ecelluser
+    verifed = user.verified
+    res_status = status.HTTP_200_OK
+    return Response({
+        "verified":verified,
+    }, status=res_status)
