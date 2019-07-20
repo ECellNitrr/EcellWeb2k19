@@ -41,3 +41,39 @@ def ecell_user(function):
         wrap.__doc__ = function.__doc__
         wrap.__name__ = function.__name__
     return wrap
+
+def client_check(function):
+    def wrap(request, *args, **kwargs):
+
+        NO_TOKEN = Response({
+                        "message":"No Token Provided!"
+                    }, status=status.HTTP_401_UNAUTHORIZED)
+        
+        
+        ACCESS_ERROR = Response({
+                            "message": "You are not authorized to use this API"
+                    }, status=status.HTTP_401_UNAUTHORIZED)
+
+        token = request.META.get("HTTP_ACCESS", None)
+        print(token)
+        if token is not None: 
+            try:
+                payload = jwt.decode(token, config('SECRET_KEY'))
+            except Exception as e:
+                print(e)
+                return ACCESS_ERROR
+            else:
+                print(payload)
+                client = payload['client']
+                organization = payload['organization']
+                
+                if client!='android' or organization!='ECell':
+                    return ACCESS_ERROR
+                    
+        else:
+            return NO_TOKEN
+
+        return function(request, *args, **kwargs)
+        wrap.__doc__ = function.__doc__
+        wrap.__name__ = function.__name__
+    return wrap
