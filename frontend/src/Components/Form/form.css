@@ -3,3 +3,7 @@
     color: skyblue;
     cursor: pointer;
 }
+
+#logoutModal .details {
+    font-size: 125%;
+}

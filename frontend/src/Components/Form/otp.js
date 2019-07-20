@@ -26,12 +26,10 @@ export default class otp extends Component {
             otp: this.otp.value
         }).then(d=>{
             let data = d.data
-            console.log(data)
-            
-            this.setState({
-                success:true,
-                err: false
-            })
+
+            this.user.verified = true
+            sessionStorage['ecell_user'] = JSON.stringify(this.user)
+            window.location = '/'
         }).catch(err=>{
             console.error(err.request.response)
             this.setState({
@@ -52,8 +50,8 @@ export default class otp extends Component {
     
     
     render() {
-        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">The entered OTP is not valid!</div>
-        const scsmsg = <div className="my-3 text-success font-weight-bold text-center">think here</div>
+        const errmsg = <div className="mt-3 text-danger font-weight-bold text-center">The entered OTP is not valid!</div>
+        const scsmsg = <div className="mt-3 text-success font-weight-bold text-center">Logged in as </div>
 
         const resend_otp =
             <div className="mt-2 text-center">
@@ -62,6 +60,7 @@ export default class otp extends Component {
 
         return (
             <Modal id='otpModal'>
+                <div className="text-center mt-3">OTP may take upto 10mins to be delivered.</div>
                 {this.state.err ? errmsg:null}
                 {this.state.success ? scsmsg:null}
             

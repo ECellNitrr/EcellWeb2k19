@@ -8,15 +8,20 @@ if( process.env.NODE_ENV === 'production'){
 
 export const getuser = () => {
     const user = sessionStorage['ecell_user']
+    console.log({user})
     if(user){
         return JSON.parse(user)
     }else{
-        return {}
+        return false
     }
 }
 
 export default () => {
-    let token = getuser()['token']
+    let token = null 
+    const user = getuser()
+    if(user){
+        token = user.token
+    }
 
     return axios.create({
         baseURL,

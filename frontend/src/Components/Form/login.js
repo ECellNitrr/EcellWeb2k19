@@ -16,22 +16,20 @@ export default class login extends Component {
         })
 
         this.axios.post('/users/login/',{
-            // email: this.email.value,
-            // password: this.password.value,
-            email: 'naveen@gmail.com',
-            password: 'jervismk2',
+            email: this.email.value,
+            password: this.password.value,
         }).then(d=>{
             let data = d.data
             console.log(data)
             
             sessionStorage['ecell_user'] = JSON.stringify(data)
-            document.querySelector('#otpModal_toggle').click()
             
-            this.setState({
-                success:true,
-                err: false
-            })
-            this.close_btn.click()            
+            if(data.verified){
+                window.location = '/'
+            }else{
+                this.close_btn.click()            
+                document.querySelector('#otpModal_toggle').click()
+            }
         }).catch(err=>{
             console.error(err.request.response)
             this.setState({
