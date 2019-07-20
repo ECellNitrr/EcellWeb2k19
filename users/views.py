@@ -11,12 +11,12 @@ from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 from utils.auth_utils import send_otp
 from rest_framework.decorators import api_view
-from decorators import ecell_user
+from decorators import ecell_user, client_check
 from random import randint
 from .models import CustomUser
 import traceback
 
-
+@client_check
 class RegistrationAPIView(APIView):
     permission_classes = (AllowAny,)
     serializer_class = RegistrationSerializer
@@ -61,7 +61,7 @@ class RegistrationAPIView(APIView):
             "token": res_token
         }, status=res_status)
 
-
+@client_check
 class LoginAPIView(APIView):
     permission_classes = (AllowAny,)
     serializer_class = LoginSerializer
@@ -125,6 +125,7 @@ class LoginAPIView(APIView):
             }, status=res_status)
 
 
+@client_check
 @api_view(['POST'])
 def forgot_password(request):
     res_status = status.HTTP_400_BAD_REQUEST
@@ -149,12 +150,15 @@ def forgot_password(request):
 
 @api_view(['POST'])
 @ecell_user
+@client_check
 def verify_otp(request):
     res_status = status.HTTP_400_BAD_REQUEST
     user = request.ecelluser
     req_data = request.data
     if 'otp' not in req_data:
-        message='Please enter otp to verify your account'
+        message ='Please enter otp to verify your account'
+    elif user.verified==True:
+        message = 'Account already verified'
     else:
         otp = req_data['otp']
         if str(otp)==user.otp:
@@ -168,8 +172,34 @@ def verify_otp(request):
     return Response({
             "message": message,
         }, status=res_status)
+    
+@api_view(['POST'])
+@client_check
+def check_otp(request):
+    res_status = status.HTTP_400_BAD_REUEST
+    req_data = request.data 
+    verified = False
+    email = req_data['email']
+    otp = req_data['otp']
+    try:
+        user = CustomUser.objects.get(email=email)
+    except:
+        message = "User account with this email id doesn't exist"
+    else:
+        user_otp = user.otp
+        if str(otp)==user_otp:
+            verified = True
+            message = 'Otp verified'
+            res_status = status.HTTP_200_OK
+        else:
+            message = 'Invlaid Otp'
+    return Response({
+        "message":message,
+        "verified":verified
+    }, status=res_status)
 
 @api_view(['POST'])
+@client_check
 def change_password(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
@@ -181,7 +211,6 @@ def change_password(request):
     except:
         message = "Account with this email id doesn't exists. Kindly signup."
     else:
-        contact = user.contact
         user_otp = user.otp
         if str(otp)==user_otp:
             user.set_password(password)
@@ -197,6 +226,7 @@ def change_password(request):
 
 @api_view(['GET'])
 @ecell_user
+@client_check
 def resend_otp(request):
     res_status = status.HTTP_400_BAD_REQUEST
     user = request.ecelluser
@@ -221,6 +251,7 @@ def resend_otp(request):
 
 @api_view(['POST'])
 @ecell_user
+@client_check
 def change_contact(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
@@ -271,4 +302,14 @@ def get_user_details(request):
         'linkedin' : user.linkedin,
         'facebook' : user.facebook,
         'applied' : user.applied,
+    
+@api_view(['GET'])
+@ecell_user
+@client_check
+def is_user_verified(request):
+    user = request.ecelluser
+    verifed = user.verified
+    res_status = status.HTTP_200_OK
+    return Response({
+        "verified":verified,
     }, status=res_status)
