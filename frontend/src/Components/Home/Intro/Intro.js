@@ -6,15 +6,6 @@ import bulb from '../../../assets/bulb.svg';
 import banner from '../../../assets/banner.png';
 
 const intro = () => {
-
-    /*$(window).scroll(function(){
-        var scrollval = $(this).scrollTop();
-
-        $(".row").css("transform","translate(0px,"+ scrollval/50 + "%)")
-    });*/
-
-
-
     //Set Launch Date
     const launchDate = new Date('Aug 31, 2019 00:00:00').getTime();
 

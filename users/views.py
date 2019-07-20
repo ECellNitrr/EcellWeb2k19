@@ -251,3 +251,24 @@ def request_ca_approval(request):
     return Response({
             "message": message,
         }, status=res_status)
+
+
+@api_view(['GET'])
+@ecell_user
+def get_user_details(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    user = request.ecelluser
+    
+    res_status = status.HTTP_200_OK
+    return Response({
+        'first_name' : user.first_name,
+        'last_name' : user.last_name,
+        'email' : user.email,
+        'verified' : user.verified,
+        'contact' : user.contact,
+        'bquiz_score' : user.bquiz_score,
+        'user_type' : user.user_type,
+        'linkedin' : user.linkedin,
+        'facebook' : user.facebook,
+        'applied' : user.applied,
+    }, status=res_status)

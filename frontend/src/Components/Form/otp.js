@@ -3,32 +3,28 @@ import Modal from './modal'
 import faxios,{ getuser } from '../../axios'
 
 export default class otp extends Component {
-    axios = faxios()
     state = {
         err: false,
         success: false,
         resend : false
     }
-    user = getuser()
-
-    componentDidMount() {
-        console.log(this.user)        
-    }
 
     _verify_otp = e => {
         e.preventDefault()
+        let user = getuser()
+
         this.setState({
             success:false,
             err: false
         })
 
-        this.axios.post('/users/verify_otp/',{
+        faxios().post('/users/verify_otp/',{
             otp: this.otp.value
         }).then(d=>{
             let data = d.data
 
-            this.user.verified = true
-            sessionStorage['ecell_user'] = JSON.stringify(this.user)
+            user.verified = true
+            sessionStorage['ecell_user'] = JSON.stringify(user)
             window.location = '/'
         }).catch(err=>{
             console.error(err.request.response)
@@ -40,7 +36,7 @@ export default class otp extends Component {
     }
 
     _resend_otp = () => {
-        this.axios('/users/resend_otp/').then(d=>{
+        faxios().get('/users/resend_otp/').then(d=>{
             console.log(d.data)
             this.setState({resend: true})
         }).catch(e=>{

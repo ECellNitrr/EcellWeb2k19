@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import {NavLink,Link} from 'react-router-dom';
+import {NavLink,Link, withRouter} from 'react-router-dom';
 import './navbar.css';
 import logo from '../../assets/logo-white.png';
 import Form from '../Form/form';
 import OtpModal from '../Form/otp'
 import LogoutModal from '../Form/logout'
+import AdforcaModal from '../Form/adforca'
 import {getuser} from '../../axios'
 
-export default class navbar extends Component {
+ class navbar extends Component {
     state = {
         active: false,
         loggedin: false
@@ -34,6 +35,7 @@ export default class navbar extends Component {
                 <div className="logoback"><img className={`logo ${this.state.active? 'active1': ''}`} alt='' src={logo}></img></div>
                 <Form/>
                 <OtpModal/>
+                <AdforcaModal/>
                 {this.state.loggedin?<LogoutModal/>:false}
                 <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>
                 <h3 className="brand-header3">E-CELL</h3>
@@ -42,6 +44,7 @@ export default class navbar extends Component {
                     {this.state.loggedin ? loggedin: loggedout}
                     <a href="" className="btn btn1 d-none" data-toggle="modal" id='forgetPasModal_toggle' data-target="#forgetPasModal"></a>
                     <a href="" className="btn btn1 d-none" data-toggle="modal" id='otpModal_toggle' data-target="#otpModal"></a>
+                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='adforcaModal_toggle' data-target="#adforcaModal"></a>
                 </div>
                 
     
@@ -56,8 +59,8 @@ export default class navbar extends Component {
                         <li><NavLink to="/speakers" data-text="Speakers" >Speakers</NavLink></li>
                         <li><NavLink to="/startups" data-text="Startups" >Startups</NavLink></li>
                         <li><NavLink to="/mentors" data-text="Mentors" >Mentors</NavLink></li>
-                        {/* <li><NavLink to="/caportal" data-text="Caportal" >CaPortal</NavLink></li> */}
-                        <li><NavLink to="/register" data-text="Register" >Register</NavLink></li>
+                        <li><NavLink to="/caportal" data-text="Caportal" >CaPortal</NavLink></li>
+                        {/* <li><NavLink to="/register" data-text="Register" >Register</NavLink></li> */}
                         <li><a href='https://medium.com/e-cell-nit-raipur' data-text="Blogs" >Blogs</a></li>
                     </ul>
                 </div>
@@ -65,3 +68,5 @@ export default class navbar extends Component {
         )
     }
 }
+
+export default withRouter(navbar)

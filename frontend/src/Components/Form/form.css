@@ -7,3 +7,8 @@
 #logoutModal .details {
     font-size: 125%;
 }
+
+#AdforcaModal .modal-content{
+    width: 90vw !important;
+
+}

@@ -14,18 +14,25 @@ const user_type = {
 
 export default class otp extends Component {
     axios = faxios()
-    user = getuser()
-
+    state = {}
+    
     componentDidMount() {
-        console.log(this.user)        
+        faxios().get('/users/get_user_details/').then(d=>{
+            let data = d.data
+            const user = getuser()
+            sessionStorage['ecell_user'] = JSON.stringify({
+                token: user.token,
+                ...data
+            })
+            this.setState(data)
+        })
     }
 
     _request_approval = e => {
         e.preventDefault()
 
-        this.axios.get('/users/request_ca_approval/').then(d=>{
-            let data = d.data
-            alert('You have successfully applied for CA! When approved you will see a CA batch near your name. Also you can confirm it by clicking on your name on top right corner')
+        faxios().get('/users/request_ca_approval/').then(d=>{
+            alert('You have successfully applied for CA! You can confirm it by clicking on your name on top right corner')
             this.user.applied = true
             sessionStorage['ecell_user'] = JSON.stringify(this.user)
             window.location = '/'
@@ -58,11 +65,11 @@ export default class otp extends Component {
             <Modal id='logoutModal'>
                 <div className="modal-body text-center mb-1">
                     <div className="details">
-                        <div><span className="font-weight-bold">User: </span>{this.user.first_name.toUpperCase()} {this.user.last_name.toUpperCase()}</div>
-                        <div><span className="font-weight-bold">Email: </span>{this.user.email}</div>
-                        <div><span className="font-weight-bold">Member Type: </span>{user_type[this.user.user_type]}</div>
+                        <div><span className="font-weight-bold">User: </span>{this.state.first_name} {this.state.last_name}</div>
+                        <div><span className="font-weight-bold">Email: </span>{this.state.email}</div>
+                        <div><span className="font-weight-bold">Member Type: </span>{user_type[this.state.user_type]}</div>
                     </div>
-                    {this.user.applied ? applied_for_ca:apply_for_ca}
+                    {this.state.applied ? applied_for_ca:apply_for_ca}
                     <div className="my-3 text-center">Are your sure want to logout?</div>
                     <div className="text-center mt-2">
                         <button onClick={this._logout} className="btn text-white btn-info login-button">Logout</button>
