@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Modal from './modal'
-// import Login from './login'
+import Login from './login'
 import Signup from './signup'
 
 export default class form extends Component{
@@ -21,7 +21,7 @@ export default class form extends Component{
 
 
 							<div className="tab-content">
-							{/* <Login/> */}
+							<Login/>
 							<Signup/>
 							</div>
 						</Modal>
