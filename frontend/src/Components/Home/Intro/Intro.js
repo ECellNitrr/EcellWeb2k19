@@ -6,15 +6,6 @@ import bulb from '../../../assets/bulb.svg';
 import banner from '../../../assets/banner.png';
 
 const intro = () => {
-
-    /*$(window).scroll(function(){
-        var scrollval = $(this).scrollTop();
-
-        $(".row").css("transform","translate(0px,"+ scrollval/50 + "%)")
-    });*/
-
-
-
     //Set Launch Date
     const launchDate = new Date('Aug 31, 2019 00:00:00').getTime();
 
@@ -60,13 +51,13 @@ const intro = () => {
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 banner-col">
                             <div>
-                                <div ><img alt='' className="banner" src={banner}></img></div>
+                                <div ><img alt='banner' className="banner" src={banner}></img></div>
                                 <div className="countdown"></div>
                             </div>
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-md-5 col-lg-5 bulb-col">
-                            <p className="bulb"><img className="image-1" src={bulb}></img></p>
+                            <p className="bulb"><img alt='bulb' className="image-1" src={bulb}></img></p>
                         </div>
                     </div>
                     <div className="wave"></div>

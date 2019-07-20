@@ -7,7 +7,6 @@ db.sqlite3
 
 #Cache Files
 **/__pycache__
-*/migrations
 .env
 *.pyc
 

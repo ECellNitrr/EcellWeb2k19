@@ -8,8 +8,10 @@ class caportal extends Component{
         return(
             <div>
                 <Navbar/>
-                <div className="caportal">
-                Site Under Construction
+                <div className="caportal text-center">
+                    <h1>Will be up on Monday!(22/07/2019)</h1>
+                    <h1>Stay tuned</h1>
+                    <img src={require('../../assets/wink_emoji.png')} height='300' width='300' alt="wink emoji"/>
                 </div>
             </div>
         )
