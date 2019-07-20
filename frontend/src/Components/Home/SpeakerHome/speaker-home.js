@@ -27,7 +27,7 @@ export default class Parallax extends Component {
                 .finally(() => {
                     count += 1;
                     console.log(count)
-                    if (count === 5) {
+                    if (count == 5) {
                         this.setState({
                             loading: false
                         });

@@ -396,8 +396,7 @@
   }
 
   .login-button1{
-    position: fixed;
-    text-transform: uppercase;
+    position: absolute;
     z-index: 10;
     top: 35px;
     right: 120px;

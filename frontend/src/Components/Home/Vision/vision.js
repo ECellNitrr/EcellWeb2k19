@@ -2,10 +2,9 @@
  import './vision.css';
  import run from '../../../assets/run.png';
 
- const vision = () =>{
-    // document.querySelector("#adforcaModal_toggle").click();
-    return (
-        <div className="vision">
+
+ const vision = () =>(
+     <div className="vision">
          <div className="container-fluid ctn-3">
             <div className="row">
                 
@@ -20,8 +19,6 @@
             </div>
          </div>
      </div>
-    )
- }
-     
+ )
 
  export default vision;

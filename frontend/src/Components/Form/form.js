@@ -1,14 +1,19 @@
 import React,{Component} from 'react';
-import Modal from './modal'
-import Login from './login'
-import Signup from './signup'
-import './form.css'
+import faxios from '../../axios';
+// import Login from './login'
+// import Signup from './signup'
 
 export default class form extends Component{
+
+  axios = faxios();
+
     render(){
         return(
-					<React.Fragment>
-						<Modal id='loginRegModal'>
+			<div className="modal fade" id="modalLRForm" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div className="modal-dialog cascading-modal" role="document">
+
+					<div className="modal-content">
+						<div className="modal-c-tabs">
 							<ul className="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
 								<li className="nav-item">
 									<a className="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i className="fas fa-user mr-1"></i>
@@ -20,14 +25,15 @@ export default class form extends Component{
 								</li>
 							</ul>
 
-
+					
 							<div className="tab-content">
-							<Login/>
-							<Signup/>
+								{/* <Login/>
+								<Signup/> */}
 							</div>
-						</Modal>
-						<Modal id='forgetPasModal'>forget password</Modal>
-					</React.Fragment>
+						</div>
+					</div>
+				</div>
+			</div>
         )
     }
 } 
