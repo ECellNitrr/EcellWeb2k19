@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./speakerHome.css";
 import faxios from "../../../axios";
-import Swiper from "react-id-swiper/lib/ReactIdSwiper.full";
+import Swiper from "react-id-swiper";
 
 export default class Parallax extends Component {
     axios = faxios();

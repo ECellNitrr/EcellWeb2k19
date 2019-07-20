@@ -5,7 +5,7 @@ import Intro from "../Home/Intro/Intro";
 import About from "../Home/About/about";
 import Vision from "../Home/Vision/vision";
 import Spons from "../Home/SponsHome/sponsors-home";
-import SpeakersHome from "../Home/SpeakerHome/speaker-home";
+// import SpeakersHome from "../Home/SpeakerHome/speaker-home";
 import Form from "../Home/Form/form";
 import Footer from "../Footer/footer";
 
@@ -24,7 +24,7 @@ export default class home extends Component {
                 <About />
                 <Vision />
                 <Spons />
-                <SpeakersHome />
+                {/* <SpeakersHome /> */}
                 <Form />
                 <Footer />
             </div>
