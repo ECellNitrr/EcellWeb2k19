@@ -40,17 +40,22 @@ def get_events(request, year):
 @api_view(['POST', ])
 def event_register(request, id):
     eventregister = EventRegister()
-    eventregister.profile = request.ecelluser
-    try:
-        eventregister.event = Event.objects.get(id=id)
-    except:
-        res_message="Registration Failed! Event does not exist"
-        res_status=status.HTTP_404_NOT_FOUND
-        
+    user = request.ecelluser
+    res_status = status.HTTP_401_UNAUTHORIZED
+    if user.verified:
+        eventregister.profile = user
+        try:
+            eventregister.event = Event.objects.get(id=id)
+        except:
+            res_message="Registration Failed! Event does not exist"
+            res_status=status.HTTP_404_NOT_FOUND
+            
+        else:
+            eventregister.save()
+            res_message= "Registration Successful"
+            res_status=status.HTTP_200_OK
     else:
-        eventregister.save()
-        res_message= "Registration Successful"
-        res_status=status.HTTP_200_OK
+        res_message = "You need to verify your account to register for an event"
     return Response({
         "message": res_message
     }, status=res_status)
