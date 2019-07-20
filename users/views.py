@@ -45,7 +45,7 @@ class RegistrationAPIView(APIView):
             payload = {
                 'email': serializer.validated_data['email']
             }
-            # otp = send_otp(serializer.validated_data['contact'], otp=otp)
+            otp = send_otp(serializer.validated_data['contact'], otp=otp)
             token = jwt.encode(
                 payload,
                 settings.SECRET_KEY,
@@ -81,7 +81,7 @@ class LoginAPIView(APIView):
             res_detail = email_msg[0] + " " + password_msg[0]
         else:
             try:
-                serializer.ecelluser_authenticate()
+                user = serializer.ecelluser_authenticate()
             except Exception as e:
                 res_detail = str(e.message)
 
@@ -98,11 +98,32 @@ class LoginAPIView(APIView):
                 res_token = token
                 res_status = status.HTTP_200_OK
 
-        return Response({
-            "message": res_message,
-            "detail": res_detail,
-            "token": res_token
-        }, status=res_status)
+        try:
+            return Response({
+                "message": res_message,
+                "detail": res_detail,
+                "token": res_token,
+                
+                'first_name' : user['first_name'],
+                'last_name' : user['last_name'],
+                'email' : user['email'],
+                'verified' : user['verified'],
+                'contact' : user['contact'],
+                'bquiz_score' : user['bquiz_score'],
+                'avatar' : user['avatar'],
+                'user_type' : user['user_type'],
+                'linkedin' : user['linkedin'],
+                'facebook' : user['facebook'],
+                'created_at' : user['created_at'],
+                'modified_at' : user['modified_at'],
+            }, status=res_status)
+        except:
+            return Response({
+                "message": res_message,
+                "detail": res_detail,
+                "token": res_token,
+            }, status=res_status)
+
 
 @api_view(['POST'])
 def forgot_password(request):
@@ -181,6 +202,7 @@ def resend_otp(request):
     user = request.ecelluser
     otp = user.otp
     contact = user.contact
+    print(otp)
     if otp:
         duration = user.last_modified
         print(duration)

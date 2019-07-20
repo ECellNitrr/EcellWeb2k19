@@ -16,20 +16,22 @@ export default class login extends Component {
         })
 
         this.axios.post('/users/login/',{
-            email: this.email.value,
-            password: this.password.value,
+            // email: this.email.value,
+            // password: this.password.value,
+            email: 'naveen@gmail.com',
+            password: 'jervismk2',
         }).then(d=>{
             let data = d.data
+            console.log(data)
             
-            this.email.value = ''
-            this.password.value = ''
+            sessionStorage['ecell_user'] = JSON.stringify(data)
+            document.querySelector('#otpModal_toggle').click()
             
             this.setState({
                 success:true,
                 err: false
             })
-            console.log(data)
-        
+            this.close_btn.click()            
         }).catch(err=>{
             console.error(err.request.response)
             this.setState({
@@ -62,9 +64,10 @@ export default class login extends Component {
                     </div>
                     <div className="text-center mt-2">
                         <button onClick={this._login} className="btn text-white btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>
-                        <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                        <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>
+
 
                     {/* <div className="modal-footer">
                     <div className="options text-center text-md-right mt-1">

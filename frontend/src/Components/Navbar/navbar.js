@@ -3,6 +3,7 @@ import {NavLink,Link} from 'react-router-dom';
 import './navbar.css';
 import logo from '../../assets/logo-white.png';
 import Form from '../Form/form';
+import OtpModal from '../Form/otp'
 
 export default class navbar extends Component {
     state = {
@@ -14,11 +15,15 @@ export default class navbar extends Component {
             <div className="Navbar">
                 <div className="logoback"><img className={`logo ${this.state.active? 'active1': ''}`} alt='' src={logo}></img></div>
                 <Form/>
+                <OtpModal/>
+
                 <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>
                 <h3 className="brand-header3">E-CELL</h3>
                 <h4 className="brand-header2">NIT RAIPUR</h4>
                 <div className="login-button1">
                     <a href="" className="btn btn1" data-toggle="modal" data-target="#loginRegModal">LogIn/SignUp</a>
+                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='forgetPasModal_toggle' data-target="#forgetPasModal"></a>
+                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='otpModal_toggle' data-target="#otpModal"></a>
                 </div>
                 
     
