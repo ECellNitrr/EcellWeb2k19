@@ -60,13 +60,13 @@ const intro = () => {
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 banner-col">
                             <div>
-                                <div ><img alt='' className="banner" src={banner}></img></div>
+                                <div ><img alt='banner' className="banner" src={banner}></img></div>
                                 <div className="countdown"></div>
                             </div>
                         </div>
 
                         <div className="col-xs-12 col-sm-12 col-md-5 col-lg-5 bulb-col">
-                            <p className="bulb"><img className="image-1" src={bulb}></img></p>
+                            <p className="bulb"><img alt='bulb' className="image-1" src={bulb}></img></p>
                         </div>
                     </div>
                     <div className="wave"></div>
