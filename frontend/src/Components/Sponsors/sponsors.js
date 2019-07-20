@@ -60,7 +60,7 @@ class Sponsors extends Component {
                     className="container-fluid"
                     style={{ maxWidth: "1200px", paddingTop: "300px" }}
                 >
-                    {/* <HeaderLinks /> */}
+                    <HeaderLinks />
                 </div>
 
                 <div className="header1">SPONSORS {this.state.year}</div>
@@ -81,7 +81,7 @@ class Sponsors extends Component {
                     className="container-fluid"
                     style={{ maxWidth: "1200px", paddingTop: "50px" }}
                 >
-                    {/* <HeaderLinks /> */}
+                    <HeaderLinks />
                 </div>
                 <Footer />
             </div>

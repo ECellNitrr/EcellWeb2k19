@@ -16,7 +16,7 @@ export default class event_detail extends Component{
 
         this.axios.get("/events/list/2019/").then(d => {
             let data = d.data.data;
-            let event_detail = data.find(event => event.id===Number(this.event_id))
+            let event_detail = data.find(event => event.id===this.event_id)
             
             console.log({ data,event_detail });
             this.setState({

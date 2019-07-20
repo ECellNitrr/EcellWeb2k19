@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
-
 import Home from './Components/Home/home';
 import Speakers from './Components/Speakers/speakers';
 import Sponsors from './Components/Sponsors/sponsors';
@@ -12,7 +11,7 @@ import StartupDetail from './Components/Startup/startupdetail'
 import Mentors from './Components/Mentors/mentors';
 import Gallery from './Components/Gallery/gallery';
 import Register from './Components/Register/register';
-import CaPortal from './Components/CA Portal/caportal';
+// import CaPortal from './Components/CA Portal/caportal';
 import Team from './Components/Team/team';
 
 
@@ -34,7 +33,7 @@ class App extends Component {
             <Route path='/mentors' component={Mentors} />
             <Route path='/gallery' component={Gallery} />
             <Route path='/register' component={Register} />
-            <Route path='/caportal' component={CaPortal} />
+            {/* <Route path='/caportal' component={CaPortal} /> */}
             <Route path='/team' component={Team} />
           </Switch>
         </div>
