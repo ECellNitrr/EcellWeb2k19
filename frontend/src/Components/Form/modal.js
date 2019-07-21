@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import './form.scss'
+
 
 export default class modal extends Component {
     render() {

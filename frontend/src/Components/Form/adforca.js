@@ -1,6 +1,12 @@
 import React from "react";
 import Modal from "./modal";
 
+const styles = {
+    img: {
+        width: '100%'
+    }
+}
+
 export default function adforca() {
     return (
         <Modal id="adforcaModal">
@@ -17,20 +23,34 @@ export default function adforca() {
                 </div>
                 <ol className='mt-3'>
                     <li>
-                        Signup using the signup button on the top right corner
-                        of the site.
+                        <div>Signup using the signup button on the top right corner
+                        of the site.</div>
+                        <img style={styles.img} src={require('../../assets/caportal_ad/ca2signup.png')} alt="signup_img"/>
                     </li>
-                    <li>Proceed to login.</li>
                     <li>
-                        After login click on you name on the top right corner
-                        of the site.
+                        <div>Proceed to login.</div>
+                        <img style={styles.img} src={require('../../assets/caportal_ad/ca3login.png')} alt="login_img"/>
                     </li>
-                    <li>Press on the 'Request for CA' button.</li>
-                    <li>We will process the your request within 12hrs.</li>
+                    <li>
+                        <div>After login click on you name on the top right corner
+                        of the site.</div>
+                        <img style={styles.img} src={require('../../assets/caportal_ad/ca4applyforca.png')} alt="signup_img"/>
+                    </li>
+                    <li>
+                        <div>
+                            Press on the 'Request for CA' button.
+                        </div>
+                        <img  style={styles.img} src={require('../../assets/caportal_ad/ca5applied.png')} alt="signup_img"/>
+                    </li>
+                    <li>
+                        <div className='font-weight-bold'>
+                            We will process the your request within 12hrs.
+                        </div>
+                    </li>
                     <li>
                         Once you have been approved as a CA, you will be able to
-                        see it while you click on your name on the top
-                        right(Member Type).
+                        see it while you click on your name on the <span className="font-weight-bold">top
+                        right(Member Type)</span>.
                     </li>
                 </ol>
 
@@ -53,14 +73,14 @@ export default function adforca() {
                 </div>
                 <div className="my-3 text-center">
                     <div>
-                        <div className="font-weight-bold">Kuldeep Narayan Minj (Manager):</div>
-                        <div>79 7444 3722</div>
-                        <div>knarayanmj@gmail.com</div>
-                    </div>
-                    <div>
                         <div className="font-weight-bold">Nishu Chandravanshi (Manager):</div>
                         <div>84 3524 9197</div>
                         <div>nishu181099@gmail.com</div>
+                    </div>
+                    <div>
+                        <div className="font-weight-bold">Kuldeep Narayan Minj (Manager):</div>
+                        <div>79 7444 3722</div>
+                        <div>knarayanmj@gmail.com</div>
                     </div>
                 </div>
 

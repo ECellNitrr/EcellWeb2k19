@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import Modal from './modal'
 import Login from './login'
 import Signup from './signup'
-import './form.css'
 
 export default class form extends Component{
     render(){
