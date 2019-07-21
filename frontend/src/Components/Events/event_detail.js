@@ -14,9 +14,9 @@ export default class event_detail extends Component{
         this.event_id = this.props.match.params.id;
         console.log(this.event_id)
 
-        this.axios.get("/events/list/").then(d => {
-            let data = d.data;
-            let event_detail = data.events.find(event => event.id==this.event_id)
+        this.axios.get("/events/list/2019/").then(d => {
+            let data = d.data.data;
+            let event_detail = data.find(event => event.id===this.event_id)
             
             console.log({ data,event_detail });
             this.setState({
@@ -34,7 +34,7 @@ export default class event_detail extends Component{
                 <div className="event_detail">
                     
                     <div className="event-item1">
-                        <img className="shadow-lg p-3 mb-5 bg-white rounded event-detail-pic" src={event.icon} />
+                        <img className="shadow-lg p-3 mb-5 bg-white rounded event-detail-pic" alt='event' src={event.icon} />
                     </div>
                     <div className="event-item2">
                         <div className="event-content">

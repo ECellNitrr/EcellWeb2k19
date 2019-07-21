@@ -11,10 +11,9 @@ from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 from utils.auth_utils import send_otp
 from rest_framework.decorators import api_view
-from decorators import ecell_user
+from decorators import ecell_user, client_check
 from random import randint
 from .models import CustomUser
-
 
 class RegistrationAPIView(APIView):
     permission_classes = (AllowAny,)
@@ -60,7 +59,6 @@ class RegistrationAPIView(APIView):
             "token": res_token
         }, status=res_status)
 
-
 class LoginAPIView(APIView):
     permission_classes = (AllowAny,)
     serializer_class = LoginSerializer
@@ -105,12 +103,14 @@ class LoginAPIView(APIView):
         }, status=res_status)
 
 @api_view(['POST'])
+@client_check
 def forgot_password(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
     email = req_data['email']
     try:
         user = CustomUser.objects.get(email=email)
+        print(user)
     except:
         message = "Account with this email id doesn't exists. Kindly signup."
     else:
@@ -125,14 +125,19 @@ def forgot_password(request):
             "message": message,
         }, status=res_status)
 
-@api_view(['POST'])
+@api_view(['POST',])
 @ecell_user
+@client_check
 def verify_otp(request):
     res_status = status.HTTP_400_BAD_REQUEST
     user = request.ecelluser
+    print(user)
     req_data = request.data
+    print(req_data)
     if 'otp' not in req_data:
-        message='Please enter otp to verify your account'
+        message ='Please enter otp to verify your account'
+    elif user.verified==True:
+        message = 'Account already verified'
     else:
         otp = req_data['otp']
         if str(otp)==user.otp:
@@ -146,8 +151,34 @@ def verify_otp(request):
     return Response({
             "message": message,
         }, status=res_status)
+    
+@api_view(['POST'])
+@client_check
+def check_otp(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    req_data = request.data 
+    verified = False
+    email = req_data['email']
+    otp = req_data['otp']
+    try:
+        user = CustomUser.objects.get(email=email)
+    except:
+        message = "User account with this email id doesn't exist"
+    else:
+        user_otp = user.otp
+        if str(otp)==user_otp:
+            verified = True
+            message = 'Otp verified'
+            res_status = status.HTTP_200_OK
+        else:
+            message = 'Invlaid Otp'
+    return Response({
+        "message":message,
+        "verified":verified
+    }, status=res_status)
 
 @api_view(['POST'])
+@client_check
 def change_password(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
@@ -159,7 +190,6 @@ def change_password(request):
     except:
         message = "Account with this email id doesn't exists. Kindly signup."
     else:
-        contact = user.contact
         user_otp = user.otp
         if str(otp)==user_otp:
             user.set_password(password)
@@ -177,7 +207,9 @@ def change_password(request):
 @ecell_user
 def resend_otp(request):
     res_status = status.HTTP_400_BAD_REQUEST
+    print('in')
     user = request.ecelluser
+    print(user)
     otp = user.otp
     contact = user.contact
     if otp:
@@ -197,23 +229,31 @@ def resend_otp(request):
         }, status=res_status)
 
 @api_view(['POST'])
+@ecell_user
+@client_check
 def change_contact(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
-    email = req_data['email']
-    try:
-        user = CustomUser.objects.get(email=email)
-    except:
-        message = "Account with this email id doesn't exists. Kindly signup."
-    else:
-        new_contact = req_data['contact']
-        otp = send_otp(new_contact)
-        user.otp = otp
-        user.contact = new_contact
-        user.verified = False
-        user.save()
-        message = "An otp has been sent to new mobile no."
-        res_status = status.HTTP_200_OK
+    new_contact = req_data['contact']
+    user = request.ecelluser
+    otp = send_otp(new_contact)
+    user.otp = otp
+    user.contact = new_contact
+    user.verified = False
+    user.save()
+    message = "An otp has been sent to new mobile no."
+    res_status = status.HTTP_200_OK
     return Response({
             "message": message,
         }, status=res_status)
+    
+@api_view(['GET'])
+@ecell_user
+@client_check
+def is_user_verified(request):
+    user = request.ecelluser
+    verified = user.verified
+    res_status = status.HTTP_200_OK
+    return Response({
+        "verified":verified,
+    }, status=res_status)

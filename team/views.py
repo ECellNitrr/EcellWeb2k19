@@ -41,13 +41,13 @@ def get_members(request):
         res_status=status.HTTP_404_NOT_FOUND
     return Response({
         "message": res_message,
-        "Director": dir_data,
-        "Head_Career_Development": hcd_data,
-        "Faculty_Incharge": fct_data,
-        "Overall_Coordinator": oco_data,
-        "Head_Coordinator": hco_data,
-        "Manager": mng_data,
-        "Executive": exc_data
+        "director": dir_data,
+        "head_career_development": hcd_data,
+        "faculty_incharge": fct_data,
+        "overall_coordinator": oco_data,
+        "head_coordinator": hco_data,
+        "manager": mng_data,
+        "executive": exc_data
 
     }, status=status.HTTP_200_OK)
 

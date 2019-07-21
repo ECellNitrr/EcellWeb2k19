@@ -10,31 +10,17 @@ export default class Responsive extends Component {
 
   axios=faxios();
   state={
-    sponsors:{},
+    sponsors:[],
     loading:true,
     year:2018
   }
 
   componentDidMount(){
-    this.axios.get("/sponsors/list/").then(res=>{
-      const data = res.data;
-      const spons = data.spons;
-      const year=2018;
-      const dict_year={};
-
-      spons.forEach((particular)=>{
-        let type = particular.section_name;
-        let sub_array = particular.sponsors;
-
-        let filtered_sub_array=sub_array.filter((individual_sponsors)=>{
-          return(individual_sponsors.year===year);
-        });
-
-        dict_year[type]=filtered_sub_array;
-      });
+    this.axios.get("/sponsors/list/2018/").then(res=>{
+      const data = res.data.data;
 
       this.setState({
-        sponsors:dict_year,
+        sponsors:data,
         loading:false
       })
     })
@@ -77,10 +63,8 @@ export default class Responsive extends Component {
       ]
     };
 
-    let sponsors_html=[];
-    for(const section in this.state.sponsors){
-      let sponsors = this.state.sponsors[section]
-      sponsors=sponsors.map(sponsor=>
+    console.log(this.state.sponsors)
+    let sponsors_html=this.state.sponsors.map(sponsor=>
         
         <div className="col" key={sponsor.id}>
           <div className="cont">
@@ -94,12 +78,8 @@ export default class Responsive extends Component {
                   </div>
               </div>
           </div>
-        </div>
+        </div>)
 
-        )
-
-        sponsors_html.push(sponsors)
-    }
 
     return (
       <div className="spons">

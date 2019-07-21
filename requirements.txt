@@ -4,10 +4,10 @@ cffi==1.12.3
 chardet==3.0.4
 cryptography==2.7
 Django==2.2.2
+django-cors-headers==3.0.2
 django-filter==2.1.0
 djangorestframework==3.9.4
 idna==2.8
-jwt==0.6.1
 Markdown==3.1.1
 mysqlclient==1.4.2.post1
 Pillow==6.0.0

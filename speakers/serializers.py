@@ -6,7 +6,6 @@ class SpeakerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Speaker
         fields = '__all__'
-
 class SpeakerListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Speaker

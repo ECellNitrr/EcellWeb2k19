@@ -21,7 +21,10 @@ class Speaker(models.Model):
 
     @property
     def profile_pic_url(self):
-        return config('HOST')+self.profile_pic.url
+        if self.profile_pic:
+            return config('HOST')+self.profile_pic.url
+        else:
+            return "-"
 
     def __str__(self):
         return self.name

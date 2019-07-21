@@ -21,5 +21,7 @@ class Startup(models.Model):
         return self.name
     @property
     def pic_url(self):
-        return config('HOST')+self.pic.url
-
+        if self.pic:
+            return config('HOST')+self.pic.url
+        else:
+            return "-"

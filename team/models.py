@@ -1,5 +1,5 @@
 from django.db import models
-# from decouple import config
+from decouple import config
 
 # Create your models here.
 

@@ -23,10 +23,16 @@ class Event(models.Model):
         return self.name
     @property
     def cover_pic_url(self):
-        return config('HOST')+ self.cover_pic.url
+        if self.cover_pic:
+            return config('HOST')+ self.cover_pic.url
+        else:
+            return "-"
     @property
     def icon_url(self):
-        return config('HOST')+ self.icon.url
+        if self.icon:
+            return config('HOST')+ self.icon.url
+        else:
+            return "-"
 class EventRegister(models.Model):
 	profile = models.ForeignKey(CustomUser,on_delete=models.CASCADE )
 	event = models.ForeignKey(Event,on_delete=models.CASCADE)
