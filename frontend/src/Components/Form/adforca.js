@@ -32,7 +32,11 @@ export default function adforca() {
                         <img style={styles.img} src={require('../../assets/caportal_ad/ca3login.png')} alt="login_img"/>
                     </li>
                     <li>
-                        <div>After login click on you name on the top right corner
+                        <div>Verify your contact number.</div>
+                        <img style={styles.img} src={require('../../assets/caportal_ad/ca4otp.png')} alt="login_img"/>
+                    </li>
+                    <li>
+                        <div>After OTP verification click on you name on the top right corner
                         of the site.</div>
                         <img style={styles.img} src={require('../../assets/caportal_ad/ca4applyforca.png')} alt="signup_img"/>
                     </li>
@@ -41,6 +45,9 @@ export default function adforca() {
                             Press on the 'Request for CA' button.
                         </div>
                         <img  style={styles.img} src={require('../../assets/caportal_ad/ca5applied.png')} alt="signup_img"/>
+                    </li>
+                    <li>
+                        <div>That's the end of the procedure</div>
                     </li>
                     <li>
                         <div className='font-weight-bold'>
