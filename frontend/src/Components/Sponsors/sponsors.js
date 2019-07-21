@@ -3,7 +3,7 @@ import "./sponsors.css";
 import faxios from "../../axios";
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
-import HeaderLinks from "./header_links";
+// import HeaderLinks from "./header_links";
 
 class Sponsors extends Component {
     axios = faxios();

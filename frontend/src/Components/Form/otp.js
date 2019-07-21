@@ -22,6 +22,7 @@ export default class otp extends Component {
             otp: this.otp.value
         }).then(d=>{
             let data = d.data
+            console.log(data)
 
             user.verified = true
             sessionStorage['ecell_user'] = JSON.stringify(user)
