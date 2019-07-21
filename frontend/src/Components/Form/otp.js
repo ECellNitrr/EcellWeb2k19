@@ -27,11 +27,11 @@ export default class otp extends Component {
             sessionStorage['ecell_user'] = JSON.stringify(user)
             window.location = '/'
         }).catch(err=>{
-            console.error(err.request.response)
             this.setState({
                 success:false,
                 err: true
             })
+            console.error(err)
         })
     }
 

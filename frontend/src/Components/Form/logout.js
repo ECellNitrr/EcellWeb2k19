@@ -33,11 +33,12 @@ export default class otp extends Component {
 
         faxios().get('/users/request_ca_approval/').then(d=>{
             alert('You have successfully applied for CA! You can confirm it by clicking on your name on top right corner')
-            this.user.applied = true
-            sessionStorage['ecell_user'] = JSON.stringify(this.user)
+            let user = getuser()
+            user.applied = true
+            sessionStorage['ecell_user'] = JSON.stringify(user)
             window.location = '/'
         }).catch(err=>{
-            console.error(err.request.response)
+            console.error(err)
         })
     }
     

@@ -88,7 +88,7 @@ export default class signup extends Component {
 
 
                 <div className="text-center form-sm mt-2">
-                    <button onClick={this._singup} className="btn text-white btn-info">Sign up <i className="fas fa-sign-in ml-1"></i></button>
+                    <button disabled={this.state.success} onClick={this._singup} className="btn text-white btn-info">Sign up <i className="fas fa-sign-in ml-1"></i></button>
                     <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
 
                 </div>
