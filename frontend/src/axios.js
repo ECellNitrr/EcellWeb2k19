@@ -21,7 +21,6 @@ export default () => {
     if(user){
         token = user.token
     }
-    console.log({token})
     return axios.create({
         baseURL,
         headers: {

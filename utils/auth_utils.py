@@ -23,7 +23,7 @@ def send_otp(contact, **kwargs):
     conn = http.client.HTTPSConnection("api.msg91.com")
     contact = str(contact)
     authkey = config('authkey')
-    url = "https://api.msg91.com/api/sendhttp.php?mobiles={}&authkey={}&route=4&sender=SUMMIT&message={}&country=91".format(contact,authkey,message).replace(' ','%20')
+    url = "https://api.msg91.com/api/sendhttp.php?mobiles={}&authkey={}&route=4&sender=SUMMIT&message={}&country=91".format(contact,authkey,message)
     conn.request("GET",url)
     res = conn.getresponse()
     data = res.read()
