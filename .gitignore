@@ -7,7 +7,6 @@ db.sqlite3
 
 #Cache Files
 **/__pycache__
-*/migrations
 .env
 *.pyc
 
@@ -16,8 +15,8 @@ db.sqlite3
 dumped/
 
 #these will be collected when running collectstatic
-static/admin
-static/css
-static/js
-static/media
-static/rest_framework
+# static/admin
+# static/css
+# static/js
+# static/media
+# static/rest_framework

@@ -3,7 +3,7 @@ import "./sponsors.css";
 import faxios from "../../axios";
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
-import HeaderLinks from "./header_links";
+// import HeaderLinks from "./header_links";
 
 class Sponsors extends Component {
     axios = faxios();
@@ -60,7 +60,7 @@ class Sponsors extends Component {
                     className="container-fluid"
                     style={{ maxWidth: "1200px", paddingTop: "300px" }}
                 >
-                    <HeaderLinks />
+                    {/* <HeaderLinks /> */}
                 </div>
 
                 <div className="header1">SPONSORS {this.state.year}</div>
@@ -81,7 +81,7 @@ class Sponsors extends Component {
                     className="container-fluid"
                     style={{ maxWidth: "1200px", paddingTop: "50px" }}
                 >
-                    <HeaderLinks />
+                    {/* <HeaderLinks /> */}
                 </div>
                 <Footer />
             </div>

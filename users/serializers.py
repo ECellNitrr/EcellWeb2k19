@@ -14,6 +14,11 @@ class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)
     password = serializers.CharField(max_length=128, write_only=True)
 
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+
+
     def ecelluser_authenticate(self):
         data = self.validated_data
         email = data['email']
@@ -23,3 +28,4 @@ class LoginSerializer(serializers.Serializer):
             raise ValidationError(
                 'Invalid Credentials!'
             )
+        return user

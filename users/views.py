@@ -14,6 +14,7 @@ from rest_framework.decorators import api_view
 from decorators import ecell_user
 from random import randint
 from .models import CustomUser
+import traceback
 
 
 class RegistrationAPIView(APIView):
@@ -81,7 +82,7 @@ class LoginAPIView(APIView):
             res_detail = email_msg[0] + " " + password_msg[0]
         else:
             try:
-                serializer.ecelluser_authenticate()
+                user = serializer.ecelluser_authenticate()
             except Exception as e:
                 res_detail = str(e.message)
 
@@ -98,11 +99,31 @@ class LoginAPIView(APIView):
                 res_token = token
                 res_status = status.HTTP_200_OK
 
-        return Response({
-            "message": res_message,
-            "detail": res_detail,
-            "token": res_token
-        }, status=res_status)
+        try:
+            return Response({
+                "message": res_message,
+                "detail": res_detail,
+                "token": res_token,
+                
+                'first_name' : user.first_name,
+                'last_name' : user.last_name,
+                'email' : user.email,
+                'verified' : user.verified,
+                'contact' : user.contact,
+                'bquiz_score' : user.bquiz_score,
+                'user_type' : user.user_type,
+                'linkedin' : user.linkedin,
+                'facebook' : user.facebook,
+                'applied' : user.applied,
+            }, status=res_status)
+        except:
+            traceback.print_exc()
+            return Response({
+                "message": res_message,
+                "detail": res_detail,
+                "token": res_token,
+            }, status=res_status)
+
 
 @api_view(['POST'])
 def forgot_password(request):
@@ -181,6 +202,7 @@ def resend_otp(request):
     user = request.ecelluser
     otp = user.otp
     contact = user.contact
+    print(otp)
     if otp:
         duration = user.last_modified
         print(duration)
@@ -214,3 +236,39 @@ def change_contact(request):
     return Response({
             "message": message,
         }, status=res_status)
+
+
+
+@api_view(['GET'])
+@ecell_user
+def request_ca_approval(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    user = request.ecelluser
+    user.applied = True
+    user.save()
+    message = "Congradulations! Applied for CA successfully"
+    res_status = status.HTTP_200_OK
+    return Response({
+            "message": message,
+        }, status=res_status)
+
+
+@api_view(['GET'])
+@ecell_user
+def get_user_details(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    user = request.ecelluser
+    
+    res_status = status.HTTP_200_OK
+    return Response({
+        'first_name' : user.first_name,
+        'last_name' : user.last_name,
+        'email' : user.email,
+        'verified' : user.verified,
+        'contact' : user.contact,
+        'bquiz_score' : user.bquiz_score,
+        'user_type' : user.user_type,
+        'linkedin' : user.linkedin,
+        'facebook' : user.facebook,
+        'applied' : user.applied,
+    }, status=res_status)

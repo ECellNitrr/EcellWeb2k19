@@ -1,22 +1,7 @@
 import React from 'react';
 import './form.css';
-import $ from 'jquery';
 
 const form = () =>{
-
-    $(document).ready(function() {
-        $(window).resize(function() {
-        if ($(window).width() < 1220 && $(window).width() >991) {
-            $('textarea').attr('rows', '2')
-        } else {
-            $('textarea').attr('rows', '5')
-        }
-        }
-    )})
-    
-
-
-
     return(
         <div className="container-fluid ctn-6">
             <div className="row">

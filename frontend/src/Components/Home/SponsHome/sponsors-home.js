@@ -85,7 +85,7 @@ export default class Responsive extends Component {
       <div className="spons">
 
         <Parallax blur={3} bgImage={require('../../../assets/spons.jpg')} bgImageAlt="sponsors" strength={700}>
-          <div className="heading4-cont"><h2 className="heading-4">SPONSORS {this.state.year}</h2></div>
+          {/* <div className="heading4-cont"><h2 className="heading-4">SPONSORS {this.state.year}</h2></div> */}
           <Slider {...settings}>
           
             {this.state.loading? <h1 className='text-center text-white w-100 my-5'>loading...</h1>:sponsors_html}

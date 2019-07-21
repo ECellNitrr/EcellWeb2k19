@@ -25,6 +25,7 @@ class CustomUser(AbstractUser):
     bquiz_score = models.IntegerField(default=0)
     avatar = models.ImageField(upload_to='static/uploads/avatar',
                                null=True, blank=True)
+    applied = models.BooleanField(default=False)
     user_type = models.CharField(max_length=3, choices=USER_TYPE,
                                  default='GST')
     linkedin = models.URLField(max_length=64, null=True, blank=True)
