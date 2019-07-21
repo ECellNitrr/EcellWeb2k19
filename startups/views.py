@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from .models import Startup
-from .serializers import StartupSerializer
+from .serializers import StartupSerializer, StartupListSerializer
 from decorators import ecell_user
 from django.http import HttpResponse
 import csv
@@ -18,7 +18,7 @@ def get_startups(request, year):
 
     startups = Startup.objects.filter(year=year, flag=True)
     if len(startups) > 0:
-        res_data = StartupSerializer(
+        res_data = StartupListSerializer(
             startups, many=True, context={
                 'request': request}).data
         res_message = "Startups Fetched successfully."

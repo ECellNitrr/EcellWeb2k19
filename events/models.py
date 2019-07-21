@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from users.models import CustomUser
+from decouple import config
 
 
 class Event(models.Model):
     name = models.CharField(max_length=256)
     venue = models.TextField()
-    date = models.DateField()
+    date = models.DateField(null=True, blank=True)
     time = models.CharField(max_length=10)
     details = models.TextField()
     cover_pic = models.ImageField(upload_to='static/uploads/events/cover',default='/static/defaults/ecell.png', null=True, blank=True)
@@ -20,7 +21,12 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
-
+    @property
+    def cover_pic_url(self):
+        return config('HOST')+ self.cover_pic.url
+    @property
+    def icon_url(self):
+        return config('HOST')+ self.icon.url
 class EventRegister(models.Model):
 	profile = models.ForeignKey(CustomUser,on_delete=models.CASCADE )
 	event = models.ForeignKey(Event,on_delete=models.CASCADE)

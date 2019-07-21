@@ -111,7 +111,6 @@ def forgot_password(request):
     email = req_data['email']
     try:
         user = CustomUser.objects.get(email=email)
-        print(user)
     except:
         message = "Account with this email id doesn't exists. Kindly signup."
     else:

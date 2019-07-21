@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from .models import Sponsor
-from .serializers import SponsorSerializer
+from .serializers import SponsorSerializer, SponsorListSerializer
 from decorators import ecell_user
 from django.http import HttpResponse
 import csv
@@ -18,7 +18,7 @@ def get_sponsors(request, year):
 
     sponsors = Sponsor.objects.filter(year=year, flag=True)
     if len(sponsors) > 0:
-        res_data = SponsorSerializer(
+        res_data = SponsorListSerializer(
             sponsors, many=True, context={
                 'request': request}).data
         res_message = "Sponsors Fetched successfully."

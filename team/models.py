@@ -1,4 +1,5 @@
 from django.db import models
+# from decouple import config
 
 # Create your models here.
 
@@ -17,6 +18,11 @@ class Member(models.Model):
     profile_url = models.URLField(blank=True, null=True)
     image = models.ImageField(upload_to='static/uploads/team', null=True, blank = True)
     member_type = models.CharField(max_length=3, choices= MEMBER_TYPE, default='EXEC')
+
+    @property
+    def image_url(self):
+        return config('HOST')+self.image.url
+
 
     def __str__(self):
         return self.member_type + '-' + self.name

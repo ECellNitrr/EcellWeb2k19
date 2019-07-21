@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import CustomUser
-
+from decouple import config
 
 class Mentor(models.Model):
     name = models.CharField(max_length=200, unique=True)
@@ -20,3 +20,6 @@ class Mentor(models.Model):
 
     def __str__(self):
         return self.name
+    @property
+    def profile_pic_url(self):
+        return config('HOST')+self.profile_pic.url

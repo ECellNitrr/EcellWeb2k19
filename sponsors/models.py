@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import CustomUser
-
+from decouple import config
 
 class Sponsor(models.Model):
     SPONS_TYPE = (
@@ -31,4 +31,6 @@ class Sponsor(models.Model):
 
     def __str__(self):
         return self.name
-
+    @property
+    def pic_url(self):
+        return config('HOST')+self.pic.url
