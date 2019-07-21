@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 def ecell_user(function):
     def wrap(request, *args, **kwargs):
-
+        
         NO_TOKEN = Response({
                         "message":"No Token Provided!"
                     }, status=status.HTTP_401_UNAUTHORIZED)
