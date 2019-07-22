@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 import Modal from "./modal";
 
 const styles = {
@@ -7,9 +8,17 @@ const styles = {
     }
 }
 
-export default function adforca() {
-    return (
-        <Modal id="adforcaModal">
+
+class adforca extends Component {
+    _tocapage = () => {
+        console.log(this.props)
+        this.closebtn.click()
+        this.props.history.push('/caportal')
+    }
+    
+    render() {
+        return (
+            <Modal id="adforcaModal">
             <div className="p-3">
                 <h1 className="text-center font-weight-bold">
                     E-Cell NIT RAIPUR
@@ -17,6 +26,10 @@ export default function adforca() {
                 <h2 className="text-center mt-3">
                     Introducing Campus Ambassador Progamme
                 </h2>
+
+                <div className="text-center">
+                    <button type="button" className="p-2 btn btn-outline-info waves-effect ml-auto" onClick={this._tocapage}>Click for CA Portal</button>
+                </div>
 
                 <div className="mt-5 text-center font-weight-bold">
                     How to become a CA?
@@ -92,9 +105,12 @@ export default function adforca() {
                 </div>
 
                 <div className="text-center">
-                    <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                    <button ref={ele => this.closebtn = ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </Modal>
-    );
+        )
+    }
 }
+
+export default withRouter(adforca)
