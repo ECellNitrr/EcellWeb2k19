@@ -1,50 +1,63 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from decorators import ecell_user
+from decorators import relax_ecell_user, ecell_user
 from users.models import CustomUser
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer
+from .forms import RequestApprovalForm
+from django.http import JsonResponse
 
-
-@csrf_exempt
-@ecell_user
 @api_view(['POST','GET'])
+@relax_ecell_user
+@renderer_classes((TemplateHTMLRenderer,))
 def request_approval(request):
-    
+    if request.method == 'POST':
+        form = RequestApprovalForm(request.POST, request.FILES)
+        if form.is_valid():
+            obj = form.save()
+            obj.user = request.ecelluser
+            obj.save()
     try:
-        if request.ecelluser.user_type == 'CAB':
-            if request.method == 'POST':
-                form = RequestApprovalForm(request.POST, request.FILES)
-                if form.is_valid():
-                    obj = form.save()
-                    obj.user = request.ecelluser
-                    obj.save()
-            profile = request.user
-            try:
-                total_requests = profile.requests.all().count()
-                accepted_requests = profile.requests.filter(status_flag=1).count()
-                rejected_requests = profile.requests.filter(status_flag=-1).count()
-                pending_requests = profile.requests.filter(status_flag=0).count()
-            except:
-                total_requests = 0
-                accepted_requests = 0
-                rejected_requests = 0
-                pending_requests = 0
-
-            return render(request, 'base_portal.html', context={
-                'form': True,
-                't_req': total_requests,
-                'a_req': accepted_requests,
-                'r_req': rejected_requests,
-                'p_req': pending_requests,
-            })
-        else:
-            return Response({"message":"Not CA Yet!"}, status=status.HTTP_200_OK)
-            # return render(request, 'notcayet.html')
+        profile = request.ecelluser
+        total_requests = profile.requests.all().count()
+        accepted_requests = profile.requests.filter(status_flag=1).count()
+        rejected_requests = profile.requests.filter(status_flag=-1).count()
+        pending_requests = profile.requests.filter(status_flag=0).count()
     except:
-        return Response({"message":"Not Logged In!"}, status=status.HTTP_200_OK)
-        # return  render(request, 'notloggedinerr.html')
+        total_requests = 0
+        accepted_requests = 0
+        rejected_requests = 0
+        pending_requests = 0
+
+    return render(request, 'base_portal.html', context={
+        'form': True,
+        't_req': total_requests,
+        'a_req': accepted_requests,
+        'r_req': rejected_requests,
+        'p_req': pending_requests,
+    })
+
+
+@relax_ecell_user
+@api_view(['GET'])
+# @renderer_classes((JSONRenderer,TemplateHTMLRenderer))
+def ca_dashboard_details(request):
+    profile = request.ecelluser
+    total_requests = profile.requests.all().count()
+    accepted_requests = profile.requests.filter(status_flag=1).count()
+    rejected_requests = profile.requests.filter(status_flag=-1).count()
+    pending_requests = profile.requests.filter(status_flag=0).count()
+    
+
+    return JsonResponse({
+        't_req': total_requests,
+        'a_req': accepted_requests,
+        'r_req': rejected_requests,
+        'p_req': pending_requests,
+    })
+    
 
 
 def get_profile_data():
@@ -66,33 +79,22 @@ def get_profile_data():
     return user_data
 
 
-@ecell_user
-def request_status(request, flag):
-    try:
-        profile = request.ecelluser
-    except:
-        return redirect('loginweb')
-    data = profile.requests.filter(status_flag=flag)
-    return data
+@relax_ecell_user
+def req_status(request):
+    profile = request.ecelluser
+    data = profile.requests.all()
+    data = [{
+        'platform': x.social_platform,
+        'img': x.screenshot.url,
+        'status': x.status_flag
+    } for x in data]
 
-
-def pending_status(request):
-    data = request_status(request, 0)
-    return render(request, 'base_portal.html', {'form': False, 'requests': data})
-
-
-def approved_status(request):
-    data = request_status(request, 1)
-    return render(request, 'base_portal.html', {'form': False, 'requests': data})
-
-
-def rejected_status(request):
-    data = request_status(request, -1)
-    return render(request, 'base_portal.html', {'form': False, 'requests': data})
+    return JsonResponse(data,safe=False)
 
 
 @csrf_exempt
-@ecell_user
+@relax_ecell_user
+@renderer_classes((TemplateHTMLRenderer,))
 def user_request_list(request):
     if request.ecelluser.user_type in ['EXE', 'MNG', 'OCO', 'HCO']:
         user_data = get_profile_data()
@@ -102,7 +104,8 @@ def user_request_list(request):
 
 
 @csrf_exempt
-@ecell_user
+@relax_ecell_user
+@renderer_classes((TemplateHTMLRenderer,))
 def confirm_approval(request, id):
     if request.ecelluser.user_type in ['EXE', 'MNG', 'OCO', 'HCO']:
         user_data = get_profile_data()
@@ -117,7 +120,7 @@ def confirm_approval(request, id):
 
 
 @csrf_exempt
-@ecell_user
+@relax_ecell_user
 def approve_request(request, userid, id):
     if request.ecelluser.user_type in ['EXE', 'MNG', 'OCO', 'HCO']:
         ss = get_object_or_404(CA_Requests, id=id)
@@ -142,7 +145,7 @@ def approve_request(request, userid, id):
 
 
 @csrf_exempt
-@ecell_user
+@relax_ecell_user
 def decline_request(request, userid, id):
     if request.ecelluser.user_type in ['EXE', 'MNG', 'OCO', 'HCO']:
         ss = get_object_or_404(CA_Requests, id=id)
@@ -153,6 +156,7 @@ def decline_request(request, userid, id):
         return redirect('loginweb')
 
 
+@renderer_classes((TemplateHTMLRenderer,))
 def leaderboard(request):
     cas = CustomUser.objects.filter(user_type__iexact='CAB').order_by('-ca_score')
     context = {

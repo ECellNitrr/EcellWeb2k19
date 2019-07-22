@@ -5,10 +5,9 @@ from . import views
 urlpatterns = [
     path('request_approval/', views.request_approval, name='request_approval'),
     path('request_list/', views.user_request_list, name='request_list'),
+    path('ca_dashboard_details/',views.ca_dashboard_details,name='ca_dashboard_details'),
 
-    path('request_approved/', views.approved_status, name='approved_requests'),
-    path('request_rejected/', views.rejected_status, name='rejected_requests'),
-    path('request_pending/', views.pending_status, name='pending_requests'),
+    path('req_status/', views.req_status, name='req_status'),
 
     path('request_confirm/<int:id>/', views.confirm_approval, name='confirm_approval'),
     path('approve_request/<int:userid>/<int:id>/',views.approve_request, name='approve_request'),
