@@ -24,144 +24,30 @@
     z-index: 890;
   }
 
+  .logo2{
+    min-width: 150px;
+    height: 150px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+  }
+  
+  
+
   .active{
-    color: black;
+    color: black !important;
     background: white;
     padding: 5px;
     border-radius: 0 10px;
   }
-  
-  /*.header{
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    transform: translate(-50%,0);
-    color: white;
-    font-weight: 800;
-    font-size: 40px;
-    letter-spacing: 5px;
+
+  .data-links{
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  @media(max-width:1458px){
-    .header{
-      font-size: 35px;
-    }
-  }
   
-  @media(max-width:1307px){
-    .header{
-      font-size: 30px;
-    }
-  }
-  
-  @media(max-width:1156px){
-    .header{
-      font-size: 25px;
-    }
-  }
-  
-  @media(max-width:1006px){
-    .header{
-      font-size: 20px;
-    }
-  }
-  
-  @media(max-width:854px){
-    .header{
-      display: none;
-    }
-  }
-  
-  .header2{
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    transform: translate(-50%,0);
-    color: white;
-    font-weight: 800;
-    font-size: 40px;
-    letter-spacing: 5px;
-    display: none;
-  }
-  
-  @media(max-width:854px){
-    .header2{
-      display: block;
-    }
-  }
-  
-  @media(max-width:705px){
-    .header2{
-      top: 130px;
-      font-size: 35px;
-    }
-  }
-  
-  @media(max-width:610px){
-    .header2{
-      top: 130px;
-      font-size: 25px;
-    }
-  }
-  
-  @media(max-width:520px){
-    .header2{
-      top: 130px;
-      font-size: 20px;
-    }
-  }
-  
-  @media(max-width:470px){
-    .header2{
-      top: 160px;
-      font-size: 25px;
-    }
-  }
-  
-  @media(max-width:388px){
-    .header2{
-      top: 160px;
-      font-size: 20px;
-    }
-  }
-  
-  @media(max-width:327px){
-    .header2{
-      top: 160px;
-      font-size: 17px;
-    }
-  }*/
-  
-  .logo.active1{
-    position: fixed;
-    top: 7%;
-    left: 48%;
-    z-index: 900;
-  }
-  
-  @media(max-width:1530px){
-    .logo.active1{
-      left: 46%;
-    }
-  }
-  
-  @media(max-width:1300px){
-    .logo.active1{
-      left: 45%;
-    }
-  }
-  
-  @media(max-width:1000px){
-    .logo.active1{
-      left: 44%;
-    }
-  }
-  
-  @media(max-width:830px){
-    .logo.active1{
-      left: 44%;
-    }
-  }
   
   
   @media (max-width:768px){
@@ -171,35 +57,6 @@
       height: 80px;
     }
   
-    .logo.active1{
-      top: 80%;
-      left: 42%;
-    }
-  
-  }
-
-  @media(min-height:1024px){
-    .logo.active1{
-      left: 45.5%;
-    }
-  }
-
-  @media(min-height:1025px){
-    .logo.active1{
-      left: 42%;
-    }
-  }
-
-  @media(min-height:1366px){
-    .logo.active1{
-      left: 46.5%;
-    }
-  }
-
-  @media(min-height:1367px){
-    .logo.active1{
-      left: 42%;
-    }
   }
   
   .toggle:before{
@@ -219,60 +76,66 @@
   .sidebar{
     position: fixed;
     top: 0;
-    left: -100%;
+    right: -100%;
     width: 100%;
     height: 100vh;
     background: #262626;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: 0.5s;
     z-index: 890;
   }
+
+  .sidebar ul{
+    position: relative;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    padding: 0px !important;
+    
+  }
+
+  .logoback2{
+    margin-top: 100px;
+  }
   
   .sidebar.active1{
-    left: 0;
+    right:0;
   }
+
   
-  ul{
-    position: relative;
-    top: 0%;
-  }
-  
-  ul li{
+  .sidebar ul li{
     list-style: none;
     text-align: center;
   }
   
-  ul li a{
+  .sidebar ul li a{
     display: block;
     text-decoration: none;
     padding: 5px;
     text-transform: uppercase;
     color: #fff;
-    font-size: 1.65em;
+    font-size: 2.2em;
     letter-spacing: 1px;
     font-weight: 800;
     transition: 0.8s;
   }
 
   @media(max-width:500px){
-    ul li a{
-      font-size: 1.2em;
+    .sidebar ul li a{
+      font-size: 1.7em;
     }
   }
   
-  ul li a:hover{
+  .sidebar ul li a:hover{
     color:#ffeb3b;
     text-decoration: none;
   }
   
-  ul li a:before{
+  .sidebar ul li a:before{
     content: attr(data-text);
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0);
     transition: 0.5s;
     font-size: 6em;
     opacity: 0;
@@ -281,32 +144,32 @@
   }
   
   @media(max-width:950px){
-    ul li a:before{
+    .sidebar ul li a:before{
       font-size:5em;
     }
   }
   
   @media(max-width:800px){
-    ul li a:before{
+    .sidebar ul li a:before{
       font-size:4em;
     }
   }
   
   @media(max-width:630px){
-    ul li a:before{
+    .sidebar ul li a:before{
       font-size:3em;
     }
   }
   
   @media(max-width:500px){
-    ul li a:before{
+    .sidebar ul li a:before{
       font-size:5rem;
     }
   }
   
-  ul li a:hover:before{
+  .sidebar ul li a:hover:before{
     opacity: 0.1;
-    top: 50%;
+    top: 20%;
   }
 
   .brand-header{
@@ -396,7 +259,7 @@
   }
 
   .login-button1{
-    position: fixed;
+    position: absolute;
     text-transform: uppercase;
     z-index: 10;
     top: 35px;
@@ -417,79 +280,61 @@
   
   @media(max-width:795px){
     .login-button1{
-      left: 38%;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%,0);
       top: 110px;
+      display: flex;
+      justify-content: center;
     }
+
+    
   }
 
-  @media(max-width:767px){
-    .login-button1{
-      left: 38%;
-      top: 110px;
+  
+
+  @media(max-width:500px){
+    .logo2{
+      min-width: 120px;
+      height: 120px;
     }
+
+    .data-links{
+      width: 250px;
+    }
+
   }
 
-  @media(max-width:700px){
-    .login-button1{
-      left: 36%;
-      top: 110px;
+  @media(max-width:400px){
+    .logo2{
+      min-width: 90px;
+      height: 90px;
     }
-  }
 
-  @media(max-width:600px){
-    .login-button1{
-      left: 34%;
-      top: 110px;
+    .data-links{
+      width: 180px;
     }
-  }
 
-  @media(max-width:520px){
-    .login-button1{
-      left: 32%;
-      top: 110px;
+    .sidebar ul li a{
+      font-size: 1.4em;
     }
-  }
 
-  @media(max-width:470px){
-    .login-button1{
-      left: 30%;
-      top: 110px;
-    }
-  }
-
-  @media(max-width:450px){
-    .login-button1{
-      left: 29%;
-      top: 110px;
-    }
-  }
-
-  @media(max-width:410px){
-    .login-button1{
-      left: 26%;
-      top: 115px;
-    }
-  }
-
-  @media(max-width:370px){
-    .login-button1{
-      left: 25%;
-      top: 115px;
-    }
   }
 
   @media(max-width:350px){
-    .login-button1{
-      left: 24%;
-      top: 115px;
+    .logo2{
+      min-width: 70px;
+      height: 70px;
     }
-  }
 
-  @media(max-width:320px){
-    .login-button1{
-      left: 21%;
-      top: 120px;
+    .data-links{
+      width: 150px;
     }
+
+    .sidebar ul li a{
+      font-size: 1em;
+    }
+
   }
 
 

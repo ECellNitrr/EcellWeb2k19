@@ -50,18 +50,19 @@ import {getuser} from '../../axios'
     
                 <div className={`toggle ${this.state.active? 'active1': ''}`} onClick={() => this.setState({active: !this.state.active})}></div>
                 <div className={`sidebar ${this.state.active? 'active1': ''}`}>
+                    <div className="logoback2"><img className="logo2" alt='' src={logo}></img></div>
                     <ul>
-                        <li><Link to="/" data-text="Home" >Home</Link></li>
-                        <li><NavLink to="/events" data-text="events" >Events</NavLink></li>
-                        <li><NavLink to="/team" data-text="Team" >Team</NavLink></li>
-                        {/* <li><NavLink to="/gallery" data-text="Gallery" >Gallery</NavLink></li> */}
-                        <li><NavLink to="/sponsors" data-text="Sponsors" >Sponsors</NavLink></li>
-                        <li><NavLink to="/speakers" data-text="Speakers" >Speakers</NavLink></li>
-                        <li><NavLink to="/startups" data-text="Startups" >Startups</NavLink></li>
-                        <li><NavLink to="/mentors" data-text="Mentors" >Mentors</NavLink></li>
-                        <li><NavLink to="/caportal" data-text="Caportal" >CaPortal</NavLink></li>
-                        {/* <li><NavLink to="/register" data-text="Register" >Register</NavLink></li> */}
-                        <li><a href='https://medium.com/e-cell-nit-raipur' data-text="Blogs" >Blogs</a></li>
+                        <li><Link to="/" className="data-links" data-text="Home" >Home</Link></li>
+                        <li><NavLink to="/events" className="data-links" data-text="events" >Events</NavLink></li>
+                        <li><NavLink to="/team" className="data-links" data-text="Team" >Team</NavLink></li>
+                        {/* <li><NavLink to="/gallery" className="data-links" data-text="Gallery" >Gallery</NavLink></li> */}
+                        <li><NavLink to="/sponsors" className="data-links" data-text="Sponsors" >Sponsors</NavLink></li>
+                        <li><NavLink to="/speakers" className="data-links" data-text="Speakers" >Speakers</NavLink></li>
+                        <li><NavLink to="/startups" className="data-links" data-text="Startups" >Startups</NavLink></li>
+                        <li><NavLink to="/mentors" className="data-links" data-text="Mentors" >Mentors</NavLink></li>
+                        <li><NavLink to="/caportal" className="data-links" data-text="Caportal" >CaPortal</NavLink></li>
+                        {/* <li><NavLink to="/register" className="data-links" data-text="Register" >Register</NavLink></li> */}
+                        <li><a href='https://medium.com/e-cell-nit-raipur' className="data-links" data-text="Blogs" >Blogs</a></li>
                     </ul>
                 </div>
             </div>
