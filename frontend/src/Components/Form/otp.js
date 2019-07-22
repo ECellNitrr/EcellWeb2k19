@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import Modal from './modal'
 import faxios,{ getuser } from '../../axios'
 
+const styles ={
+    resend_otp: {
+        fontWeight: 'bold',
+        color: 'skyblue',
+        cursor: 'pointer'
+    }
+}
+
 export default class otp extends Component {
     state = {
         err: false,
@@ -52,7 +60,7 @@ export default class otp extends Component {
 
         const resend_otp =
             <div className="mt-2 text-center">
-                Didn't receive OTP? <span onClick={this._resend_otp} id="resend_otp">resend</span>
+                Didn't receive OTP? <span onClick={this._resend_otp} style={styles.resend_otp} id="resend_otp">resend</span>
             </div>
 
         return (
