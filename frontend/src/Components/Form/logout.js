@@ -62,6 +62,11 @@ export default class otp extends Component {
             <hr/>
         </div> 
 
+        let button_to_show = this.state.applied ? applied_for_ca:apply_for_ca 
+        if(this.state.user_type !== 'GST'){
+            button_to_show=null
+        }
+
         return (
             <Modal id='logoutModal'>
                 <div className="modal-body text-center mb-1">
@@ -70,7 +75,7 @@ export default class otp extends Component {
                         <div><span className="font-weight-bold">Email: </span>{this.state.email}</div>
                         <div><span className="font-weight-bold">Member Type: </span>{user_type[this.state.user_type]}</div>
                     </div>
-                    {this.state.applied ? applied_for_ca:apply_for_ca}
+                    {button_to_show}
                     <div className="my-3 text-center">Are your sure want to logout?</div>
                     <div className="text-center mt-2">
                         <button onClick={this._logout} className="btn text-white btn-info login-button">Logout</button>

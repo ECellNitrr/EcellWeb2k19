@@ -1,0 +1,283 @@
+﻿{% load staticfiles %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Cell NITRR | CA Portal</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="/media/static/caportal/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="/media/static/caportal/css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="/media/static/caportal/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+     
+           
+          
+    <div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="fa fa-square-o "></i>&nbsp;Entrepreneuship Cell NIT Raipur</a>
+                </div>
+
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center user-image-back">
+                        <img src="/media/static/caportal/img/find_user.png" class="img-responsive" />
+                    </li>
+
+                    {% block sidebar %}
+                    <li>
+                        <a href="{% url 'request_approval' %}"><i class="fa fa-desktop "></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#" id='approved_requests'>Approved Requests</a>
+                    </li>
+                    <li>
+                            <a href="#" id='rejected_requests'>Rejected Requests</a>
+                    </li>
+                    <li>
+                            <a href="#" id='pending_requests'>Pending Requests</a>
+                    </li>
+                        
+                    {% endblock %}
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                    <div class="row" id='dashboard'>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="panel panel-primary text-center no-boder bg-color-blue">
+                                <div class="panel-body">
+                                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                                    <h3 id='t_req'>{{t_req}}</h3>
+                                </div>
+                                <div class="panel-footer back-footer-blue">
+                                    Total Requests
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="panel panel-primary text-center no-boder bg-color-yellow">
+                                <div class="panel-body">
+                                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                                    <h3 id="p_req">{{p_req}}</h3>
+                                </div>
+                                <div class="panel-footer back-footer-yellow">
+                                    Pending Requests
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="panel panel-primary text-center no-boder bg-color-green">
+                                <div class="panel-body">
+                                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                                    <h3 id='a_req'>{{a_req}}</h3>
+                                </div>
+                                <div class="panel-footer back-footer-green">
+                                    Accepted Requests
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="panel panel-primary text-center no-boder bg-color-red">
+                                <div class="panel-body">
+                                    <i class="fa fa-bar-chart-o fa-5x"></i>
+                                    <h3 id='r_req'>{{r_req}}</h3>
+                                </div>
+                                <div class="panel-footer back-footer-red">
+                                    Rejected Requests
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" id='submit_form'>    
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <h3 class="text-center">Submit Request</h3>
+                            <hr><br>
+                            <form enctype="multipart/form-data" method="POST">
+                                {% csrf_token %}
+                                <select name="social_platform" class="form-control">
+                                    <option value="FB" >Facebook</option>
+                                    <option value="LI" >Linkedin</option>
+                                    <option value="TW" >Twitter</option>
+                                    <option value="WP" >Whatsapp</option>
+                                </select>
+                                <br>
+                                <input type="file" class="form-control" name="screenshot" required id="id_screenshot" />
+                                <br>
+                                <input type="submit" class="form-control btn btn-success" value="Submit Request">
+                                <input type="hidden" value="" name='token' class="tokenhere">
+                            </form>
+                        </div>
+                    </div>    
+                    <div id="list_placeholder">
+                        
+                    </div>
+                <!-- /. ROW  -->
+                <hr />
+                <!-- /. ROW  -->           
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+         <!-- /. PAGE WRAPPER  -->
+    </div>
+    
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    
+    <script>
+        let ecell_user = sessionStorage['ecell_user']
+        let token = null
+        let tokenheres = document.querySelectorAll('.tokenhere')
+        if(ecell_user){
+            ecell_user = JSON.parse(ecell_user)
+            token = ecell_user['token']
+        }else{
+            alert('you are not logged in')
+            window.location='/'
+        }
+
+        tokenheres.forEach(tokenhere=>{
+            tokenhere.value = token
+        })
+        
+        console.log({token})
+
+        // populate the fields
+        let t_req = document.querySelector('#t_req')
+        let a_req = document.querySelector('#a_req')
+        let r_req = document.querySelector('#r_req')
+        let p_req = document.querySelector('#p_req')
+
+        fetch('/portal/ca_dashboard_details/', {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token 
+            },
+        })
+        .then(response => response.json())
+        .then(data=>{
+            t_req.innerHTML = data['t_req']
+            a_req.innerHTML = data['a_req']
+            r_req.innerHTML = data['r_req']
+            p_req.innerHTML = data['p_req']
+        }) 
+
+
+        // event handlers
+        let approved_requests = document.querySelector('#approved_requests') 
+        let rejected_requests = document.querySelector('#rejected_requests')
+        let pending_requests = document.querySelector('#pending_requests')
+        let dashboard = document.querySelector('#dashboard')
+        let submit_form = document.querySelector('#submit_form')
+        let list_placeholder = document.querySelector('#list_placeholder')
+
+        const get_requests = () => {
+            return fetch('/portal/req_status/', {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token 
+            },
+            })
+            .then(response => response.json())
+        }
+
+        const insert_data = (data) => {
+            dashboard.innerHTML = ''
+            submit_form.innerHTML = ''
+            list_placeholder.innerHTML = ''
+
+            if(data.length===0){
+                list_placeholder.innerHTML = '<div class="text-center">nothing to show</div>'
+            }
+
+            social_name_mapping = {
+                'FB': 'Facebook',
+                'TW': 'Twitter',
+                'LI': 'LinkedIn',
+                'WP': 'Whatsapp',
+            }
+            debugger
+            data.map(datum => {
+                datum.platform = social_name_mapping[datum.platform]
+                return datum
+            })
+
+            console.log(data)
+
+            data.forEach(datum => {
+                list_placeholder.innerHTML += `
+                <h3>
+                    ${datum.platform}
+                </h3>
+                <img src="${datum.img}" alt="Screenshot" style="width:50%;margin:0 auto;" id="ss">
+                
+                <hr>
+
+                `
+            })
+
+        }
+
+        pending_requests.addEventListener('click', e=>{
+            e.preventDefault()
+            console.log('object')
+            get_requests().then(data => {
+                data = data.filter(ele=> ele.status===0)
+                insert_data(data)
+            })
+        }) 
+
+        rejected_requests.addEventListener('click', e=>{
+            e.preventDefault()
+            console.log('object')
+            get_requests().then(data => {
+                data = data.filter(ele=> ele.status===-1)
+                insert_data(data)
+            })
+        }) 
+
+        approved_requests.addEventListener('click', e=>{
+            e.preventDefault()
+            console.log('object')
+            get_requests().then(data => {
+                data = data.filter(ele=> ele.status===1)
+                insert_data(data)
+            })
+        }) 
+
+        
+    </script>
+   
+</body>
+</html>

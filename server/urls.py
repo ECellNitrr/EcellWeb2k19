@@ -13,6 +13,7 @@ urlpatterns = [
     path('mentors/', include('mentors.urls')),
     path('team/', include('team.urls')),
     path('speakers/', include('speakers.urls')),
+    path('portal/', include('ca_portal.urls')),
 ]
 
 # for the media urls

@@ -19,17 +19,17 @@ const about=()=> (<div className="about">
                 </div>
 
                 <div className="ben-cards">
-                    <p className="p1"><i class="fas fa-trophy"></i></p>
+                    <p className="p1"><i className="fas fa-trophy"></i></p>
                     <div><p className="p2">Reflect your position of responsibility & experience in your resume.</p></div>
                 </div>
 
                 <div className="ben-cards">
-                    <p className="p1"><i class="fas fa-briefcase"></i></p>
+                    <p className="p1"><i className="fas fa-briefcase"></i></p>
                     <div><p className="p2">Work close with the E-cell Team to gain entrepreneurial exposure.</p></div>
                 </div>
 
                 <div className="ben-cards">
-                    <p className="p1"><i class="fas fa-user-tie"></i></p>
+                    <p className="p1"><i className="fas fa-user-tie"></i></p>
                     <div><p className="p2">Improve your communication and management skills by being part of E-Summit'19.</p></div>
                 </div>
             </div>

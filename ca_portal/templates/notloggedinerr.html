@@ -1,0 +1,22 @@
+
+{% extends 'website/layout.html' %} {% load static %}
+<!-- keywords -->
+{% block keywords %}
+    <meta name="keywords"
+          content="ecell, e-summit, esummit, e summmit, entrepreneurship, E-Cell,nitrr, Gallery"> {% endblock keywords %}
+<!-- title -->
+{% block title %}
+    <title>Error | E-Cell NIT Raipur</title>
+{% endblock title %}
+<!-- css -->
+{% block css %}
+    <link rel="stylesheet" href='{% static "website/common/header.css" %}'>
+{% endblock css %}
+<!-- js -->
+{% block js %}
+{% endblock js %}
+<!-- content -->
+{% block content %}
+    <h2 class="text-center font-weight-bold text-danger my-5">Whoopsie daisy, You are not logged in!!!</h2>
+    <div style='margin-bottom: 35vh'></div>
+{% endblock content %}
