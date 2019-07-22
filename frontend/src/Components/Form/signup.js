@@ -10,9 +10,20 @@ export default class signup extends Component {
         
     _singup = e => {
         e.preventDefault()
+
+        if(this.password.value.length<8){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'password should have minimum 8 characters'
+            })
+            return
+        }
+
         this.setState({
             success:false,
-            err: false
+            err: false,
+            errmsg: '',
         })
 
         this.axios.post('/users/register/',{
@@ -37,16 +48,26 @@ export default class signup extends Component {
             console.log(data)
         
         }).catch(err=>{
-            console.error(err.request.response)
+            let errmsg = '' 
+            console.error(err)
+            let error = err.response.data
+
+            try{
+                errmsg = JSON.stringify(error.detail)
+            } catch(e){
+                errmsg = err
+            }
+            
             this.setState({
                 success:false,
-                err: true
+                err: true,
+                errmsg: errmsg
             })
         })
     }
 
     render() {
-        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">Please provide valid credentials!</div>
+        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">{this.state.errmsg}</div>
         const scsmsg = <div className="my-3 text-success font-weight-bold text-center">Your have successfully registered! Please proceed to login</div>
                  
         return (
