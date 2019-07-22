@@ -16,9 +16,10 @@ from random import randint
 from .models import CustomUser
 
 class RegistrationAPIView(APIView):
+    authentication_classes = []
     permission_classes = (AllowAny,)
     serializer_class = RegistrationSerializer
-
+    
     def post(self, request):
         res_message = "Registration failed! "
         res_detail = ""
@@ -26,32 +27,37 @@ class RegistrationAPIView(APIView):
         res_status = status.HTTP_400_BAD_REQUEST
         user = request.data
         otp = str(randint(1000, 9999))
-        user['password'] = make_password(user['password'])
-        user['otp'] = otp
-        serializer = self.serializer_class(data=user)
-        try:
-            serializer.is_valid(raise_exception=True)
-        except Exception as e:
-            error = serializer.errors
-            error_msg = ""
-            for err in error:
-                error_msg += "Error in field: " + \
-                    str(err) + "- " + str(error[err][0]) + " "
-            res_detail = error_msg
-
+        password = user['password']
+        if password is None or password=='':
+            res_detail+='Error in field:Password-This field must not be empty'
+            
         else:
-            serializer.save()
-            payload = {
-                'email': serializer.validated_data['email']
-            }
-            otp = send_otp(serializer.validated_data['contact'], otp=otp)
-            token = jwt.encode(
-                payload,
-                settings.SECRET_KEY,
-                algorithm='HS256').decode('UTF-8')
-            res_message = "Registration Successful!"
-            res_token = token
-            res_status = status.HTTP_200_OK
+            user['password'] = make_password(password)
+            user['otp'] = otp
+            serializer = self.serializer_class(data=user)
+            try:
+                serializer.is_valid(raise_exception=True)
+            except Exception as e:
+                error = serializer.errors
+                error_msg = ""
+                for err in error:
+                    error_msg += "Error in field: " + \
+                        str(err) + "- " + str(error[err][0]) + " "
+                res_detail = error_msg
+
+            else:
+                serializer.save()
+                payload = {
+                    'email': serializer.validated_data['email']
+                }
+                otp = send_otp(serializer.validated_data['contact'], otp=otp)
+                token = jwt.encode(
+                    payload,
+                    settings.SECRET_KEY,
+                    algorithm='HS256').decode('UTF-8')
+                res_message = "Registration Successful!"
+                res_token = token
+                res_status = status.HTTP_200_OK
 
         return Response({
             "message": res_message,
@@ -60,6 +66,7 @@ class RegistrationAPIView(APIView):
         }, status=res_status)
 
 class LoginAPIView(APIView):
+    authentication_classes = []
     permission_classes = (AllowAny,)
     serializer_class = LoginSerializer
 
@@ -72,11 +79,13 @@ class LoginAPIView(APIView):
         serializer = self.serializer_class(data=user)
         try:
             serializer.is_valid(raise_exception=True)
-        except BaseException:
+        except Exception as e:
             error = serializer.errors
-            email_msg = error.get('email', ['', ])
-            password_msg = error.get('password', ['', ])
-            res_detail = email_msg[0] + " " + password_msg[0]
+            error_msg = ""
+            for err in error:
+                error_msg += "Error in field: " + \
+                    str(err) + "- " + str(error[err][0]) + " "
+            res_detail = error_msg
         else:
             try:
                 serializer.ecelluser_authenticate()

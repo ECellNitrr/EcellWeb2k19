@@ -10,7 +10,7 @@ from android_app.views import latest_build
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('users/', include('users.urls')),
+    path('users/', include('users.urls')),
     path('events/', include('events.urls')),
     path('startups/', include('startups.urls')),
     path('sponsors/', include('sponsors.urls')),
