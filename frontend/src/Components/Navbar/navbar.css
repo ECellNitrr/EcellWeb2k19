@@ -82,6 +82,7 @@
     background: #262626;
     transition: 0.5s;
     z-index: 890;
+    overflow: auto;
   }
 
   .sidebar ul{
@@ -117,6 +118,23 @@
     letter-spacing: 1px;
     font-weight: 800;
     transition: 0.8s;
+  }
+
+  @media(max-height:840px){
+    .sidebar ul li a{
+      font-size: 1.8rem
+    }
+  }
+
+  @media(max-height:735px){
+    .sidebar ul li a{
+      font-size: 1.6rem
+    }
+
+    .logo2{
+      min-width: 100px;
+      height: 100px;
+    }
   }
 
   @media(max-width:500px){
