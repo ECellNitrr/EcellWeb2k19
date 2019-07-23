@@ -13,4 +13,6 @@ urlpatterns = [
     path('change_contact/', views.change_contact, name="change_contact"),
     path('is_user_verified/', views.is_user_verified, name="is_verified"),
     path('check_otp/', views.check_otp, name="check_otp")
+    path('request_ca_approval/',views.request_ca_approval, name="request_ca_approval"),
+    path('get_user_details/',views.get_user_details, name="get_user_details"),
 ]

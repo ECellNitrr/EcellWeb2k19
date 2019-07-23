@@ -19,7 +19,7 @@ export default class startupdetail extends Component {
             let data = d.data.data;
             console.log(data)
             let startup_detail = data.find(
-                startup => startup.id === this.startup_id
+                startup => startup.id === Number(this.startup_id)
             );
 
             console.log({ data, startup_detail });

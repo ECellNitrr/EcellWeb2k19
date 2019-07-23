@@ -22,9 +22,19 @@ class CustomUser(AbstractUser):
     otp = models.CharField(max_length=4, blank=True, null=True)
     verified = models.BooleanField(default=False)
     contact = models.CharField(max_length=10)
+    
+    #Score for Bquiz
     bquiz_score = models.IntegerField(default=0)
+    # Scores for Campus Ambassadors
+    ca_score = models.IntegerField(default=0)       #Total Score
+    ca_fb_score = models.IntegerField(default=0)    #Facebook Score
+    ca_tw_score = models.IntegerField(default=0)    #Twitter Score
+    ca_li_score = models.IntegerField(default=0)    #LinkedIn Score
+    ca_wp_score = models.IntegerField(default=0)    #Whatsapp Score
+
     avatar = models.ImageField(upload_to='static/uploads/avatar',
                                null=True, blank=True)
+    applied = models.BooleanField(default=False)
     user_type = models.CharField(max_length=3, choices=USER_TYPE,
                                  default='GST')
     linkedin = models.URLField(max_length=64, null=True, blank=True)
@@ -38,6 +48,7 @@ class CustomUser(AbstractUser):
             now =datetime.datetime.utcnow().replace(tzinfo=utc)
             timediff = now - self.modified_at
             return timediff.total_seconds()
+
 
     def save(self, *args, **kwargs):
         self.username = self.email

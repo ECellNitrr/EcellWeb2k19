@@ -13,7 +13,7 @@ class Startup extends Component{
   }
 
   componentDidMount(){
-    for(let i=2016; i<=2020;i++){
+    for(let i=2017; i<=2020;i++){
       this.axios.get(`/startups/list/${i}/`).then(res=>{
         console.log(res)
         let  data = res.data.data

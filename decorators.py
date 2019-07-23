@@ -19,7 +19,6 @@ ACCESS_ERROR = Response({
 def ecell_user(function):
     def wrap(request, *args, **kwargs):
         token = request.META.get("HTTP_AUTHORIZATION", None)
-        print(token)
         if token is not None: 
             try:
                 payload = jwt.decode(token, config('SECRET_KEY'))
@@ -64,6 +63,28 @@ def client_check(function):
         else:
             print('no toen')
             return NO_TOKEN
+
+        return function(request, *args, **kwargs)
+        wrap.__doc__ = function.__doc__
+        wrap.__name__ = function.__name__
+    return wrap
+
+def get_user(token):
+    payload = jwt.decode(token, config('SECRET_KEY'))
+    ecell_user_email = payload['email']
+    ecell_user = CustomUser.objects.get(email=ecell_user_email)
+    return ecell_user
+
+def relax_ecell_user(function):
+    def wrap(request, *args, **kwargs):
+
+        # hack to make ca portal work
+        # authenticate the post request via hidden input field
+        token = request.POST.get('token')        
+        token = request.META.get("HTTP_AUTHORIZATION", None) if not token else token
+
+        if token is not None: 
+            request.ecelluser = get_user(token)
 
         return function(request, *args, **kwargs)
         wrap.__doc__ = function.__doc__
