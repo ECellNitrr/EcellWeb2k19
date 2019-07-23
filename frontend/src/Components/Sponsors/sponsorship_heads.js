@@ -2,7 +2,6 @@ import React,{ Component } from 'react';
 import './sponsors.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
-import Header_Links from './header_links';
 
 
 class Sponsors extends Component{
@@ -17,8 +16,7 @@ class Sponsors extends Component{
             <div className="sponsors">
                 <Navbar/>
                 <div className="header4">SPONSORSHIP HEAD CO-ORDINATORS</div>
-                <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"350px"}}>
-                    <Header_Links/>
+                <div className="container-fluid text-center" style={{maxWidth:"1200px",paddingTop:"350px"}}>
                 </div>
 
                 <div className="container-fluid ctn12" style={{maxWidth:"1200px"}}>

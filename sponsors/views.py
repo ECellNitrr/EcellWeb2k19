@@ -1,11 +1,12 @@
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.response import Response
 from .models import Sponsor
 from .serializers import SponsorSerializer
 from decorators import ecell_user
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from collections import defaultdict
 import csv
 
 
@@ -81,3 +82,14 @@ def generate_spreadsheet(request):
         writer.writerow(sponsor)
 
     return response
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_sponsor_years(req):
+    years = defaultdict(int)
+    for x in Sponsor.objects.all():
+        years[x.year] += 1
+
+    years =  [x for x in years.keys()]
+    return JsonResponse(years, safe=False)

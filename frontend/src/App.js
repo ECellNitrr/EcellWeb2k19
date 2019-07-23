@@ -14,6 +14,8 @@ import Gallery from './Components/Gallery/gallery';
 import Register from './Components/Register/register';
 import CaPortal from './Components/CA Portal/caportal';
 import Team from './Components/Team/team';
+import SponsHeads from './Components/Sponsors/sponsorship_heads'
+import YearwiseSponsors from './Components/Sponsors/yearwise_sponsors'
 
 
 
@@ -25,8 +27,12 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/speakers' component={Speakers} />
+
+            <Route path='/yearwise_sponsors/' component={YearwiseSponsors} />
+            <Route path='/spons_hc/' component={SponsHeads} />
             <Route path='/sponsors/:year' component={Sponsors} />
             <Route path='/sponsors' component={()=><Redirect to='/sponsors/2018'/>} />
+
             <Route path='/events/:id' component={EventDetail} />
             <Route path='/events' component={Events} />
             <Route path='/startups/:year/:id' component={StartupDetail} />

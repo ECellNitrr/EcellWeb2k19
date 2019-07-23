@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import faxios from '../../axios'
+import './form.css'
 
 export default class login extends Component {
     axios = faxios()
@@ -60,6 +61,11 @@ export default class login extends Component {
                         <input type="password" ref={ele=>this.password = ele} className="form-control form-control-sm validate" placeholder="Your password"></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_11"></label>
                     </div>
+
+                    {/* <div className="mt-2 text-center">
+                        Forgot password? <span className='blue_link'>Click here</span>
+                    </div> */}
+
                     <div className="text-center mt-2">
                         <button onClick={this._login} className="btn text-white btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>

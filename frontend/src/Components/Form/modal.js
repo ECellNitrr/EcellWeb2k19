@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './form.scss'
+import './form.css'
 
 
 export default class modal extends Component {
