@@ -248,20 +248,16 @@
 }
 
 .event-detail-name{
-  color: white;
-  
-  background: black;
-  padding: 10px;
-  border: 2px solid white;
-  border-radius: 0 0 15px 15px;
   width: 300px;
   text-align: center;
 }
 
 .e-name{
+  color: #7C4295;
+  background: white;
   font-weight: 800;
-  letter-spacing: 3px;
-
+  padding: 10px;
+  border: 1px dotted black;
 }
 
 .event-content{

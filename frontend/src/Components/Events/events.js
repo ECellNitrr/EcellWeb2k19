@@ -30,7 +30,7 @@ class events extends Component{
                 <div className="back2 shadow-lg p-3 mb-5 bg-white rounded">
                     <div className="inner1">
                         <h4 className="event-name" style={{ fontWeight: "800" }}>{event.name}</h4>
-                        <div className="image-text"><NavLink className="event-detail-link" to={`/events/${event.id}`}>Know More!</NavLink></div>
+                        <div className="image-text"><NavLink className="event-detail-link" to={`/events/${event.id}`}>Know More</NavLink></div>
                     </div>
                 </div>
             </div>
