@@ -6,3 +6,7 @@ class StartupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Startup
         fields = '__all__'
+class StartupListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Startup
+        fields = ['name','email','pic_url','contact','url','founder','address','details','year', 'flag','ecell_user']

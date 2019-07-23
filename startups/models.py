@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import CustomUser
-
+from decouple import config
 
 class Startup(models.Model):
     name = models.CharField(max_length=200, unique=True)
@@ -19,3 +19,9 @@ class Startup(models.Model):
 
     def __str__(self):
         return self.name
+    @property
+    def pic_url(self):
+        if self.pic:
+            return config('HOST')+self.pic.url
+        else:
+            return "-"
