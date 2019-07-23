@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer
 from .forms import RequestApprovalForm
 from django.http import JsonResponse
+from decouple import config
 
 @api_view(['POST','GET'])
 @relax_ecell_user
