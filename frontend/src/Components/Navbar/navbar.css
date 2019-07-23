@@ -82,6 +82,7 @@
     background: #262626;
     transition: 0.5s;
     z-index: 890;
+    overflow:auto;
   }
 
   .sidebar ul{
