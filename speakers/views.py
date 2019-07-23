@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from .models import Speaker
-from .serializers import SpeakerSerializer
+from .serializers import SpeakerSerializer, SpeakerListSerializer
 from decorators import ecell_user
 from django.http import HttpResponse
 import csv
@@ -18,7 +18,7 @@ def get_speakers(request, year):
 
     speakers = Speaker.objects.filter(year=year, flag=True)
     if len(speakers) > 0:
-        res_data = SpeakerSerializer(
+        res_data = SpeakerListSerializer(
             speakers, many=True, context={
                 'request': request}).data
         res_message = "Speakers Fetched successfully."

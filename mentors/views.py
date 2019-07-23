@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from .models import Mentor
-from .serializers import MentorSerializer
+from .serializers import MentorSerializer, MentorListSerializer
 from decorators import ecell_user
 from django.http import HttpResponse
 import csv
@@ -18,7 +18,7 @@ def get_mentors(request, year):
 
     mentors = Mentor.objects.filter(year=year, flag=True)
     if len(mentors) > 0:
-        res_data = MentorSerializer(
+        res_data = MentorListSerializer(
             mentors, many=True, context={
                 'request': request}).data
         res_message = "Mentors Fetched successfully."
