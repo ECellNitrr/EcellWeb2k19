@@ -17,7 +17,7 @@
 
 .event{
   flex: 1 0 25%;
-  margin: 30px;
+  margin: 15px;
 }
 
 .event-name{
@@ -86,14 +86,13 @@
 .cont1{
   transform-style: preserve-3d;
   perspective: 1000px;
-  margin-bottom: 150px;
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 300px;
+  max-height: 300px;
   text-align: center;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-60%,-50%);
+ position: relative;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%,-50%);
   
 }
 
@@ -119,12 +118,21 @@
   position: absolute;
   top: 0;
   left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   background:black !important ;
   border: 5px solid white;
 }
 
 @media(max-width:450px){
+
+  .cont1{
+    max-width: 250px;
+    max-height: 250px;
+  }
+
   .front1{
     min-width: 250px;
     height: 250px;
@@ -133,6 +141,10 @@
   .back2{
     width: 250px;
     min-height: 250px;
+  }
+
+  .event-name{
+    font-size: 16px;
   }
 
   
@@ -156,11 +168,10 @@
 
 
 .inner1{
-  transform: translateY(50%) translateZ(60px) scale(0.94);
-  top: -15%;
-  position: absolute;
-  left: 0;
-  width: 100%;outline-offset: -8px;
+  transform: /*translateY(50%)*/ translateZ(60px) /*scale(0.94)*/;
+  position: relative;
+  width: 100%;
+  outline-offset: -8px;
   padding: 2rem;
   box-sizing: border-box;
   outline: 1px solid transparent;

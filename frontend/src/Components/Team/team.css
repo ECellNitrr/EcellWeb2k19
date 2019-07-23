@@ -121,6 +121,22 @@
 
   }
 
+  @media(max-width:450px){
+    .position{
+      font-size: 25px;
+      width: 350px;
+    }
+  }
+
+  @media(max-width:350px){
+    .position{
+      font-size: 25px;
+      width: 300px;
+    }
+  }
+
+
+
 .team-whole{
   padding-top: 250px;
 }

@@ -51,7 +51,7 @@ const intro = () => {
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 banner-col">
                             <div>
-                                <div ><img alt='banner' className="banner" src={banner}></img></div>
+                                <div className="banner-div" ><img alt='banner' className="banner" src={banner}></img></div>
                                 <div className="countdown"></div>
                             </div>
                         </div>

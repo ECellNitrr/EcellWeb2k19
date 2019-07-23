@@ -66,8 +66,8 @@ export default class Responsive extends Component {
     console.log(this.state.sponsors)
     let sponsors_html=this.state.sponsors.map(sponsor=>
         
-        <div className="col" key={sponsor.id}>
-          <div className="cont">
+        <div className="col" >
+          <div className="cont" key={sponsor.id}>
               <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt={sponsor.name} className="spons-Image" src={sponsor.pic}></img></div>
               <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">

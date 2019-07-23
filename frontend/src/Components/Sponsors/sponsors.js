@@ -66,7 +66,7 @@ class Sponsors extends Component {
                 <div className="header1">SPONSORS {this.state.year}</div>
                 <div
                     className="container-fluid ctn9"
-                    style={{ maxWidth: "1200px", paddingTop: "0px" }}
+                    style={{ maxWidth: "1500px", paddingTop: "0px" }}
                 >
                     {this.state.loading ? (
                         <h1 className="text-center text-white w-100 my-5">
