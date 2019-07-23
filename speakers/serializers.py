@@ -6,3 +6,7 @@ class SpeakerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Speaker
         fields = '__all__'
+class SpeakerListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Speaker
+        fields = ['name','company','experience','profile_pic_url','email','contact','description','year', 'social_media', 'flag']

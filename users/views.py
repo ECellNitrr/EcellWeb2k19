@@ -11,16 +11,16 @@ from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 from utils.auth_utils import send_otp
 from rest_framework.decorators import api_view
-from decorators import ecell_user
+from decorators import ecell_user, client_check
 from random import randint
 from .models import CustomUser
 import traceback
 
-
 class RegistrationAPIView(APIView):
+    authentication_classes = []
     permission_classes = (AllowAny,)
     serializer_class = RegistrationSerializer
-
+    
     def post(self, request):
         res_message = "Registration failed! "
         res_detail = ""
@@ -28,32 +28,37 @@ class RegistrationAPIView(APIView):
         res_status = status.HTTP_400_BAD_REQUEST
         user = request.data
         otp = str(randint(1000, 9999))
-        user['password'] = make_password(user['password'])
-        user['otp'] = otp
-        serializer = self.serializer_class(data=user)
-        try:
-            serializer.is_valid(raise_exception=True)
-        except Exception as e:
-            error = serializer.errors
-            error_msg = ""
-            for err in error:
-                error_msg += "Error in field: " + \
-                    str(err) + "- " + str(error[err][0]) + " "
-            res_detail = error_msg
-
+        password = user['password']
+        if password is None or password=='':
+            res_detail+='Error in field:Password-This field must not be empty'
+            
         else:
-            serializer.save()
-            payload = {
-                'email': serializer.validated_data['email']
-            }
-            otp = send_otp(serializer.validated_data['contact'], otp=otp)
-            token = jwt.encode(
-                payload,
-                settings.SECRET_KEY,
-                algorithm='HS256').decode('UTF-8')
-            res_message = "Registration Successful!"
-            res_token = token
-            res_status = status.HTTP_200_OK
+            user['password'] = make_password(password)
+            user['otp'] = otp
+            serializer = self.serializer_class(data=user)
+            try:
+                serializer.is_valid(raise_exception=True)
+            except Exception as e:
+                error = serializer.errors
+                error_msg = ""
+                for err in error:
+                    error_msg += "Error in field: " + \
+                        str(err) + "- " + str(error[err][0]) + " "
+                res_detail = error_msg
+
+            else:
+                serializer.save()
+                payload = {
+                    'email': serializer.validated_data['email']
+                }
+                otp = send_otp(serializer.validated_data['contact'], otp=otp)
+                token = jwt.encode(
+                    payload,
+                    settings.SECRET_KEY,
+                    algorithm='HS256').decode('UTF-8')
+                res_message = "Registration Successful!"
+                res_token = token
+                res_status = status.HTTP_200_OK
 
         return Response({
             "message": res_message,
@@ -61,8 +66,8 @@ class RegistrationAPIView(APIView):
             "token": res_token
         }, status=res_status)
 
-
 class LoginAPIView(APIView):
+    authentication_classes = []
     permission_classes = (AllowAny,)
     serializer_class = LoginSerializer
 
@@ -75,11 +80,13 @@ class LoginAPIView(APIView):
         serializer = self.serializer_class(data=user)
         try:
             serializer.is_valid(raise_exception=True)
-        except BaseException:
+        except Exception as e:
             error = serializer.errors
-            email_msg = error.get('email', ['', ])
-            password_msg = error.get('password', ['', ])
-            res_detail = email_msg[0] + " " + password_msg[0]
+            error_msg = ""
+            for err in error:
+                error_msg += "Error in field: " + \
+                    str(err) + "- " + str(error[err][0]) + " "
+            res_detail = error_msg
         else:
             try:
                 user = serializer.ecelluser_authenticate()
@@ -126,6 +133,7 @@ class LoginAPIView(APIView):
 
 
 @api_view(['POST'])
+@client_check
 def forgot_password(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
@@ -147,14 +155,19 @@ def forgot_password(request):
             "message": message,
         }, status=res_status)
 
-@api_view(['POST'])
+@api_view(['POST',])
 @ecell_user
+@client_check
 def verify_otp(request):
     res_status = status.HTTP_400_BAD_REQUEST
     user = request.ecelluser
+    print(user)
     req_data = request.data
+    print(req_data)
     if 'otp' not in req_data:
-        message='Please enter otp to verify your account'
+        message ='Please enter otp to verify your account'
+    elif user.verified==True:
+        message = 'Account already verified'
     else:
         otp = req_data['otp']
         if str(otp)==user.otp:
@@ -168,8 +181,34 @@ def verify_otp(request):
     return Response({
             "message": message,
         }, status=res_status)
+    
+@api_view(['POST'])
+@client_check
+def check_otp(request):
+    res_status = status.HTTP_400_BAD_REQUEST
+    req_data = request.data 
+    verified = False
+    email = req_data['email']
+    otp = req_data['otp']
+    try:
+        user = CustomUser.objects.get(email=email)
+    except:
+        message = "User account with this email id doesn't exist"
+    else:
+        user_otp = user.otp
+        if str(otp)==user_otp:
+            verified = True
+            message = 'Otp verified'
+            res_status = status.HTTP_200_OK
+        else:
+            message = 'Invlaid Otp'
+    return Response({
+        "message":message,
+        "verified":verified
+    }, status=res_status)
 
 @api_view(['POST'])
+@client_check
 def change_password(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
@@ -181,7 +220,6 @@ def change_password(request):
     except:
         message = "Account with this email id doesn't exists. Kindly signup."
     else:
-        contact = user.contact
         user_otp = user.otp
         if str(otp)==user_otp:
             user.set_password(password)
@@ -199,7 +237,9 @@ def change_password(request):
 @ecell_user
 def resend_otp(request):
     res_status = status.HTTP_400_BAD_REQUEST
+    print('in')
     user = request.ecelluser
+    print(user)
     otp = user.otp
     contact = user.contact
     print(otp)
@@ -221,6 +261,7 @@ def resend_otp(request):
 
 @api_view(['POST'])
 @ecell_user
+@client_check
 def change_contact(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
@@ -271,4 +312,15 @@ def get_user_details(request):
         'linkedin' : user.linkedin,
         'facebook' : user.facebook,
         'applied' : user.applied,
+    }, status=res_status)
+    
+@api_view(['GET'])
+@ecell_user
+@client_check
+def is_user_verified(request):
+    user = request.ecelluser
+    verified = user.verified
+    res_status = status.HTTP_200_OK
+    return Response({
+        "verified":verified,
     }, status=res_status)

@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from .models import Event, EventRegister
-from .serializers import EventSerializer
+from .serializers import EventSerializer, EventListSerializer
 from decorators import ecell_user
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -21,7 +21,7 @@ def get_events(request, year):
     # print(scheme)
     events = Event.objects.filter(year=year, flag=True)
     if len(events) > 0:
-        res_data = EventSerializer(
+        res_data = EventListSerializer(
             events, many=True, context={
                 'request': request}).data
         res_message = "Events Fetched successfully."
@@ -40,17 +40,22 @@ def get_events(request, year):
 @api_view(['POST', ])
 def event_register(request, id):
     eventregister = EventRegister()
-    eventregister.profile = request.ecelluser
-    try:
-        eventregister.event = Event.objects.get(id=id)
-    except:
-        res_message="Registration Failed! Event does not exist"
-        res_status=status.HTTP_404_NOT_FOUND
-        
+    user = request.ecelluser
+    res_status = status.HTTP_401_UNAUTHORIZED
+    if user.verified:
+        eventregister.profile = user
+        try:
+            eventregister.event = Event.objects.get(id=id)
+        except:
+            res_message="Registration Failed! Event does not exist"
+            res_status=status.HTTP_404_NOT_FOUND
+            
+        else:
+            eventregister.save()
+            res_message= "Registration Successful"
+            res_status=status.HTTP_200_OK
     else:
-        eventregister.save()
-        res_message= "Registration Successful"
-        res_status=status.HTTP_200_OK
+        res_message = "You need to verify your account to register for an event"
     return Response({
         "message": res_message
     }, status=res_status)
