@@ -69,7 +69,7 @@ export default class login extends Component {
                     <div className="text-center mt-2">
                         <button onClick={this._login} className="btn text-white btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-                    </div>
+                    </div> 
                 </div>
 
 
