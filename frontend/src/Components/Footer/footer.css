@@ -44,6 +44,11 @@
     color:  #0077B5;
     text-decoration: none;
   }
+  .legal-link{
+    font-size:15px;
+    text-align:center;
+    color:white;
+  }
   
   .site{
     color: white;

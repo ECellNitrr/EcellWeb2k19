@@ -14,6 +14,8 @@ import Gallery from './Components/Gallery/gallery';
 import Register from './Components/Register/register';
 import CaPortal from './Components/CA Portal/caportal';
 import Team from './Components/Team/team';
+import TnC from './Components/Footer/terms';
+import Privacy from './Components/Footer/privacy';
 
 
 
@@ -36,6 +38,11 @@ class App extends Component {
             <Route path='/register' component={Register} />
             <Route path='/caportal' component={CaPortal} />
             <Route path='/team' component={Team} />
+			<Route path='/terms' component={TnC} />
+			<Route path='/privacy' component={Privacy} />
+			
+			
+			
           </Switch>
         </div>
       </BrowserRouter>

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './footer.css';
 import logo from '../../assets/logo-white.png';
 
+
 const footer = ()=>{
     return(
         <div className="footer" style={{background:"#0A0908",textAlign:'center',marginTop:"50px",position:"relative",bottom:"0"}}>
@@ -20,6 +21,7 @@ const footer = ()=>{
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col6">
                         <img alt='' style={{height:"80px",width:"80px"}} src={logo}></img>
                         <p style={{color:"white",margin:"15px",fontSize:"17px",fontWeight:"600"}}>E-Cell, NIT Raipur is established to motivate and educate people about entrepreneurship and serve as a meeting ground for corporate and young budding entrepreneurs from distinguished institutions.</p>
+                        <p style={{color:"white",marginTop:"5px"}}>&copy; All Rights Reserved.</p>
                     </div>
 
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
@@ -34,8 +36,9 @@ const footer = ()=>{
                       <div><a className="site" href="https://ecell.nitrr.ac.in/">E-Cell Official Site</a></div>
                       <div><a style={{color:"white"}} href="tel:8094966697">+91 80949 66697</a></div>
                       <div><a style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div>
-                      <p style={{color:"white",marginTop:"5px"}}>&copy; All Rights Reserved</p>
-
+                      <br/>
+                      <div><Link className="legal-link" to='/privacy'> Privacy Policies . </Link></div>
+                      <div><Link className="legal-link" to='/terms'> &nbsp;Terms and Conditions </Link></div>
 
                     </div>
                 </div>
