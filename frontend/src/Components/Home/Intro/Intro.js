@@ -44,8 +44,8 @@ const intro = () => {
     }, 1000);
 
     return (
-        <div className="intro">
-            <section className="Black-bg">
+        <section className="intro">
+           
                 <div className="container-fluid ctn-1">
 
                     <div className="row">
@@ -60,10 +60,10 @@ const intro = () => {
                             <p className="bulb"><img alt='bulb' className="image-1" src={bulb}></img></p>
                         </div>
                     </div>
-                    <div className="wave"></div>
+                    {/*<div className="wave"></div>*/}
                 </div>
-            </section>
-        </div>
+           
+        </section>
     )
 }
 

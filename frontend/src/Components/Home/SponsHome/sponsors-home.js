@@ -68,7 +68,7 @@ export default class Responsive extends Component {
         
         <div className="col" >
           <div className="cont" key={sponsor.id}>
-              <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt={sponsor.name} className="spons-Image" src={sponsor.pic}></img></div>
+              <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt={sponsor.name} className="spons-Image" src={sponsor.pic_url}></img></div>
               <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                       <h6 style={{ fontWeight: "800" }}>{sponsor.name}</h6>
