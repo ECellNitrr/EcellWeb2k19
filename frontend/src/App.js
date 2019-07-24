@@ -19,6 +19,7 @@ import Privacy from './Components/Footer/privacy';
 
 
 
+
 class App extends Component {
   render() {
     return (
@@ -38,11 +39,8 @@ class App extends Component {
             <Route path='/register' component={Register} />
             <Route path='/caportal' component={CaPortal} />
             <Route path='/team' component={Team} />
-			<Route path='/terms' component={TnC} />
-			<Route path='/privacy' component={Privacy} />
-			
-			
-			
+            <Route path='/terms' component={TnC} />
+            <Route path='/privacy' component={Privacy} />
           </Switch>
         </div>
       </BrowserRouter>
