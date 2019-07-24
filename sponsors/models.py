@@ -31,6 +31,7 @@ class Sponsor(models.Model):
 
     def __str__(self):
         return self.name
+        
     @property
     def pic_url(self):
         if self.pic:

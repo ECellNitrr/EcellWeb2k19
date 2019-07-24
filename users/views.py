@@ -242,11 +242,10 @@ def resend_otp(request):
     print(user)
     otp = user.otp
     contact = user.contact
-    print(otp)
     if otp:
         duration = user.last_modified
         print(duration)
-        if duration<=10000:
+        if duration<=1000:
             otp = send_otp(contact, otp=otp)
         else:
             otp = send_otp(contact)

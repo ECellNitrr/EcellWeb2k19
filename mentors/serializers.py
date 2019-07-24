@@ -9,4 +9,4 @@ class MentorSerializer(serializers.ModelSerializer):
 class MentorListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
-        fields = ['name','email','contact','detail','description','profile_pic_url','year', 'flag']
+        fields = ['id','name','email','contact','detail','description','profile_pic_url','year', 'flag']
