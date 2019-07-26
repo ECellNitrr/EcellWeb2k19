@@ -32,7 +32,7 @@ class Sponsors extends Component {
                         <img
                             alt={sponsor.name}
                             className="spons-Image"
-                            src={sponsor.pic}
+                            src={sponsor.pic_url}
                         />
                     </div>
                     <div className="back shadow-lg p-3 mb-5 bg-white rounded">

@@ -81,7 +81,7 @@ class faculty extends Component{
         
             
         }
-        else if(member_type==="Dir")
+        else if(member_type==="DIR")
         {
             
             faculty = faculty.map(member => 

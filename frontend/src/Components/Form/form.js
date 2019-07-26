@@ -26,7 +26,7 @@ export default class form extends Component{
 							<Signup/>
 							</div>
 						</Modal>
-						<Modal id='forgetPasModal'>forget password</Modal>
+						
 					</React.Fragment>
         )
     }

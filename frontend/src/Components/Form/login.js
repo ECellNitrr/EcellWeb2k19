@@ -1,11 +1,26 @@
 import React, { Component } from 'react'
 import faxios from '../../axios'
 
+
+const styles ={
+    forgetpas: {
+        fontWeight: 'bold',
+        color: 'skyblue',
+        cursor: 'pointer'
+    }
+}
+
 export default class login extends Component {
     axios = faxios()
     state = {
         err: false,
         success: false
+    }
+
+    _forget_pass= e =>{
+        e.preventDefault()
+        this.close_btn.click()            
+        document.querySelector('#forgetPasModal_toggle').click()
     }
         
     _login = e => {
@@ -36,6 +51,18 @@ export default class login extends Component {
                 success:false,
                 err: true
             })
+
+            
+
+            setTimeout(()=>{
+                this.setState({
+                    err: false,
+                    success: false
+                })
+
+                this.email.value=''
+                this.password.value=''
+            },5000)
         })
     }
     
@@ -59,6 +86,9 @@ export default class login extends Component {
                         <i className="fas fa-lock prefix"></i>
                         <input type="password" ref={ele=>this.password = ele} className="form-control form-control-sm validate" placeholder="Your password"></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_11"></label>
+                    </div>
+                    <div className="mt-2 text-center">
+                        <span onClick={this._forget_pass} style={styles.forgetpas} id="forgetpas" > Forgot Password?</span>
                     </div>
                     <div className="text-center mt-2">
                         <button onClick={this._login} className="btn text-white btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>

@@ -6,6 +6,9 @@ import Form from '../Form/form';
 import OtpModal from '../Form/otp'
 import LogoutModal from '../Form/logout'
 import AdforcaModal from '../Form/adforca'
+import ForgetPass from '../Form/forgetpass'
+import ChangePass from '../Form/changepass'
+import CheckOtp from '../Form/checkotp'
 import {getuser} from '../../axios'
 
  class navbar extends Component {
@@ -36,6 +39,9 @@ import {getuser} from '../../axios'
                 <Form/>
                 <OtpModal/>
                 <AdforcaModal/>
+                <ForgetPass/>
+                <ChangePass/>
+                <CheckOtp/>
                 {this.state.loggedin?<LogoutModal/>:false}
                 <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>
                 <h3 className="brand-header3">E-CELL</h3>
@@ -45,6 +51,8 @@ import {getuser} from '../../axios'
                     <a href="" className="btn btn1 d-none" data-toggle="modal" id='forgetPasModal_toggle' data-target="#forgetPasModal"></a>
                     <a href="" className="btn btn1 d-none" data-toggle="modal" id='otpModal_toggle' data-target="#otpModal"></a>
                     <a href="" className="btn btn1 d-none" data-toggle="modal" id='adforcaModal_toggle' data-target="#adforcaModal"></a>
+                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='changepass_toggle' data-target="#changePasModal"></a>
+                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='checkotp_toggle' data-target="#checkOtpModal"></a>
                 </div>
                 
     

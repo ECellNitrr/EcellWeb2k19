@@ -11,12 +11,11 @@ export default class Responsive extends Component {
   axios=faxios();
   state={
     sponsors:[],
-    loading:true,
-    year:2018
+    loading:true
   }
 
   componentDidMount(){
-    this.axios.get("/sponsors/list/2018/").then(res=>{
+    this.axios.get("/sponsors/list/2019/").then(res=>{
       const data = res.data.data;
 
       this.setState({
@@ -27,14 +26,12 @@ export default class Responsive extends Component {
   }
 
   render() {
-    const settings = {
+    var settings = {
       dots: true,
-      infinite: true,
+      infinite: false,
       speed: 500,
-      slidesToShow: 5,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      slidesToScroll: 5,
+      slidesToShow: 4,
+      slidesToScroll: 4,
       initialSlide: 0,
       responsive: [
         {
@@ -42,7 +39,8 @@ export default class Responsive extends Component {
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            infinite: true
+            infinite: true,
+            dots: true
           }
         },
         {
@@ -57,7 +55,7 @@ export default class Responsive extends Component {
           breakpoint: 480,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1,
+            slidesToScroll: 1
           }
         }
       ]

@@ -16,6 +16,7 @@ class speaker extends Component{
   componentDidMount(){
     for(let i=2016; i<=2020;i++){
       this.axios.get(`/speakers/list/${i}/`).then(res=>{
+        console.log(res);
         let  data = res.data.data
         this.setState({
           speaker: {

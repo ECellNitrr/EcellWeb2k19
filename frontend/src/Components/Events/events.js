@@ -26,7 +26,7 @@ class events extends Component{
 
           <div className="event" key={event.id}>
             <div className="cont1">
-                <div className="front1 shadow-lg p-3 mb-5 bg-white rounded"><img className="event-pic" src={event.icon} alt={event.name}/></div>
+                <div className="front1 shadow-lg p-3 mb-5 bg-white rounded"><img className="event-pic" src={event.icon_url} alt={event.name}/></div>
                 <div className="back2 shadow-lg p-3 mb-5 bg-white rounded">
                     <div className="inner1">
                         <h4 className="event-name" style={{ fontWeight: "800" }}>{event.name}</h4>
