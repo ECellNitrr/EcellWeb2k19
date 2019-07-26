@@ -14,7 +14,8 @@ export default class login extends Component {
     axios = faxios()
     state = {
         err: false,
-        success: false
+        success: false,
+        loader:false
     }
 
     _forget_pass= e =>{
@@ -27,8 +28,10 @@ export default class login extends Component {
         e.preventDefault()
         this.setState({
             success:false,
-            err: false
+            err: false,
+            loader:true
         })
+
 
         this.axios.post('/users/login/',{
             email: this.email.value,
@@ -51,7 +54,6 @@ export default class login extends Component {
                 success:false,
                 err: true
             })
-
             
 
             setTimeout(()=>{
@@ -91,7 +93,7 @@ export default class login extends Component {
                         <span onClick={this._forget_pass} style={styles.forgetpas} id="forgetpas" > Forgot Password?</span>
                     </div>
                     <div className="text-center mt-2">
-                        <button onClick={this._login} className="btn text-white btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>
+                        <button onClick={this._login} id="loginbtn" className="btn text-white btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>

@@ -11,6 +11,54 @@ export default class signup extends Component {
     _singup = e => {
         e.preventDefault()
 
+        if(this.first_name.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'First Name is required'
+            })
+            return
+        }
+        
+        if(this.last_name.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Last Name is required'
+            })
+            return
+        }
+
+        if(this.contact.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Contact is required'
+            })
+            return
+        }
+
+
+        
+        if(this.contact.value.length!==10 ){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Contact is invalid'
+            })
+            return
+        }
+
+
+        if(this.email.value.length<1 ){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is required'
+            })
+            return
+        }
+        
         if(this.password.value.length<8){
             this.setState({
                 success:false,
@@ -19,6 +67,10 @@ export default class signup extends Component {
             })
             return
         }
+
+        
+
+        
 
         this.setState({
             success:false,
@@ -91,7 +143,7 @@ export default class signup extends Component {
 
                 <div className="md-form form-sm mb-5">
                     <i className="fas fa-phone prefix"></i>
-                    <input ref={ele=>this.contact=ele} type="tel"  className="form-control form-control-sm validate" placeholder="Contact"></input>
+                    <input type="number" ref={ele=>this.contact=ele} className="form-control form-control-sm validate" placeholder="Contact"></input>
                     <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
                 </div>
 

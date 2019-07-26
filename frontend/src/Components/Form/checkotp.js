@@ -1,22 +1,28 @@
 import React, { Component } from 'react'
 import Modal from './modal'
 import faxios,{ getuser } from '../../axios'
-
+import Loader from "./loader";
 
 export default class forgetPass extends Component{
 
     axios = faxios()
     state = {
         err: false,
-        success: false
+        success: false,
+        loader:false
     }
     
-
+    componentDidMount(){
+        let btn = document.getElementById("verifyOTPButton");
+         btn.addEventListener("click",()=>{this.props.handleOTPChange(this.otp.value)} );
+    }
+    
     _check_otp= e =>{
         e.preventDefault()
         this.setState({
             err: false,
-            success: false
+            success: false,
+            loader:true
         })
 
         this.axios.post('users/check_otp/',{
@@ -27,7 +33,8 @@ export default class forgetPass extends Component{
             console.log(data)
             this.setState({
                 err: false,
-                success: true
+                success: true,
+                loader:false
             })
 
             this.email.value=''
@@ -43,7 +50,8 @@ export default class forgetPass extends Component{
             setTimeout(()=>{
                 this.setState({
                     err: false,
-                    success: false
+                    success: false,
+                    loader:false
                 })
             },5000)
 
@@ -52,13 +60,15 @@ export default class forgetPass extends Component{
             console.error(err.request.response)
             this.setState({
                 success:false,
-                err: true
+                err: true,
+                loader:false
             })
 
             setTimeout(()=>{
                 this.setState({
                     err: false,
-                    success: false
+                    success: false,
+                    loader:false
                 })
             },5000)
         })
@@ -78,7 +88,7 @@ export default class forgetPass extends Component{
 
                     <div className="md-form form-sm mb-5">
                         <i className="fas fa-envelope prefix"></i>
-                        <input type="email" ref={ele=>this.email = ele} className="form-control form-control-sm validate" placeholder="Your email"></input>
+                        <input type="email" value={this.props.emailToBeFilled} ref={ele=>this.email = ele} className="form-control form-control-sm validate" placeholder="Your email" disabled></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_10"></label>
                     </div>
                     <div className="md-form form-sm mb-4">
@@ -88,7 +98,7 @@ export default class forgetPass extends Component{
                     </div>
 
                     <div className="text-center mt-2">
-                        <button onClick={this._check_otp} className="btn text-white btn-info login-button">Verify OTP</button>
+                        <button onClick={this._check_otp} id ="verifyOTPButton" className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Verify OTP" }</button>
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>

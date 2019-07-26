@@ -14,7 +14,9 @@ import {getuser} from '../../axios'
  class navbar extends Component {
     state = {
         active: false,
-        loggedin: false
+        loggedin: false,
+        forgetmail:"",
+        forgetOTP:""
     }
 
     componentDidMount() {
@@ -28,6 +30,13 @@ import {getuser} from '../../axios'
         }
     }
     
+    setForgetMail= (mail)=>{
+        this.setState({forgetmail:mail});
+    }
+
+    setForgetOTP=(otp)=>{
+        this.setState({forgetOTP:otp});
+    }
 
     render() {
         const loggedin = <a href="" className="btn btn1" data-toggle="modal" data-target="#logoutModal">{this.state.name}</a>
@@ -39,9 +48,9 @@ import {getuser} from '../../axios'
                 <Form/>
                 <OtpModal/>
                 <AdforcaModal/>
-                <ForgetPass/>
-                <ChangePass/>
-                <CheckOtp/>
+                <ForgetPass handleForgetMail={this.setForgetMail}/>
+                <ChangePass otpToBeFilled={this.state.forgetOTP} emailToBeFilled= {this.state.forgetmail}/>
+                <CheckOtp emailToBeFilled= {this.state.forgetmail} handleOTPChange= {this.setForgetOTP}/>
                 {this.state.loggedin?<LogoutModal/>:false}
                 <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>
                 <h3 className="brand-header3">E-CELL</h3>

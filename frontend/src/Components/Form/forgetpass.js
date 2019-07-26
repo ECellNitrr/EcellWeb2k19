@@ -1,24 +1,32 @@
 import React, { Component } from 'react'
 import Modal from './modal'
 import faxios,{ getuser } from '../../axios'
-
+import Loader from "./loader";
 
 export default class forgetPass extends Component{
 
     axios = faxios()
     state = {
         err: false,
-        success: false
+        success: false,
+        loader:false
     }
 
+    componentDidMount(){
+        let btn = document.getElementById("logbtn");
+         btn.addEventListener("click",()=>{this.props.handleForgetMail(this.email.value)} );
+    }
     
 
     _forgetpass= e =>{
         e.preventDefault()
         this.setState({
             err: false,
-            success: false
+            success: false,
+            loader:true
         })
+      
+
 
         this.axios.post('users/forgot_password/',{
             email: this.email.value
@@ -28,7 +36,8 @@ export default class forgetPass extends Component{
             console.log(this.email.value)
             this.setState({
                 err: false,
-                success: true
+                success: true,
+                loader:false
             })
 
             this.email.value=''
@@ -43,22 +52,25 @@ export default class forgetPass extends Component{
             setTimeout(()=>{
                 this.setState({
                     err: false,
-                    success: false
+                    success: false,
+                    loader:false
                 })
             },5000)
 
         }).catch(err=>{
-            this.email.value=''
+            
             console.error(err.request.response)
             this.setState({
                 success:false,
-                err: true
+                err: true,
+                loader:false
             })
 
             setTimeout(()=>{
                 this.setState({
                     err: false,
-                    success: false
+                    success: false,
+                    loader:false
                 })
             },5000)
         })
@@ -66,7 +78,7 @@ export default class forgetPass extends Component{
 
     render(){
         const errmsg = <div className="my-3 text-danger font-weight-bold text-center">Account with this email id doesn't exists. Kindly signup or retry with correct email address.</div>
-        const scsmsg = <div className="my-3 text-success font-weight-bold text-center">An otp has been sent to your mobile number to reset your password, retry if not recieved.</div>
+        const scsmsg = <div className="my-3 text-success font-weight-bold text-center"></div>
         return(
             
             <Modal id="forgetPasModal">
@@ -82,7 +94,7 @@ export default class forgetPass extends Component{
                     </div>
 
                     <div className="text-center mt-2">
-                        <button onClick={this._forgetpass} className="btn text-white btn-info login-button">Send OTP</button>
+                        <button onClick={this._forgetpass} id="logbtn" className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Send OTP" }</button>
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>
