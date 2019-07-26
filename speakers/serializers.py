@@ -9,4 +9,4 @@ class SpeakerSerializer(serializers.ModelSerializer):
 class SpeakerListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Speaker
-        fields = ['name','company','experience','profile_pic_url','email','contact','description','year', 'social_media', 'flag']
+        fields = ['name','company','experience','profile_pic_url','profile_pic','email','contact','description','year', 'social_media', 'flag']
