@@ -13,10 +13,10 @@ SPONS_TYPE = {
 
 
 def data_transfer(request):
-    URL = "https://3b1bdaef.ngrok.io/sponsors/list/"
+    URL = "http://206.189.143.11:9000/sponsors/list/"
     r = requests.get(URL)
     data = r.json()
-    image_url = 'https://3b1bdaef.ngrok.io/static/uploads/sponsors/'
+    image_url = 'http://206.189.143.11:9000/static/uploads/sponsors/'
     # print(data)
     sponsors = data['spons']
     for sponsor_data in sponsors:
@@ -33,13 +33,13 @@ def data_transfer(request):
                 website = sponsor['website']
                 contact = sponsor['contact']
                 spons_type = SPONS_TYPE[sponsor['spons_type']]
-                year = 2018
+                year = sponsor['year']
                 social_media = '-'
                 
                 image_name = name+'.jpeg'
                 image_location = 'static/uploads/sponsors/'+image_name
                 
-                req = requests.get(sponsor['pic'].replace('http://127.0.0.1:8080','https://3b1bdaef.ngrok.io'), stream=True)
+                req = requests.get(sponsor['pic'].replace('http://206.189.143.11:9000','http://206.189.143.11:9000'), stream=True)
                 with open(image_location, 'wb') as out_file:
                     shutil.copyfileobj(req.raw, out_file)
                 del req
