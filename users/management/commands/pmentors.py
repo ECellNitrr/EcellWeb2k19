@@ -35,10 +35,10 @@ MEMBER_TYPE = {
 class Command(BaseCommand):
     def handle(self, *args, **options):
         appname = 'mentors'
-        URL = "https://ecell.nitrr.ac.in/{}/list/".format(appname)
+        URL = "https://3b1bdaef.ngrok.io/{}/list/".format(appname)
         r = requests.get(URL)
         data = r.json()
-        image_url = 'https://ecell.nitrr.ac.in/static/uploads/{}/'.format(
+        image_url = 'https://3b1bdaef.ngrok.io/static/uploads/{}/'.format(
             appname)
 
         Mentor.objects.all().delete()
@@ -51,7 +51,7 @@ class Command(BaseCommand):
                 image_name = obj['profile_pic'].split('/').pop()
                 image_location = 'static/uploads/{}/'.format(
                     appname)+image_name
-                req = requests.get(obj['profile_pic'], stream=True)
+                req = requests.get(obj['profile_pic'].replace('http://127.0.0.1:8080','https://3b1bdaef.ngrok.io'), stream=True)
                 with open(image_location, 'wb') as out_file:
                     shutil.copyfileobj(req.raw, out_file)
                 del req

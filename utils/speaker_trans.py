@@ -2,15 +2,18 @@ from speakers.models import Speaker
 from django.http import JsonResponse
 import requests
 import shutil
+
 def data_transfer(request):
-    URL = "https://ecell.nitrr.ac.in/speakers/list/"
+    URL = "https://79f57566.ngrok.io/speakers/list/"
     r = requests.get(URL)
+    print(r)
     data = r.json()
-    image_url = 'https://ecell.nitrr.ac.in/static/uploads/speakers/'
+    image_url = 'https://79f57566.ngrok.io/static/uploads/speakers/'
     speakers = data['speakers']
     for speaker in speakers:
         # image_name = speaker['profile_pic'].replace(image_url,'')
         name = speaker['name']
+        print(name)
         company = speaker['company']
         # experience = speaker['experience']
         email = speaker['email']
@@ -19,9 +22,12 @@ def data_transfer(request):
         year = 2018
         social_media = speaker['social_media']
         
-        image_name = name+'.jpeg'
+        image_name = name+'.jpg'
+        print(speaker['profile_pic'])
+        image_url = speaker['profile_pic'].replace('http://127.0.0.1:8080','https://79f57566.ngrok.io')
+        print(image_url)
         image_location = 'static/uploads/speakers/'+image_name
-        req = requests.get(speaker['profile_pic'], stream=True)
+        req = requests.get(image_url, stream=True)
         with open(image_location, 'wb') as out_file:
             shutil.copyfileobj(req.raw, out_file)
         del req

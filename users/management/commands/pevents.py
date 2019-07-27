@@ -35,10 +35,10 @@ MEMBER_TYPE = {
 class Command(BaseCommand):
     def handle(self, *args, **options):
         appname = 'events'
-        URL = "https://ecell.nitrr.ac.in/{}/list/".format(appname)
+        URL = "https://3b1bdaef.ngrok.io/{}/list/".format(appname)
         r = requests.get(URL)
         data = r.json()
-        image_url = 'https://ecell.nitrr.ac.in/static/uploads/{}/'.format(
+        image_url = 'https://3b1bdaef.ngrok.io/static/uploads/{}/'.format(
             appname)
 
 
@@ -50,10 +50,16 @@ class Command(BaseCommand):
             image_location = ''
             if obj['icon']:
                 image_name = obj['icon'].split('/').pop()
-                image_location = 'static/uploads/{}/'.format(
+                image_location = 'static/uploads/{}/icon/'.format(
                     appname)+image_name
-                req = requests.get(obj['icon'], stream=True)
+                cover_location = 'static/uploads/{}/cover/'.format(
+                    appname)+image_name
+                req = requests.get(obj['icon'].replace('http://127.0.0.1:8080','https://3b1bdaef.ngrok.io'), stream=True)
                 with open(image_location, 'wb') as out_file:
+                    shutil.copyfileobj(req.raw, out_file)
+                del req
+                req = requests.get(obj['cover_pic'].replace('http://127.0.0.1:8080','https://3b1bdaef.ngrok.io'), stream=True)
+                with open(cover_location, 'wb') as out_file:
                     shutil.copyfileobj(req.raw, out_file)
                 del req
 
@@ -66,6 +72,7 @@ class Command(BaseCommand):
             temp.details = obj['details']
             temp.cover_pic = image_location
             temp.icon = image_location
+            temp.cover_pic = cover_location
             temp.year = 2019
             temp.flag = True
 

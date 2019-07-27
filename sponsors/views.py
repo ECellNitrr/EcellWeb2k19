@@ -1,12 +1,14 @@
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.response import Response
 from .models import Sponsor
 from .serializers import SponsorSerializer, SponsorListSerializer
 from decorators import ecell_user
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from collections import defaultdict
 import csv
+
 
 
 @api_view(['GET', ])
@@ -81,3 +83,12 @@ def generate_spreadsheet(request):
         writer.writerow(sponsor)
 
     return response
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny,])
+def spons_years(request):
+    spons_years = Sponsor.objects.values_list('year',flat=True).distinct()
+    spons_years = [x for x in spons_years]
+    spons_years.sort()
+    return JsonResponse({'spons_year': spons_years})
