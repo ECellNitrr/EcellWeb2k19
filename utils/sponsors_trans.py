@@ -38,8 +38,8 @@ def data_transfer(request):
                 
                 image_name = name+'.jpeg'
                 image_location = 'static/uploads/sponsors/'+image_name
-                
-                req = requests.get(sponsor['pic'].replace('http://206.189.143.11:9000','http://206.189.143.11:9000'), stream=True)
+                print(sponsor['pic'])
+                req = requests.get(sponsor['pic'], stream=True)
                 with open(image_location, 'wb') as out_file:
                     shutil.copyfileobj(req.raw, out_file)
                 del req
