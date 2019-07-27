@@ -78,9 +78,6 @@ export default class login extends Component {
                     success: false,
                     loader:false
                 })
-
-                this.email.value=''
-                this.password.value=''
             },5000)
         })
     }
