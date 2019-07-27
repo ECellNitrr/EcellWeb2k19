@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'android_app',
     'corsheaders',
     'ca_portal',
+    'gallery',
 ]
 
 MIDDLEWARE = [
