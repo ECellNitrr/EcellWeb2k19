@@ -11,10 +11,17 @@ export default class forgetPass extends Component{
         success: false,
         loader:false
     }
-    
+    /*HandleEnter = (event)=>{
+        const submitButton =document.getElementById("verifyOTPButton");
+        if(event.code=="Enter"){
+            submitButton.click();
+        }
+    }*/
+
     componentDidMount(){
         let btn = document.getElementById("verifyOTPButton");
          btn.addEventListener("click",()=>{this.props.handleOTPChange(this.otp.value)} );
+         /*document.addEventListener('keypress', this.HandleEnter);*/
     }
     
     _check_otp= e =>{
@@ -87,8 +94,8 @@ export default class forgetPass extends Component{
                 <div className="modal-body mb-1">
 
                     <div className="md-form form-sm mb-5">
-                        <i className="fas fa-envelope prefix"></i>
-                        <input type="email" value={this.props.emailToBeFilled} ref={ele=>this.email = ele} className="form-control form-control-sm validate" placeholder="Your email" disabled></input>
+                        
+                        <input type="hidden" value={this.props.emailToBeFilled} ref={ele=>this.email = ele} className="form-control form-control-sm validate" placeholder="Your email" disabled></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_10"></label>
                     </div>
                     <div className="md-form form-sm mb-4">

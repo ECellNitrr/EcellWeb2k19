@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import faxios from '../../axios'
-
+import Loader from "./loader";
 
 const styles ={
     forgetpas: {
@@ -17,6 +17,18 @@ export default class login extends Component {
         success: false,
         loader:false
     }
+
+    /*HandleEnter = (event)=>{
+        const submitButton =document.getElementById("loginbtn");
+        if(event.code=="Enter"){
+            submitButton.click();
+        }
+    }
+
+    componentDidMount(){
+        document.addEventListener('keypress', this.HandleEnter);
+
+    }*/
 
     _forget_pass= e =>{
         e.preventDefault()
@@ -48,18 +60,23 @@ export default class login extends Component {
                 this.close_btn.click()            
                 document.querySelector('#otpModal_toggle').click()
             }
+            this.setState({
+                loader:false
+            })
         }).catch(err=>{
             console.error(err.request.response)
             this.setState({
                 success:false,
-                err: true
+                err: true,
+                loader:false
             })
             
 
             setTimeout(()=>{
                 this.setState({
                     err: false,
-                    success: false
+                    success: false,
+                    loader:false
                 })
 
                 this.email.value=''
@@ -93,7 +110,7 @@ export default class login extends Component {
                         <span onClick={this._forget_pass} style={styles.forgetpas} id="forgetpas" > Forgot Password?</span>
                     </div>
                     <div className="text-center mt-2">
-                        <button onClick={this._login} id="loginbtn" className="btn text-white btn-info login-button">Log in <i className="fas fa-sign-in ml-1"></i></button>
+                        <button onClick={this._login} id="loginbtn" className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Log in" } <i className="fas fa-sign-in ml-1"></i></button>
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>

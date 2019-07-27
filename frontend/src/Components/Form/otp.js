@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Modal from './modal'
 import faxios,{ getuser } from '../../axios'
-
+import Loader from "./loader";
 const styles ={
     resend_otp: {
         fontWeight: 'bold',
@@ -14,16 +14,28 @@ export default class otp extends Component {
     state = {
         err: false,
         success: false,
-        resend : false
+        resend : false,
+        loader:false
     }
 
+   /* HandleEnter = (event)=>{
+        const submitButton =document.getElementById("verifyBtn");
+        if(event.code=="Enter"){
+            submitButton.click();
+        }
+    }
+
+    componentDidMount(){
+        document.addEventListener('keypress', this.HandleEnter);
+    }*/
     _verify_otp = e => {
         e.preventDefault()
         let user = getuser()
 
         this.setState({
             success:false,
-            err: false
+            err: false,
+            loader:true
         })
 
         faxios().post('/users/verify_otp/',{
@@ -35,10 +47,14 @@ export default class otp extends Component {
             user.verified = true
             sessionStorage['ecell_user'] = JSON.stringify(user)
             window.location = '/'
+            this.setState({
+                loader:false
+            })
         }).catch(err=>{
             this.setState({
                 success:false,
-                err: true
+                err: true,
+                loader:false
             })
             console.error(err)
         })
@@ -79,7 +95,7 @@ export default class otp extends Component {
                     {this.state.resend? null: resend_otp}        
                 
                     <div className="text-center mt-2">
-                        <button onClick={this._verify_otp} className="btn text-white btn-info login-button">Verify OTP</button>
+                        <button onClick={this._verify_otp}  id="verifyBtn" className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Verify OTP" }</button>
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>

@@ -11,6 +11,16 @@ export default class changePass extends Component{
         success: false,
         loader:false
     }
+    /*HandleEnter = (event)=>{
+        const submitButton =document.getElementById("changePassBtn");
+        if(event.code=="Enter"){
+            submitButton.click();
+        }
+    }
+
+    componentDidMount(){
+        document.addEventListener('keypress', this.HandleEnter);
+    }*/
 
     _changepass= e =>{
         e.preventDefault()
@@ -39,13 +49,6 @@ export default class changePass extends Component{
             this.otp.value=''
             this.password.value=''
 
-            setTimeout(()=>{
-                this.setState({
-                    err: false,
-                    success: false,
-                    loader:false
-                })
-            },5000)
         }).catch(err=>{
             console.error(err.request.response)
             this.setState({
@@ -53,13 +56,6 @@ export default class changePass extends Component{
                 success: false,
                 loader:false
             })
-            setTimeout(()=>{
-                this.setState({
-                    err: false,
-                    success: false,
-                    loader:false
-                })
-            },5000)
         })
     }
 
@@ -76,14 +72,14 @@ export default class changePass extends Component{
 
                 <div className="modal-body mb-1">
                     <div className="md-form form-sm mb-5">
-                        <i className="fas fa-envelope prefix"></i>
-                        <input type="email" value={this.props.emailToBeFilled}  ref={ele=>this.email = ele} className="form-control form-control-sm validate" placeholder="Your email" disabled></input>
+                        
+                        <input type="hidden" value={this.props.emailToBeFilled}  ref={ele=>this.email = ele} className="form-control form-control-sm validate" placeholder="Your email" disabled></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_10"></label>
                     </div>
 
                     <div className="md-form form-sm mb-4">
-                        <i className="fas fa-envelope prefix"></i>
-                        <input type="text" value={this.props.otpToBeFilled} ref={ele=>this.otp = ele} className="form-control form-control-sm validate" placeholder="Please enter OTP received"></input>
+                        
+                        <input type="hidden" value={this.props.otpToBeFilled} ref={ele=>this.otp = ele} className="form-control form-control-sm validate" placeholder="Please enter OTP received"></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_10"></label>
                     </div>
 
@@ -94,7 +90,7 @@ export default class changePass extends Component{
                     </div>
 
                     <div className="text-center mt-2">
-                        <button disabled={this.state.success} onClick={this._changepass} className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Change Password" }</button>
+                        <button disabled={this.state.success} id="changePassBtn" onClick={this._changepass} className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Change Password" }</button>
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>

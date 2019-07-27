@@ -12,9 +12,17 @@ export default class forgetPass extends Component{
         loader:false
     }
 
+    /*HandleEnter = (event)=>{
+        const submitButton =document.getElementById("logbtn");
+        if(event.code=="Enter"){
+            submitButton.click();
+        }
+    }*/
+
     componentDidMount(){
         let btn = document.getElementById("logbtn");
          btn.addEventListener("click",()=>{this.props.handleForgetMail(this.email.value)} );
+         /*document.addEventListener('keypress', this.HandleEnter);*/
     }
     
 
