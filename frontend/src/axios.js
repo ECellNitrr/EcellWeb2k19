@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //let baseURL = "http://localhost:8000"
-let baseURL = "http://b1995556.ngrok.io";
+let baseURL = "https://ecell.nitrr.ac.in";
 
 if( process.env.NODE_ENV === 'production'){
     baseURL = ""

@@ -47,7 +47,7 @@ import {getuser} from '../../axios'
                 <div className="logoback"><img className={`logo ${this.state.active? 'active1': ''}`} alt='' src={logo}></img></div>
                 <Form/>
                 <OtpModal/>
-                <AdforcaModal/>
+                {/*<AdforcaModal/>*/}
                 <ForgetPass handleForgetMail={this.setForgetMail}/>
                 <ChangePass otpToBeFilled={this.state.forgetOTP} emailToBeFilled= {this.state.forgetmail}/>
                 <CheckOtp emailToBeFilled= {this.state.forgetmail} handleOTPChange= {this.setForgetOTP}/>

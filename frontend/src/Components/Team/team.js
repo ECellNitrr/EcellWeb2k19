@@ -13,11 +13,56 @@ class team extends Component {
     };
     componentDidMount() {
         this.axios.get("/team/list/").then(fromserver => {
-            const data = fromserver.data;
-            delete data["me"];
-            console.log(data);
+            const data = fromserver.data.data;
+            console.log(data)
+            /*delete data["me"];*/
+
+            let members_dict={
+                Director:[],
+                Head_Career_Development:[],
+                Faculty_Incharge:[],
+                Overall_Coordinator:[],
+                Head_Coordinator:[],
+                Manager:[],
+                Executive:[]       
+            }
+
+            data.forEach(members => {
+                if(members.member_type==="DIR"){
+                    members_dict["Director"].push(members)
+                }
+
+                if(members.member_type==="HCD"){
+                    members_dict["Head_Career_Development"].push(members)
+                }
+
+                if(members.member_type==="FCT"){
+                    members_dict["Faculty_Incharge"].push(members)
+                }
+
+                if(members.member_type==="OCO"){
+                    members_dict["Overall_Coordinator"].push(members)
+                }
+
+                if(members.member_type==="HCO"){
+                    members_dict["Head_Coordinator"].push(members)
+                }
+
+                if(members.member_type==="MNG"){
+                    members_dict["Manager"].push(members)
+                }
+
+                if(members.member_type==="EXC"){
+                    members_dict["Executive"].push(members)
+                }
+
+
+            });
+
+            console.log(members_dict)
+
             this.setState({
-                members: data,
+                members: members_dict,
                 loading: false
             });
         });

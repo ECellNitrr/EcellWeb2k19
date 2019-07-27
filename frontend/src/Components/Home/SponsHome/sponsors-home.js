@@ -15,8 +15,9 @@ export default class Responsive extends Component {
   }
 
   componentDidMount(){
-    this.axios.get("/sponsors/list/2019/").then(res=>{
+    this.axios.get("/sponsors/list/2018/").then(res=>{
       const data = res.data.data;
+      console.log(data)
 
       this.setState({
         sponsors:data,
@@ -30,8 +31,8 @@ export default class Responsive extends Component {
       dots: true,
       infinite: false,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToShow: 5,
+      slidesToScroll: 5,
       initialSlide: 0,
       responsive: [
         {
@@ -46,8 +47,8 @@ export default class Responsive extends Component {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             initialSlide: 2
           }
         },
@@ -82,7 +83,7 @@ export default class Responsive extends Component {
     return (
       <div className="spons">
 
-        <Parallax blur={3} bgImage={require('../../../assets/spons.jpg')} bgImageAlt="sponsors" strength={700}>
+        <Parallax blur={3} bgImage={require('../../../assets/spons.svg')} bgImageAlt="sponsors" strength={700}>
           {/* <div className="heading4-cont"><h2 className="heading-4">SPONSORS {this.state.year}</h2></div> */}
           <Slider {...settings}>
           
