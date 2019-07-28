@@ -28,13 +28,7 @@ class logout extends Component {
         
         faxios().get('/users/get_user_details/').then(d=>{
             let data = d.data
-            const user = this.props.auth
-            console.log(data)
-            sessionStorage['ecell_user'] = JSON.stringify({
-                token: user.token,
-                ...data
-            })
-            this.setState(data)
+            this.props.updateUser(data)
         })
     }
 
@@ -43,15 +37,20 @@ class logout extends Component {
 
         faxios().get('/users/request_ca_approval/').then(d=>{
             alert('You have successfully applied for CA! You can confirm it by clicking on your name on top right corner')
-            let user = this.props.auth
-            user.applied = true
-            sessionStorage['ecell_user'] = JSON.stringify(user)
-            window.location = '/'
+            
+            this.props.updateUser({
+                applied: true
+            })
         }).catch(err=>{
             console.error(err)
         })
     }
     
+    _verify_otp = e => {
+        this.close_btn.click()
+        document.querySelector('#otpModal_toggle').click()
+    }
+
     _logout = e => {
         this.props.updateUser({loggedin:false})
         this.close_btn.click()
@@ -72,8 +71,11 @@ class logout extends Component {
             <hr/>
         </div> 
 
-        let button_to_show = this.state.applied ? applied_for_ca:apply_for_ca 
-        if(this.state.user_type !== 'GST'){
+        const phone_no_verified = this.props.auth.verified ? null : <span onClick={this._verify_otp} id='phnoverified_btn'>click to verify phone no</span>
+
+        let button_to_show = this.props.auth.applied ? applied_for_ca:apply_for_ca 
+        
+        if(this.props.auth.user_type !== 'GST'){
             button_to_show=null
         }
 
@@ -81,9 +83,10 @@ class logout extends Component {
             <Modal id='logoutModal'>
                 <div className="modal-body text-center mb-1">
                     <div className="details">
-                        <div><span className="font-weight-bold">User: </span>{this.state.first_name} {this.state.last_name}</div>
-                        <div><span className="font-weight-bold">Email: </span>{this.state.email}</div>
-                        <div><span className="font-weight-bold">Member Type: </span>{user_type[this.state.user_type]}</div>
+                        <div><span className="font-weight-bold">User: </span>{this.props.auth.first_name} {this.props.auth.last_name}</div>
+                        <div><span className="font-weight-bold">Email: </span>{this.props.auth.email}</div>
+                        <div><span className="font-weight-bold">Member Type: </span>{user_type[this.props.auth.user_type]}</div>
+                        <div>{phone_no_verified}</div>
                     </div>
                     {button_to_show}
                     <div className="my-3 text-center">Are your sure want to logout?</div>

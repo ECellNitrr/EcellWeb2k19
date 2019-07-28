@@ -37,7 +37,7 @@ export class navbar extends Component {
     }
 
     render() {
-        const loggedin = <a href="" className="btn btn1" data-toggle="modal" data-target="#logoutModal">{this.state.name}</a>
+        const loggedin = <a href="" className="btn btn1" data-toggle="modal" data-target="#logoutModal">{this.props.auth.first_name.toUpperCase()} {this.props.auth.last_name.toUpperCase()}</a>
         const loggedout = <a href="" className="btn btn1" data-toggle="modal" data-target="#loginRegModal">LogIn/SignUp</a>
         console.log(this.props)
 

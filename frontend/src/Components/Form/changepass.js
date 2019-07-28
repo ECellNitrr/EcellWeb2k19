@@ -11,16 +11,7 @@ export default class changePass extends Component{
         success: false,
         loader:false
     }
-    /*HandleEnter = (event)=>{
-        const submitButton =document.getElementById("changePassBtn");
-        if(event.code=="Enter"){
-            submitButton.click();
-        }
-    }
 
-    componentDidMount(){
-        document.addEventListener('keypress', this.HandleEnter);
-    }*/
 
     _changepass= e =>{
         e.preventDefault()

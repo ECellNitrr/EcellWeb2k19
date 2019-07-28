@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import fuser from '../../axios'
 import Loader from "./loader";
+
+
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
+
+
 export default class signup extends Component {
     axios = fuser()
     state = {
@@ -8,68 +15,15 @@ export default class signup extends Component {
         success: false,
         loader:false
     }
-    /*HandleEnter = (event)=>{
-        const submitButton =document.getElementById("signupBtn");
-        if(event.code=="Enter"){
-            submitButton.click();
-        }
+
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateUser: PropTypes
     }
 
-    componentDidMount(){
-        document.addEventListener('keypress', this.HandleEnter);
-    }*/
-        
     _singup = e => {
         e.preventDefault()
 
-        // if(this.first_name.value.length<1){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'First Name is required'
-        //     })
-        //     return
-        // }
-        
-        // if(this.last_name.value.length<1){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'Last Name is required'
-        //     })
-        //     return
-        // }
-
-        // if(this.contact.value.length<1){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'Contact is required'
-        //     })
-        //     return
-        // }
-
-
-        
-        // if(this.contact.value.length!==10 ){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'Contact is invalid'
-        //     })
-        //     return
-        // }
-
-
-        // if(this.email.value.length<1 ){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'Email is required'
-        //     })
-        //     return
-        // }
-        
         if(this.password.value.length<8){
             this.setState({
                 success:false,
@@ -78,10 +32,6 @@ export default class signup extends Component {
             })
             return
         }
-
-        
-
-        
 
         this.setState({
             success:false,
@@ -110,6 +60,8 @@ export default class signup extends Component {
                 err: false,
                 loader:false
             })
+
+            
             console.log(data)
 
             setTimeout(()=>{

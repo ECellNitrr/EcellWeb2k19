@@ -19,7 +19,8 @@ const styles ={
 
 class otp extends Component {
     static propTypes = {
-        auth: PropTypes.object.isRequired
+        auth: PropTypes.object.isRequired,
+        updateUser: PropTypes.object.isRequired,
     }
     
     state = {
@@ -45,12 +46,13 @@ class otp extends Component {
             let data = d.data
             console.log(data)
 
-            user.verified = true
-            sessionStorage['ecell_user'] = JSON.stringify(user)
-            window.location = '/'
             this.setState({
                 loader:false
             })
+            this.props.updateUser({
+                verified: true
+            })
+            this.close_btn.click()
         }).catch(err=>{
             this.setState({
                 success:false,
@@ -107,4 +109,4 @@ class otp extends Component {
 
 const mapStateToProps = (state) => state
 
-export default connect(mapStateToProps, )(otp)
+export default connect(mapStateToProps, actions)(otp)

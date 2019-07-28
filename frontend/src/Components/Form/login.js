@@ -50,17 +50,21 @@ class login extends Component {
             let data = d.data
             console.log(data)
             
-            this.props.updateUser(data)
+            this.props.updateUser({
+                ...data,
+                loggedin: true
+            })
+            this.close_btn.click()            
 
-            if(data.verified){
-                window.location = '/'
-            }else{
-                this.close_btn.click()            
+            if(!data.verified){
                 document.querySelector('#otpModal_toggle').click()
             }
+
             this.setState({
                 loader:false
             })
+
+
         }).catch(err=>{
             console.error(err.request.response)
             this.setState({
