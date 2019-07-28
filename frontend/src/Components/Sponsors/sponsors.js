@@ -9,7 +9,8 @@ class Sponsors extends Component {
     axios = faxios();
     state = {
         sponsors: [],
-        loading: true
+        loading: true,
+        year:null
     };
 
     componentDidMount() {
@@ -19,7 +20,8 @@ class Sponsors extends Component {
             let data = res.data.data;
             this.setState({
                 loading: false,
-                sponsors: data 
+                sponsors: data ,
+                year:year
             });
         });
     }
