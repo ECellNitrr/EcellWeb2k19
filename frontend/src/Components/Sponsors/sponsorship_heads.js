@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import './sponsors.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
-import Header_Links from './header_links';
+import HeaderLinks from './header_links';
 
 
 class Sponsors extends Component{
@@ -18,13 +18,13 @@ class Sponsors extends Component{
                 <Navbar/>
                 <div className="header4">SPONSORSHIP HEAD CO-ORDINATORS</div>
                 <div className="container-fluid" style={{maxWidth:"1200px",paddingTop:"350px"}}>
-                    <Header_Links/>
+                    <HeaderLinks/>
                 </div>
 
                 <div className="container-fluid ctn12" style={{maxWidth:"1200px"}}>
                     
                         <div className="individual_heads">
-                            <div><img className="hc_image shadow-lg p-3 mb-5 bg-white rounded" src={require('../../assets/rajshree.jpeg')}></img></div>
+                            <div><img className="hc_image shadow-lg p-3 mb-5 bg-white rounded" alt="Rajshree Gavel" src={require('../../assets/rajshree.jpeg')}></img></div>
                             <h3 className="spons_hc_name">Rajshree Gavel</h3>
                             <p className="center"><a className="spons_phone" href="tel:+91 8889830313">+91 8889830313</a></p>
                             <p className="center"><a className="spons_email" href="mailto:rajshreegavel111@gmail.com">rajshreegavel111@gmail.com</a></p>
@@ -33,7 +33,7 @@ class Sponsors extends Component{
                         </div>
     
                         <div className="individual_heads">
-                            <div><img className="hc_image shadow-lg p-3 mb-5 bg-white rounded" src={require('../../assets/mohit.jpg')}></img></div>
+                            <div><img className="hc_image shadow-lg p-3 mb-5 bg-white rounded" alt="Mohith Khatri" src={require('../../assets/mohit.jpg')}></img></div>
                             <h3 className="spons_hc_name">Mohith Khatri</h3>
                             <p className="center"><a className="spons_phone" href="tel:+91 7580800939">+91 7580800939</a></p>
                             <p className="center"><a className="spons_email" href="mailto:mohithkhatri100@gmail.com">mohithkhatri100@gmail.com</a></p>
@@ -42,7 +42,7 @@ class Sponsors extends Component{
                         </div>
     
                         <div className="individual_heads">
-                            <div><img className="hc_image shadow-lg p-3 mb-5 bg-white rounded" src={require('../../assets/yashwi.jpeg')}></img></div>
+                            <div><img className="hc_image shadow-lg p-3 mb-5 bg-white rounded" alt="Yashwi Shah" src={require('../../assets/yashwi.jpeg')}></img></div>
                             <h3 className="spons_hc_name">Yashwi Shah</h3>
                             <p className="center"><a className="spons_phone" href="tel:+91 7898556656">+91 7898556656</a></p>
                             <p className="center"><a className="spons_email" href="mailto:iamyashwi@gmail.com">iamyashwi@gmail.com</a></p>
