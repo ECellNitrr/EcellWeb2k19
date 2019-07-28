@@ -16,7 +16,7 @@ def get_speakers(request, year):
     res_status = ""
     res_data = []
 
-    speakers = Speaker.objects.filter(year=year, flag=True)
+    speakers = Speaker.objects.filter(year=year, flag=True).order_by('-year')
     if len(speakers) > 0:
         res_data = SpeakerListSerializer(
             speakers, many=True, context={

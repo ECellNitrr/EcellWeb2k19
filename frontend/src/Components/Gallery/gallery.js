@@ -1,9 +1,17 @@
 import React,{Component} from 'react';
-// import faxios from '../../axios'
+import faxios from '../../axios';
 import './gallery.css';
 import Navbar from '../Navbar/navbar';
 
 class gallery extends Component{
+
+    axios=faxios()
+
+    componentDidMount(){
+        this.axios.get('/gallery/list/').then(res=>{
+            console.log(res)
+        })
+    }
 
     render(){
         return(

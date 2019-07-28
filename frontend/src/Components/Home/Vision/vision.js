@@ -15,7 +15,7 @@
 
                 </div>
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-5 col3">
-                    <p className="run"><img alt='' className="running-man" src={run}></img></p>
+                    <p className="run"><img alt='Running Man' className="running-man" src={run}></img></p>
                 </div>
             </div>
          </div>

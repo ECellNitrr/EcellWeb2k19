@@ -1,5 +1,7 @@
 const initialState = {
-    loggedin: false
+    loggedin: false,
+    first_name: '',
+    last_name: ''
 }
 
 export default (state = initialState, action) => {

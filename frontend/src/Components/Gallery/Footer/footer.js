@@ -20,7 +20,7 @@ const footer = ()=>{
                     </div>
 
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col6">
-                        <img alt='' style={{height:"80px",width:"80px"}} src={logo}></img>
+                        <img alt='E-Cell logo' style={{height:"80px",width:"80px"}} src={logo}></img>
                         <p style={{color:"white",margin:"15px",fontSize:"17px",fontWeight:"600"}}>E-Cell, NIT Raipur is established to motivate and educate people about entrepreneurship and serve as a meeting ground for corporate and young budding entrepreneurs from distinguished institutions.</p>
                         <p style={{color:"white",marginTop:"5px"}}>&copy; All Rights Reserved.</p>
                     </div>

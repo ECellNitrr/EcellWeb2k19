@@ -14,6 +14,8 @@ const Gallery = lazy(() => import('./Components/Gallery/gallery'));
 const Register = lazy(() => import('./Components/Register/register'));
 const CaPortal = lazy(() => import('./Components/ca_portal/caportal'));
 const Team = lazy(() => import('./Components/Team/team'));
+const Yearwise_spons = lazy(()=> import('./Components/Sponsors/yearwise_sponsors'));
+const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 
 
 
@@ -26,6 +28,8 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/speakers' component={Speakers} />
+              <Route path="/sponsors/sponsors_heads" component={Spons_hc}/>
+              <Route path="/sponsors/yearwise" component={Yearwise_spons}/>
               <Route path='/sponsors/:year' component={Sponsors} />
               <Route path='/sponsors' component={() => <Redirect to='/sponsors/2018' />} />
               <Route path='/events/:id' component={EventDetail} />

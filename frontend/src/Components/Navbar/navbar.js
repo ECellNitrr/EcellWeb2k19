@@ -43,9 +43,7 @@ export class navbar extends Component {
 
         return (
             <div className="Navbar">
-                <div className="logoback"><img className={`logo ${this.state.active ? 'active1' : ''}`} alt='' src={logo}></img></div>
-
-                {/* all models gets rendered here. we open close with */}
+                <div className="logoback"><img className={`logo ${this.state.active ? 'active1' : ''}`} alt='ECell logo' src={logo}></img></div>
                 <Form />
                 <OtpModal />
                 {/*<AdforcaModal/>*/}
@@ -74,7 +72,7 @@ export class navbar extends Component {
 
                 <div className={`toggle ${this.state.active ? 'active1' : ''}`} onClick={() => this.setState({ active: !this.state.active })}></div>
                 <div className={`sidebar ${this.state.active ? 'active1' : ''}`}>
-                    <div className="logoback2"><img className="logo2" alt='' src={logo}></img></div>
+                    <div className="logoback2"><img className="logo2" alt='Ecell Logo' src={logo}></img></div>
                     <ul>
                         <li><Link to="/" className="data-links" data-text="Home" >Home</Link></li>
                         <li><NavLink to="/events" className="data-links" data-text="events" >Events</NavLink></li>
