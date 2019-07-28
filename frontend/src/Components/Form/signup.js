@@ -1,16 +1,75 @@
 import React, { Component } from 'react'
 import fuser from '../../axios'
-
+import Loader from "./loader";
 export default class signup extends Component {
     axios = fuser()
     state = {
         err: false,
-        success: false
+        success: false,
+        loader:false
     }
+    /*HandleEnter = (event)=>{
+        const submitButton =document.getElementById("signupBtn");
+        if(event.code=="Enter"){
+            submitButton.click();
+        }
+    }
+
+    componentDidMount(){
+        document.addEventListener('keypress', this.HandleEnter);
+    }*/
         
     _singup = e => {
         e.preventDefault()
 
+        // if(this.first_name.value.length<1){
+        //     this.setState({
+        //         success:false,
+        //         err: true,
+        //         errmsg: 'First Name is required'
+        //     })
+        //     return
+        // }
+        
+        // if(this.last_name.value.length<1){
+        //     this.setState({
+        //         success:false,
+        //         err: true,
+        //         errmsg: 'Last Name is required'
+        //     })
+        //     return
+        // }
+
+        // if(this.contact.value.length<1){
+        //     this.setState({
+        //         success:false,
+        //         err: true,
+        //         errmsg: 'Contact is required'
+        //     })
+        //     return
+        // }
+
+
+        
+        // if(this.contact.value.length!==10 ){
+        //     this.setState({
+        //         success:false,
+        //         err: true,
+        //         errmsg: 'Contact is invalid'
+        //     })
+        //     return
+        // }
+
+
+        // if(this.email.value.length<1 ){
+        //     this.setState({
+        //         success:false,
+        //         err: true,
+        //         errmsg: 'Email is required'
+        //     })
+        //     return
+        // }
+        
         if(this.password.value.length<8){
             this.setState({
                 success:false,
@@ -20,10 +79,15 @@ export default class signup extends Component {
             return
         }
 
+        
+
+        
+
         this.setState({
             success:false,
             err: false,
             errmsg: '',
+            loader:true
         })
 
         this.axios.post('/users/register/',{
@@ -43,9 +107,19 @@ export default class signup extends Component {
             
             this.setState({
                 success:true,
-                err: false
+                err: false,
+                loader:false
             })
             console.log(data)
+
+            setTimeout(()=>{
+                this.setState({
+                    err: false,
+                    success: false,
+                    loader:false,
+                    errmsg: "",
+                })
+            },5000)              
         
         }).catch(err=>{
             let errmsg = '' 
@@ -61,8 +135,17 @@ export default class signup extends Component {
             this.setState({
                 success:false,
                 err: true,
-                errmsg: errmsg
+                errmsg: errmsg,
+                loader:false
             })
+            setTimeout(()=>{
+                this.setState({
+                    err: false,
+                    success: false,
+                    loader:false,
+                    errmsg: "",
+                })
+            },5000)            
         })
     }
 
@@ -91,7 +174,7 @@ export default class signup extends Component {
 
                 <div className="md-form form-sm mb-5">
                     <i className="fas fa-phone prefix"></i>
-                    <input ref={ele=>this.contact=ele} type="tel"  className="form-control form-control-sm validate" placeholder="Contact"></input>
+                    <input type="text" ref={ele=>this.contact=ele} className="form-control form-control-sm validate" placeholder="Contact"></input>
                     <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
                 </div>
 
@@ -109,7 +192,7 @@ export default class signup extends Component {
 
 
                 <div className="text-center form-sm mt-2">
-                    <button disabled={this.state.success} onClick={this._singup} className="btn text-white btn-info">Sign up <i className="fas fa-sign-in ml-1"></i></button>
+                    <button disabled={this.state.success} id="signupBtn" onClick={this._singup} className="btn text-white btn-info">{this.state.loader ?<Loader/>:"Sign up" } <i className="fas fa-sign-in ml-1"></i></button>
                     <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
 
                 </div>

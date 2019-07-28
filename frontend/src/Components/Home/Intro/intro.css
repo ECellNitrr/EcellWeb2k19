@@ -15,8 +15,8 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     position: relative;
     font-size: 25px;
     display: flex;
-    margin-left: 30%;
-    align-items: center;
+    margin: 0px auto !important;
+    justify-content: center;
     text-align: center;
   }
   
@@ -251,15 +251,24 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   
   
+  .banner-div{
+    display:flex;
+    justify-content: center;
+  }
+
+  .banner-col{
+    display: flex;
+    justify-content: center;
+    margin-top: 13%;
+  }
+
   .banner{
-    margin-top: 25%;
-    margin-left: 20%;
+    width: 750px;
   }
   
   @media (max-width:1480px){
     .banner{
       width: 650px;
-      margin-left: 15%;
     }
   
   }
@@ -268,7 +277,6 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   @media (max-width:1080px){
     .banner{
       width: 600px;
-      margin-left: 12%;;
     }
   
   }
@@ -279,17 +287,25 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     }
   
   }
+
+  @media (max-width:1000px){
+    .banner{
+      margin-top: 13%;
+      width: 530px;
+    }
+  
+  }
   
   @media (max-width:940px){
     .banner{
-      width: 520px;
+      width: 500px;
     }
   
   }
   
   @media (max-width:850px){
     .banner{
-      margin-top: 40%;
+      margin-top: 13%;
       width: 480px;
     }
   
@@ -297,53 +313,39 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:767px){
     .banner{
-      margin-top: 30%;
-      margin-left: 10%;
+      margin-top: 20%;
       width: 550px;
-    }
-  
-  }
-  
-  
-  @media (max-width:670px){
-    .banner{
-     
-      margin-left: 5%;
     }
   
   }
   
   @media (max-width:605px){
     .banner{
-      margin-top: 12em;
-      margin-left: 0.2em;
-      width: 480px;
+      margin-top: 8em;
+      width: 510px;
     }
   
   }
   
   @media (max-width:515px){
     .banner{
-      margin-top: 14em;
-      margin-left: 0.2em;
-      width: 440px;
+      margin-top: 8em;
+      width: 470px;
     }
   
   }
   
   @media (max-width:480px){
     .banner{
-      margin-top: 13em;
-      margin-left: 0em;
-      width: 410px;
+      margin-top: 9em;
+      width: 430px;
     }
   
   }
   
   @media (max-width:440px){
     .banner{
-      margin-top: 17em;
-      margin-left: -1em;
+     margin-top: 9em;
       width: 400px;
     }
   
@@ -351,8 +353,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:415px){
     .banner{
-      margin-top: 14em;
-      margin-left: 0.5em;
+      margin-top: 9em;
       width: 350px;
     }
   
@@ -360,8 +361,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
 
   @media (max-width:400px){
     .banner{
-      margin-top: 14em;
-      margin-left: 0em;
+      margin-top:9em;
       width: 350px;
     }
   
@@ -369,8 +369,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:380px){
     .banner{
-      margin-top: 14em;
-      margin-left: -0.7em;
+      margin-top: 10em;
       width: 330px;
     }
   
@@ -378,8 +377,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
   
   @media (max-width:340px){
     .banner{
-      margin-top: 14em;
-      margin-left: -1em;
+      margin-top: 10em;
       width: 320px;
     }
   

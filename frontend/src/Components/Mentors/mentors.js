@@ -38,7 +38,7 @@ class mentors extends Component {
         let mentors = this.state.mentors[year]
         mentors = mentors.map(mentor => 
             <div className="individual_mentors" key={mentor.id}>
-                <div><img className="mentors_pic shadow-lg p-3 mb-5 bg-white rounded" src={mentor.profile_pic} alt={mentor.name}/></div>
+                <div><img className="mentors_pic shadow-lg p-3 mb-5 bg-white rounded" src={mentor.profile_pic_url} alt={mentor.name}/></div>
                 <h3 className="mentors_name">{mentor.name}</h3>
                 <p className="center2">{mentor.detail}</p>
             </div>

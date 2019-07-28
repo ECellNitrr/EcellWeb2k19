@@ -16,6 +16,7 @@ class speaker extends Component{
   componentDidMount(){
     for(let i=2016; i<=2020;i++){
       this.axios.get(`/speakers/list/${i}/`).then(res=>{
+        console.log(res);
         let  data = res.data.data
         this.setState({
           speaker: {
@@ -35,8 +36,8 @@ class speaker extends Component{
       let speakers= this.state.speaker[year]
       speakers=speakers.map(speaker=>
         
-        <div className="container-fluid ctn7" key={speaker.id} >
-        <div className="wrapper">
+        
+        <div className="wrapper" key={speaker.id}>
 
           <div className="profile-card js-profile-card">
 
@@ -63,7 +64,7 @@ class speaker extends Component{
           </div>
           
           </div>
-        </div>
+    
         )
 
         const yearwise_html= <div key={year}>
@@ -77,7 +78,9 @@ class speaker extends Component{
       <div className="speaker">
         <Navbar/>
         <div className="header1">SPEAKERS</div>
-        {speakers_html}
+          <div className="container-fluid ctn7" style={{maxWidth:"1500px"}}>
+           {speakers_html}
+          </div>
         <Footer/>
       </div>
     )

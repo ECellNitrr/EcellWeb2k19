@@ -11,22 +11,23 @@ class faculty extends Component{
   };
   componentDidMount() {
     this.axios.get("/team/list/").then(fromserver => {
-      const data = fromserver.data;
-      const faculty = data.faculty;
+        
+      const data = fromserver.data.data;
+      
       const members = {}
 
       let member_types = [];
-      for(const x in faculty){
-          const member_type = faculty[x].member_type
+      for(const x in data){
+          const member_type = data[x].member_type
           if(member_types.indexOf(member_type)===-1){
               member_types.push(member_type)
           }
       }
-      /*console.log(member_types)*/
+      console.log(member_types)
 
       for(const x in member_types){
           const member_type = member_types[x]
-          members[member_type] = faculty.filter(member => member.member_type===member_type)
+          members[member_type] = data.filter(member => member.member_type===member_type)
       }
 
       /*console.log(members)
@@ -81,7 +82,7 @@ class faculty extends Component{
         
             
         }
-        else if(member_type==="Dir")
+        else if(member_type==="DIR")
         {
             
             faculty = faculty.map(member => 

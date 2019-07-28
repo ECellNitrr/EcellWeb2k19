@@ -44,14 +44,14 @@ const intro = () => {
     }, 1000);
 
     return (
-        <div className="intro">
-            <section className="Black-bg">
+        <section className="intro">
+           
                 <div className="container-fluid ctn-1">
 
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 banner-col">
                             <div>
-                                <div ><img alt='banner' className="banner" src={banner}></img></div>
+                                <div className="banner-div" ><img alt='banner' className="banner" src={banner}></img></div>
                                 <div className="countdown"></div>
                             </div>
                         </div>
@@ -60,10 +60,10 @@ const intro = () => {
                             <p className="bulb"><img alt='bulb' className="image-1" src={bulb}></img></p>
                         </div>
                     </div>
-                    <div className="wave"></div>
+                    {/*<div className="wave"></div>*/}
                 </div>
-            </section>
-        </div>
+           
+        </section>
     )
 }
 

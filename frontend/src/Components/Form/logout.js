@@ -20,6 +20,7 @@ export default class otp extends Component {
         faxios().get('/users/get_user_details/').then(d=>{
             let data = d.data
             const user = getuser()
+            console.log(data)
             sessionStorage['ecell_user'] = JSON.stringify({
                 token: user.token,
                 ...data
