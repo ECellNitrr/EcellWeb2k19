@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Modal from './modal'
-import faxios,{ getuser } from '../../axios'
+import faxios from '../../axios'
 import Loader from "./loader";
 
 export default class changePass extends Component{

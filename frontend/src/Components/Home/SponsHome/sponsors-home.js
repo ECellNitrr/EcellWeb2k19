@@ -19,6 +19,12 @@ export default class Responsive extends Component {
       const data = res.data.data;
       console.log(data)
 
+      // random shuffling the sponsors
+      for (let i = data.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [data[i], data[j]] = [data[j], data[i]];
+    }
+
       this.setState({
         sponsors:data,
         loading:false
@@ -65,7 +71,7 @@ export default class Responsive extends Component {
     console.log(this.state.sponsors)
     let sponsors_html=this.state.sponsors.map(sponsor=>
         
-        <div className="col" >
+        <div className="col" key={sponsor.id}>
           <div className="cont" key={sponsor.id}>
               <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt={sponsor.name} className="spons-Image" src={sponsor.pic_url}></img></div>
               <div className="back shadow-lg p-3 mb-5 bg-white rounded">
