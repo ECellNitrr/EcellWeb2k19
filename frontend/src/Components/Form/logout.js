@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Modal from './modal'
-import faxios,{ getuser } from '../../axios'
+import faxios from '../../axios'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
 
 const user_type = {
     GST: 'Guest',
@@ -12,14 +15,20 @@ const user_type = {
     CAB: 'Campus Ambassador',
 }
 
-export default class otp extends Component {
+class logout extends Component {
     axios = faxios()
     state = {}
+
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateUser : PropTypes.func.isRequired
+    }
     
     componentDidMount() {
+        
         faxios().get('/users/get_user_details/').then(d=>{
             let data = d.data
-            const user = getuser()
+            const user = this.props.auth
             console.log(data)
             sessionStorage['ecell_user'] = JSON.stringify({
                 token: user.token,
@@ -34,7 +43,7 @@ export default class otp extends Component {
 
         faxios().get('/users/request_ca_approval/').then(d=>{
             alert('You have successfully applied for CA! You can confirm it by clicking on your name on top right corner')
-            let user = getuser()
+            let user = this.props.auth
             user.applied = true
             sessionStorage['ecell_user'] = JSON.stringify(user)
             window.location = '/'
@@ -44,8 +53,8 @@ export default class otp extends Component {
     }
     
     _logout = e => {
-        sessionStorage['ecell_user'] = null
-        window.location = '/'
+        this.props.updateUser({loggedin:false})
+        this.close_btn.click()
     }
     
     render() {
@@ -87,3 +96,9 @@ export default class otp extends Component {
         )
     }
 }
+
+
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, actions)(logout)

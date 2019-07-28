@@ -30,7 +30,6 @@ export default class Intro extends Component {
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / (1000));
-            console.log({seconds})
 
             this.setState({
                 days,

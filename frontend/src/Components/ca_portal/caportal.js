@@ -1,15 +1,22 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import actions from '../../actions/authActions'
+
 import "./caportal.css";
 import Navbar from '../Navbar/navbar';
 import Footer from "../Footer/footer";
 import About from "./aboutca";
 import Faq from "./faqs";
 import Contact from "./contact";
-import { getuser } from '../../axios'
 
 class caportal extends Component {
+    static propTypes = {
+        auth: PropTypes.object.isRequired
+    }
+    
     _go_caportal = () => {
-        const user= getuser()
+        const user= this.props.auth
         if(!user){
             alert('please login to continue')
         }else if(user.user_type==='CAB'){
@@ -53,4 +60,7 @@ class caportal extends Component {
     }
 }
 
-export default caportal;
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, )(caportal)

@@ -1,13 +1,14 @@
-import * as actionsType from '../actionType'
-
 const initialState = {
-    loggedIn: false
+    loggedin: false
 }
 
 export default (state = initialState, action) => {
     switch(action.type){
-        case actionsType.LOGIN: {
-            console.log('logging')
+        case 'update_user': {
+            return {
+                ...state,
+                ...action.payload
+            }
         }
         default: 
             return state

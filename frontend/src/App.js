@@ -12,7 +12,7 @@ const StartupDetail = lazy(() => import('./Components/Startup/startupdetail'))
 const Mentors = lazy(() => import('./Components/Mentors/mentors'));
 const Gallery = lazy(() => import('./Components/Gallery/gallery'));
 const Register = lazy(() => import('./Components/Register/register'));
-const CaPortal = lazy(() => import('./Components/CA Portal/caportal'));
+const CaPortal = lazy(() => import('./Components/ca_portal/caportal'));
 const Team = lazy(() => import('./Components/Team/team'));
 
 

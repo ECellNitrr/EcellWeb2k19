@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import faxios from '../../axios'
 import Loader from "./loader";
 
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
+
+
 const styles ={
     forgetpas: {
         fontWeight: 'bold',
@@ -10,25 +15,18 @@ const styles ={
     }
 }
 
-export default class login extends Component {
+class login extends Component {
     axios = faxios()
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateuser: PropTypes.object.isRequired,
+    }
+
     state = {
         err: false,
         success: false,
         loader:false
     }
-
-    /*HandleEnter = (event)=>{
-        const submitButton =document.getElementById("loginbtn");
-        if(event.code=="Enter"){
-            submitButton.click();
-        }
-    }
-
-    componentDidMount(){
-        document.addEventListener('keypress', this.HandleEnter);
-
-    }*/
 
     _forget_pass= e =>{
         e.preventDefault()
@@ -52,8 +50,8 @@ export default class login extends Component {
             let data = d.data
             console.log(data)
             
-            sessionStorage['ecell_user'] = JSON.stringify(data)
-            
+            this.props.updateUser(data)
+
             if(data.verified){
                 window.location = '/'
             }else{
@@ -111,15 +109,12 @@ export default class login extends Component {
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-
-
-                    {/* <div className="modal-footer">
-                    <div className="options text-center text-md-right mt-1">
-                        <p>Not a member? <a href="#" className="blue-text">Sign Up</a></p>
-                        <p>Forgot <a href="#" className="blue-text">Password?</a></p>
-                    </div>
-                </div> */}
             </div>
         )
     }
 }
+
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, actions)(login)

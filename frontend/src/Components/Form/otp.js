@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import Modal from './modal'
-import faxios,{ getuser } from '../../axios'
+import faxios from '../../axios'
 import Loader from "./loader";
+
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
+
+
+
 const styles ={
     resend_otp: {
         fontWeight: 'bold',
@@ -10,7 +17,11 @@ const styles ={
     }
 }
 
-export default class otp extends Component {
+class otp extends Component {
+    static propTypes = {
+        auth: PropTypes.object.isRequired
+    }
+    
     state = {
         err: false,
         success: false,
@@ -18,19 +29,9 @@ export default class otp extends Component {
         loader:false
     }
 
-   /* HandleEnter = (event)=>{
-        const submitButton =document.getElementById("verifyBtn");
-        if(event.code=="Enter"){
-            submitButton.click();
-        }
-    }
-
-    componentDidMount(){
-        document.addEventListener('keypress', this.HandleEnter);
-    }*/
     _verify_otp = e => {
         e.preventDefault()
-        let user = getuser()
+        let user = this.props.auth
 
         this.setState({
             success:false,
@@ -103,3 +104,7 @@ export default class otp extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, )(otp)
