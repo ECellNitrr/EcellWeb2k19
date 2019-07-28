@@ -112,5 +112,4 @@ export default class forgetPass extends Component {
             </Modal>
         )
     }
-
 }

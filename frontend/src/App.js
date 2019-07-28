@@ -5,6 +5,8 @@ import { BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
 import Home from './Components/Home/home';
 import Speakers from './Components/Speakers/speakers';
 import Sponsors from './Components/Sponsors/sponsors';
+import Yearwise_spons from './Components/Sponsors/yearwise_sponsors';
+import Spons_hc from './Components/Sponsors/sponsorship_heads';
 import Events from './Components/Events/events';
 import EventDetail from './Components/Events/event_detail'
 import Startups from './Components/Startup/startup';
@@ -25,6 +27,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/speakers' component={Speakers} />
+            <Route path="/sponsors/yearwise" component={Yearwise_spons}/>
+            <Route path="/sponsors/sponsors_heads" component={Spons_hc}/>
             <Route path='/sponsors/:year' component={Sponsors} />
             <Route path='/sponsors' component={()=><Redirect to='/sponsors/2018'/>} />
             <Route path='/events/:id' component={EventDetail} />
