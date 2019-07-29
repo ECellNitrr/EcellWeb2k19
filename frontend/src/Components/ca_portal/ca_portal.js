@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../actions/authActions'
-import faxios from '../../axios'
 
 import ForCA from './for_ca/For_ca'
 import ForAdmin from './for_admin/For_admin'
@@ -18,12 +17,12 @@ export class ca_portal extends Component {
         let user = this.props.auth
         console.log('gaurd comp')
 
-        if (user.user_type == 'GST') {
+        if (user.user_type === 'GST') {
             alert('You are not CA or admin yet!')
             this.props.history.push('/caportal_info')
-        } else if (user.user_type == 'CAB') {
+        } else if (user.user_type === 'CAB' && this.props.location.pathname === '/caportal/') {
             this.props.history.push('/caportal/ca')
-        } else {
+        } else if(this.props.location.pathname === '/caportal/'){
             this.props.history.push('/caportal/admin')
         }
     }
