@@ -14,20 +14,20 @@ class speaker extends Component {
   }
 
   componentDidMount() {
-    for (let i = 2020; i >= 2016; i--) {
-      this.axios.get(`/speakers/list/${i}/`).then(res => {
-
-        let data = res.data.data
+      this.axios.get(`/speakers/full_list/`).then(res => {
+        console.log(res)
+        let data = res.data
         this.setState({
-          speakers: [...this.state.speakers,...data]
+          speakers: data
         })
 
       })
-    }
   }
 
   render() {
-    let speakers_html = this.state.speakers.map(speaker =>
+    const speakers = this.state.speakers.sort((a,b)=>b.year-a.year)
+
+    let speakers_html = speakers.map(speaker =>
       <div className="wrapper" key={speaker.name}>
 
         <div className="profile-card js-profile-card">

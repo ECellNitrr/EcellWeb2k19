@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import Startup
 from .serializers import StartupSerializer, StartupListSerializer
 from decorators import ecell_user
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import csv
 
 
@@ -81,3 +81,10 @@ def generate_spreadsheet(request):
         writer.writerow(startup)
 
     return response
+
+
+@api_view(['GET', ])
+def get_startups_list(request):
+    startups_objs = Startup.objects.all()
+    startups = StartupSerializer(startups_objs, many=True).data
+    return JsonResponse(startups,safe=False)

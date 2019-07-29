@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import Speaker
 from .serializers import SpeakerSerializer, SpeakerListSerializer
 from decorators import ecell_user
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import csv
 
 
@@ -80,3 +80,10 @@ def generate_spreadsheet(request):
         writer.writerow(speaker)
 
     return response
+
+
+@api_view(['GET', ])
+def get_speakers_list(request):
+    speakers_objs = Speaker.objects.all()
+    speakers = SpeakerSerializer(speakers_objs, many=True).data
+    return JsonResponse(speakers,safe=False)
