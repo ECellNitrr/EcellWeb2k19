@@ -5,9 +5,7 @@
     
 }
 
-.ctn16{
-  padding-top: 300px;
-}
+
 
 .list{
   display: flex;
@@ -83,141 +81,7 @@
 }
 
 
-.cont1{
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  max-width: 300px;
-  max-height: 300px;
-  text-align: center;
- position: relative;
- left: 50%;
- top: 50%;
- transform: translate(-50%,-50%);
-  
-}
 
-.front1{
-  transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
-  backface-visibility: hidden;
-  min-width: 300px;
-  height: 300px;
-  font-size: 1rem;
-  background: white;
-  position: relative;
-  
-}
-
-
-.back2{
-  transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
-  backface-visibility: hidden;
-  text-align: center;
-  min-height: 300px;
-  height: auto;
-  font-size: 1rem;
-  position: absolute;
-  top: 0;
-  left:0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  background:black !important ;
-  border: 5px solid white;
-}
-
-@media(max-width:450px){
-
-  .cont1{
-    max-width: 250px;
-    max-height: 250px;
-  }
-
-  .front1{
-    min-width: 250px;
-    height: 250px;
-  }
-
-  .back2{
-    width: 250px;
-    min-height: 250px;
-  }
-
-  .event-name{
-    font-size: 16px;
-  }
-
-  
-}
-
-.front1::after{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  content:'';
-  display: block;
-  backface-visibility: hidden;
-}
-
-.cont1:hover .front1,.cont1:hover .back2{
-  transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
-}
-
-
-.inner1{
-  transform: /*translateY(50%)*/ translateZ(60px) /*scale(0.94)*/;
-  position: relative;
-  width: 100%;
-  outline-offset: -8px;
-  padding: 2rem;
-  box-sizing: border-box;
-  outline: 1px solid transparent;
-  perspective: inherit;
-  z-index: 2;
-
-}
-
-
-.cont1 .back2{
-  transform: rotateY(180deg);
-  transform-style: preserve-3d;
-
-}
-
-
-.cont1 .front1{
-  transform: rotateY(0deg);
-  transform-style: preserve-3d;
-}
-
-.cont1:hover .back2{
-  transform: rotateY(0deg);
-  transform-style: preserve-3d;
-
-}
-
-.cont1:hover .front1{
-  transform: rotateY(-180deg);
-  transform-style: preserve-3d;
-}
-
-
-
-.back2 .inner1 p::after{
-  content: '';
-  width: 4rem;
-  height: 2px;
-  position: absolute;
-  background: white;
-  display: block;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  bottom: 1rem;
-}
 
 .event_detail{
   display: flex;

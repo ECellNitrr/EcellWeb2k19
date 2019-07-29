@@ -91,8 +91,8 @@ class logout extends Component {
                     {button_to_show}
                     <div className="my-3 text-center">Are your sure want to logout?</div>
                     <div className="text-center mt-2">
-                        <button onClick={this._logout} className="btn text-white btn-info login-button">Logout</button>
-                        <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                        <button onClick={this._logout} className="btn font-weight-bold text-white btn-info login-button">Logout</button>
+                        <button ref={ele=>this.close_btn=ele} type="button" className="btn font-weight-bold btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </Modal>

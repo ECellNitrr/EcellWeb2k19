@@ -34,24 +34,7 @@
     color: white !important;
   }
 
-  .head1{
-    text-align: center;
-  }
-
-  .head2{
-    text-align: center;
-    padding: 10px;
-    border-bottom: 8px solid #F9D342;
-  }
-
-  .head3{
-    text-align: center;
-    padding: 10px;
-    border-bottom: 10px solid #F9D342;
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  
 
   .hd{
     text-align: center;
@@ -79,11 +62,7 @@
     color: white !important;
   }
 
-@media(max-width:450px){
-  .head2{
-    font-size: 25px;
-  }
-}
+
 
 .flex-box{
   display: flex;

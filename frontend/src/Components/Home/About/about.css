@@ -25,12 +25,7 @@
     animation: showText 0.6s ease;
   }
   
-  .heading-1{
-    margin: 15px;
-    font-weight: 800;
-    opacity: 0;
-    animation: animateText 0.7s forwards;
-  }
+  
   
   @keyframes animateText {
     from {
@@ -57,27 +52,7 @@
       width: 0;
       left: 100%;
     }
-  }
-  
-  
-  .heading-2{
-    margin: 15px 15px 25px;
-    font-weight: 600;
-  }
-  
-  .text-5{
-    text-align: justify;
-    margin: 15px;
-    line-height: 30px;
-  }
-  
-  .ctn-2{
-    max-width: 1500px;
-    margin-top: 120px;
-    
-  }
-  
-  
+  }  
   
   .fb-page{
     position: relative;
