@@ -17,8 +17,6 @@ export default class signup extends Component {
     }
 
     static propTypes = {
-        auth: PropTypes.object.isRequired,
-        updateUser: PropTypes
     }
 
     _singup = e => {

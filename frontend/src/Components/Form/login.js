@@ -19,7 +19,7 @@ class login extends Component {
     axios = faxios()
     static propTypes = {
         auth: PropTypes.object.isRequired,
-        updateuser: PropTypes.object.isRequired,
+        updateUser: PropTypes.func.isRequired,
     }
 
     state = {

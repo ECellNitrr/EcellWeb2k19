@@ -20,7 +20,7 @@ const styles ={
 class otp extends Component {
     static propTypes = {
         auth: PropTypes.object.isRequired,
-        updateUser: PropTypes.object.isRequired,
+        updateUser: PropTypes.func.isRequired,
     }
     
     state = {
