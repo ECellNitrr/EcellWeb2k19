@@ -3,6 +3,10 @@
     display: inline-block;
     overflow: hidden;
   }
+
+  .fb-img{
+    width: 90%;
+  }
   
   .anim::before,.anim::after{
     content: '';

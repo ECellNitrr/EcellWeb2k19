@@ -3,9 +3,9 @@ import fuser from '../../axios'
 import Loader from "./loader";
 
 
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import * as actions from '../../actions/authActions'
+// import PropTypes from 'prop-types'
+// import { connect } from 'react-redux'
+// import * as actions from '../../actions/authActions'
 
 
 export default class signup extends Component {
