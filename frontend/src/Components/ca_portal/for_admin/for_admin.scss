@@ -5,3 +5,26 @@
         cursor: pointer !important;
     }
 }
+
+.caportal-wrapper{
+    .btn{
+        padding: 8px 16px;
+    }
+    .navlink{
+        margin: 10px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        background: #ddd;
+        border: none;
+        outline: none;
+    }
+    .active_navlink{
+        background: skyblue;
+        // font-weight: bold;
+        color: white;
+    }
+    .logout_btn{
+        background: rgb(209, 74, 74);
+        color: white;
+    }
+}

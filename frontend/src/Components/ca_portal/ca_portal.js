@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -22,7 +22,7 @@ export class ca_portal extends Component {
             this.props.history.push('/caportal_info')
         } else if (user.user_type === 'CAB' && this.props.location.pathname === '/caportal') {
             this.props.history.push('/caportal/ca')
-        } else if(this.props.location.pathname === '/caportal'){
+        } else if (this.props.location.pathname === '/caportal') {
             this.props.history.push('/caportal/admin')
         }
     }
@@ -30,12 +30,12 @@ export class ca_portal extends Component {
 
     render() {
         return (
-            <Fragment>
-                    <Switch>
-                        <Route path='/caportal/ca' component={ForCA} />
-                        <Route path='/caportal/admin' component={ForAdmin} />
-                    </Switch>
-            </Fragment>
+            <div className='caportal-wrapper'>
+                <Switch>
+                    <Route path='/caportal/ca' component={ForCA} />
+                    <Route path='/caportal/admin' component={ForAdmin} />
+                </Switch>
+            </div>
         )
     }
 }

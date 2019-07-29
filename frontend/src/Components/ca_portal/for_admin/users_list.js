@@ -17,16 +17,16 @@ export default class users_list extends Component {
     }
 
     _to_cab = user => {
-        faxios().put(`/portal/users/${user.id}/`,{
+        faxios().put(`/portal/users/${user.id}/`, {
             ...user,
             user_type: 'CAB',
-        }).then(d=>{
+        }).then(d => {
             let ecell_users = this.state.ecell_users
             const uid = ecell_users.findIndex(temp => temp.id === user.id)
             console.log(uid)
             ecell_users[uid].user_type = 'CAB'
 
-            this.setState({ecell_users})
+            this.setState({ ecell_users })
         })
     }
 
@@ -53,7 +53,9 @@ export default class users_list extends Component {
 
         return (
             <div className='users_list container'>
-                <button onClick={this._createUser} className="btn btn-primary">create</button>
+                <div className="text-right my-3">
+                    <button onClick={this._createUser} className="btn btn-primary">create</button>
+                </div>
                 <table className='table table-striped'>
                     <thead>
                         <tr>
