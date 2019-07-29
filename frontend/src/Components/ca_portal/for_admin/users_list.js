@@ -31,6 +31,11 @@ export default class users_list extends Component {
     }
 
 
+    _createUser = () => {
+        this.props.history.push('/caportal/admin/create_user/')
+    }
+
+
     render() {
         const correct = <div className="text-success"><i className="fa fa-check"></i></div>
         const wrong = <div className="text-danger"><i className="fa fa-times"></i></div>
@@ -47,7 +52,8 @@ export default class users_list extends Component {
         )
 
         return (
-            <div className='users_list'>
+            <div className='users_list container'>
+                <button onClick={this._createUser} className="btn btn-primary">create</button>
                 <table className='table table-striped'>
                     <thead>
                         <tr>

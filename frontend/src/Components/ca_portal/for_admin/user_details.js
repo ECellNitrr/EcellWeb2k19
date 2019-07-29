@@ -43,6 +43,15 @@ export default class user_details extends Component {
         })
     }
 
+    _deleteUser = e =>{
+        e.preventDefault()
+
+        faxios().delete(`/portal/users/${this.user_id}/`).then(d=>{
+            console.log(d.data)
+            this.props.history.goBack()
+        })
+    }
+
 
     render() {
         return (
@@ -63,6 +72,7 @@ export default class user_details extends Component {
                         <option value="OCO">OCO</option>
                         <option value="CAB">CAB</option>
                     </select>
+                    <button onClick={this._deleteUser} className="btn btn-danger">Delete</button>
                     <button onClick={this._updateUser} className="btn btn-success">Submit</button>
                 </form>
             </div>
