@@ -102,8 +102,8 @@ export default class forgetPass extends Component{
                     </div>
 
                     <div className="text-center mt-2">
-                        <button onClick={this._forgetpass} id="logbtn" className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Send OTP" }</button>
-                        <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                        <button onClick={this._forgetpass} id="logbtn" className="btn font-weight-bold text-white btn-info login-button">{this.state.loader ?<Loader/>:"Send OTP" }</button>
+                        <button ref={ele=>this.close_btn=ele} type="button" className="btn font-weight-bold btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </Modal>

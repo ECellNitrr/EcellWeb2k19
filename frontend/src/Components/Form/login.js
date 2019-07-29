@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import faxios from '../../axios'
 import Loader from "./loader";
 
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
+
+
 const styles ={
     forgetpas: {
         fontWeight: 'bold',
@@ -10,25 +15,18 @@ const styles ={
     }
 }
 
-export default class login extends Component {
+class login extends Component {
     axios = faxios()
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateUser: PropTypes.func.isRequired,
+    }
+
     state = {
         err: false,
         success: false,
         loader:false
     }
-
-    /*HandleEnter = (event)=>{
-        const submitButton =document.getElementById("loginbtn");
-        if(event.code=="Enter"){
-            submitButton.click();
-        }
-    }
-
-    componentDidMount(){
-        document.addEventListener('keypress', this.HandleEnter);
-
-    }*/
 
     _forget_pass= e =>{
         e.preventDefault()
@@ -52,17 +50,21 @@ export default class login extends Component {
             let data = d.data
             console.log(data)
             
-            sessionStorage['ecell_user'] = JSON.stringify(data)
-            
-            if(data.verified){
-                window.location = '/'
-            }else{
-                this.close_btn.click()            
+            this.props.updateUser({
+                ...data,
+                loggedin: true
+            })
+            this.close_btn.click()            
+
+            if(!data.verified){
                 document.querySelector('#otpModal_toggle').click()
             }
+
             this.setState({
                 loader:false
             })
+
+
         }).catch(err=>{
             console.error(err.request.response)
             this.setState({
@@ -107,19 +109,16 @@ export default class login extends Component {
                         <span onClick={this._forget_pass} style={styles.forgetpas} id="forgetpas" > Forgot Password?</span>
                     </div>
                     <div className="text-center mt-2">
-                        <button onClick={this._login} id="loginbtn" className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Log in" } <i className="fas fa-sign-in ml-1"></i></button>
-                        <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                        <button onClick={this._login} id="loginbtn" className="btn text-white font-weight-bold btn-info login-button">{this.state.loader ?<Loader/>:"Log in" } <i className="fas fa-sign-in ml-1"></i></button>
+                        <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info font-weight-bold waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-
-
-                    {/* <div className="modal-footer">
-                    <div className="options text-center text-md-right mt-1">
-                        <p>Not a member? <a href="#" className="blue-text">Sign Up</a></p>
-                        <p>Forgot <a href="#" className="blue-text">Password?</a></p>
-                    </div>
-                </div> */}
             </div>
         )
     }
 }
+
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, actions)(login)

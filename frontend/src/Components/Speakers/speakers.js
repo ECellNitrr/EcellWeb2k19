@@ -14,24 +14,20 @@ class speaker extends Component {
   }
 
   componentDidMount() {
-    for (let i = 2020; i >= 2016; i--) {
-      this.axios.get(`/speakers/list/${i}/`).then(res => {
-
-        let data = res.data.data
+      this.axios.get(`/speakers/full_list/`).then(res => {
+        console.log(res)
+        let data = res.data
         this.setState({
-          speakers: [...this.state.speakers,...data]
+          speakers: data
         })
 
       })
-    }
   }
 
   render() {
-    let speakers_html = this.state.speakers.map(speaker =>
       <div className="wrapper" key={speaker.name}>
 
         <div className="profile-card js-profile-card">
-
           <div className="profile-card__img">
             <img src={speaker.profile_pic} alt={speaker.name}></img>
           </div>
@@ -56,7 +52,7 @@ class speaker extends Component {
 
       </div>
 
-    )
+    
 
 
     return (

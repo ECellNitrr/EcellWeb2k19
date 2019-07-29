@@ -32,8 +32,8 @@ const footer = ()=>{
                         <a href="#"><i className="fab fa-linkedin"></i></a>
                       </p>
                       <div><a className="site" href="https://ecell.nitrr.ac.in/">E-Cell Official Site</a></div>
-                      <div><a style={{color:"white"}} href="tel:8094966697">+91 80949 66697</a></div>
-                      <div><a style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div>
+                      <div><a href='#' style={{color:"white"}} href="tel:8094966697">+91 80949 66697</a></div>
+                      <div><a href='#' style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div>
                       <p style={{color:"white",marginTop:"5px"}}>&copy; All Rights Reserved</p>
 
 

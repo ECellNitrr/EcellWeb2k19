@@ -1,75 +1,33 @@
 import React, { Component } from 'react'
 import fuser from '../../axios'
 import Loader from "./loader";
-export default class signup extends Component {
+
+
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
+
+
+class signup extends Component {
     axios = fuser()
+
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateUser: PropTypes.func.isRequired,
+    }
+
     state = {
         err: false,
         success: false,
         loader:false
     }
-    /*HandleEnter = (event)=>{
-        const submitButton =document.getElementById("signupBtn");
-        if(event.code=="Enter"){
-            submitButton.click();
-        }
+
+    static propTypes = {
     }
 
-    componentDidMount(){
-        document.addEventListener('keypress', this.HandleEnter);
-    }*/
-        
     _singup = e => {
         e.preventDefault()
 
-        // if(this.first_name.value.length<1){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'First Name is required'
-        //     })
-        //     return
-        // }
-        
-        // if(this.last_name.value.length<1){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'Last Name is required'
-        //     })
-        //     return
-        // }
-
-        // if(this.contact.value.length<1){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'Contact is required'
-        //     })
-        //     return
-        // }
-
-
-        
-        // if(this.contact.value.length!==10 ){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'Contact is invalid'
-        //     })
-        //     return
-        // }
-
-
-        // if(this.email.value.length<1 ){
-        //     this.setState({
-        //         success:false,
-        //         err: true,
-        //         errmsg: 'Email is required'
-        //     })
-        //     return
-        // }
-        
         if(this.password.value.length<8){
             this.setState({
                 success:false,
@@ -78,10 +36,6 @@ export default class signup extends Component {
             })
             return
         }
-
-        
-
-        
 
         this.setState({
             success:false,
@@ -98,6 +52,7 @@ export default class signup extends Component {
             password: this.password.value,
         }).then(d=>{
             let data = d.data
+            console.log(data)
             
             this.first_name.value = ''
             this.last_name.value = ''
@@ -106,11 +61,17 @@ export default class signup extends Component {
             this.password.value = ''
             
             this.setState({
-                success:true,
                 err: false,
                 loader:false
             })
-            console.log(data)
+
+            this.props.updateUser({
+                ...data,
+                loggedin: true
+            })
+            this.close_btn.click()   
+            document.querySelector('#otpModal_toggle').click()
+            
 
             setTimeout(()=>{
                 this.setState({
@@ -124,9 +85,9 @@ export default class signup extends Component {
         }).catch(err=>{
             let errmsg = '' 
             console.error(err)
-            let error = err.response.data
-
+            
             try{
+                let error = err.response.data
                 errmsg = JSON.stringify(error.detail)
             } catch(e){
                 errmsg = err
@@ -192,8 +153,8 @@ export default class signup extends Component {
 
 
                 <div className="text-center form-sm mt-2">
-                    <button disabled={this.state.success} id="signupBtn" onClick={this._singup} className="btn text-white btn-info">{this.state.loader ?<Loader/>:"Sign up" } <i className="fas fa-sign-in ml-1"></i></button>
-                    <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                    <button disabled={this.state.success} id="signupBtn" onClick={this._singup} className="btn font-weight-bold text-white btn-info">{this.state.loader ?<Loader/>:"Sign up" } <i className="fas fa-sign-in ml-1"></i></button>
+                    <button ref={ele=>this.close_btn=ele} type="button" className="btn font-weight-bold btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
 
                 </div>
             </div>
@@ -207,3 +168,9 @@ export default class signup extends Component {
         )
     }
 }
+
+
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, actions)(signup)

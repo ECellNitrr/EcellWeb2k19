@@ -171,7 +171,8 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     bottom: 0;
     left: -10%;
     background: url("../../../assets/wave.png");
-    animation: animate 10s linear infinite;
+    background-position:-300px;
+    /* animation: animate 10s linear infinite; */
   }
   
   .ctn-1 .wave::before{
@@ -184,7 +185,8 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     left: 0;
     opacity: 0.6;
     animation-delay: -5s;
-    animation: animate-reverse 10s linear infinite;
+    background-position:500px;
+    /* animation: animate-reverse 10s linear infinite; */
   }
   
   .ctn-1 .wave::after{
@@ -196,7 +198,9 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     top: 0;
     left: 0;
     opacity: 0.4;
-    animation: animate 15s linear infinite;
+    background-position:250px;
+
+    /* animation: animate 15s linear infinite; */
   }
   
   @keyframes animate{
@@ -260,6 +264,7 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     display: flex;
     justify-content: center;
     margin-top: 13%;
+    margin-bottom: 50px;
   }
 
   .banner{

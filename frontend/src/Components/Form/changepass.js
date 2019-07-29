@@ -11,16 +11,7 @@ export default class changePass extends Component{
         success: false,
         loader:false
     }
-    /*HandleEnter = (event)=>{
-        const submitButton =document.getElementById("changePassBtn");
-        if(event.code=="Enter"){
-            submitButton.click();
-        }
-    }
 
-    componentDidMount(){
-        document.addEventListener('keypress', this.HandleEnter);
-    }*/
 
     _changepass= e =>{
         e.preventDefault()
@@ -90,8 +81,8 @@ export default class changePass extends Component{
                     </div>
 
                     <div className="text-center mt-2">
-                        <button disabled={this.state.success} id="changePassBtn" onClick={this._changepass} className="btn text-white btn-info login-button">{this.state.loader ?<Loader/>:"Change Password" }</button>
-                        <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                        <button disabled={this.state.success} id="changePassBtn" onClick={this._changepass} className="btn text-white font-weight-bold btn-info login-button">{this.state.loader ?<Loader/>:"Change Password" }</button>
+                        <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info font-weight-bold waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </Modal>

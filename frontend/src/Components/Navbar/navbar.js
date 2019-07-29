@@ -1,33 +1,31 @@
 import React, { Component } from 'react'
-import { NavLink, Link, withRouter } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './navbar.css';
+
 import logo from '../../assets/logo-white.png';
 import Form from '../Form/form';
 import OtpModal from '../Form/otp'
 import LogoutModal from '../Form/logout'
-// import AdforcaModal from '../Form/adforca'
 import ForgetPass from '../Form/forgetpass'
 import ChangePass from '../Form/changepass'
 import CheckOtp from '../Form/checkotp'
-import { getuser } from '../../axios'
 
-class navbar extends Component {
-    state = {
-        active: false,
-        loggedin: false,
-        forgetmail: "",
-        forgetOTP: ""
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
+
+
+
+export class navbar extends Component {
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateUser: PropTypes.func.isRequired,
     }
 
-    componentDidMount() {
-        let user = getuser()
-
-        if (user) {
-            this.setState({
-                loggedin: true,
-                name: `${user.first_name.toUpperCase()} ${user.last_name.toUpperCase()}`
-            })
-        }
+    state = {
+        active: false,
+        forgetmail: "",
+        forgetOTP: ""
     }
 
     setForgetMail = (mail) => {
@@ -39,8 +37,9 @@ class navbar extends Component {
     }
 
     render() {
-        const loggedin = <a href="" className="btn btn1" data-toggle="modal" data-target="#logoutModal">{this.state.name}</a>
+        const loggedin = <a href="" className="btn btn1" data-toggle="modal" data-target="#logoutModal">{this.props.auth.first_name.toUpperCase()} {this.props.auth.last_name.toUpperCase()}</a>
         const loggedout = <a href="" className="btn btn1" data-toggle="modal" data-target="#loginRegModal">LogIn/SignUp</a>
+        console.log(this.props)
 
         return (
             <div className="Navbar">
@@ -51,19 +50,25 @@ class navbar extends Component {
                 <ForgetPass handleForgetMail={this.setForgetMail} />
                 <ChangePass otpToBeFilled={this.state.forgetOTP} emailToBeFilled={this.state.forgetmail} />
                 <CheckOtp emailToBeFilled={this.state.forgetmail} handleOTPChange={this.setForgetOTP} />
-                {this.state.loggedin ? <LogoutModal /> : false}
-                <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>
+                {this.props.auth.loggedin ? <LogoutModal /> : false}
+
+
+                {/* hack for opening the modal when needed */}
+                <a href="" className="btn btn1 d-none" data-toggle="modal" id='forgetPasModal_toggle' data-target="#forgetPasModal"></a>
+                <a href="" className="btn btn1 d-none" data-toggle="modal" id='otpModal_toggle' data-target="#otpModal"></a>
+                <a href="" className="btn btn1 d-none" data-toggle="modal" id='adforcaModal_toggle' data-target="#adforcaModal"></a>
+                <a href="" className="btn btn1 d-none" data-toggle="modal" id='changepass_toggle' data-target="#changePasModal"></a>
+                <a href="" className="btn btn1 d-none" data-toggle="modal" id='checkotp_toggle' data-target="#checkOtpModal"></a>
+
+
+                <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>{this.props.name}
                 <h3 className="brand-header3">E-CELL</h3>
                 <h4 className="brand-header2">NIT RAIPUR</h4>
-                <div className="login-button1">
-                    {this.state.loggedin ? loggedin : loggedout}
-                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='forgetPasModal_toggle' data-target="#forgetPasModal"></a>
-                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='otpModal_toggle' data-target="#otpModal"></a>
-                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='adforcaModal_toggle' data-target="#adforcaModal"></a>
-                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='changepass_toggle' data-target="#changePasModal"></a>
-                    <a href="" className="btn btn1 d-none" data-toggle="modal" id='checkotp_toggle' data-target="#checkOtpModal"></a>
-                </div>
 
+
+                <div className="login-button1">
+                    {this.props.auth.loggedin ? loggedin : loggedout}
+                </div>
 
                 <div className={`toggle ${this.state.active ? 'active1' : ''}`} onClick={() => this.setState({ active: !this.state.active })}></div>
                 <div className={`sidebar ${this.state.active ? 'active1' : ''}`}>
@@ -87,4 +92,7 @@ class navbar extends Component {
     }
 }
 
-export default withRouter(navbar)
+const mapStateToProps = (state) => state
+
+
+export default connect(mapStateToProps, actions)(navbar)
