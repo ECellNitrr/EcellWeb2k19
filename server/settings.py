@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'speakers',
     'android_app',
     'corsheaders',
-    'ca_portal',
+    'caportal',
     'gallery',
 ]
 

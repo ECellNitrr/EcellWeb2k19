@@ -17,7 +17,7 @@ urlpatterns = [
     path('mentors/', include('mentors.urls')),
     path('team/', include('team.urls')),
     path('speakers/', include('speakers.urls')),
-    path('portal/', include('ca_portal.urls')),
+    path('portal/', include('caportal.urls')),
     path('gallery/', include('gallery.urls')),
     url(r'^is_update_available', latest_build),
 ]
