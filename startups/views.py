@@ -86,5 +86,5 @@ def generate_spreadsheet(request):
 @api_view(['GET', ])
 def get_startups_list(request):
     startups_objs = Startup.objects.all()
-    startups = StartupSerializer(startups_objs, many=True).data
+    startups = StartupListSerializer(startups_objs, many=True).data
     return JsonResponse(startups,safe=False)
