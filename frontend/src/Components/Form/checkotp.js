@@ -5,7 +5,6 @@ import Loader from "./loader";
 
 export default class forgetPass extends Component {
 
-    axios = faxios()
     state = {
         err: false,
         success: false,
@@ -32,7 +31,7 @@ export default class forgetPass extends Component {
             loader: true
         })
 
-        this.axios.post('users/check_otp/', {
+        faxios().post('users/check_otp/', {
             otp: this.otp.value,
             email: this.email.value
         }).then(d => {

@@ -16,7 +16,6 @@ const user_type = {
 }
 
 class logout extends Component {
-    axios = faxios()
     state = {}
 
     static propTypes = {
@@ -29,6 +28,7 @@ class logout extends Component {
         faxios().get('/users/get_user_details/').then(d=>{
             let data = d.data
             this.props.updateUser(data)
+            console.log(data.user_type)
         })
     }
 

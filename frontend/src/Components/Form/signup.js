@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import fuser from '../../axios'
+import faxios from '../../axios'
 import Loader from "./loader";
 
 
@@ -9,8 +9,6 @@ import * as actions from '../../actions/authActions'
 
 
 class signup extends Component {
-    axios = fuser()
-
     static propTypes = {
         auth: PropTypes.object.isRequired,
         updateUser: PropTypes.func.isRequired,
@@ -44,7 +42,7 @@ class signup extends Component {
             loader:true
         })
 
-        this.axios.post('/users/register/',{
+        faxios().post('/users/register/',{
             first_name: this.first_name.value,
             last_name: this.last_name.value,
             email: this.email.value,

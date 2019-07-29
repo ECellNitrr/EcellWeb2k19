@@ -5,7 +5,6 @@ import Loader from "./loader";
 
 export default class changePass extends Component{
 
-    axios = faxios()
     state = {
         err: false,
         success: false,
@@ -21,7 +20,7 @@ export default class changePass extends Component{
             loader:true
         })
 
-        this.axios.post('users/change_password/',{
+        faxios().post('users/change_password/',{
             email: this.email.value,
             otp:this.otp.value,
             password:this.password.value

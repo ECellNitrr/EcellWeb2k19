@@ -16,7 +16,6 @@ const styles ={
 }
 
 class login extends Component {
-    axios = faxios()
     static propTypes = {
         auth: PropTypes.object.isRequired,
         updateUser: PropTypes.func.isRequired,
@@ -43,7 +42,7 @@ class login extends Component {
         })
 
 
-        this.axios.post('/users/login/',{
+        faxios().post('/users/login/',{
             email: this.email.value,
             password: this.password.value,
         }).then(d=>{
