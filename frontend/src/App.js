@@ -12,7 +12,7 @@ const StartupDetail = lazy(() => import('./Components/Startup/startupdetail'))
 const Mentors = lazy(() => import('./Components/Mentors/mentors'));
 const Gallery = lazy(() => import('./Components/Gallery/gallery'));
 const Register = lazy(() => import('./Components/Register/register'));
-const CaPortal = lazy(() => import('./Components/ca_portal/caportal'));
+const CaPortal = lazy(() => import('./Components/ca_portal_intro/caportal'));
 const Team = lazy(() => import('./Components/Team/team'));
 const Yearwise_spons = lazy(()=> import('./Components/Sponsors/yearwise_sponsors'));
 const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import actions from '../../actions/authActions'
 
 import "./caportal.css";
 import Navbar from '../Navbar/navbar';
@@ -14,22 +13,13 @@ class caportal extends Component {
     static propTypes = {
         auth: PropTypes.object.isRequired
     }
-    
-    _go_caportal = () => {
-        const user= this.props.auth
-        if(!user){
-            alert('please login to continue')
-        }else if(user.user_type==='CAB'){
-            window.location = '/portal/request_approval/'
-        }else if(user.user_type==='GST'){
-            alert('You are not a CA or Admin yet')
-        }else{
-            window.location = '/portal/request_list/'
-        }
+
+    componentDidMount() {
+        console.log(this.props)
     }
     
+
     render() {
-        
         return (
             <div>
                 <Navbar/>
