@@ -43,7 +43,7 @@ export default class users_list extends Component {
         const ecell_users_html = this.state.ecell_users.map((user, i) =>
             <tr key={i}>
                 <td>{i + 1}</td>
-                <td><Link className='user_link' to={`/caportal/admin/users/${user.id}/`}>{user.username}</Link></td>
+                <td><Link className='detail_link' to={`/caportal/admin/users/${user.id}/`}>{user.username}</Link></td>
                 <td>{user.verified ? correct : wrong}</td>
                 <td>{user.applied ? correct : wrong}</td>
                 <td>{user.otp}</td>

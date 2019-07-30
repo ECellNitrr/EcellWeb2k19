@@ -1,12 +1,14 @@
-.users_list{
-    .user_link{
+.caportal-wrapper{
+    .detail_link{
         font-weight: bold;
         color: blue;
         cursor: pointer !important;
     }
-}
-
-.caportal-wrapper{
+    .username{
+        margin: 0 5px;
+        padding: 5px 10px;
+        border: 1px solid black
+    }
     .btn{
         padding: 8px 16px;
     }

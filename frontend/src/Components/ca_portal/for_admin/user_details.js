@@ -103,7 +103,7 @@ export default class user_details extends Component {
                     </div>
                     <div className="text-center mt-3">
                         <button onClick={this._deleteUser} className="btn btn-danger">Delete</button>
-                        <button onClick={this._updateUser} className="btn btn-success">Submit</button>
+                        <button onClick={this._updateUser} className="btn btn-success">Update</button>
                     </div>
                 </form>
             </div>

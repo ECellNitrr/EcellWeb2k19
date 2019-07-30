@@ -26,12 +26,14 @@ class navbar extends Component {
     render() {
         return (
             <div className='navbar'>
-                <div className="container">
-                    <div className="d-flex">
+                <div className="container d-flex">
+                    <div className="d-flex flex-grow-1">
                         <NavLink activeClassName='active_navlink' exact className='navlink' active to={this.base_route + ''}>Dashboard</NavLink>
                         <NavLink activeClassName='active_navlink' exact className='navlink' active to={this.base_route + 'users/'}>EcellUsers</NavLink>
                         <NavLink activeClassName='active_navlink' exact className='navlink' active to={this.base_route + 'tasks/'}>tasks</NavLink>
                     </div>
+                    <div className='username'>{this.props.auth.first_name.toUpperCase()} {this.props.auth.last_name.toUpperCase()}</div>
+                    <div className='username'>{this.props.auth.user_type}</div>
                     <div>
                         <button onClick={this._logout} className='navlink logout_btn'>logout</button>
                     </div>

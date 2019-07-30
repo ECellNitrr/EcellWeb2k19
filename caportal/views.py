@@ -25,6 +25,12 @@ class TaskViewset(ModelViewSet):
     serializer_class = TaskSerializer
 
 
+class SubmitTaskViewset(ModelViewSet):
+    queryset = SubmitTask.objects.all()
+    serializer_class = SubmitTaskSerializer
+
+
+
 @api_view(['POST'])
 @renderer_classes([JSONRenderer])
 def create_user(req):

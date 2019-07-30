@@ -5,28 +5,14 @@ import faxios from '../../../axios'
 
 export default class users_list extends Component {
     state = {
-        ecell_users: []
+        tasks: []
     }
 
     componentDidMount() {
-        // faxios().get('/portal/users/').then(d => {
-        //     this.setState({
-        //         ecell_users: d.data
-        //     })
-        // })
-    }
-
-    _to_cab = user => {
-        faxios().put(`/portal/users/${user.id}/`, {
-            ...user,
-            user_type: 'CAB',
-        }).then(d => {
-            let ecell_users = this.state.ecell_users
-            const uid = ecell_users.findIndex(temp => temp.id === user.id)
-            console.log(uid)
-            ecell_users[uid].user_type = 'CAB'
-
-            this.setState({ ecell_users })
+        faxios().get('/portal/tasks/').then(d => {
+            this.setState({
+                tasks: d.data
+            })
         })
     }
 
@@ -37,22 +23,17 @@ export default class users_list extends Component {
 
 
     render() {
-        const correct = <div className="text-success"><i className="fa fa-check"></i></div>
-        const wrong = <div className="text-danger"><i className="fa fa-times"></i></div>
-
-        const ecell_users_html = this.state.ecell_users.map((user, i) =>
+        const tasks_html = this.state.tasks.map((task, i) =>
             <tr key={i}>
                 <td>{i + 1}</td>
-                <td><Link className='user_link' to={`/caportal/admin/users/${user.id}/`}>{user.username}</Link></td>
-                <td>{user.verified ? correct : wrong}</td>
-                <td>{user.applied ? correct : wrong}</td>
-                <td>{user.otp}</td>
-                <td>{user.user_type} {user.user_type === 'GST' ? <button onClick={() => this._to_cab(user)} className='badge badge-dark'>to CAB</button> : null} </td>
+                <td><Link className='detail_link' to={`/caportal/admin/tasks/${task.id}/`}>{task.name}</Link></td>
+                <td>{task.platform}</td>
+                <td>{task.madeby}</td>
             </tr>
         )
 
         return (
-            <div className='users_list container'>
+            <div className='tasks_list container'>
                 <div className="d-flex my-4">
                     <h2 className=" flex-grow-1 text-center">Tasks List</h2>
                     <div className="text-right">
@@ -63,15 +44,13 @@ export default class users_list extends Component {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Email</th>
-                            <th>verified</th>
-                            <th>Applied</th>
-                            <th>otp</th>
-                            <th>User Type</th>
+                            <th>Task name</th>
+                            <th>Platform</th>
+                            <th>Author</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {ecell_users_html}
+                        {tasks_html}
                     </tbody>
                 </table>
             </div>

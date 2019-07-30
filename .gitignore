@@ -10,10 +10,13 @@ db.sqlite3
 .env
 *.pyc
 
+static/uploads/caportal/
+
+
 #Vscode
 .vscode
+
 dumped/
-uploads/
 */migrations
 
 #these will be collected when running collectstatic
