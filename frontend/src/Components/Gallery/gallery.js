@@ -1,64 +1,25 @@
-import React,{Component, useState, useCallback } from 'react';
-import faxios from '../../axios';
+import React,{Component} from 'react';
 import './gallery.css';
+import {Link} from 'react-router-dom';
 import Navbar from '../Navbar/navbar';
-import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
+import Footer from '../Footer/footer';
+
 
 class gallery extends Component{
 
-    axios=faxios()
-    state={
-        yearwise_pics:[]
-    }
-
-    componentDidMount(){
-        this.axios.get('/gallery/list/').then(res=>{
-            
-            let yearwise_images= res.data.gallery;
-            this.setState({
-                yearwise_pics:yearwise_images
-            })
-
-            console.log(this.state.yearwise_pics)
-        })
-    }
-
-    render(){
-
-        const [currentImage, setCurrentImage] = useState(0);
-        const [viewerIsOpen, setViewerIsOpen] = useState(false);
-
-        const openLightbox = useCallback((event, { photo, index }) => {
-            setCurrentImage(index);
-            setViewerIsOpen(true);
-        }, []);
-
-        const closeLightbox = () => {
-            setCurrentImage(0);
-            setViewerIsOpen(false);
-        };
-
+    render(){  
+        
         return(
             <div className="whole-gallery">
                 <Navbar/>
-                <div className="gallery container-fluid" style={{maxWidth:"1500px"}}>
-                   {/* <Gallery photos={photos} onClick={openLightbox} />
-                    <ModalGateway>
-                        {viewerIsOpen ? (
-                        <Modal onClose={closeLightbox}>
-                            <Carousel
-                            currentIndex={currentImage}
-                            views={photos.map(x => ({
-                                ...x,
-                                srcset: x.srcSet,
-                                caption: x.title
-                            }))}
-                            />
-                        </Modal>
-                        ) : null}
-                        </ModalGateway>*/}
+                
+                <div className="container-fluid" style={{maxWidth:"700px",paddingTop:"200px"}}>
+                    <div className="header66">Gallery</div>
+                    <div className="gal-link"><Link to="gallery/E-Summit'18"><button className="btn lgtabs lgback" >GALLERY OF E-SUMMIT'18</button></Link></div> 
+                    <div className="gal-link"><Link to="gallery/E-Summit'17"><button className="btn lgtabs lgback" >GALLERY OF E-SUMMIT'17</button></Link></div> 
+                    <div className="gal-link"><Link to="gallery/E-Summit'16"><button className="btn lgtabs lgback" >GALLERY OF E-SUMMIT'16</button></Link></div> 
                 </div>
+                <Footer/>
             </div>
         )
     }

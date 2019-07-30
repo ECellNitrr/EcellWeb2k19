@@ -25,9 +25,13 @@ class speaker extends Component {
   }
 
   render() {
+    const speakers = this.state.speakers.sort((a,b)=>b.year-a.year)
+
+    let speakers_html = speakers.map(speaker =>
       <div className="wrapper" key={speaker.name}>
 
         <div className="profile-card js-profile-card">
+
           <div className="profile-card__img">
             <img src={speaker.profile_pic} alt={speaker.name}></img>
           </div>
@@ -52,7 +56,7 @@ class speaker extends Component {
 
       </div>
 
-    
+    )
 
 
     return (
