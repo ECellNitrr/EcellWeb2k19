@@ -4,6 +4,7 @@ import faxios from "../../axios";
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
 import HeaderLinks from "./header_links";
+import Loader from '../api_loader/api_loader';
 
 class Sponsors extends Component {
     axios = faxios();
@@ -58,6 +59,7 @@ class Sponsors extends Component {
         return (
             <div className="sponsors">
                 <Navbar />
+                <div className="header1">SPONSORS {this.state.year}</div>
                 <div
                     className="container-fluid"
                     style={{ maxWidth: "1200px", paddingTop: "300px" }}
@@ -65,15 +67,13 @@ class Sponsors extends Component {
                      <HeaderLinks /> 
                 </div>
 
-                <div className="header1">SPONSORS {this.state.year}</div>
+                
                 <div
                     className="container-fluid ctn9"
                     style={{ maxWidth: "1500px", paddingTop: "0px" }}
                 >
                     {this.state.loading ? (
-                        <h1 className="text-center text-white w-100 my-5">
-                            loading...
-                        </h1>
+                        <Loader style={{margin:"50px auto"}}/>
                     ) : (
                         sponsors_html
                     )}

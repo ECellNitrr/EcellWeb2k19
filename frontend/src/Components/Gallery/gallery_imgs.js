@@ -5,6 +5,7 @@ import Footer from '../Footer/footer';
 import ImageGallery from 'react-image-gallery';
 import "../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 import './gallery.css';
+import Loader from '../api_loader/api_loader'
 
 
 export default class gallery_imgs extends Component {
@@ -12,7 +13,8 @@ export default class gallery_imgs extends Component {
         pic:[],
         photos:[],
         year_name:"",
-        success:false
+        success:false,
+        loading:true
     }
 
     componentDidMount(){
@@ -33,11 +35,13 @@ export default class gallery_imgs extends Component {
             });
 
             this.setState({
-                success:true
+                success:true,
+                loading:false
             })
         
             if(this.state.success){
-                document.querySelector('.image-gallery-play-button').click()
+                document.querySelector('.image-gallery-play-button').click();
+                
             }
         })
     }
@@ -51,7 +55,7 @@ export default class gallery_imgs extends Component {
                 <div style={{paddingTop:"200px"}}>
                     <div className="position11 shadow p-3 mb-5 bg-white rounded">Gallery of {this.state.year_name}</div>
                     <div className="gallery container-fluid ctn20 shadow p-3 mb-5 bg-white rounded" style={{maxWidth:"1300px"}}>
-                    <ImageGallery className="shadow-lg p-3 mb-5 bg-white rounded" items={this.state.photos} />
+                    {this.state.loading?(<Loader/>):<ImageGallery className="shadow-lg p-3 mb-5 bg-white rounded" items={this.state.photos} />}
 
                 </div>
                 </div>

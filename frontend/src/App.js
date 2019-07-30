@@ -1,6 +1,7 @@
 import React, { Component, lazy, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Loader from './Components/api_loader/api_loader'
 
 
 const Home = lazy(() => import('./Components/Home/home'))
@@ -24,7 +25,7 @@ const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 class App extends Component {
   render() {
     return (
-      <Suspense fallback={'...loading'}>
+      <Suspense fallback={<Loader className="page-loader"/>}>
         <BrowserRouter>
           <div className="App">
             <Switch>
