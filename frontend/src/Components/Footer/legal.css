@@ -1,0 +1,38 @@
+.legal
+{
+    font-family:calibri;
+    color:black;
+}
+.openpara
+{
+    padding:15px;
+    padding-bottom: 5px;
+    font-size:20px;
+    display:flex;
+}
+.heading
+{
+    background:black;
+    padding:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:white;
+    font-style:bold;
+    text-align:center;
+}
+.legal h2{
+    padding:15px;
+    font-style:bold;
+}
+.legal p{
+    padding:10px;
+    font-size:20px;
+}
+.legal dd, .legal dt{
+    padding:10px;
+    font-size:15px;
+}
+.copyright
+{
+    text-align:center;
+}
