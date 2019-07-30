@@ -318,6 +318,18 @@
     
   }
 
+  @media(max-width:490px){
+    .header1{
+      font-size: 20px;
+    }
+  }
+
+  @media(max-width:405px){
+    .header1{
+      font-size: 17px;
+    }
+  }
+
   .profile-card__button {
     background: none;
     border: none;
