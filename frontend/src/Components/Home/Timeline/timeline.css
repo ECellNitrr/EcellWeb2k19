@@ -1,134 +1,137 @@
-.demo{ 
-    background-color: #00629F;
-    display:flex;
-}
 .main-timeline{
-    font-family: 'Source Sans Pro', sans-serif;
+    padding-top: 50px;
+    overflow: hidden;
     position: relative;
-    padding: 40px 0;
 }
 .main-timeline:before{
-    content: '';
-    background-color: #FFD004;
+    content: "";
+    width: 7px;
     height: 100%;
-    width: 30px;
-    border: 7px solid #F26F37;
-    border-top: none;
-    border-bottom: none;
-    transform: translateX(-50%);
+    background: #084772;
+    margin: 0 auto;
     position: absolute;
-    left: 50%;
-    top: 0;
-}
-.main-timeline:after{
-    content: '';
-    display: block;
-    clear: both;
+    top: 80px;
+    left: 0;
+    right: 0;
 }
 .main-timeline .timeline{
-    color: #fff;
-    width: 50.1%;
+    width: 50%;
     float: left;
+    padding: 20px 60px;
+    border-top: 7px solid #084772;
+    border-right: 7px solid #084772;
+    border-radius: 0 30px 0 0;
     position: relative;
+    right: -3.5px;
 }
-.main-timeline .timeline:before,
-.main-timeline .timeline:after{
-    content: '';
-    background-color: #fff;
-    height: 2px;
-    width: 100px;
-    position: absolute;
-    right: 42px;
-    top: 4px;
-}
-.main-timeline .timeline:after{
-    height: 10px;
-    width: 10px;
+.main-timeline .icon{
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height:50px;
     border-radius: 50%;
-    top: 0;
-    right: 133px;
+    background: #e84c47;
+    border: 1px solid #fff;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+    box-shadow: 0 0 0 2px #e84c47;
+    position: absolute;
+    top: -30px;
+    left: 0;
 }
 .main-timeline .timeline-content{
+    display: block;
+    padding: 30px 10px 10px;
+    border-radius: 20px;
+    background: #e84c47;
     color: #fff;
-    padding: 10px 150px 0 0;
-    display: flex;
     position: relative;
 }
 .main-timeline .timeline-content:hover{
-    color: #fff;
     text-decoration: none;
+    color: #fff;
 }
-.main-timeline .timeline-year{
-    background-color: #CE3E95;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    line-height: 60px;
-    height: 60px;
-    width: 60px;
-    box-shadow: 0 0 5px #000 inset,0 0 0 10px #fff;
-    border-radius: 50%;
+.main-timeline .timeline-content:before,
+.main-timeline .timeline-content:after{
+    content: "";
+    display: block;
+    width: 10px;
+    height: 50px;
+    border-radius: 10px;
+    background: #e84c47;
+    border: 1px solid #fff;
     position: absolute;
-    right: -30px;
-    top: 0;
+    top: -35px;
+    left: 50px;
+}
+.main-timeline .timeline-content:after{
+    left: auto;
+    right: 50px;
 }
 .main-timeline .title{
-    font-size: 25px;
-    font-weight: 600;
-    margin: 0 0 5px 0;
-}
-.main-timeline .title i{
-    font-size: 35px;
-    margin-top: 5px;
-    margin-left: 5px;
+    font-size: 24px;
+    margin: 0;
 }
 .main-timeline .description{
     font-size: 15px;
     letter-spacing: 1px;
+    margin: 0 0 5px 0;
 }
-.main-timeline .timeline:nth-child(even){ float: right; }
-.main-timeline .timeline:nth-child(even):before{
+.main-timeline .timeline:nth-child(2n){
+    border-right: none;
+    border-left: 7px solid #084772;
+    border-radius: 30px 0 0 0;
     right: auto;
-    left: 42px;
+    left: -3.5px;
 }
-.main-timeline .timeline:nth-child(even):after{
-    right: auto;
-    left: 133px;
+.main-timeline .timeline:nth-child(2n) .icon{
+    left: auto;
+    right: 0;
 }
-.main-timeline .timeline:nth-child(even) .timeline-content{ padding: 10px 0 0 150px; }
-.main-timeline .timeline:nth-child(even) .timeline-year{
-    right: auto;
-    left: -29px;
-}
-@media only screen and (max-width:990px){
-    .main-timeline .timeline:before{ width: 50px; }
-    .main-timeline .timeline:after{ right: 90px; }
-    .main-timeline .timeline-content{ padding: 10px 80px 0 0; }
-    .main-timeline .timeline:nth-child(even):after{ left: 90px; }
-    .main-timeline .timeline:nth-child(even) .timeline-content{ padding: 10px 0 0 80px; }
-}
-@media only screen and (max-width:767px){
+.main-timeline .timeline:nth-child(2){ margin-top: 130px; }
+.main-timeline .timeline:nth-child(odd){ margin: -130px 0 30px 0; }
+.main-timeline .timeline:nth-child(even){ margin-bottom: 80px; }
+.main-timeline .timeline:first-child,
+.main-timeline .timeline:last-child:nth-child(even){ margin: 0 0 30px 0; }
+.main-timeline .timeline:nth-child(2n) .timeline-content,
+.main-timeline .timeline:nth-child(2n) .timeline-content:before,
+.main-timeline .timeline:nth-child(2n) .timeline-content:after,
+.main-timeline .timeline:nth-child(2n) .icon{ background: #4bd9bf; }
+.main-timeline .timeline:nth-child(2n) .icon{ box-shadow: 0 0 0 2px #4bd9bf; }
+.main-timeline .timeline:nth-child(3n) .timeline-content,
+.main-timeline .timeline:nth-child(3n) .timeline-content:before,
+.main-timeline .timeline:nth-child(3n) .timeline-content:after,
+.main-timeline .timeline:nth-child(3n) .icon{ background: #ff9e09; }
+.main-timeline .timeline:nth-child(3n) .icon{ box-shadow: 0 0 0 2px #ff9e09; }
+.main-timeline .timeline:nth-child(4n) .timeline-content,
+.main-timeline .timeline:nth-child(4n) .timeline-content:before,
+.main-timeline .timeline:nth-child(4n) .timeline-content:after,
+.main-timeline .timeline:nth-child(4n) .icon{ background: #3ebae7; }
+.main-timeline .timeline:nth-child(4n) .icon{ box-shadow: 0 0 0 2px #3ebae7; }
+@media only screen and (max-width: 767px){
     .main-timeline:before{
-        transform: translateX(0);
-        left: 15px;
+        left: 0;
+        right: auto;
     }
-    .main-timeline .timeline{
+    .main-timeline .timeline,
+    .main-timeline .timeline:nth-child(even),
+    .main-timeline .timeline:nth-child(odd){
         width: 100%;
-        margin-bottom: 30px;
-    }
-    .main-timeline .timeline:before,
-    .main-timeline .timeline:nth-child(even):before{
-        left: 80px;
-    }
-    .main-timeline .timeline:after,
-    .main-timeline .timeline:nth-child(even):after{
-        left: 120px;
-    }
-    .main-timeline .timeline-year,
-    .main-timeline .timeline:nth-child(even) .timeline-year{
+        float: none;
+        padding: 20px 30px;
+        margin: 0 0 30px 0;
+        border-right: none;
+        border-left: 7px solid #084772;
+        border-radius: 30px 0 0 0;
+        right: auto;
         left: 0;
     }
-    .main-timeline .timeline-content{ padding: 10px 0 0 80px; }
-    .main-timeline .title{ font-size: 20px; }
-    .main-timeline .title i{ font-size: 25px; }
+    .main-timeline .icon{
+        left: auto;
+        right: 0;
+    }
+}
+@media only screen and (max-width: 480px){
+    .main-timeline .title{ font-size: 18px; }
 }
