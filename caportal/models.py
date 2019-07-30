@@ -15,8 +15,10 @@ class Task(models.Model):
     description = models.TextField(null=True)
     platform = models.CharField(max_length=100, choices=platform_choices)
     madeby = models.CharField(max_length=500)
+    url = models.URLField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+    deleted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

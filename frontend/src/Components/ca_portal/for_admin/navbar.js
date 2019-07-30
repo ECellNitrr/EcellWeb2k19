@@ -30,6 +30,7 @@ class navbar extends Component {
                     <div className="d-flex">
                         <NavLink activeClassName='active_navlink' exact className='navlink' active to={this.base_route + ''}>Dashboard</NavLink>
                         <NavLink activeClassName='active_navlink' exact className='navlink' active to={this.base_route + 'users/'}>EcellUsers</NavLink>
+                        <NavLink activeClassName='active_navlink' exact className='navlink' active to={this.base_route + 'tasks/'}>tasks</NavLink>
                     </div>
                     <div>
                         <button onClick={this._logout} className='navlink logout_btn'>logout</button>

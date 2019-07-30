@@ -9,11 +9,11 @@ export default class users_list extends Component {
     }
 
     componentDidMount() {
-        faxios().get('/portal/users/').then(d => {
-            this.setState({
-                ecell_users: d.data
-            })
-        })
+        // faxios().get('/portal/users/').then(d => {
+        //     this.setState({
+        //         ecell_users: d.data
+        //     })
+        // })
     }
 
     _to_cab = user => {
@@ -31,8 +31,8 @@ export default class users_list extends Component {
     }
 
 
-    _createUser = () => {
-        this.props.history.push('/caportal/admin/create_user/')
+    _createTask = () => {
+        this.props.history.push('/caportal/admin/create_task/')
     }
 
 
@@ -54,9 +54,9 @@ export default class users_list extends Component {
         return (
             <div className='users_list container'>
                 <div className="d-flex my-4">
-                    <h2 className=" flex-grow-1 text-center">Users List</h2>
+                    <h2 className=" flex-grow-1 text-center">Tasks List</h2>
                     <div className="text-right">
-                        <button onClick={this._createUser} className="btn btn-primary">create user <i className="fa fa-plus ml-2"></i> </button>
+                        <button onClick={this._createTask} className="btn btn-primary">create task <i className="fa fa-plus ml-2"></i> </button>
                     </div>
                 </div>
                 <table className='table table-striped'>

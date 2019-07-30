@@ -4,6 +4,7 @@ from . import views
 
 router = SimpleRouter()
 router.register('users',views.EcellUserViewset)
+router.register('tasks',views.TaskViewset)
 
 
 urlpatterns = [

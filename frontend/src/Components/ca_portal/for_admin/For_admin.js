@@ -5,6 +5,9 @@ import './for_admin.scss'
 import UserDetails from './user_details'
 import CreateUser from './create_new_user'
 import UserList from './users_list'
+import TaskList from './tasks_list'
+import CreateTask from './create_task'
+import TaskDetail from './task_detail'
 import Dashboard from './dashboard'
 import Navbar from './navbar'
 
@@ -17,6 +20,9 @@ export default class For_admin extends Component {
             <div>
                 <Navbar/>
                 <Switch>
+                    <Route path={this.base_route + 'tasks/:task_id'} component={TaskDetail}/>
+                    <Route path={this.base_route + 'create_task/'} component={CreateTask}/>
+                    <Route path={this.base_route + 'tasks/'} component={TaskList}/>
                     <Route path={this.base_route + 'users/:user_id'} component={UserDetails}/>
                     <Route path={this.base_route + 'create_user/'} component={CreateUser}/>
                     <Route path={this.base_route + 'users/'} component={UserList}/>

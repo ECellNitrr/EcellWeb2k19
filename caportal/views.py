@@ -20,6 +20,11 @@ class EcellUserViewset(ModelViewSet):
     serializer_class = EcellUserSerializer
 
 
+class TaskViewset(ModelViewSet):
+    queryset = Task.objects.filter(deleted=False)
+    serializer_class = TaskSerializer
+
+
 @api_view(['POST'])
 @renderer_classes([JSONRenderer])
 def create_user(req):
