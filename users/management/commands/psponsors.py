@@ -35,13 +35,13 @@ MEMBER_TYPE = {
 class Command(BaseCommand):
     def handle(self, *args, **options):
         appname = 'sponsors'
-        URL = "https://ecell.nitrr.ac.in/{}/list/".format(appname)
+        URL = "http://206.189.143.11:9000/{}/list/".format(appname)
         r = requests.get(URL)
         data = r.json()
-        image_url = 'https://ecell.nitrr.ac.in/static/uploads/{}/'.format(
+        image_url = 'http://206.189.143.11:9000/static/uploads/{}/'.format(
             appname)
 
-
+        Sponsor.objects.all
         print(data)
         for x in data['spons']:
             datum = x['sponsors']
@@ -53,7 +53,7 @@ class Command(BaseCommand):
                 if obj['pic']:
                     image_name = obj['pic'].split('/').pop()
                     image_location = 'static/uploads/{}/'.format(
-                        appname)+image_nameobj['spons_type']
+                        appname)+obj['name']+'.jpeg'
                     req = requests.get(obj['pic'], stream=True)
                     with open(image_location, 'wb') as out_file:
                         shutil.copyfileobj(req.raw, out_file)

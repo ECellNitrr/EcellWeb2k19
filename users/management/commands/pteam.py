@@ -35,10 +35,10 @@ MEMBER_TYPE = {
 class Command(BaseCommand):
     def handle(self, *args, **options):
         appname = 'team'
-        URL = "https://ecell.nitrr.ac.in/{}/list/".format(appname)
+        URL = "https://3b1bdaef.ngrok.io/{}/list/".format(appname)
         r = requests.get(URL)
         data = r.json()
-        image_url = 'https://ecell.nitrr.ac.in/static/uploads/{}/'.format(
+        image_url = 'https://3b1bdaef.ngrok.io/static/uploads/{}/'.format(
             appname)
 
         Member.objects.all().delete()
@@ -53,7 +53,7 @@ class Command(BaseCommand):
                 if len(obj['image'])>0:
                     image_name = obj['image'].split('/').pop()
                     image_location = 'static/uploads/team/'+image_name
-                    req = requests.get(obj['image'], stream=True)
+                    req = requests.get(obj['image'].replace('http://127.0.0.1:8080','https://3b1bdaef.ngrok.io'), stream=True)
                     with open(image_location, 'wb') as out_file:
                         shutil.copyfileobj(req.raw, out_file)
                     del req

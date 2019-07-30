@@ -7,8 +7,3 @@ class HigherSerializer(serializers.ModelSerializer):
         model = Member
         fields = ['name', 'profile_url','image','image_url','image']
     
-class LowerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Member
-        fields = ('name',)
-        

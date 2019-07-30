@@ -48,6 +48,7 @@ class RegistrationAPIView(APIView):
 
             else:
                 serializer.save()
+                user = serializer.validated_data
                 payload = {
                     'email': serializer.validated_data['email']
                 }
@@ -60,11 +61,22 @@ class RegistrationAPIView(APIView):
                 res_token = token
                 res_status = status.HTTP_200_OK
 
-        return Response({
-            "message": res_message,
-            "detail": res_detail,
-            "token": res_token
-        }, status=res_status)
+            return Response({
+                "message": res_message,
+                "detail": res_detail,
+                "token": res_token,
+                
+                'first_name' : user['first_name'],
+                'last_name' : user['last_name'],
+                'email' : user['email'],
+                'verified' : False,
+                'contact' : user['contact'],
+                'bquiz_score' : 0,
+                'user_type' : 'GST',
+                'linkedin' : 0,
+                'facebook' : 0,
+                'applied' : 0,
+            }, status=res_status)
 
 class LoginAPIView(APIView):
     authentication_classes = []

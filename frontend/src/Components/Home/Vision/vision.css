@@ -2,9 +2,9 @@
 
     margin-top: 100px;
     background: #292826; 
-   
-  max-width: 1500px;
-  
+    max-width: 1600px;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%);
   }
   
   .heading-5{
@@ -14,11 +14,10 @@
   }
   
   .text-6{
-    text-align: justify;
-    margin: 30px;
+    margin: 15px;
     line-height: 30px;
+    font-size: 18px;
     font-weight: 600;
-    font-size: 20px;
     color: white;
   }
   

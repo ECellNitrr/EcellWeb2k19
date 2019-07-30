@@ -1,12 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const links =()=>{
     return(
         
             <div className="ctn10">
-                <div><a className="links" href="#">Yearwise Sponsors</a></div>
-                <div><a className="links" href="#">Sponsorship Gallery</a></div>
-                <div><a className="links link-text" href="#">Head Co-ordinators of Sponsorship</a></div>
+                <div><Link className="links" to="/sponsors/yearwise">Yearwise Sponsors</Link></div>
+                {/*<div><a className="links" to="">Sponsorship Gallery</a></div>*/}
+                <div><Link className="links link-text" to="/sponsors/sponsors_heads">Head Co-ordinators of Sponsorship</Link></div>
             </div>
         
         

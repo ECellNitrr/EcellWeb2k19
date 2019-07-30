@@ -3,13 +3,14 @@ import "./sponsors.css";
 import faxios from "../../axios";
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
-// import HeaderLinks from "./header_links";
+import HeaderLinks from "./header_links";
 
 class Sponsors extends Component {
     axios = faxios();
     state = {
         sponsors: [],
-        loading: true
+        loading: true,
+        year:null
     };
 
     componentDidMount() {
@@ -19,7 +20,8 @@ class Sponsors extends Component {
             let data = res.data.data;
             this.setState({
                 loading: false,
-                sponsors: data 
+                sponsors: data ,
+                year:year
             });
         });
     }
@@ -32,7 +34,7 @@ class Sponsors extends Component {
                         <img
                             alt={sponsor.name}
                             className="spons-Image"
-                            src={sponsor.pic}
+                            src={sponsor.pic_url}
                         />
                     </div>
                     <div className="back shadow-lg p-3 mb-5 bg-white rounded">
@@ -60,13 +62,13 @@ class Sponsors extends Component {
                     className="container-fluid"
                     style={{ maxWidth: "1200px", paddingTop: "300px" }}
                 >
-                    {/* <HeaderLinks /> */}
+                     <HeaderLinks /> 
                 </div>
 
                 <div className="header1">SPONSORS {this.state.year}</div>
                 <div
                     className="container-fluid ctn9"
-                    style={{ maxWidth: "1200px", paddingTop: "0px" }}
+                    style={{ maxWidth: "1500px", paddingTop: "0px" }}
                 >
                     {this.state.loading ? (
                         <h1 className="text-center text-white w-100 my-5">
@@ -81,7 +83,7 @@ class Sponsors extends Component {
                     className="container-fluid"
                     style={{ maxWidth: "1200px", paddingTop: "50px" }}
                 >
-                    {/* <HeaderLinks /> */}
+                    <HeaderLinks />
                 </div>
                 <Footer />
             </div>

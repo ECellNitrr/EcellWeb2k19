@@ -11,13 +11,19 @@ export default class Responsive extends Component {
   axios=faxios();
   state={
     sponsors:[],
-    loading:true,
-    year:2018
+    loading:true
   }
 
   componentDidMount(){
     this.axios.get("/sponsors/list/2018/").then(res=>{
       const data = res.data.data;
+      console.log(data)
+
+      // random shuffling the sponsors
+      for (let i = data.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [data[i], data[j]] = [data[j], data[i]];
+    }
 
       this.setState({
         sponsors:data,
@@ -27,13 +33,11 @@ export default class Responsive extends Component {
   }
 
   render() {
-    const settings = {
+    var settings = {
       dots: true,
-      infinite: true,
+      infinite: false,
       speed: 500,
       slidesToShow: 5,
-      autoplay: true,
-      autoplaySpeed: 3000,
       slidesToScroll: 5,
       initialSlide: 0,
       responsive: [
@@ -42,14 +46,15 @@ export default class Responsive extends Component {
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            infinite: true
+            infinite: true,
+            dots: true
           }
         },
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             initialSlide: 2
           }
         },
@@ -57,7 +62,7 @@ export default class Responsive extends Component {
           breakpoint: 480,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1,
+            slidesToScroll: 1
           }
         }
       ]
@@ -67,8 +72,8 @@ export default class Responsive extends Component {
     let sponsors_html=this.state.sponsors.map(sponsor=>
         
         <div className="col" key={sponsor.id}>
-          <div className="cont">
-              <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt={sponsor.name} className="spons-Image" src={sponsor.pic}></img></div>
+          <div className="cont" key={sponsor.id}>
+              <div className="front shadow-lg p-3 mb-5 bg-white rounded"><img alt={sponsor.name} className="spons-Image" src={sponsor.pic_url}></img></div>
               <div className="back shadow-lg p-3 mb-5 bg-white rounded">
                   <div className="inner">
                       <h6 style={{ fontWeight: "800" }}>{sponsor.name}</h6>
@@ -84,7 +89,7 @@ export default class Responsive extends Component {
     return (
       <div className="spons">
 
-        <Parallax blur={3} bgImage={require('../../../assets/spons.jpg')} bgImageAlt="sponsors" strength={700}>
+        <Parallax blur={3} bgImage={require('../../../assets/spons.svg')} bgImageAlt="sponsors" strength={700}>
           {/* <div className="heading4-cont"><h2 className="heading-4">SPONSORS {this.state.year}</h2></div> */}
           <Slider {...settings}>
           

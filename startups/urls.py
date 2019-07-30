@@ -5,6 +5,7 @@ from utils.startups_trans import data_transfer
 
 urlpatterns = [
     path('list/<int:year>/', views.get_startups, name="get_startups"),
+    path('full_list/', views.get_startups_list),
     path('add_new/', views.add_startup, name="add_startup"),
     path('generate_spreadsheet/', views.generate_spreadsheet, name="startup_gen_csv"),
     path('data_transfer/', data_transfer)

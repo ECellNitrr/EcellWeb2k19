@@ -18,7 +18,7 @@ const footer = ()=>{
                     </div>
 
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col6">
-                        <img alt='' style={{height:"80px",width:"80px"}} src={logo}></img>
+                        <img alt='E-Cell Logo' style={{height:"80px",width:"80px"}} src={logo}></img>
                         <p style={{color:"white",margin:"15px",fontSize:"17px",fontWeight:"600"}}>E-Cell, NIT Raipur is established to motivate and educate people about entrepreneurship and serve as a meeting ground for corporate and young budding entrepreneurs from distinguished institutions.</p>
                     </div>
 
@@ -32,8 +32,8 @@ const footer = ()=>{
                         <a href="#"><i className="fab fa-linkedin"></i></a>
                       </p>
                       <div><a className="site" href="https://ecell.nitrr.ac.in/">E-Cell Official Site</a></div>
-                      <div><a style={{color:"white"}} href="tel:8094966697">+91 80949 66697</a></div>
-                      <div><a style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div>
+                      <div><a href='#' style={{color:"white"}} href="tel:8094966697">+91 80949 66697</a></div>
+                      <div><a href='#' style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div>
                       <p style={{color:"white",marginTop:"5px"}}>&copy; All Rights Reserved</p>
 
 
