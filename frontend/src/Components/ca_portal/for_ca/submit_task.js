@@ -75,7 +75,13 @@ class submit_task extends Component {
         }
 
         request.responseType = 'json';
-        request.open('patch', url);
+
+        let method_of_req = 'post'
+        if(this.review){
+            method_of_req = 'patch'
+        }
+        
+        request.open(method_of_req, url);
         request.setRequestHeader('Authorization', this.props.auth.token)
         request.send(data);
     }
