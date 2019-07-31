@@ -19,6 +19,7 @@ urlpatterns = [
     path('speakers/', include('speakers.urls')),
     path('portal/', include('ca_portal.urls')),
     url(r'^is_update_available', latest_build),
+    path('bquiz/', include('bquiz.urls')),
 ]
 urlpatterns+=staticfiles_urlpatterns()
 # for the media urls
