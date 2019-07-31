@@ -4,11 +4,13 @@ import { NavLink } from 'react-router-dom'
 import './events.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
+import Loader from '../api_loader/api_loader'
 
 class events extends Component {
   axios = faxios()
   state = {
-    events: []
+    events: [],
+    loading:true
   }
 
   componentDidMount() {
@@ -16,7 +18,7 @@ class events extends Component {
       .then(d => {
         const events = d.data.data
         console.log({ events })
-        this.setState({ events })
+        this.setState({ events,loading:false })
       })
   }
 
@@ -45,7 +47,7 @@ class events extends Component {
         <div className="container-fluid ctn16">
           <h2 className="header6">Our Events</h2>
           <div className="list">
-            {events}
+            {this.state.loading?(<Loader/>):(events)}
           </div>
         </div>
         <Footer />

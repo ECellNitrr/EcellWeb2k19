@@ -4,6 +4,7 @@ import "./team.css";
 import Navbar from "../Navbar/navbar";
 // import Faculty from "./faculty";
 import Footer from "../Footer/footer";
+import Loader from '../api_loader/api_loader'
 
 class team extends Component {
     axios = faxios();
@@ -160,13 +161,13 @@ class team extends Component {
         return (
             <div className="team-whole">
                 <Navbar />
-                {final_html['Director']}
+                {this.state.loading ? (<div style={{marginTop:"10%"}}><Loader/></div>):(<div>{final_html['Director']}
                 {final_html['Head_Career_Development']}
                 {final_html['Faculty_Incharge']}
                 {final_html['Overall_Coordinator']}
                 {final_html['Head_Coordinator']}
                 {final_html['Manager']}
-                {final_html['Executive']}
+                {final_html['Executive']}</div>) }
                 <Footer />
             </div>
         );

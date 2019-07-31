@@ -3,6 +3,7 @@ import faxios from '../../axios'
 import "./mentors.css";
 import Navbar from "../Navbar/navbar";
 import Footer from '../Footer/footer';
+import Loader from '../api_loader/api_loader'
 
 class mentors extends Component {
   axios = faxios();
@@ -55,7 +56,7 @@ class mentors extends Component {
         <Navbar />
         <div className="header4">PREVIOUS MENTORS</div>          
             <div className="container-fluid ctn13">
-              {this.state.loading? 'loading...':mentors_html}
+              {this.state.loading? (<div style={{marginTop:"20%"}}><Loader/></div>):mentors_html}
             </div>
                   
         <Footer/>

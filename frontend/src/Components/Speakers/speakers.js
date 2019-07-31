@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import faxios from '../../axios'
 import './speakers.css';
-
+import Loader from '../api_loader/api_loader'
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 
@@ -18,7 +18,8 @@ class speaker extends Component {
         console.log(res)
         let data = res.data
         this.setState({
-          speakers: data
+          speakers: data,
+          loading:false
         })
 
       })
@@ -64,7 +65,7 @@ class speaker extends Component {
         <Navbar />
         <div className="header1">SPEAKERS</div>
         <div className="container-fluid ctn7" style={{ maxWidth: "1500px" }}>
-          {speakers_html}
+          {this.state.loading ? (<div style={{marginTop:"20%"}}><Loader/></div>):speakers_html}
         </div>
         <Footer />
       </div>

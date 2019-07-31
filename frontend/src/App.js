@@ -1,6 +1,8 @@
 import React, { Component, lazy, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Loader from './Components/api_loader/api_loader'
+
 
 const Home = lazy(() => import('./Components/Home/home'))
 const Speakers = lazy(() => import('./Components/Speakers/speakers'));
@@ -11,6 +13,7 @@ const Startups = lazy(() => import('./Components/Startup/startup'));
 const StartupDetail = lazy(() => import('./Components/Startup/startupdetail'))
 const Mentors = lazy(() => import('./Components/Mentors/mentors'));
 const Gallery = lazy(() => import('./Components/Gallery/gallery'));
+const GalleryImgs = lazy(() => import('./Components/Gallery/gallery_imgs'));
 const Register = lazy(() => import('./Components/Register/register'));
 const CaPortal = lazy(() => import('./Components/ca_portal_intro/caportal'));
 const Team = lazy(() => import('./Components/Team/team'));
@@ -22,7 +25,7 @@ const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 class App extends Component {
   render() {
     return (
-      <Suspense fallback={'...loading'}>
+      <Suspense fallback={<Loader className="page-loader"/>}>
         <BrowserRouter>
           <div className="App">
             <Switch>
@@ -37,6 +40,7 @@ class App extends Component {
               <Route path='/startups/:year/:id' component={StartupDetail} />
               <Route path='/startups' component={Startups} />
               <Route path='/mentors' component={Mentors} />
+              <Route path='/gallery/:name' component={GalleryImgs} />
               <Route path='/gallery' component={Gallery} />
               <Route path='/register' component={Register} />
               <Route path='/caportal' component={CaPortal} />

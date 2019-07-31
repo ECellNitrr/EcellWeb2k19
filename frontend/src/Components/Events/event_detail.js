@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import faxios from "../../axios";
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
+import Loader from '../api_loader/api_loader'
+import './events.css'
 
 export default class event_detail extends Component{
     axios = faxios();
@@ -52,9 +54,9 @@ export default class event_detail extends Component{
         return (
             <div className="events">
                 <Navbar/>
-                    <div>
-                        {this.state.loading ? "loading" : event_detail}
-                    </div> 
+                    
+                        {this.state.loading ?<div className="loading-gif" style={{paddingTop:"350px"}}> <Loader/></div>  : <div>{event_detail}</div>}
+                    
                 <Footer/>
             </div>
         );
