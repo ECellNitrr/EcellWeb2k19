@@ -14,7 +14,7 @@ MEMBER_TYPE = (
     )
 
 class Member(models.Model):
-    team_type_choices = [
+    domain_choices = [
         ['tech']*2,
         ['spons']*2,
         ['pr']*2,
@@ -28,7 +28,7 @@ class Member(models.Model):
     image = models.ImageField(upload_to='static/uploads/team', null=True, blank = True)
     member_type = models.CharField(max_length=3, choices= MEMBER_TYPE, default='EXEC')
     year = models.IntegerField(default=2019)
-    team_type = models.CharField(max_length=100, choices=team_type_choices, default='pr')
+    domain = models.CharField(max_length=100, choices=domain_choices, default='pr')
 
 
     @property

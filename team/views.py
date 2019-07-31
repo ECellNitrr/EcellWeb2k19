@@ -24,3 +24,11 @@ def get_members(request):
         "message": res_message,
         "data": res_data
     }, status=res_status)
+
+
+@api_view(['GET'])
+def team_years(req):
+    years = Member.objects.values_list('year').distinct()
+    return Response({
+        'years': [x for x in years]
+    })
