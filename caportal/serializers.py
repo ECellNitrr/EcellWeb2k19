@@ -19,6 +19,21 @@ class EcellUserRegistrationSerializer(ModelSerializer):
 
 
 class TaskSerializer(ModelSerializer):
+    pending = SerializerMethodField()
+    accepted = SerializerMethodField()
+    rejected = SerializerMethodField()
+
+    def get_pending(self,obj):
+        return obj.submittask_set.filter(status='pending').count()
+
+    def get_accepted(self,obj):
+        return obj.submittask_set.filter(status='accepted').count()
+
+    def get_rejected(self,obj):
+        return obj.submittask_set.filter(status='rejected').count()
+
+    
+
     class Meta:
         model = Task
         fields = '__all__'

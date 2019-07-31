@@ -20,7 +20,7 @@ export default class tasks_list extends Component {
             this.setState({
                 tasks
             })
-        })
+        }).catch(err=>console.error(err))
     }
 
 
@@ -35,7 +35,9 @@ export default class tasks_list extends Component {
                 <td>{i + 1}</td>
                 <td><Link className='detail_link' to={`/caportal/admin/tasks/${task.id}/`}>{task.name}</Link></td>
                 <td>{task.platform}</td>
-                <td>{task.madeby}</td>
+                <td>{task.pending}</td>
+                <td>{task.accepted}</td>
+                <td>{task.rejected}</td>
                 <td>{task.created_at}</td>
                 <td><Link className='p-1 badge badge-primary' to={`/caportal/admin/review_taskwise/${task.id}/`}>Review</Link> </td>
             </tr>
@@ -55,7 +57,9 @@ export default class tasks_list extends Component {
                             <th>#</th>
                             <th>Task name</th>
                             <th>Platform</th>
-                            <th>Author</th>
+                            <th>Pending</th>
+                            <th>Accepted</th>
+                            <th>Rejected</th>
                             <th>Created on</th>
                             <th>Submissions</th>
                         </tr>
