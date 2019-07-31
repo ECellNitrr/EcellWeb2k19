@@ -5,7 +5,6 @@ import Loader from "./loader";
 
 export default class forgetPass extends Component{
 
-    axios = faxios()
     state = {
         err: false,
         success: false,
@@ -36,7 +35,7 @@ export default class forgetPass extends Component{
       
 
 
-        this.axios.post('users/forgot_password/',{
+        faxios().post('users/forgot_password/',{
             email: this.email.value
         }).then(d=>{
             let data = d.data

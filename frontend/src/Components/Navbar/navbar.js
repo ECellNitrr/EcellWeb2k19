@@ -38,8 +38,7 @@ export class navbar extends Component {
 
     render() {
         const loggedin = <a href="" className="btn btn1" data-toggle="modal" data-target="#logoutModal">{this.props.auth.first_name.toUpperCase()} {this.props.auth.last_name.toUpperCase()}</a>
-        const loggedout = <a href="" className="btn btn1" data-toggle="modal" data-target="#loginRegModal">LogIn/SignUp</a>
-        console.log(this.props)
+        const loggedout = <a href="" id='login-signup-btn' className="btn btn1" data-toggle="modal" data-target="#loginRegModal">LogIn/SignUp</a>
 
         return (
             <div className="Navbar">
@@ -82,7 +81,7 @@ export class navbar extends Component {
                         <li><NavLink to="/speakers" className="data-links" data-text="Speakers" >Speakers</NavLink></li>
                         <li><NavLink to="/startups" className="data-links" data-text="Startups" >Startups</NavLink></li>
                         <li><NavLink to="/mentors" className="data-links" data-text="Mentors" >Mentors</NavLink></li>
-                        <li><NavLink to="/caportal" className="data-links" data-text="Caportal" >CaPortal</NavLink></li>
+                        <li><NavLink to="/caportal_info" className="data-links" data-text="Caportal" >CaPortal</NavLink></li>
                         {/* <li><NavLink to="/register" className="data-links" data-text="Register" >Register</NavLink></li> */}
                         <li><a href='https://medium.com/e-cell-nit-raipur' className="data-links" data-text="Blogs" >Blogs</a></li>
                     </ul>

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import "./caportal.css";
 import Navbar from '../Navbar/navbar';
@@ -10,14 +8,9 @@ import Faq from "./faqs";
 import Contact from "./contact";
 
 class caportal extends Component {
-    static propTypes = {
-        auth: PropTypes.object.isRequired
+    _go_caportal = e => {
+        this.props.history.push('/caportal')
     }
-
-    componentDidMount() {
-        console.log(this.props)
-    }
-    
 
     render() {
         return (
@@ -50,7 +43,4 @@ class caportal extends Component {
     }
 }
 
-
-const mapStateToProps = (state) => state
-
-export default connect(mapStateToProps, )(caportal)
+export default (caportal)
