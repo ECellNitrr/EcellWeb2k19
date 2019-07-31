@@ -51,7 +51,8 @@ class review_submissions extends Component {
 
         const review_id = Number(input_grp.dataset['reviewId'])
 
-        faxios().patch(`/portal/submit_task/${review_id}/`, {
+        faxios().post(`/portal/submit_task_score/`, {
+            review_id,
             status: 'accepted',
         }).then(d => {
             let reviews = this.state.reviews
@@ -72,7 +73,8 @@ class review_submissions extends Component {
 
         const review_id = Number(input_grp.dataset['reviewId'])
 
-        faxios().patch(`/portal/submit_task/${review_id}/`, {
+        faxios().post(`/portal/submit_task_score/`, {
+            review_id,
             status: 'rejected',
         }).then(d => {
             let reviews = this.state.reviews

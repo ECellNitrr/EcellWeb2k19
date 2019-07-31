@@ -3,8 +3,8 @@ from users.views import CustomUser
 from .serializers import *
 from decorators import relax_ecell_user
 
-from rest_framework.decorators import api_view, renderer_classes
-from rest_framework.parsers import JSONParser
+from rest_framework.decorators import api_view, renderer_classes, parser_classes
+from rest_framework.parsers import JSONParser, MultiPartParser,FileUploadParser
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.renderers import JSONRenderer
@@ -116,3 +116,26 @@ def create_user(req):
             'facebook' : 0,
             'applied' : 0,
         }, status=res_status)
+
+
+
+@api_view(['POST'])
+def submit_task_score(req):
+    data = JSONParser().parse(req)
+
+    review = SubmitTask.objects.get(pk=data['review_id'])
+    review.status = data['status']
+    review.save()
+
+    return Response({})
+
+
+# @api_view(['POST'])
+# @parser_classes([MultiPartParser])
+# def submit_task_patch_alt(request, review_id):
+#     review = SubmitTask.objects.get(pk=review_id)
+#     review.
+
+#     print(review_id)
+
+#     return Response({})

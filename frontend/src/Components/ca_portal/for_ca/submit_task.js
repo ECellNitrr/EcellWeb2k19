@@ -75,13 +75,13 @@ class submit_task extends Component {
         }
 
         request.responseType = 'json';
-
-        let method_of_req = 'post'
-        if(this.review){
-            method_of_req = 'patch'
-        }
         
-        request.open(method_of_req, url);
+        let method_type = 'post'
+        if(this.review){
+            method_type = 'put'
+        }
+
+        request.open(method_type, url);
         request.setRequestHeader('Authorization', this.props.auth.token)
         request.send(data);
     }
@@ -143,7 +143,7 @@ class submit_task extends Component {
             <div className='user_detail container'>
                 <div className="d-flex my-5 justify-content-between">
                     <button className='btn btn-warning' onClick={() => this.props.history.goBack()}>go back</button>
-                    <h2>Submit for review</h2>
+                    <h2>{this.review?'Submitted for review' : 'Submit for review'}</h2>
                     <div></div>
                 </div>
 

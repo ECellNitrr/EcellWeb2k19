@@ -20,6 +20,7 @@ class Member(models.Model):
         ['pr']*2,
         ['doc']*2,
         ['design']*2,
+        ['none']*2
     ]
 
     name = models.CharField(max_length=100)
@@ -28,6 +29,7 @@ class Member(models.Model):
     member_type = models.CharField(max_length=3, choices= MEMBER_TYPE, default='EXEC')
     year = models.IntegerField(default=2019)
     team_type = models.CharField(max_length=100, choices=team_type_choices, default='pr')
+
 
     @property
     def image_url(self):
