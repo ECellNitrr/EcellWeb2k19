@@ -5,6 +5,7 @@ import faxios from '../../../axios'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Modal from 'react-modal';
 
 
 class review_submissions extends Component {
@@ -40,6 +41,9 @@ class review_submissions extends Component {
     }
 
     _accept_review = e => {
+        this.setState({modal_open:false})
+
+        
         let input_grp = e.target.parentElement
         if (!input_grp.classList.contains('btns')) {
             input_grp = input_grp.parentElement
@@ -58,6 +62,9 @@ class review_submissions extends Component {
     }
 
     _reject_review = e => {
+        this.setState({modal_open:false})
+
+        
         let input_grp = e.target.parentElement
         if (!input_grp.classList.contains('btns')) {
             input_grp = input_grp.parentElement
@@ -75,6 +82,9 @@ class review_submissions extends Component {
         })
     }
 
+    _closeModal = () => {
+        this.setState({ modal_open: false })
+    }
 
     _createTask = () => {
         this.props.history.push('/caportal/admin/create_task/')
@@ -90,10 +100,11 @@ class review_submissions extends Component {
 
         let reviews = this.state.reviews.filter(review => review.status === this.state.status)
 
+        const selected_review = this.state.reviews.find(review => review.id === this.state.modal_review_id)
 
         const reviews_html = reviews.map((review, i) =>
             <div className="review shadow" key={i}>
-                <img src={review.proof_pic} onClick={() => this.setState({ modal_open: true })} alt="" />
+                <img src={review.proof_pic} onClick={() => this.setState({ modal_open: true, modal_review_id: review.id })} alt="" />
                 <div className='d-flex user_details justify-content-center'>
                     <span>{review.proof_by_name}</span>
                     <span>{review.proof_by_email}</span>
@@ -119,7 +130,27 @@ class review_submissions extends Component {
                 <div className="reviews">
                     {reviews_html}
                 </div>
+                {this.state.modal_open ? <Modal
+                    isOpen={this.state.modal_open}
+                    onRequestClose={this._closeModal}
+                    shouldCloseOnOverlayClick={true}
+                    // style={customStyles}
+                    contentLabel="review_modal"
+                >
+                    <div className="review modal_review">
+                        <div className='d-flex user_details justify-content-center'>
+                            <span>{selected_review.proof_by_name}</span>
+                            <span>{selected_review.proof_by_email}</span>
+                        </div>
+                        <div className="text-center btns" data-review-id={selected_review.id}>
+                            <button onClick={this._accept_review} className="btn m-0 px-3 py-2 mx-2 btn-success"><i className="fa fa-check"></i></button>
+                            <button onClick={this._reject_review} className="btn m-0 px-3 py-2 mx-2 btn-danger"><i className="fa fa-times"></i></button>
+                        </div>
+                        <img src={selected_review.proof_pic} onClick={this._closeModal} alt="" />
+                    </div>
+                </Modal> : null}
             </div>
+
         )
     }
 }

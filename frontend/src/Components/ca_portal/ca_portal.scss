@@ -35,23 +35,32 @@
     input,textarea{
         border: 1px solid grey;
     }
-    .review{
-        max-width: 400px;
-        padding: 20px;
-        border-radius: 5px;
-        margin: 30px auto;
-        text-align: center;
-        img{
-            width: 100%;
-        }
+}
+.review{
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 30px auto;
+    text-align: center;
+    img{
+        width: 100%;
+    }
 
-        .user_details{
-            span{
-                background: #ddd;
-                padding: 3px 7px;
-                margin: 8px 2px;
-                border-radius: 4px;
-            }
+    .user_details{
+        span{
+            background: #ddd;
+            padding: 3px 7px;
+            margin: 8px 2px;
+            border-radius: 4px;
         }
+    }
+}
+
+.modal_review{
+    max-width: 100%;
+    width: 100%;
+    img{
+        width: 100%;
+        max-width: 768px;
     }
 }
