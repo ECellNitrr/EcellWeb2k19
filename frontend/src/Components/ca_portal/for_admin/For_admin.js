@@ -7,7 +7,7 @@ import UserList from './users_list'
 import TaskList from './tasks_list'
 import CreateTask from './create_task'
 import TaskDetail from './task_detail'
-import Dashboard from './dashboard'
+import Dashboard from '../dashboard'
 import Navbar from './navbar'
 import ReviewSubmissions from './review_submissions'
 

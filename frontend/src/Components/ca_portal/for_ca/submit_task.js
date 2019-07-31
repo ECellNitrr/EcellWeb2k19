@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 
 class submit_task extends Component {
     task_id = Number(this.props.match.params.task_id)
+    review_id = Number(this.props.match.params.review_id)
+    review = this.props.location.pathname.indexOf('submited_tasks') > 0
+
     state = {
         error: {},
         task: {},
@@ -18,10 +21,12 @@ class submit_task extends Component {
     }
 
     componentDidMount() {
-        // this.proof_by = `${this.props.auth.first_name.toUpperCase()} ${this.props.auth.last_name.toUpperCase()}`
-        console.log(this.props.auth)
+        let url = `/portal/tasks/${this.task_id}/`
+        if (this.review) {
+            url = `/portal/submit_task/${this.review_id}/`
+        }
 
-        faxios().get(`/portal/tasks/${this.task_id}/`).then(d => {
+        faxios().get(url).then(d => {
             console.log(d.data)
             let task = d.data
 
@@ -41,7 +46,16 @@ class submit_task extends Component {
         var request = new XMLHttpRequest();
         data.append('proof_by', this.props.auth.id)
         data.append('proof_pic', this.state.proof_pic);
-        data.append('task', this.task_id);
+        data.append('status', 'pending');
+
+        let task_id = this.task_id
+        if(this.review){
+            task_id = this.state.task.task
+        }
+
+        console.log({task_id})
+        
+        data.append('task', task_id);
 
 
         // load event
@@ -55,8 +69,13 @@ class submit_task extends Component {
             this.setState({ up_percentage })
         })
 
+        let url = baseURL + `/portal/submit_task/`
+        if (this.review) {
+            url = baseURL + `/portal/submit_task/${this.review_id}/`
+        }
+
         request.responseType = 'json';
-        request.open('post', baseURL + `/portal/submit_task/`);
+        request.open('patch', url);
         request.setRequestHeader('Authorization', this.props.auth.token)
         request.send(data);
     }
@@ -74,10 +93,10 @@ class submit_task extends Component {
 
             var fr = new FileReader();
             fr.addEventListener('load', e => {
-                this.setState({ 
+                this.setState({
                     imgsrc: fr.result,
                     proof_pic: file
-                 })
+                })
             })
             fr.readAsDataURL(file)
 
@@ -88,8 +107,22 @@ class submit_task extends Component {
 
     render() {
         const errors = this.state.error
-        console.log({ errors })
         const err_msg = Object.keys(errors).map(x => <div className='text-danger text-center' key={x}>{x}: {errors[x].join('')}</div>)
+
+
+        let task = this.state.task
+        if (this.review) {
+            task = task.task_obj
+        }
+
+        if (typeof task === 'undefined') {
+            task = {}
+        }
+
+        let selectScreenshotBtn = this.state.up_percentage > 0 ? null : <button onClick={this._select_img} className="btn btn-primary"><i className="fa fa-image"></i> Select screenshot</button>
+        if (this.review && this.state.task.status != 'rejected') {
+            selectScreenshotBtn = null
+        }
 
         const img_upload =
             <div>
@@ -111,24 +144,24 @@ class submit_task extends Component {
                 <div className="task">
                     <div>
                         <span className="font-weight-bold mr-3">Post title:</span>
-                        <span>{this.state.task.name}</span>
+                        <span>{task.name}</span>
                     </div>
                     <div>
                         <span className="font-weight-bold mr-3">Description:</span>
-                        <span>{this.state.task.description ? this.state.task.description : 'none'}</span>
+                        <span>{task.description ? task.description : 'none'}</span>
                     </div>
                     <div>
                         <span className="font-weight-bold mr-3">Platform:</span>
-                        <span>{this.state.task.platform}</span>
+                        <span>{task.platform}</span>
                     </div>
 
                     <div>
                         <span className="font-weight-bold mr-3">URL:</span>
-                        <span>{this.state.task.url ? this.state.task.url : 'none'}</span>
+                        <span>{task.url ? task.url : 'none'}</span>
                     </div>
                     <div>
                         <span className="font-weight-bold mr-3">Create on:</span>
-                        <span>{this.state.task.created_at}</span>
+                        <span>{task.created_at}</span>
                     </div>
 
                 </div>
@@ -138,7 +171,7 @@ class submit_task extends Component {
                     {this.state.error ? err_msg : null}
 
                     <div className="text-center">
-                        {this.state.up_percentage > 0 ? null : <button onClick={this._select_img} className="btn btn-primary"><i className="fa fa-image"></i> Select screenshot</button>}
+                        {selectScreenshotBtn}
                         {this.state.imgsrc ? img_upload : null}
                     </div>
 

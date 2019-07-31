@@ -56,7 +56,7 @@ class submitted_list extends Component {
         const review_html = reviews.map((review, i) =>
             <tr key={i}>
                 <td>{i + 1}</td>
-                <td><Link className='detail_link' to={`/caportal/ca/tasks/${review.id}/`}>{review.task_obj.name}</Link></td>
+                <td><Link className='detail_link' to={`/caportal/ca/submited_tasks/${review.id}/`}>{review.task_obj.name}</Link></td>
                 <td>{review.task_obj.platform}</td>
                 <td>{review.created_at}</td>
             </tr>
