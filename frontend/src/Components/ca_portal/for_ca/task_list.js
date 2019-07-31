@@ -42,9 +42,6 @@ export default class task_list extends Component {
             <div className='tasks_list container'>
                 <div className="d-flex my-4">
                     <h2 className=" flex-grow-1 text-center">Posts List</h2>
-                    <div className="text-right">
-                        <button onClick={this._createTask} className="btn btn-primary">create task <i className="fa fa-plus ml-2"></i> </button>
-                    </div>
                 </div>
                 <table className='table table-striped'>
                     <thead>

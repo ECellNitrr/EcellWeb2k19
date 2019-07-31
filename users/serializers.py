@@ -5,9 +5,11 @@ from django.core.exceptions import ValidationError
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name', 'email', 'contact', 'password', 'otp']
+        read_only_fields = ['id']
+        fields = ['first_name', 'last_name', 'email', 'contact', 'password', 'otp','id']
 
 
 class LoginSerializer(serializers.Serializer):
