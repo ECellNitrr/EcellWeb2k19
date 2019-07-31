@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
+import { user_type } from '../../constants'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -33,7 +34,7 @@ class navbar extends Component {
                         <NavLink activeClassName='active_navlink' exact className='navlink' active to={this.base_route + 'tasks/'}>tasks</NavLink>
                     </div>
                     <div className='username'>{this.props.auth.first_name.toUpperCase()} {this.props.auth.last_name.toUpperCase()}</div>
-                    <div className='username'>{this.props.auth.user_type}</div>
+                    <div className='username'>{user_type[this.props.auth.user_type]}</div>
                     <div>
                         <button onClick={this._logout} className='navlink logout_btn'>logout</button>
                     </div>

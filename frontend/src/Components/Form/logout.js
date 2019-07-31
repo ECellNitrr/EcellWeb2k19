@@ -6,16 +6,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import * as actions from '../../actions/authActions'
-
-const user_type = {
-    GST: 'Guest',
-    VLT: 'Voluteer',
-    EXE: 'Executive',
-    MNG: 'Manager',
-    HCO: 'Head Co-ordinator',
-    OCO: 'Overall Co-ordinator',
-    CAB: 'Campus Ambassador',
-}
+import { user_type } from '../constants'
 
 class logout extends Component {
     state = {}

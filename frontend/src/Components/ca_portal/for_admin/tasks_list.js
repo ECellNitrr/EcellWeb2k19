@@ -11,7 +11,7 @@ export default class users_list extends Component {
     componentDidMount() {
         faxios().get('/portal/tasks/').then(d => {
             this.setState({
-                tasks: d.data
+                tasks: d.data.sort((a,b)=>b.id-a.id)
             })
         })
     }

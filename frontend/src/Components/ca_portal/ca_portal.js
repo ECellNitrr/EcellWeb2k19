@@ -15,9 +15,12 @@ export class ca_portal extends Component {
 
     componentDidMount() {
         let user = this.props.auth
-        console.log('gaurd comp')
+        console.log('gaurd comp',user)
 
-        if (user.user_type === 'GST') {
+        if(!user.loggedin){
+            alert('Please login to continue')
+            this.props.history.push('/caportal_info')
+        }else if (user.user_type === 'GST') {
             alert('You are not CA or admin yet!')
             this.props.history.push('/caportal_info')
         } else if (user.user_type === 'CAB' && this.props.location.pathname === '/caportal') {
