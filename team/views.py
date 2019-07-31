@@ -9,8 +9,8 @@ from .serializer import TeamSerializer
 
 
 @api_view(['GET', ])
-def get_members(request):
-    members = Member.objects.all()
+def get_members(request,year):
+    members = Member.objects.filter(year=year)
     res_data = TeamSerializer(members, many=True,context={
             'request': request}).data
     if len(members) > 0:
