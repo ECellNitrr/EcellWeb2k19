@@ -33,8 +33,10 @@ class Event(models.Model):
             return config('HOST')+ self.icon.url
         else:
             return "-"
-class EventRegister(models.Model):
-	profile = models.ForeignKey(CustomUser,on_delete=models.CASCADE )
-	event = models.ForeignKey(Event,on_delete=models.CASCADE)
-	def __str__(self):
-		return self.profile.username
+
+
+# class EventRegister(models.Model):
+# 	user = models.ForeignKey(CustomUser,on_delete=models.CASCADE )
+# 	event = models.ForeignKey(Event,on_delete=models.CASCADE)
+# 	def __str__(self):
+# 		return self.profile.username
