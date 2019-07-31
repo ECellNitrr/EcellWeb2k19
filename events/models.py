@@ -35,8 +35,8 @@ class Event(models.Model):
             return "-"
 
 
-# class EventRegister(models.Model):
-# 	user = models.ForeignKey(CustomUser,on_delete=models.CASCADE )
-# 	event = models.ForeignKey(Event,on_delete=models.CASCADE)
-# 	def __str__(self):
-# 		return self.profile.username
+class EventRegister(models.Model):
+	user = models.ForeignKey(CustomUser,on_delete=models.CASCADE )
+	event = models.ForeignKey(Event,on_delete=models.CASCADE)
+	def __str__(self):
+		return self.user.username
