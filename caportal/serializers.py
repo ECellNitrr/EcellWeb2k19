@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from users.models import CustomUser
 from .models import *
 
@@ -25,6 +25,11 @@ class TaskSerializer(ModelSerializer):
 
 
 class SubmitTaskSerializer(ModelSerializer):
+    task_obj = SerializerMethodField()
+
+    def get_task_obj(self,obj):
+        return TaskSerializer(obj.task).data
+
     class Meta:
         model = SubmitTask
         fields = '__all__'

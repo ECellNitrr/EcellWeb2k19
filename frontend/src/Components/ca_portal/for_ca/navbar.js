@@ -30,10 +30,8 @@ class navbar extends Component {
                 <div className="container d-flex">
                     <div className="d-flex flex-grow-1">
                         <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + ''}>Dashboard</NavLink>
-                        <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'tasks/'}>Posts</NavLink>
-                        <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'pending_reviews/'}>Pending</NavLink>
-                        <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'accepted_reviews/'}>Accepted</NavLink>
-                        <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'rejected_reviews/'}>Rejected</NavLink>
+                        <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'tasks/'}>New Posts</NavLink>
+                        <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'submited_tasks/'}>Submited Posts</NavLink>
                     </div>
                     <div className='username'>{this.props.auth.first_name.toUpperCase()} {this.props.auth.last_name.toUpperCase()}</div>
                     <div className='username'>{user_type[this.props.auth.user_type]}</div>

@@ -11,6 +11,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework import status
 import jwt
 
+from django_filters import rest_framework as filters
+
 from django.contrib.auth.hashers import make_password
 from users.serializers import RegistrationSerializer
 
@@ -28,6 +30,8 @@ class TaskViewset(ModelViewSet):
 class SubmitTaskViewset(ModelViewSet):
     queryset = SubmitTask.objects.all()
     serializer_class = SubmitTaskSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('proof_by', 'status')
 
 
 @api_view(['GET'])
@@ -37,6 +41,16 @@ def get_non_submited_tasks(req):
 
     non_submited_tasks = Task.objects.exclude(submittask__proof_by=user.id)
     return Response(TaskSerializer(non_submited_tasks,many=True).data)
+
+
+@api_view(['GET'])
+@relax_ecell_user
+def get_non_submited_tasks(req):
+    user =  req.ecelluser
+
+    non_submited_tasks = Task.objects.exclude(submittask__proof_by=user.id)
+    return Response(TaskSerializer(non_submited_tasks,many=True).data)
+
 
 
 

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'caportal',
     'gallery',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

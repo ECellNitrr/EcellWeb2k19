@@ -5,7 +5,8 @@ import faxios from '../../../axios'
 
 export default class task_list extends Component {
     state = {
-        tasks: []
+        tasks: [],
+        loading: true
     }
 
     componentDidMount() {
@@ -18,7 +19,10 @@ export default class task_list extends Component {
                 return task
             })
             
-            this.setState({tasks})
+            this.setState({
+                tasks,
+                loading: false
+            })
         })
     }
 
@@ -29,7 +33,7 @@ export default class task_list extends Component {
 
 
     render() {
-        const tasks_html = this.state.tasks.map((task, i) =>
+        let tasks_html = this.state.tasks.map((task, i) =>
             <tr key={i}>
                 <td>{i + 1}</td>
                 <td><Link className='detail_link' to={`/caportal/ca/tasks/${task.id}/`}>{task.name}</Link></td>
@@ -37,6 +41,12 @@ export default class task_list extends Component {
                 <td>{task.created_at}</td>
             </tr>
         )
+
+        if(this.state.loading){
+            tasks_html =  <h3 className='text-center'>...loading</h3>
+        }else if(!this.state.loading && this.state.tasks.length === 0){
+            tasks_html = <h3 className="text-center">no new posts :)</h3>
+        }
 
         return (
             <div className='tasks_list container'>
