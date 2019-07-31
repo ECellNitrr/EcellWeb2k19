@@ -31,7 +31,7 @@ class SubmitTaskViewset(ModelViewSet):
     queryset = SubmitTask.objects.all()
     serializer_class = SubmitTaskSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('proof_by', 'status')
+    filterset_fields = ('proof_by', 'status','task')
 
 
 @api_view(['GET'])

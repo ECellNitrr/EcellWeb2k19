@@ -24,8 +24,20 @@ class TaskSerializer(ModelSerializer):
         fields = '__all__'
 
 
+
 class SubmitTaskSerializer(ModelSerializer):
     task_obj = SerializerMethodField()
+    proof_by_name = SerializerMethodField()
+    proof_by_email = SerializerMethodField()
+
+
+    def get_proof_by_email(self,obj):
+        return obj.proof_by.email
+
+
+    def get_proof_by_name(self,obj):
+        return obj.proof_by.first_name.capitalize() + ' ' + obj.proof_by.last_name.capitalize()
+
 
     def get_task_obj(self,obj):
         return TaskSerializer(obj.task).data

@@ -10,8 +10,15 @@ export default class tasks_list extends Component {
 
     componentDidMount() {
         faxios().get('/portal/tasks/').then(d => {
+            let tasks = d.data.sort((a,b)=>b.id-a.id)
+            tasks.map(task=>{
+                let created_at = new Date(task.created_at)
+                task.created_at = created_at.toDateString()
+                return task
+            })
+            
             this.setState({
-                tasks: d.data.sort((a,b)=>b.id-a.id)
+                tasks
             })
         })
     }
@@ -29,6 +36,8 @@ export default class tasks_list extends Component {
                 <td><Link className='detail_link' to={`/caportal/admin/tasks/${task.id}/`}>{task.name}</Link></td>
                 <td>{task.platform}</td>
                 <td>{task.madeby}</td>
+                <td>{task.created_at}</td>
+                <td><Link className='p-1 badge badge-primary' to={`/caportal/admin/review_taskwise/${task.id}/`}>Review</Link> </td>
             </tr>
         )
 
@@ -47,6 +56,8 @@ export default class tasks_list extends Component {
                             <th>Task name</th>
                             <th>Platform</th>
                             <th>Author</th>
+                            <th>Created on</th>
+                            <th>Submissions</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -9,6 +9,7 @@ import CreateTask from './create_task'
 import TaskDetail from './task_detail'
 import Dashboard from './dashboard'
 import Navbar from './navbar'
+import ReviewSubmissions from './review_submissions'
 
 
 export default class For_admin extends Component {
@@ -19,6 +20,7 @@ export default class For_admin extends Component {
             <div>
                 <Navbar/>
                 <Switch>
+                    <Route path={this.base_route + 'review_taskwise/:task_id/'} component={ReviewSubmissions}/>
                     <Route path={this.base_route + 'tasks/:task_id'} component={TaskDetail}/>
                     <Route path={this.base_route + 'create_task/'} component={CreateTask}/>
                     <Route path={this.base_route + 'tasks/'} component={TaskList}/>
