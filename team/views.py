@@ -11,9 +11,9 @@ from .serializer import TeamSerializer
 @api_view(['GET', ])
 def get_members(request):
     members = Member.objects.all()
+    res_data = TeamSerializer(members, many=True,context={
+            'request': request}).data
     if len(members) > 0:
-        res_data = TeamSerializer(members, many=True,context={
-                'request': request}).data
         res_message = "Team members Fetched successfully."
         res_status = status.HTTP_200_OK
     else:
