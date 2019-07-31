@@ -17,7 +17,7 @@ static/uploads/caportal/
 .vscode
 
 dumped/
-*/migrations
+# */migrations
 
 #these will be collected when running collectstatic
 # static/admin
