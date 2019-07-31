@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import './for_admin.scss'
 
 import UserDetails from './user_details'
 import CreateUser from './create_new_user'

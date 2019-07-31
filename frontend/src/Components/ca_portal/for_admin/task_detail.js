@@ -31,7 +31,7 @@ export default class task_detail extends Component {
         faxios().put(`/portal/tasks/${this.task_id}/`, {
             madeby: this.author.value,
             name: this.name.value,
-            description: this.name.value,
+            description: this.description.value,
             url: this.url.value,
             platform: this.platform.value
         }).then(d => {

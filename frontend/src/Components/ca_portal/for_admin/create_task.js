@@ -28,7 +28,7 @@ class task_details extends Component {
         faxios().post(`/portal/tasks/`, {
             madeby: this.author.value,
             name: this.name.value,
-            description: this.name.value,
+            description: this.description.value,
             url: this.url.value,
             platform: this.platform.value
         }).then(d => {

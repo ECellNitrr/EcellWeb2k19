@@ -30,6 +30,15 @@ class SubmitTaskViewset(ModelViewSet):
     serializer_class = SubmitTaskSerializer
 
 
+@api_view(['GET'])
+@relax_ecell_user
+def get_non_submited_tasks(req):
+    user =  req.ecelluser
+
+    non_submited_tasks = Task.objects.exclude(submittask__proof_by=user.id)
+    return Response(TaskSerializer(non_submited_tasks,many=True).data)
+
+
 
 @api_view(['POST'])
 @renderer_classes([JSONRenderer])

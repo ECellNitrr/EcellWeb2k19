@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom'
 import faxios from '../../../axios'
 
 
-export default class tasks_list extends Component {
+export default class task_list extends Component {
     state = {
         tasks: []
     }
 
     componentDidMount() {
-        faxios().get('/portal/tasks/').then(d => {
-            this.setState({
-                tasks: d.data.sort((a,b)=>b.id-a.id)
+        faxios().get('/portal/non_submited_tasks/').then(d => {
+            console.log(d.data)
+            let tasks = d.data.sort((a,b)=>b.id-a.id)
+            tasks = tasks.map(task => {
+                let created_date = new Date(task.created_at)
+                task.created_at = created_date.toDateString()
+                return task
             })
+            
+            this.setState({tasks})
         })
     }
 
@@ -26,16 +32,16 @@ export default class tasks_list extends Component {
         const tasks_html = this.state.tasks.map((task, i) =>
             <tr key={i}>
                 <td>{i + 1}</td>
-                <td><Link className='detail_link' to={`/caportal/admin/tasks/${task.id}/`}>{task.name}</Link></td>
+                <td><Link className='detail_link' to={`/caportal/ca/tasks/${task.id}/`}>{task.name}</Link></td>
                 <td>{task.platform}</td>
-                <td>{task.madeby}</td>
+                <td>{task.created_at}</td>
             </tr>
         )
 
         return (
             <div className='tasks_list container'>
                 <div className="d-flex my-4">
-                    <h2 className=" flex-grow-1 text-center">Tasks List</h2>
+                    <h2 className=" flex-grow-1 text-center">Posts List</h2>
                     <div className="text-right">
                         <button onClick={this._createTask} className="btn btn-primary">create task <i className="fa fa-plus ml-2"></i> </button>
                     </div>
@@ -46,7 +52,7 @@ export default class tasks_list extends Component {
                             <th>#</th>
                             <th>Task name</th>
                             <th>Platform</th>
-                            <th>Author</th>
+                            <th>Created on</th>
                         </tr>
                     </thead>
                     <tbody>
