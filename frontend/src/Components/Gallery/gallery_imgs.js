@@ -41,6 +41,7 @@ export default class gallery_imgs extends Component {
         
             if(this.state.success){
                 document.querySelector('.image-gallery-play-button').click();
+                document.querySelector('.image-gallery-play-button').click();
                 
             }
         })

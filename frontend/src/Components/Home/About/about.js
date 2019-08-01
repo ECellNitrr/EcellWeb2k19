@@ -11,7 +11,7 @@ const about=()=> (<div className="about">
             </div>
 
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
-                <img src={require('../../../assets/tshirts.jpg')} alt="tshirts" className='fb-img' />
+                <img src={require('../../../assets/deliver.svg')} alt="tshirts" className='fb-img' />
             </div>
         </div>
     </div>
