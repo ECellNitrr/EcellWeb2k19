@@ -11,7 +11,6 @@ from django.views.decorators.csrf import csrf_exempt
 import csv
 
 
-@relax_ecell_user
 @api_view(['GET', ])
 def get_events(request, year):
     # print(request.META['SERVER_PROTOCOL'])
