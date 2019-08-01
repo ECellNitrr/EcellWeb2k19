@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from .models import Event, EventRegister
 from .serializers import EventSerializer, EventListSerializer
-from decorators import ecell_user
+from decorators import ecell_user,relax_ecell_user
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 # from django.utils.six.moves.urllib.parse import urlsplit

@@ -27,28 +27,28 @@ class dashboard extends Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-6 font-weight-bold text-right">First name:</div>
-                    <div className="col-md-6">{this.props.auth.first_name}</div>
+                    <div className="col-md-6 font-weight-bold text-center text-md-right">First name:</div>
+                    <div className="col-md-6 text-center text-md-left">{this.props.auth.first_name}</div>
                 </div>
                 <div className="row">
-                    <div className="col-md-6 font-weight-bold text-right">Last name:</div>
-                    <div className="col-md-6">{this.props.auth.last_name}</div>
+                    <div className="col-md-6 font-weight-bold text-center text-md-right">Last name:</div>
+                    <div className="col-md-6 text-center text-md-left">{this.props.auth.last_name}</div>
                 </div>
                 <div className="row">
-                    <div className="col-md-6 font-weight-bold text-right">Email:</div>
-                    <div className="col-md-6">{this.props.auth.email}</div>
+                    <div className="col-md-6 font-weight-bold text-center text-md-right">Email:</div>
+                    <div className="col-md-6 text-center text-md-left">{this.props.auth.email}</div>
                 </div>
                 <div className="row">
-                    <div className="col-md-6 font-weight-bold text-right">User Type:</div>
-                    <div className="col-md-6">{user_type[this.props.auth.user_type]}</div>
+                    <div className="col-md-6 font-weight-bold text-center text-md-right">User Type:</div>
+                    <div className="col-md-6 text-center text-md-left">{user_type[this.props.auth.user_type]}</div>
                 </div>
                 <div className="row">
-                    <div className="col-md-6 font-weight-bold text-right">Contact:</div>
-                    <div className="col-md-6">{this.props.auth.contact}</div>
+                    <div className="col-md-6 font-weight-bold text-center text-md-right">Contact:</div>
+                    <div className="col-md-6 text-center text-md-left">{this.props.auth.contact}</div>
                 </div>
                 <div className="row">
-                    <div className="col-md-6 font-weight-bold text-right">OTP Verified:</div>
-                    <div className="col-md-6">{this.props.auth.verified?<i className="fa fa-check text-success"></i>:<i className="fa fa-times text-danger"></i>}</div>
+                    <div className="col-md-6 font-weight-bold text-center text-md-right">OTP Verified:</div>
+                    <div className="col-md-6 text-center text-md-left">{this.props.auth.verified?<i className="fa fa-check text-success"></i>:<i className="fa fa-times text-danger"></i>}</div>
                 </div>
             </div>
         )
