@@ -17,7 +17,7 @@ class EventListSerializer(serializers.ModelSerializer):
 
     def get_registered(self,obj):
         token = self.context['request'].headers.get('Authorization','')
-        if token:
+        if len(token):
             user = get_user(token)
             user_registered = user.eventregister_set.filter(event_id=obj.id).count() 
             print(user_registered)
