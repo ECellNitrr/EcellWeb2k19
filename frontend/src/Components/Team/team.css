@@ -33,11 +33,6 @@
   z-index: 11;
 }
 
-.member-image:hover{
-  opacity: 0;
-  z-index: 9;
-}
-
 /*.hover-text{
   position: relative;
   width: 270px;

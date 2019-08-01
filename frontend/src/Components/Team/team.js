@@ -52,6 +52,8 @@ class team extends Component {
 
                 if(members.member_type==="OCO"){
                     members_dict["Overall_Coordinator"].push(members)
+                   console.log( members_dict["Overall_Coordinator"].sort())
+                    
                 }
 
                 if(members.member_type==="HCO"){
@@ -118,16 +120,15 @@ class team extends Component {
             <div key={member.id} className='text-center'>
                 <div>
                     {title === "Head_Career_Development" ||title === "Director" ||title === "Faculty Incharge" ||title === "Overall Co-ordinators" ||title === "Head Co-ordinators" ? (
-                        <div style={{marginTop:"-270px"}}>
+                        <div /*style={{marginTop:"-270px"}}*/>
                             <div>
-                                <div className="hover-text">
+                                {/*<div className="hover-text">
                                         <a className="web" href={member.profile_url}>
                                             Follow
                                         </a>
-                                </div>
+                    </div>*/}
                                 <img
                                 className="member-image shadow-lg p-3 mb-5 bg-white rounded"
-                                onMouseEnter={{}}
                                 src={member.image}
                                 alt={member.name}
                                 width="270"
