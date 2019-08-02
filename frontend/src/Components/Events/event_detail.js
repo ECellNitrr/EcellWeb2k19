@@ -85,7 +85,7 @@ class event_detail extends Component{
                 <Navbar/>
                     
                         {this.state.loading ?<div className="loading-gif" style={{paddingTop:"350px"}}> <Loader/></div>  : <div>{event_detail}</div>}
-                        <button onClick={this._event_register} ref={ele => this.register = ele} className="btn register-btn">{this.state.loader ? <BtnLoader/> : "Register"}</button>
+                        {/*<button onClick={this._event_register} ref={ele => this.register = ele} className="btn register-btn">{this.state.loader ? <BtnLoader/> : "Register"}</button>*/}
                     
                 <Footer/>
             </div>
