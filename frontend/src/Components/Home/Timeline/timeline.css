@@ -1,3 +1,23 @@
+.heading {
+    text-align: center;
+    color: white;
+    font-size: 23px;
+    font-weight: 800;
+    border: 2px solid white;
+    background: black;
+    border-radius: 0 0 8px 8px;
+    padding: 8px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    margin-top:40px;
+}
+.padd
+{
+    padding:40px;
+}
 .main-timeline{
     padding-top: 50px;
     overflow: hidden;
