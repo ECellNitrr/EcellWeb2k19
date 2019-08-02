@@ -27,9 +27,10 @@ class TaskViewset(ModelViewSet):
     serializer_class = TaskSerializer
 
     def get_serializer_context(self):
-            return {'request': self.request}
+        # context = super(myModelViewSet, self).get_serializer_context()
+        # return context
+        return {'request': self.request}
 
-            
 
 class ReviewViewset(ModelViewSet):
     queryset = Review.objects.all()
@@ -45,7 +46,7 @@ def get_non_submited_tasks(req):
     user =  req.ecelluser
 
     non_submited_tasks = Task.objects.exclude(review__proof_by=user.id)
-    return Response(TaskSerializer(non_submited_tasks,many=True).data)
+    return Response(TaskSerializer(non_submited_tasks,many=True,context={'request': req}).data)
 
 
 
