@@ -35,9 +35,9 @@ def get_events(request, year):
         "data": res_data
     }, status=res_status)
 
-@ecell_user
-@csrf_exempt
+
 @api_view(['POST', ])
+@ecell_user
 def event_register(request, id):
     eventregister = EventRegister()
     user = request.ecelluser
