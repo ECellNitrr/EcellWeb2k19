@@ -91,6 +91,7 @@ export default class task_detail extends Component {
                             <option value="youtube">youtube</option>
                             <option value="instagram">instagram</option>
                             <option value="twitter">twitter</option>
+                            <option value="linkedin">linkedin</option>
                         </select>
                     </div>
                     <div className="text-center mt-3">
