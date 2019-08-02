@@ -8,6 +8,7 @@ from rest_framework.parsers import JSONParser, MultiPartParser,FileUploadParser
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.renderers import JSONRenderer
+from rest_framework import generics
 from rest_framework import status
 import jwt
 
@@ -27,9 +28,12 @@ class TaskViewset(ModelViewSet):
     serializer_class = TaskSerializer
 
     def get_serializer_context(self):
-        # context = super(myModelViewSet, self).get_serializer_context()
-        # return context
         return {'request': self.request}
+        
+
+class TaskListAdminView(generics.ListAPIView):
+    queryset = Task.objects.filter(deleted=False)
+    serializer_class = TaskListAdminSerializer
 
 
 class ReviewViewset(ModelViewSet):

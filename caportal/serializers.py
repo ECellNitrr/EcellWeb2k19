@@ -20,6 +20,15 @@ class EcellUserRegistrationSerializer(ModelSerializer):
 
 
 class ReviewSerializer(ModelSerializer):
+    proof_by_name = SerializerMethodField()
+    proof_by_email = SerializerMethodField()
+
+    def get_proof_by_name(self,obj):
+        return obj.proof_by.first_name + ' ' + obj.proof_by.last_name
+
+    def get_proof_by_email(self,obj):
+        return obj.proof_by.email
+    
     class Meta:
         model = Review
         fields = '__all__'
@@ -74,24 +83,17 @@ class LeanTaskSerializer(ModelSerializer):
 
 
 
+class TaskListAdminSerializer(ModelSerializer):
+    pending = SerializerMethodField()
+    accepted = SerializerMethodField()
 
-# class SubmitTaskSerializer(ModelSerializer):
-#     task_obj = SerializerMethodField()
-#     proof_by_name = SerializerMethodField()
-#     proof_by_email = SerializerMethodField()
-
-
-#     def get_proof_by_email(self,obj):
-#         return obj.proof_by.email
+    def get_pending(self,obj):
+        return obj.review_set.filter(points=-1).count()
 
 
-#     def get_proof_by_name(self,obj):
-#         return obj.proof_by.first_name.capitalize() + ' ' + obj.proof_by.last_name.capitalize()
+    def get_accepted(self,obj):
+        return obj.review_set.exclude(points=-1).count()
 
-
-#     def get_task_obj(self,obj):
-#         return TaskSerializer(obj.task).data
-
-#     class Meta:
-#         model = SubmitTask
-#         fields = '__all__'
+    class Meta:
+        model = Task
+        fields = '__all__'

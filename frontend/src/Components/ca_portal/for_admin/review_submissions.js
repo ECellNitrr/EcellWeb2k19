@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import faxios from '../../../axios'
 
 
@@ -26,10 +25,10 @@ class review_submissions extends Component {
     componentDidMount() {
         console.log(this.state.status)
 
-        faxios().get(`/portal/submit_task/?task=${this.task_id}`).then(d => {
-            console.log(d.data)
+        faxios().get(`/portal/reviews/?task=${this.task_id}`).then(d => {
             let reviews = d.data.sort((a, b) => b.id - a.id)
-            console.log({ reviews })
+
+            console.log(reviews)
             reviews = reviews.map(review => {
                 let created_date = new Date(review.created_at)
                 review.created_at = created_date.toDateString()
@@ -40,46 +39,34 @@ class review_submissions extends Component {
         })
     }
 
-    _accept_review = e => {
-        this.setState({modal_open:false})
+    _accept_review = (e, review_id, points_input_class) => {
+        e.preventDefault()
 
-        
-        let input_grp = e.target.parentElement
-        if (!input_grp.classList.contains('btns')) {
-            input_grp = input_grp.parentElement
+
+        this.setState({ modal_open: false })
+        let points = document.querySelector(points_input_class).value
+
+        // if the in accepted view prompt for new point
+        if (this.state.status === 'accepted') {
+            points = prompt('plz enter new points for the post:')
+            console.log(points)
         }
 
-        const review_id = Number(input_grp.dataset['reviewId'])
 
-        faxios().post(`/portal/submit_task_score/`, {
-            review_id,
-            status: 'accepted',
+        if (points > 20 || points < 0 || points === '' || points === null) {
+            alert('points can be only within 0 and 20')
+            return
+        }
+
+        points = Number(points)
+
+
+        faxios().patch(`/portal/reviews/${review_id}/`, {
+            points
         }).then(d => {
             let reviews = this.state.reviews
             let rq_review_id = reviews.findIndex(review => review.id === review_id)
-            reviews[rq_review_id].status = 'accepted'
-            this.setState({ reviews })
-        })
-    }
-
-    _reject_review = e => {
-        this.setState({modal_open:false})
-
-        
-        let input_grp = e.target.parentElement
-        if (!input_grp.classList.contains('btns')) {
-            input_grp = input_grp.parentElement
-        }
-
-        const review_id = Number(input_grp.dataset['reviewId'])
-
-        faxios().post(`/portal/submit_task_score/`, {
-            review_id,
-            status: 'rejected',
-        }).then(d => {
-            let reviews = this.state.reviews
-            let rq_review_id = reviews.findIndex(review => review.id === review_id)
-            reviews[rq_review_id].status = 'rejected'
+            reviews[rq_review_id].points = points
             this.setState({ reviews })
         })
     }
@@ -88,21 +75,19 @@ class review_submissions extends Component {
         this.setState({ modal_open: false })
     }
 
-    _createTask = () => {
-        this.props.history.push('/caportal/admin/create_task/')
-    }
-
 
     render() {
-        const total_reviews = this.state.reviews.length
-        const pending_reviews = this.state.reviews.filter(review => review.status === 'pending').length
-        const accepted_reviews = this.state.reviews.filter(review => review.status === 'accepted').length
-        const rejected_reviews = this.state.reviews.filter(review => review.status === 'rejected').length
+        const pending_reviews = this.state.reviews.filter(review => review.points === -1).length
+        const accepted_reviews = this.state.reviews.filter(review => review.points !== -1).length
 
-
-        let reviews = this.state.reviews.filter(review => review.status === this.state.status)
 
         const selected_review = this.state.reviews.find(review => review.id === this.state.modal_review_id)
+
+        let reviews = this.state.reviews.filter(review => review.points === -1)
+
+        if (this.state.status === 'accepted') {
+            reviews = this.state.reviews.filter(review => review.points !== -1)
+        }
 
         const reviews_html = reviews.map((review, i) =>
             <div className="review shadow" key={i}>
@@ -111,10 +96,15 @@ class review_submissions extends Component {
                     <span>{review.proof_by_name}</span>
                     <span>{review.proof_by_email}</span>
                 </div>
-                <div className="text-center btns" data-review-id={review.id}>
-                    <button onClick={this._accept_review} className="btn m-0 mx-2 btn-success"><i className="fa fa-check"></i></button>
-                    <button onClick={this._reject_review} className="btn m-0 mx-2 btn-danger"><i className="fa fa-times"></i></button>
-                </div>
+                <form className="text-center btns">
+                    {this.state.status === 'accepted' ?
+                        <input type="number" className={`text-center points-normal-${review.id}`} disabled value={review.points} placeholder='points' /> :
+                        <input type="number" className={`text-center points-normal-${review.id}`} placeholder='points' />
+                    }
+                    {<button onClick={(e) => this._accept_review(e, review.id, `.points-normal-${review.id}`)} className="btn m-0 mx-2 btn-success">
+                        {this.state.status === 'accepted' ? <i className="fa fa-edit"></i> : <i className="fa fa-check"></i>}
+                    </button>}
+                </form>
             </div>
         )
 
@@ -127,7 +117,6 @@ class review_submissions extends Component {
                 <div className="text-center">
                     <button onClick={() => this.setState({ status: 'pending' })} className="mx-2 btn btn-primary">Pending: {pending_reviews}</button>
                     <button onClick={() => this.setState({ status: 'accepted' })} className="mx-2 btn btn-success">Accepted: {accepted_reviews}</button>
-                    <button onClick={() => this.setState({ status: 'rejected' })} className="mx-2 btn btn-danger">Rejected: {rejected_reviews}</button>
                 </div>
                 <div className="reviews">
                     {reviews_html}
@@ -144,11 +133,19 @@ class review_submissions extends Component {
                             <span>{selected_review.proof_by_name}</span>
                             <span>{selected_review.proof_by_email}</span>
                         </div>
-                        <div className="text-center btns" data-review-id={selected_review.id}>
-                            <button onClick={this._accept_review} className="btn m-0 px-3 py-2 mx-2 btn-success"><i className="fa fa-check"></i></button>
-                            <button onClick={this._reject_review} className="btn m-0 px-3 py-2 mx-2 btn-danger"><i className="fa fa-times"></i></button>
-                        </div>
-                        <img src={selected_review.proof_pic} onClick={this._closeModal} alt="" />
+
+                        <form className="text-center btns">
+                            {this.state.status === 'accepted' ?
+                                <input type="number" className={`text-center points-modal-${selected_review.id}`} disabled value={selected_review.points} placeholder='points' /> :
+                                <input type="number" className={`text-center points-modal-${selected_review.id}`} placeholder='points' />
+                            }
+                            {<button onClick={(e) => this._accept_review(e, selected_review.id, `.points-modal-${selected_review.id}`)} className="btn m-0 mx-2 btn-success">
+                                {this.state.status === 'accepted' ? <i className="fa fa-edit"></i> : <i className="fa fa-check"></i>}
+                            </button>}
+                        </form>
+
+
+                        <img src={selected_review.proof_pic} onClick={() => this.setState({ modal_open: true, modal_review_id: selected_review.id })} alt="" />
                     </div>
                 </Modal> : null}
             </div>
