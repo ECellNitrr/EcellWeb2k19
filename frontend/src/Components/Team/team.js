@@ -5,6 +5,8 @@ import Navbar from "../Navbar/navbar";
 // import Faculty from "./faculty";
 import Footer from "../Footer/footer";
 import Loader from '../api_loader/api_loader'
+import {Link} from 'react-router-dom';
+
 
 
 class team extends Component {
@@ -14,7 +16,8 @@ class team extends Component {
         loading: true
     };
     componentDidMount() {
-        this.axios.get("/team/list/2019/").then(fromserver => {
+        const year = this.props.match.params.year;
+        this.axios.get(`/team/list/${year}/`).then(fromserver => {
             const data = fromserver.data.data;
             console.log(data)
             /*delete data["me"];*/
@@ -52,7 +55,6 @@ class team extends Component {
 
                 if(members.member_type==="OCO"){
                     members_dict["Overall_Coordinator"].push(members)
-                   console.log( members_dict["Overall_Coordinator"].sort())
                     
                 }
 
@@ -120,13 +122,8 @@ class team extends Component {
             <div key={member.id} className='text-center'>
                 <div>
                     {title === "Head_Career_Development" ||title === "Director" ||title === "Faculty Incharge" ||title === "Overall Co-ordinators" ||title === "Head Co-ordinators" ? (
-                        <div /*style={{marginTop:"-270px"}}*/>
+                    <div>
                             <div>
-                                {/*<div className="hover-text">
-                                        <a className="web" href={member.profile_url}>
-                                            Follow
-                                        </a>
-                    </div>*/}
                                 <img
                                 className="member-image shadow-lg p-3 mb-5 bg-white rounded"
                                 src={member.image}
@@ -141,27 +138,35 @@ class team extends Component {
                         </div>
 
                         <div className="domain">
-                            {member.domain==="pr"?<p style={{fontSize:"20px",marginBottom:"25px"}}><i>(Public Relation and Marketing)</i></p>:null}
-                            {member.domain==="tech"?<p style={{fontSize:"20px",marginBottom:"25px"}}><i>(Technical Team)</i></p>:null}
-                            {member.domain==="design"?<p style={{fontSize:"20px",marginBottom:"25px"}}><i>(Design Team)</i></p>:null}
-                            {member.domain==="spons"?<p style={{fontSize:"20px",marginBottom:"25px"}}><i>(Sponsorship Team)</i></p>:null}
-                            {member.domain==="doc"?<p style={{fontSize:"20px",marginBottom:"25px"}}><i>(Documentation Team)</i></p>:null}
+                            {member.domain==="pr"?<p style={{fontSize:"20px",marginBottom:"25px",marginTop:"-25px"}}><i>(Public Relation and Marketing)</i></p>:null}
+                            {member.domain==="tech"?<p style={{fontSize:"20px",marginBottom:"25px",marginTop:"-25px"}}><i>(Technical Team)</i></p>:null}
+                            {member.domain==="design"?<p style={{fontSize:"20px",marginBottom:"25px",marginTop:"-25px"}}><i>(Design Team)</i></p>:null}
+                            {member.domain==="spons"?<p style={{fontSize:"20px",marginBottom:"25px",marginTop:"-25px"}}><i>(Sponsorship Team)</i></p>:null}
+                            {member.domain==="doc"?<p style={{fontSize:"20px",marginBottom:"25px",marginTop:"-25px"}}><i>(Documentation Team)</i></p>:null}
                         </div>
-                        </div>
+                    </div>
                         
                     ):<div>
                         <h6 className="member-name">{member.name}</h6>
-                        </div>}
+                     </div>}
                 </div>
             </div>
         ));
 
         return (
             <div key={type}>
-                <h2 style={{marginTop:"70px"}} className="position shadow p-3 mb-5 bg-white rounded">
-                    {title}
-                </h2>
-                <div className="flex-container">{members}</div>
+                
+                {title === "Head_Career_Development" ||title === "Director" ||title === "Faculty Incharge" ||title === "Overall Co-ordinators" ||title === "Head Co-ordinators" ? (
+                    <h2 style={{marginTop:"70px"}} className="position shadow p-3 mb-5 bg-white rounded">
+                        {title}
+                    </h2>
+                ):(
+                    <h2 style={{marginTop:"70px"}} className="position-exec shadow p-3 mb-5 bg-white rounded">
+                        {title}
+                    </h2>
+                )}
+                
+                <div className="flex-containerrr justify-content-center">{members}</div>
             </div>
         );
     };
@@ -273,27 +278,33 @@ class team extends Component {
             }
         }
 
+        let this_year=this.props.match.params.year;
         // final_html = Object.keys(final_html).map(key => final_html[key]);
 
         return (
             <div className="team-whole">
                 <Navbar />
-                {this.state.loading ? (<div style={{marginTop:"10%"}}><Loader/></div>):(<div>{final_html['Director']}
-                {final_html['Head_Career_Development']}
-                {final_html['Faculty_Incharge']}
-                {final_html['Overall_Coordinator']}
+                <div className="team-div"><Link className="team-links shadow p-3 mb-5 bg-white rounded" to='/team/yearwise'>Previous Year Teams</Link></div>
+                {this.state.loading ? (<div style={{marginTop:"10%"}}><Loader/></div>):(
+                <div>
+                
+                {this_year==="2019" ? final_html['Director']:null}
+                {this_year==="2019" ? final_html['Head_Career_Development']:null}
+                {this_year==="2019" ? final_html['Faculty_Incharge']:null}
+                {this_year==="2013" ? null :final_html['Overall_Coordinator']}
                 {final_html['Head_Coordinator']}
-                {final_html['Manager_pr']}
-                {final_html['Manager_tech']}
-                {final_html['Manager_des']}
-                {final_html['Manager_doc']}
-                {final_html['Manager_spons']}
-                {final_html['Executive_pr']}
-                {final_html['Executive_tech']}
-                {final_html['Executive_des']}
-                {final_html['Executive_doc']}
-                {final_html['Executive_spons']}
+                {this_year==="2019" ? final_html['Manager_pr']:null}
+                {this_year==="2019" ? final_html['Manager_tech']:null}
+                {this_year==="2019" ? final_html['Manager_des']:null}
+                {this_year==="2019" ? final_html['Manager_doc']:null}
+                {this_year==="2019" ? final_html['Manager_spons']:null}
+                {this_year==="2019" ? final_html['Executive_pr']:null}
+                {this_year==="2019" ? final_html['Executive_tech']:null}
+                {this_year==="2019" ? final_html['Executive_des']:null}
+                {this_year==="2019" ? final_html['Executive_doc']:null}
+                {this_year==="2019" ? final_html['Executive_spons']:null}
                 </div>) }
+                <div className="team-div"><Link className="team-links shadow p-3 mb-5 bg-white rounded" to='/team/yearwise'>Previous Year Teams</Link></div>
                 <Footer />
             </div>
         );

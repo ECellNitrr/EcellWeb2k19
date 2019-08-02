@@ -18,6 +18,7 @@ const Register = lazy(() => import('./Components/Register/register'));
 const CaPortalInfo = lazy(() => import('./Components/ca_portal_intro/caportal'));
 const CaPortal = lazy(() => import('./Components/ca_portal/ca_portal'));
 const Team = lazy(() => import('./Components/Team/team'));
+const Yearwise_team = lazy(()=> import('./Components/Team/team_list'));
 const Yearwise_spons = lazy(()=> import('./Components/Sponsors/yearwise_sponsors'));
 const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 
@@ -46,7 +47,11 @@ class App extends Component {
               <Route path='/register' component={Register} />
               <Route path='/caportal_info' component={CaPortalInfo} />
               <Route path='/caportal' component={CaPortal} />
-              <Route path='/team' component={Team} />
+              <Route path='/team/yearwise' component={Yearwise_team}/>
+              <Route path='/team/:year' component={Team} />
+              
+              <Route path='/team' component={() => <Redirect to='/team/2019' />} />
+              
             </Switch>
           </div>
         </BrowserRouter>
