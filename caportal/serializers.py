@@ -19,20 +19,10 @@ class EcellUserRegistrationSerializer(ModelSerializer):
 
 
 class TaskSerializer(ModelSerializer):
-    pending = SerializerMethodField()
-    accepted = SerializerMethodField()
-    rejected = SerializerMethodField()
+    submissions = SerializerMethodField()
 
-    def get_pending(self,obj):
-        return obj.submittask_set.filter(status='pending').count()
-
-    def get_accepted(self,obj):
-        return obj.submittask_set.filter(status='accepted').count()
-
-    def get_rejected(self,obj):
-        return obj.submittask_set.filter(status='rejected').count()
-
-    
+    def get_submissions(self,obj):
+        return obj.review_set.all().count()
 
     class Meta:
         model = Task
@@ -40,23 +30,30 @@ class TaskSerializer(ModelSerializer):
 
 
 
-class SubmitTaskSerializer(ModelSerializer):
-    task_obj = SerializerMethodField()
-    proof_by_name = SerializerMethodField()
-    proof_by_email = SerializerMethodField()
-
-
-    def get_proof_by_email(self,obj):
-        return obj.proof_by.email
-
-
-    def get_proof_by_name(self,obj):
-        return obj.proof_by.first_name.capitalize() + ' ' + obj.proof_by.last_name.capitalize()
-
-
-    def get_task_obj(self,obj):
-        return TaskSerializer(obj.task).data
-
+class ReviewSerializer(ModelSerializer):
     class Meta:
-        model = SubmitTask
+        model = Review
         fields = '__all__'
+
+
+
+# class SubmitTaskSerializer(ModelSerializer):
+#     task_obj = SerializerMethodField()
+#     proof_by_name = SerializerMethodField()
+#     proof_by_email = SerializerMethodField()
+
+
+#     def get_proof_by_email(self,obj):
+#         return obj.proof_by.email
+
+
+#     def get_proof_by_name(self,obj):
+#         return obj.proof_by.first_name.capitalize() + ' ' + obj.proof_by.last_name.capitalize()
+
+
+#     def get_task_obj(self,obj):
+#         return TaskSerializer(obj.task).data
+
+#     class Meta:
+#         model = SubmitTask
+#         fields = '__all__'

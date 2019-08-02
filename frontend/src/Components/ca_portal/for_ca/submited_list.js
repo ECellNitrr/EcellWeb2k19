@@ -20,17 +20,17 @@ class submitted_list extends Component {
     componentDidMount() {
         console.log(this.state.status)
 
-        faxios().get(`/portal/submit_task/?proof_by=${this.props.auth.id}`).then(d => {
-            console.log(d.data)
-            let reviews = d.data.sort((a, b) => b.id - a.id)
-            reviews = reviews.map(review => {
-                let created_date = new Date(review.created_at)
-                review.created_at = created_date.toDateString()
-                return review
-            })
+        // faxios().get(`/portal/submit_task/?proof_by=${this.props.auth.id}`).then(d => {
+        //     console.log(d.data)
+        //     let reviews = d.data.sort((a, b) => b.id - a.id)
+        //     reviews = reviews.map(review => {
+        //         let created_date = new Date(review.created_at)
+        //         review.created_at = created_date.toDateString()
+        //         return review
+        //     })
 
-            this.setState({ reviews })
-        })
+        //     this.setState({ reviews })
+        // })
     }
 
 

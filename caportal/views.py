@@ -27,20 +27,12 @@ class TaskViewset(ModelViewSet):
     serializer_class = TaskSerializer
 
 
-class SubmitTaskViewset(ModelViewSet):
-    queryset = SubmitTask.objects.all()
-    serializer_class = SubmitTaskSerializer
+class ReviewViewset(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('proof_by', 'status','task')
+    filterset_fields = ('proof_by', 'points','task')
 
-
-@api_view(['GET'])
-@relax_ecell_user
-def get_non_submited_tasks(req):
-    user =  req.ecelluser
-
-    non_submited_tasks = Task.objects.exclude(submittask__proof_by=user.id)
-    return Response(TaskSerializer(non_submited_tasks,many=True).data)
 
 
 @api_view(['GET'])
@@ -48,9 +40,8 @@ def get_non_submited_tasks(req):
 def get_non_submited_tasks(req):
     user =  req.ecelluser
 
-    non_submited_tasks = Task.objects.exclude(submittask__proof_by=user.id)
+    non_submited_tasks = Task.objects.exclude(review__proof_by=user.id)
     return Response(TaskSerializer(non_submited_tasks,many=True).data)
-
 
 
 
@@ -118,24 +109,3 @@ def create_user(req):
         }, status=res_status)
 
 
-
-@api_view(['POST'])
-def submit_task_score(req):
-    data = JSONParser().parse(req)
-
-    review = SubmitTask.objects.get(pk=data['review_id'])
-    review.status = data['status']
-    review.save()
-
-    return Response({})
-
-
-# @api_view(['POST'])
-# @parser_classes([MultiPartParser])
-# def submit_task_patch_alt(request, review_id):
-#     review = SubmitTask.objects.get(pk=review_id)
-#     review.
-
-#     print(review_id)
-
-#     return Response({})
