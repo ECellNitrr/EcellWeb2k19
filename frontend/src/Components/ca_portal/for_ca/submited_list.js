@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 class submitted_list extends Component {
     state = {
         reviews: [],
-        status: 'total'
     }
 
     static propTypes = {
@@ -18,8 +17,10 @@ class submitted_list extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state.status)
+        this._fetch()
+    }
 
+    _fetch = () => {
         // faxios().get(`/portal/submit_task/?proof_by=${this.props.auth.id}`).then(d => {
         //     console.log(d.data)
         //     let reviews = d.data.sort((a, b) => b.id - a.id)
@@ -34,24 +35,8 @@ class submitted_list extends Component {
     }
 
 
-    _createTask = () => {
-        this.props.history.push('/caportal/admin/create_task/')
-    }
-
-
     render() {
-        const total_reviews = this.state.reviews.length
-        const pending_reviews = this.state.reviews.filter(review=>review.status==='pending').length
-        const accepted_reviews = this.state.reviews.filter(review=>review.status==='accepted').length
-        const rejected_reviews = this.state.reviews.filter(review=>review.status==='rejected').length
-
-
         let reviews = this.state.reviews
-
-        if(this.state.status !== 'total'){
-            reviews = reviews.filter(review=>review.status===this.state.status)
-            console.log(reviews)
-        }
 
         const review_html = reviews.map((review, i) =>
             <tr key={i}>
@@ -65,13 +50,7 @@ class submitted_list extends Component {
         return (
             <div className='tasks_list container'>
                 <div className="d-flex my-4">
-                    <h2 className=" flex-grow-1 text-center">{this.state.status[0].toUpperCase()}{this.state.status.slice(1)} Posts</h2>
-                </div>
-                <div className="text-center">
-                    <button onClick={() => this.setState({status: 'total'})} className="mx-2 btn btn-dark">Total: {total_reviews}</button>
-                    <button onClick={() => this.setState({status: 'pending'})} className="mx-2 btn btn-primary">Pending: {pending_reviews}</button>
-                    <button onClick={() => this.setState({status: 'accepted'})} className="mx-2 btn btn-success">Accepted: {accepted_reviews}</button>
-                    <button onClick={() => this.setState({status: 'rejected'})} className="mx-2 btn btn-danger">Rejected: {rejected_reviews}</button>
+                    <h2 className=" flex-grow-1 text-center">Submitted Posts</h2>
                 </div>
                 <table className='table table-striped mt-3'>
                     <thead>
@@ -79,7 +58,8 @@ class submitted_list extends Component {
                             <th>#</th>
                             <th>Task name</th>
                             <th>Platform</th>
-                            <th>Created on</th>
+                            <th>Submited</th>
+                            <th>Reviewed</th>
                         </tr>
                     </thead>
                     <tbody>
