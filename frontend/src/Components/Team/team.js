@@ -13,7 +13,7 @@ class team extends Component {
         loading: true
     };
     componentDidMount() {
-        this.axios.get("/team/list/").then(fromserver => {
+        this.axios.get("/team/list/2018/").then(fromserver => {
             const data = fromserver.data.data;
             console.log(data)
             /*delete data["me"];*/
