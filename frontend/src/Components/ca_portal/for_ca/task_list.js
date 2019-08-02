@@ -12,13 +12,13 @@ export default class task_list extends Component {
     componentDidMount() {
         faxios().get('/portal/non_submited_tasks/').then(d => {
             console.log(d.data)
-            let tasks = d.data.sort((a,b)=>b.id-a.id)
+            let tasks = d.data.sort((a, b) => b.id - a.id)
             tasks = tasks.map(task => {
                 let created_date = new Date(task.created_at)
                 task.created_at = created_date.toDateString()
                 return task
             })
-            
+
             this.setState({
                 tasks,
                 loading: false
@@ -42,10 +42,10 @@ export default class task_list extends Component {
             </tr>
         )
 
-        if(this.state.loading){
-            tasks_html =  <h3 className='text-center'>...loading</h3>
-        }else if(!this.state.loading && this.state.tasks.length === 0){
-            tasks_html = <h3 className="text-center">no new posts :)</h3>
+        if (this.state.loading) {
+            tasks_html = <tr><td></td><td className='text-center'>...loading</td></tr>
+        } else if (!this.state.loading && this.state.tasks.length === 0) {
+            tasks_html = <tr><td></td><td className="text-center">no new posts :)</td></tr>
         }
 
         return (

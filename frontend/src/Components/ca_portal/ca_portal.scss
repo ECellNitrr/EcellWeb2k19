@@ -35,6 +35,16 @@
     input,textarea{
         border: 1px solid grey;
     }
+    .upload_img{
+        box-shadow: 5px 3px 30px -10px grey;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    }
 }
 .review{
     max-width: 400px;
