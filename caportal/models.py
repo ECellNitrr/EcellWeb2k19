@@ -5,6 +5,7 @@ from users.models import CustomUser
 class Task(models.Model):
     platform_choices = [
         ['facebook','facebook'],
+        ['linkedin','linkedin'],
         ['whatsapp','whatsapp'],
         ['youtube','youtube'],
         ['instagram','instagram'],
