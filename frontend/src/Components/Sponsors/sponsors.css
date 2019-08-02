@@ -22,40 +22,8 @@
     justify-content:center;
 }
 
-.links{
-    color: white;
-    font-size: 20px;
-    margin: 20px;
-    transition: 0.2s;
-    font-weight: 800;
-}
 
-.links:hover{
-    color: black;
-    text-decoration: none;
-    background: white;
-    padding: 5px;
-    border-radius: 0 8px;
-}
 
-@media(max-width:425px){
-    .links{
-        font-size: 15px;
-    }
-}
-
-@media(max-width:330px){
-    .link-text{
-        font-size: 14px;
-    }
-}
-
-.ctn11{
-    display: flex;
-    padding-top: 300px;
-    justify-content: center;
-    align-items: center;
-}
 
 .ctn15{
     display: flex;

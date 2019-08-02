@@ -23,14 +23,50 @@
 /*h2 {
     font-size:20px;
 }*/
-.flex-container {
+
+.member-image{
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: 0.3s;
+  z-index: 11;
+}
+
+.btn{
+  color:#7b4397 ;
+  font-weight: 800;
+  background: white;
+  margin: 10px;
+  font-size: 20px;
+
+}
+
+/*.hover-text{
+  position: relative;
+  width: 270px;
+  height: 270px;
+  margin:0 auto;
+  background: black;
+  opacity: 0.8;
+  z-index: 10;
+  top: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 2px solid white;
+  outline-offset: -15px;
+}*/
+
+
+.flex-containerrr {
     display: flex;
-    justify-content: center;
     flex-wrap:wrap;
+    justify-content: center;
   }
 
-  .flex-container div{
-    flex: 1 0 20%;
+  .flex-containerrr div{
+    margin:0 7px;
   }
   
   .member-name{
@@ -38,7 +74,7 @@
     color: white;
     font-size: 23px;
     font-weight: 800;
-    margin-top: -30px;
+    margin-top: -20px;
     border: 2px solid white;
     background: black;
     border-radius: 0 0 8px 8px;
@@ -112,7 +148,7 @@
     border: 1px dotted black;
     padding: 10px;
     font-weight: 800 !important;
-    font-size: 30px;
+    font-size: 22px;
     letter-spacing: 1px;
     width: 400px !important;
     margin-right: auto;
@@ -135,8 +171,48 @@
     }
   }
 
+  @media(max-width:430px){
+    .position-exec{
+      width: 350px !important;
+    }
+  }
+
+  @media(max-width:350px){
+    .position-exec{
+      
+      width: 300px;
+    }
+  }
+
 
 
 .team-whole{
   padding-top: 250px;
+}
+
+.domain{
+  color: white;
+  font-weight: 600;
+  margin-top: -30px;
+}
+
+.team-links{
+  position: relative;
+  color: white;
+  background:#0A0908 !important;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 15px;
+  transition: 0.2s;
+}
+
+.team-links:hover{
+  color: white;
+  background: green !important;
+}
+
+.team-div{
+  display: flex;
+  justify-content: center;
+  margin-top:20px;
 }

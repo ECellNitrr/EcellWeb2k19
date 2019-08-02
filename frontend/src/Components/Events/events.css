@@ -207,3 +207,19 @@
     padding-top: 200px !important;
   }
 }
+
+.register-btn{
+  background: black;
+  font-weight: 800;
+  color: white;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+  font-size: 20px;
+}
+
+.register-btn:hover{
+ background: red;
+ color: white;
+}
+
