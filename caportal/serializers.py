@@ -1,5 +1,6 @@
-from rest_framework.serializers import ModelSerializer, SerializerMethodField
+from rest_framework.serializers import ModelSerializer, SerializerMethodField, ImageField
 from users.models import CustomUser
+from decorators import get_user
 from .models import *
 
 
@@ -17,9 +18,25 @@ class EcellUserRegistrationSerializer(ModelSerializer):
         fields = ['first_name', 'last_name', 'email', 'username', 'contact', 'password', 'otp','user_type', 'applied', 'verified']
 
 
+class ReviewSerializer(ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
+
 
 class TaskSerializer(ModelSerializer):
     submissions = SerializerMethodField()
+    uploaded_imgs = SerializerMethodField()
+
+    def get_uploaded_imgs(self,obj):
+        token = self.context['request'].headers.get('Authorization','')
+
+        if not token=='':
+            user = get_user(token)
+            reviews = user.review_set.filter(task=obj.id)
+            return ReviewSerializer(reviews, many=True).data
+        return []
+
 
     def get_submissions(self,obj):
         return obj.review_set.all().count()
@@ -28,12 +45,6 @@ class TaskSerializer(ModelSerializer):
         model = Task
         fields = '__all__'
 
-
-
-class ReviewSerializer(ModelSerializer):
-    class Meta:
-        model = Review
-        fields = '__all__'
 
 
 

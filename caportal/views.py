@@ -26,6 +26,10 @@ class TaskViewset(ModelViewSet):
     queryset = Task.objects.filter(deleted=False)
     serializer_class = TaskSerializer
 
+    def get_serializer_context(self):
+            return {'request': self.request}
+
+            
 
 class ReviewViewset(ModelViewSet):
     queryset = Review.objects.all()

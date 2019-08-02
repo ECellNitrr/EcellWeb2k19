@@ -14,7 +14,7 @@ class submit_task extends Component {
         error: {},
         task: {},
         selected_imgs: [],
-        up_percentage: 0,
+        uploaded_imgs: [],
     }
 
     static propTypes = {
@@ -22,70 +22,72 @@ class submit_task extends Component {
     }
 
     componentDidMount() {
-        let url = `/portal/tasks/${this.task_id}/`
-        // if (this.review) {
-        //     url = `/portal/submit_task/${this.review_id}/`
-        // }
-
-        faxios().get(url).then(d => {
+        faxios().get(`/portal/tasks/${this.task_id}/`).then(d => {
             console.log(d.data)
             let task = d.data
 
             let task_date = new Date(task.created_at)
             task.created_at = task_date.toDateString()
 
-            this.setState({ task })
+            const uploaded_imgs = task.uploaded_imgs.map(img => {
+                img.proof_pic = baseURL + img.proof_pic
+                return img
+            })
+            
+            this.setState({
+                task: {
+                    ...task,
+                    uploaded_imgs: undefined
+                },
+                uploaded_imgs
+            })
         })
     }
 
 
 
-    _createSubmitReview = e => {
+    _upload_img = (e, src) => {
         e.preventDefault()
+
+        let img_obj = this.state.selected_imgs.find(img => img.src === src)
 
         var data = new FormData();
         var request = new XMLHttpRequest();
+
         data.append('proof_by', this.props.auth.id)
-        data.append('proof_pic', this.state.proof_pic);
-        data.append('status', 'pending');
-
-        let task_id = this.task_id
-        if (this.review) {
-            task_id = this.state.task.task
-        }
-
-        console.log({ task_id })
-
-        data.append('task', task_id);
+        data.append('proof_pic', img_obj.file);
+        data.append('task', this.task_id);
 
 
         // load event
         request.addEventListener('load', (e) => {
-            this.props.history.goBack()
+            console.log(e)
+            this.setState({
+                selected_imgs: this.state.selected_imgs.filter(img => img.src !== src),
+                uploaded_imgs: [...this.state.uploaded_imgs, JSON.parse(e.target.response)]
+            })
         });
 
         // monitor progress of upload
         request.upload.addEventListener('progress', (e) => {
-            var up_percentage = Math.round((e.loaded / e.total) * 100)
-            this.setState({ up_percentage })
+            var progress = Math.round((e.loaded / e.total) * 100)
+            console.log({progress})
+
+            this.setState({
+                selected_imgs: [
+                    ...this.state.selected_imgs.filter(img => img.src!==src),
+                    {...img_obj, progress}
+                ]
+            })
         })
 
-        let url = baseURL + `/portal/review/`
-        // if (this.review) {
-        //     url = baseURL + `/portal/submit_task/${this.review_id}/`
-        // }
 
-        request.responseType = 'json';
-
-        let method_type = 'post'
-        if (this.review) {
-            method_type = 'put'
-        }
-
-        request.open(method_type, url);
+        request.open('post', baseURL + '/portal/reviews/');
         request.setRequestHeader('Authorization', this.props.auth.token)
         request.send(data);
     }
+
+
 
     _select_img = e => {
         e.preventDefault()
@@ -138,21 +140,21 @@ class submit_task extends Component {
                 <div>
                     <img src={img.src} alt="selected img shadow" />
                     <div className="d-flex justify-content-center">
-                        {img.progess > 0 ?
+                        {img.progress > 0 ?
                             <Fragment>
                                 <div className="progress flex-grow-1">
-                                    <div className="progress-bar progress-bar-striped" role="progressbar" style={{ width: `${this.state.progress}%` }}></div>
+                                    <div className="progress-bar progress-bar-striped" role="progressbar" style={{ width: `${img.progress}%` }}></div>
                                 </div>
-                                <div className="text-center font-weight-bold">{this.state.progess}%</div>
+                                <div className="text-center font-weight-bold">{img.progress}%</div>
                             </Fragment>
                             :
                             <Fragment>
                                 <button onClick={(e) => this._upload_img(e, img.src)} className='btn btn-success mt-0'>
-                                    <i className="fa fa-upload"></i> Upload
-                            </button>
+                                        <i className="fa fa-upload"></i> Upload
+                                </button>
                                 <button onClick={(e) => this._remove_img(e, img.src)} className='btn btn-danger mt-0'>
-                                    <i className="fa fa-times"></i> Remove
-                            </button>
+                                        <i className="fa fa-times"></i> Remove
+                                </button>
                             </Fragment>
                         }
                     </div>
@@ -160,14 +162,19 @@ class submit_task extends Component {
             </div >
         )
 
+        let uploaded_imgs = this.state.uploaded_imgs.map((img, i) =>
+            <div className='upload_img' key={i}>
+                <div>
+                    <img src={img.proof_pic} alt="selected img shadow" />
+                </div>
+                <div className="points">
+                    Points: {img.points > -1 ? img.points : 'review pending'}
+                </div>
+            </div>
+        )
+
         selected_imgs = <div className='d-flex flex-wrap justify-content-center'>{selected_imgs}</div>
 
-        const img_upload =
-            <div>
-                <img src={this.state.imgsrc} alt="selected_img" style={{ width: '300px' }} />
-
-                <div className="font-weight-bold">{this.state.up_percentage}%</div>
-            </div>
 
         return (
             <div className='user_detail container'>
@@ -210,10 +217,20 @@ class submit_task extends Component {
                         <button onClick={this._select_img} className="btn btn-primary"><i className="fa fa-image"></i> Select screenshots</button>
                     </div>
 
-                    <div className="mt-3 text-center">
+                    <div className="my-3 text-center">
                         <h3>Selected imgs:</h3>
                         {this.state.selected_imgs.length > 0 ? selected_imgs : 'none'}
                     </div>
+
+                    {this.state.uploaded_imgs.length > 0 ?
+                        <div className="my-3 text-center">
+                            <h3>Uploaded imgs:</h3>
+                            <div className='d-flex flex-wrap justify-content-center'>
+                                {uploaded_imgs}
+                            </div>
+                        </div>
+                        : null}
+
                 </form>
             </div>
         )
