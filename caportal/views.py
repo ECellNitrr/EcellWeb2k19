@@ -46,7 +46,17 @@ def get_non_submited_tasks(req):
     user =  req.ecelluser
 
     non_submited_tasks = Task.objects.exclude(review__proof_by=user.id)
-    return Response(TaskSerializer(non_submited_tasks,many=True,context={'request': req}).data)
+    return Response(LeanTaskSerializer(non_submited_tasks,many=True,context={'request': req}).data)
+
+
+@api_view(['GET'])
+@relax_ecell_user
+def get_submited_tasks(req):
+    user =  req.ecelluser
+
+    submited_tasks = Task.objects.filter(review__proof_by=user.id).distinct()
+    return Response(LeanTaskSerializer(submited_tasks,many=True,context={'request': req}).data)
+
 
 
 

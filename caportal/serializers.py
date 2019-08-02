@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField, ImageField
+from django.db.models import Sum
 from users.models import CustomUser
 from decorators import get_user
 from .models import *
@@ -36,6 +37,32 @@ class TaskSerializer(ModelSerializer):
             reviews = user.review_set.filter(task=obj.id)
             return ReviewSerializer(reviews, many=True).data
         return []
+
+
+    def get_submissions(self,obj):
+        return obj.review_set.all().count()
+
+    class Meta:
+        model = Task
+        fields = '__all__'
+
+
+class LeanTaskSerializer(ModelSerializer):
+    submissions = SerializerMethodField()
+    uploaded_imgs = SerializerMethodField()
+
+    def get_uploaded_imgs(self,obj):
+        token = self.context['request'].headers.get('Authorization','')
+
+        if not token=='':
+            user = get_user(token)
+            reviews = user.review_set.filter(task=obj.id)
+            return {
+                'total': reviews.count(),
+                'reviewed': reviews.exclude(points=-1).count(),
+                'points': reviews.exclude(points=-1).aggregate(Sum('points'))['points__sum'],
+            }
+        return {}
 
 
     def get_submissions(self,obj):

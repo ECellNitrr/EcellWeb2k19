@@ -9,7 +9,8 @@ import { connect } from 'react-redux'
 
 class submitted_list extends Component {
     state = {
-        reviews: [],
+        tasks: [],
+        loading: true
     }
 
     static propTypes = {
@@ -21,29 +22,30 @@ class submitted_list extends Component {
     }
 
     _fetch = () => {
-        // faxios().get(`/portal/submit_task/?proof_by=${this.props.auth.id}`).then(d => {
-        //     console.log(d.data)
-        //     let reviews = d.data.sort((a, b) => b.id - a.id)
-        //     reviews = reviews.map(review => {
-        //         let created_date = new Date(review.created_at)
-        //         review.created_at = created_date.toDateString()
-        //         return review
-        //     })
+        faxios().get(`/portal/submited_tasks/`).then(d => {
+            console.log(d.data)
+            let tasks = d.data.sort((a, b) => b.id - a.id)
+            tasks = tasks.map(review => {
+                let created_date = new Date(review.created_at)
+                review.created_at = created_date.toDateString()
+                return review
+            })
 
-        //     this.setState({ reviews })
-        // })
+            this.setState({ tasks,loading:false })
+        })
     }
 
 
     render() {
-        let reviews = this.state.reviews
+        let tasks = this.state.tasks
 
-        const review_html = reviews.map((review, i) =>
+        const task_html = tasks.map((task, i) =>
             <tr key={i}>
                 <td>{i + 1}</td>
-                <td><Link className='detail_link' to={`/caportal/ca/submited_tasks/${review.id}/`}>{review.task_obj.name}</Link></td>
-                <td>{review.task_obj.platform}</td>
-                <td>{review.created_at}</td>
+                <td><Link className='detail_link' to={`/caportal/ca/tasks/${task.id}/`}>{task.name}</Link></td>
+                <td>{task.platform}</td>
+                <td>{task.uploaded_imgs.reviewed}/{task.uploaded_imgs.total}</td>
+                <td>{task.uploaded_imgs.points}</td>
             </tr>
         )
 
@@ -58,14 +60,16 @@ class submitted_list extends Component {
                             <th>#</th>
                             <th>Task name</th>
                             <th>Platform</th>
-                            <th>Submited</th>
                             <th>Reviewed</th>
+                            <th>Points</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {review_html}
+                        {task_html}
                     </tbody>
                 </table>
+                {this.state.loading? <h3 className="text-center">...loading</h3>:null}
+                {!this.state.loading && this.state.tasks.length===0? <h3 className='text-center'>no submitted post available</h3>:null}
             </div>
         )
     }

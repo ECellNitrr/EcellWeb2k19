@@ -42,12 +42,6 @@ export default class task_list extends Component {
             </tr>
         )
 
-        if (this.state.loading) {
-            tasks_html = <tr><td></td><td className='text-center'>...loading</td></tr>
-        } else if (!this.state.loading && this.state.tasks.length === 0) {
-            tasks_html = <tr><td></td><td className="text-center">no new posts :)</td></tr>
-        }
-
         return (
             <div className='tasks_list container'>
                 <div className="d-flex my-4">
@@ -66,6 +60,8 @@ export default class task_list extends Component {
                         {tasks_html}
                     </tbody>
                 </table>
+                {this.state.loading? <h3 className='text-center'>...loading</h3>:null}
+                {!this.state.loading && this.state.tasks.length===0? <h3 className='text-center'>no more new posts :)</h3>:null}
             </div>
         )
     }
