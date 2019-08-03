@@ -60,7 +60,7 @@ export default class task_detail extends Component {
             <div className='user_detail container'>
                 <div className="d-flex my-5 justify-content-between">
                     <button className='btn btn-warning' onClick={() => this.props.history.goBack()}>go back</button>
-                    <h2>User details</h2>
+                    <h2>Task detail</h2>
                     <div></div>
                 </div>
 

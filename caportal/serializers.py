@@ -7,6 +7,11 @@ from .models import *
 
 
 class EcellUserSerializer(ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+
+class RanklistSerializer(ModelSerializer):
     total_points = SerializerMethodField() 
     
     def get_total_points(req,obj):

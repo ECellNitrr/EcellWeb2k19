@@ -29,7 +29,12 @@ class TaskViewset(ModelViewSet):
 
     def get_serializer_context(self):
         return {'request': self.request}
-        
+
+
+class RanklistView(generics.ListAPIView):
+    queryset = CustomUser.objects.filter(user_type='CAB')
+    serializer_class = RanklistSerializer
+
 
 class TaskListAdminView(generics.ListAPIView):
     queryset = Task.objects.filter(deleted=False)

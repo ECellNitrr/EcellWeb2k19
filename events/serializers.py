@@ -18,7 +18,7 @@ class EventListSerializer(serializers.ModelSerializer):
     def get_registered(self,obj):
         token = self.context['request'].headers.get('Authorization')
 
-        if not token == 'undefined':
+        if (not token == 'undefined') and token:
             user = get_user(token)
             user_registered = user.eventregister_set.filter(event_id=obj.id).count() 
             return True if user_registered else False

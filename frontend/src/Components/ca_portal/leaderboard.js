@@ -9,7 +9,7 @@ export default class leaderboard extends Component {
 
 
     componentDidMount() {
-        faxios().get('/portal/users/').then(d => {
+        faxios().get('/portal/ranklist/').then(d => {
             let users = d.data.sort((a,b)=>b.total_points-a.total_points)
             users.map(user=>{
                 let created_at = new Date(user.created_at)
