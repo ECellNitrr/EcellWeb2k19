@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
-from .models import Question, Questionset
+from .models import Question, Questionset, Option
 import time
 
 @receiver(post_save, sender=Questionset)
@@ -18,6 +18,8 @@ def announce_new_questions(sender, instance, created, **kwargs):
             question.flag = True
             question.save()
             wait = question.time_limit
+            options = [opt.option for opt in Option.objects.filter(question=question)]
+            options_id = [opt.id for opt in Option.objects.filter(question=question)]
             if question.meta is None or question.meta=='':
                 meta_data = ''
             else:
@@ -34,6 +36,8 @@ def announce_new_questions(sender, instance, created, **kwargs):
                     "meta":meta_data,
                     "time_limit":question.time_limit,
                     "score":question.score,
+                    "options":options,
+                    "option_id":options_id
                 }
             )
             time.sleep(wait)
@@ -42,13 +46,15 @@ def announce_new_questions(sender, instance, created, **kwargs):
                 "bquiz",{
                     "type":"quiz.question",
                     "event":"New Question",
-                    "id":"",
+                    "id":0,
                     "show":False,
                     "question":'',
                     "description":'',
                     "meta":'',
                     "time_limit":0,
-                    "score":'',
+                    "score":0.0,
+                    "options":[],
+                    "option_id":[]
                 }
             )
             time.sleep(10) #time between two questions
