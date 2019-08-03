@@ -53,8 +53,8 @@ class review_submissions extends Component {
         }
 
 
-        if (points > 20 || points < 0 || points === '' || points === null) {
-            alert('points can be only within 0 and 20')
+        if (points > 10 || points < 0 || points === '' || points === null) {
+            alert('points can be only within 0 and 10')
             return
         }
 
