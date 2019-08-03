@@ -7,16 +7,21 @@ from .models import *
 
 
 class EcellUserSerializer(ModelSerializer):
+    total_points = SerializerMethodField() 
+    
+    def get_total_points(req,obj):
+        return obj.review_set.aggregate(Sum('points'))['points__sum']
+    
     class Meta:
         model = CustomUser
         fields = '__all__'
-
 
 
 class EcellUserRegistrationSerializer(ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['first_name', 'last_name', 'email', 'username', 'contact', 'password', 'otp','user_type', 'applied', 'verified']
+
 
 
 class ReviewSerializer(ModelSerializer):
