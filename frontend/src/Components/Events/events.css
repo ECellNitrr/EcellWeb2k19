@@ -167,6 +167,12 @@
     text-align: center;
   }
 
+  @media(max-width:450px){
+    .event-email{
+      font-size: 15px;
+    }
+  }
+
   .event-details{
     text-align:justify;
     font-weight: 600;
@@ -213,13 +219,42 @@
   font-weight: 800;
   color: white;
   position: relative;
-  left: 50%;
-  transform: translate(-50%,0);
   font-size: 20px;
 }
 
 .register-btn:hover{
- background: red;
- color: white;
+  background: green;
+  color: white;
 }
 
+.register-btn-success{
+ background: green;
+ color: white;
+ font-weight: 800;
+ font-size: 15px;
+}
+
+.button-div{
+  position: relative;
+  max-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+.button-div button{
+  flex: 1 0 300px;
+}
+
+@media(max-width:350px){
+  .button-div button{
+    flex: 1 0 270px;
+  }
+}
+
+@media(max-width:1180px){
+  .registered{
+    text-align: center;
+  }
+}
