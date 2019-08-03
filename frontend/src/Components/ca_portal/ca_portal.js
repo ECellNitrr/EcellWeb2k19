@@ -26,8 +26,14 @@ export class ca_portal extends Component {
             alert('You are not CA or admin yet!')
             this.props.history.push('/caportal_info')
         } else if (user.user_type === 'CAB') {
+            if(this.props.location.pathname.indexOf('/ca/')>0){
+                return
+            }
             this.props.history.push('/caportal/ca')
         } else {
+            if(this.props.location.pathname.indexOf('/admin/')>0){
+                return
+            }
             this.props.history.push('/caportal/admin')
         }
     }
