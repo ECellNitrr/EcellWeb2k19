@@ -14,11 +14,7 @@ export default class team_list extends Component {
     }
 
     componentDidMount(){
-<<<<<<< HEAD
         faxios().get('team/team_years/').then(res=>{
-=======
-        faxios().get('/team/team_years/').then(res=>{
->>>>>>> 8824b61e6e9137e372a3724cd31ed1398efa6830
             
             let data=res.data.years
             let team_extract=[]
@@ -27,6 +23,8 @@ export default class team_list extends Component {
                 let year = el[0];
                 team_extract.push(year);
             });
+
+            team_extract.push(2014)
             let year_sorted=team_extract.sort().reverse();
             
             this.setState({
@@ -36,10 +34,20 @@ export default class team_list extends Component {
         })
     }
 
+    _modal_2014 =(e)=>{
+        e.preventDefault()
+        document.querySelector('#team_2014_toggle').click()
+    }
+
+
     render() {
         
         let team_year_html= this.state.team_years.map(year=>{
-            return <div key={year}><Link to={`/team/${year}`}><button className="btn" >Team of {year}</button></Link></div> 
+            if(year!==2014){
+                return <div key={year}><Link to={`/team/${year}`}><button className="btn" >Team of {year}</button></Link></div> 
+            }else{
+                return <div key={year}><Link onClick={this._modal_2014} to=""><button className="btn" >Team of 2014</button></Link></div> 
+            }
         })
 
         return (

@@ -215,15 +215,15 @@
 }
 
 .register-btn{
-  background: black;
+  background: black !important;
   font-weight: 800;
-  color: white;
+  color: white !important;
   position: relative;
   font-size: 20px;
 }
 
 .register-btn:hover{
-  background: green;
+  background: green !important;
   color: white;
 }
 
