@@ -29,6 +29,8 @@ class Member(models.Model):
     member_type = models.CharField(max_length=3, choices= MEMBER_TYPE, default='EXEC')
     year = models.IntegerField(default=2019)
     domain = models.CharField(max_length=100, choices=domain_choices, default='pr')
+    linkedin = models.URLField(blank=True, null=True)
+    facebook = models.URLField(blank=True, null=True)
 
 
     @property
