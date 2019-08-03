@@ -1,6 +1,9 @@
 from django.contrib import admin
-from .models import Question, Questionset
+from .models import *
 
-# Register your models here.
 admin.site.register(Question)
 admin.site.register(Questionset)
+admin.site.register(Answer)
+admin.site.register(RightAnswer)
+admin.site.register(Option)
+admin.site.register(Leader)
