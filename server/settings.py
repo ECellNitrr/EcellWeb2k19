@@ -64,6 +64,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'server.urls'
+CSRF_COOKIE_SECURE = True
 
 TEMPLATES = [
     {
@@ -171,3 +172,11 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.TemplateHTMLRenderer',
     ]
 }
+
+class DisableCSRF(object):
+    def process_request(self, request):
+        setattr(request, '_dont_enforce_csrf_checks', True)
+
+MIDDLEWARE_CLASSES = (
+    DisableCSRF,
+)
