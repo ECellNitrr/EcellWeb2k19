@@ -9,7 +9,7 @@ export default class tasks_list extends Component {
     }
 
     componentDidMount() {
-        faxios().get('/portal/tasks/').then(d => {
+        faxios().get('/portal/task_list_admin/').then(d => {
             let tasks = d.data.sort((a,b)=>b.id-a.id)
             tasks.map(task=>{
                 let created_at = new Date(task.created_at)
@@ -17,6 +17,7 @@ export default class tasks_list extends Component {
                 return task
             })
             
+            console.log(tasks)
             this.setState({
                 tasks
             })
@@ -37,7 +38,6 @@ export default class tasks_list extends Component {
                 <td>{task.platform}</td>
                 <td>{task.pending}</td>
                 <td>{task.accepted}</td>
-                <td>{task.rejected}</td>
                 <td>{task.created_at}</td>
                 <td><Link className='p-1 badge badge-primary' to={`/caportal/admin/review_taskwise/${task.id}/`}>Review</Link> </td>
             </tr>
@@ -59,7 +59,6 @@ export default class tasks_list extends Component {
                             <th>Platform</th>
                             <th>Pending</th>
                             <th>Accepted</th>
-                            <th>Rejected</th>
                             <th>Created on</th>
                             <th>Submissions</th>
                         </tr>

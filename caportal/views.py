@@ -8,6 +8,7 @@ from rest_framework.parsers import JSONParser, MultiPartParser,FileUploadParser
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.renderers import JSONRenderer
+from rest_framework import generics
 from rest_framework import status
 import jwt
 
@@ -26,21 +27,26 @@ class TaskViewset(ModelViewSet):
     queryset = Task.objects.filter(deleted=False)
     serializer_class = TaskSerializer
 
+    def get_serializer_context(self):
+        return {'request': self.request}
 
-class SubmitTaskViewset(ModelViewSet):
-    queryset = SubmitTask.objects.all()
-    serializer_class = SubmitTaskSerializer
+
+class RanklistView(generics.ListAPIView):
+    queryset = CustomUser.objects.filter(user_type='CAB')
+    serializer_class = RanklistSerializer
+
+
+class TaskListAdminView(generics.ListAPIView):
+    queryset = Task.objects.filter(deleted=False)
+    serializer_class = TaskListAdminSerializer
+
+
+class ReviewViewset(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('proof_by', 'status','task')
+    filterset_fields = ('proof_by', 'points','task')
 
-
-@api_view(['GET'])
-@relax_ecell_user
-def get_non_submited_tasks(req):
-    user =  req.ecelluser
-
-    non_submited_tasks = Task.objects.exclude(submittask__proof_by=user.id)
-    return Response(TaskSerializer(non_submited_tasks,many=True).data)
 
 
 @api_view(['GET'])
@@ -48,8 +54,17 @@ def get_non_submited_tasks(req):
 def get_non_submited_tasks(req):
     user =  req.ecelluser
 
-    non_submited_tasks = Task.objects.exclude(submittask__proof_by=user.id)
-    return Response(TaskSerializer(non_submited_tasks,many=True).data)
+    non_submited_tasks = Task.objects.exclude(review__proof_by=user.id)
+    return Response(LeanTaskSerializer(non_submited_tasks,many=True,context={'request': req}).data)
+
+
+@api_view(['GET'])
+@relax_ecell_user
+def get_submited_tasks(req):
+    user =  req.ecelluser
+
+    submited_tasks = Task.objects.filter(review__proof_by=user.id).distinct()
+    return Response(LeanTaskSerializer(submited_tasks,many=True,context={'request': req}).data)
 
 
 
@@ -118,24 +133,3 @@ def create_user(req):
         }, status=res_status)
 
 
-
-@api_view(['POST'])
-def submit_task_score(req):
-    data = JSONParser().parse(req)
-
-    review = SubmitTask.objects.get(pk=data['review_id'])
-    review.status = data['status']
-    review.save()
-
-    return Response({})
-
-
-# @api_view(['POST'])
-# @parser_classes([MultiPartParser])
-# def submit_task_patch_alt(request, review_id):
-#     review = SubmitTask.objects.get(pk=review_id)
-#     review.
-
-#     print(review_id)
-
-#     return Response({})

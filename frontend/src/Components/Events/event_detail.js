@@ -83,30 +83,6 @@ class event_detail extends Component{
                 btnloader:false
             })
         }
-
-        /*{this.props.auth.loggedin ?(
-            this.props.auth.verified ? (
-                faxios().post(`/events/register/${this.props.match.params.id}/`).then(res=>{
-                    console.log(res);
-                    let total_registrations = this.state.people_registered;
-                    this.setState({
-                        register:true,
-                        btnloader:false,
-                        people_registered:(total_registrations + 1)
-                    })
-                    
-                }).catch(res=>{
-                    console.log(res)
-                })
-            ):(alert("Please verify your phone number before registration. To do the same click on your name."))
-        ) : (
-            alert("Please login to continue")
-            /*this.setState({
-                btnloader:false
-            })
-            
-        )}*/
-
         
     }
     

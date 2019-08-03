@@ -10,6 +10,7 @@ import TaskDetail from './task_detail'
 import Dashboard from '../dashboard'
 import Navbar from './navbar'
 import ReviewSubmissions from './review_submissions'
+import Leaderboard from '../leaderboard'
 
 
 export default class For_admin extends Component {
@@ -27,6 +28,7 @@ export default class For_admin extends Component {
                     <Route path={this.base_route + 'users/:user_id'} component={UserDetails}/>
                     <Route path={this.base_route + 'create_user/'} component={CreateUser}/>
                     <Route path={this.base_route + 'users/'} component={UserList}/>
+                    <Route path={this.base_route + 'leaderboard/'} component={Leaderboard}/>
                     <Route path={this.base_route + ''} component={Dashboard}/>
                 </Switch>
             </div>

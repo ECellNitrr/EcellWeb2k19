@@ -121,7 +121,7 @@ class team extends Component {
         members = members.map(member => (
             <div key={member.id} className='text-center'>
                 <div>
-                    {title === "Head_Career_Development" ||title === "Director" ||title === "Faculty Incharge" ||title === "Overall Co-ordinators" ||title === "Head Co-ordinators" ? (
+                    {title === "Head of Career Development" ||title === "Director" ||title === "Faculty Incharge" ||title === "Overall Co-ordinators" ||title === "Head Co-ordinators" ? (
                     <div>
                             <div>
                                 <img

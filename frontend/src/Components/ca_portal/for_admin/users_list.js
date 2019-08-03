@@ -5,13 +5,15 @@ import faxios from '../../../axios'
 
 export default class users_list extends Component {
     state = {
-        ecell_users: []
+        ecell_users: [],
+        loading: true
     }
 
     componentDidMount() {
         faxios().get('/portal/users/').then(d => {
             this.setState({
-                ecell_users: d.data.sort((a,b)=>b.id-a.id)
+                ecell_users: d.data.sort((a,b)=>b.id-a.id),
+                loading: false
             })
         })
     }
@@ -74,6 +76,7 @@ export default class users_list extends Component {
                         {ecell_users_html}
                     </tbody>
                 </table>
+                {this.state.loading?<h3 className="text-center mt-3">...loading</h3>:null}
             </div>
         )
     }
