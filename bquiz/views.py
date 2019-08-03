@@ -27,7 +27,7 @@ def submit_answer(request):
             leader.save()
         if question.right_answer[0]==answer:
             score = question.score
-            bonus = time
+            bonus = question.time_limit - time
         leader.score += (score+bonus)
         request.ecelluser.bquiz_score += (score+bonus)
         request.ecelluser.save()
