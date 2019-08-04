@@ -15,7 +15,7 @@ class RanklistSerializer(ModelSerializer):
     total_points = SerializerMethodField() 
     
     def get_total_points(req,obj):
-        return obj.review_set.aggregate(Sum('points'))['points__sum']
+        return obj.review_set.exclude(points=-1).aggregate(Sum('points'))['points__sum']
     
     class Meta:
         model = CustomUser

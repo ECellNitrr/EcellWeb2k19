@@ -58,6 +58,18 @@ class submit_task extends Component {
         data.append('proof_pic', img_obj.file);
         data.append('task', this.task_id);
 
+        
+        
+        // just to make the upload btn disappear
+        let selected_imgs = this.state.selected_imgs
+        const uploading_img_index = selected_imgs.findIndex(img => img.src==src)
+        selected_imgs[uploading_img_index].progress = 0
+
+        this.setState({                
+            selected_imgs
+        })
+
+
 
         // load event
         request.addEventListener('load', (e) => {
@@ -72,12 +84,13 @@ class submit_task extends Component {
         request.upload.addEventListener('progress', (e) => {
             var progress = Math.round((e.loaded / e.total) * 100)
             console.log({progress})
+            
+            let selected_imgs = this.state.selected_imgs
+            const uploading_img_index = selected_imgs.findIndex(img => img.src==src)
+            selected_imgs[uploading_img_index].progress = progress
 
-            this.setState({
-                selected_imgs: [
-                    ...this.state.selected_imgs.filter(img => img.src!==src),
-                    {...img_obj, progress}
-                ]
+            this.setState({                
+                selected_imgs
             })
         })
 
