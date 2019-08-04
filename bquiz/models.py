@@ -1,6 +1,12 @@
 from django.db import models
 from users.models import CustomUser
 
+class ActivateQuiz(models.Model):
+    questionset = models.OneToOneField('Questionset', on_delete=models.CASCADE)
+    active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    modified_at = models.DateTimeField(auto_now=True, editable=False)
+    
 class Questionset(models.Model):
     name = models.CharField(max_length=256)
     description = models.TextField()
@@ -22,6 +28,15 @@ class Questionset(models.Model):
                     questionset.save()
             self.flag = True
         super(Questionset, self).save(*args, **kwargs)
+        
+        try:
+            curr_activate = ActivateQuiz.objects.get(questionset=self)
+        except:
+            activatequiz = ActivateQuiz()
+            activatequiz.questionset = self
+            activatequiz.save()
+        else:
+            pass
 
 class Question(models.Model):
     CHOICES = (
@@ -109,3 +124,4 @@ class Leader(models.Model):
     score = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
+    

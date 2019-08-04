@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from .models import Question, Questionset, Option
+from .consumers import BquizConsumer
 import time
 
 @receiver(post_save, sender=Questionset)
@@ -23,7 +24,7 @@ def announce_new_questions(sender, instance, created, **kwargs):
             if question.meta is None or question.meta=='':
                 meta_data = ''
             else:
-                meta_data = question.meta.url
+                meta_data = 'https://17c331a6.ngrok.io'+question.meta.url
             print(question.question)
             async_to_sync(channel_layer.group_send)(
                 "bquiz",{
@@ -37,7 +38,9 @@ def announce_new_questions(sender, instance, created, **kwargs):
                     "time_limit":question.time_limit,
                     "score":question.score,
                     "options":options,
-                    "option_id":options_id
+                    "option_id":options_id,
+                    "right_answer":question.right_answer.right_option.id,
+                    "end":False
                 }
             )
             time.sleep(wait)
@@ -52,12 +55,31 @@ def announce_new_questions(sender, instance, created, **kwargs):
                     "description":'',
                     "meta":'',
                     "time_limit":0,
-                    "score":0.0,
+                    "score":0,
                     "options":[],
-                    "option_id":[]
+                    "option_id":[],
+                    "right_answer":0,
+                    "end":False
                 }
             )
             time.sleep(10) #time between two questions
             
         instance.flag = False
         instance.save()
+        async_to_sync(channel_layer.group_send)(
+        "bquiz",{
+            "type":"quiz.question",
+            "event":"New Question",
+            "id":0,
+            "show":False,
+            "question":'',
+            "description":'',
+            "meta":'',
+            "time_limit":0,
+            "score":0,
+            "options":[],
+            "option_id":[],
+            "right_answer":0,
+            "end":True
+        }
+    )
