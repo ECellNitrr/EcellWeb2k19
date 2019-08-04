@@ -11,6 +11,7 @@ db.sqlite3
 *.pyc
 
 static/uploads/caportal/
+*/migrations/0*.py
 
 
 #Vscode
