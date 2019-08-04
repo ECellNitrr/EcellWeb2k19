@@ -236,7 +236,7 @@
 
   
 
-  @media(max-width:1257px){
+  @media(max-width:1450px){
     .brand-header{
       display: none;
     }
@@ -283,33 +283,42 @@
     z-index: 10;
     top: 35px;
     right: 120px;
+   
   }
 
  
 
 
   @media(max-width:1370px){
-    .btn1{
-      padding: 10px;
-      font-size: 18px !important;
-    }
+
 
     .login-button1{
       top: 40px;
     }
   }
   
-  @media(max-width:795px){
+  @media(max-width:1060px){
     .login-button1{
       position: absolute;
       left: 50%;
       transform: translate(-50%,0);
-      top: 110px;
+      top: 120px;
       display: flex;
       justify-content: center;
+      width:300px !important;
     }
 
+      .btn1{
+      padding: 10px;
+      font-size: 18px !important;
+    }
     
+  }
+
+  @media(max-width:695px){
+    .btn1{
+      font-size: 16px !important;
+    }
   }
 
   
