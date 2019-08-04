@@ -26,21 +26,91 @@ class signup extends Component {
     _singup = e => {
         e.preventDefault()
 
-        if(this.password.value.length<8){
-            this.setState({
-                success:false,
-                err: true,
-                errmsg: 'password should have minimum 8 characters'
-            })
-            return
-        }
-
         this.setState({
             success:false,
             err: false,
             errmsg: '',
             loader:true
         })
+
+        if(this.first_name.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'First Name is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.last_name.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Last Name is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.contact.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Contact is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.contact.value.length!=10){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Contact is invalid',
+                loader:false
+            })
+            return
+        }
+
+        if(this.email.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is required',
+                loader:false
+            })
+            return
+        }
+
+        let email_value= this.email.value
+
+        let verify_email=(email)=>{
+            let re = /\S+@\S+\.\S+/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        if(verify_email(email_value)===false){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is invalid',
+                loader:false
+            })
+            return
+        }
+
+        if(this.password.value.length<8){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Password should have minimum 8 characters',
+                loader:false
+            })
+            return
+        }
+
+       
 
         faxios().post('/users/register/',{
             first_name: this.first_name.value,

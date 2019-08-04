@@ -21,8 +21,8 @@ const Team = lazy(() => import('./Components/Team/team'));
 const Yearwise_team = lazy(()=> import('./Components/Team/team_list'));
 const Yearwise_spons = lazy(()=> import('./Components/Sponsors/yearwise_sponsors'));
 const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
-
-
+const Terms = lazy(()=> import('./Components/Footer/terms'));
+const Policy= lazy(()=>import('./Components/Footer/privacy'));
 
 class App extends Component {
   render() {
@@ -48,10 +48,10 @@ class App extends Component {
               <Route path='/caportal_info' component={CaPortalInfo} />
               <Route path='/caportal' component={CaPortal} />
               <Route path='/team/yearwise' component={Yearwise_team}/>
-              <Route path='/team/:year' component={Team} />
-              
+              <Route path='/team/:year' component={Team} /> 
               <Route path='/team' component={() => <Redirect to='/team/2019' />} />
-              
+              <Route path='/terms' component={Terms} />
+              <Route path='/policy' component={Policy} />
             </Switch>
           </div>
         </BrowserRouter>

@@ -26,7 +26,7 @@ class logout extends Component {
     }
 
     _request_approval = e => {
-        e.preventDefault()
+        
 
         faxios().get('/users/request_ca_approval/').then(d => {
             alert('You have successfully applied for CA! You can confirm it by clicking on your name on top right corner')
@@ -45,7 +45,10 @@ class logout extends Component {
     }
 
     _logout = e => {
-        this.props.updateUser({ loggedin: false })
+        this.props.updateUser({ 
+            loggedin: false,
+            token: null
+         })
         this.close_btn.click()
     }
 

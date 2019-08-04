@@ -24,7 +24,8 @@ class login extends Component {
     state = {
         err: false,
         success: false,
-        loader:false
+        loader:false,
+        errmsg:""
     }
 
     _forget_pass= e =>{
@@ -38,9 +39,58 @@ class login extends Component {
         this.setState({
             success:false,
             err: false,
-            loader:true
+            loader:true,
+            errmsg:""
         })
 
+        if(this.email.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is required',
+                loader:false
+            })
+            return
+        }
+
+        let email_value= this.email.value
+
+        let verify_email=(email)=>{
+            let re = /\S+@\S+\.\S+/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        if(verify_email(email_value)===false){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is invalid',
+                loader:false
+            })
+            return
+        }
+
+        if(this.password.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Password is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.password.value.length<8){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Password should have minimum 8 characters',
+                loader:false
+            })
+            return
+        }
+
+       
 
         faxios().post('/users/login/',{
             email: this.email.value,
@@ -69,7 +119,8 @@ class login extends Component {
             this.setState({
                 success:false,
                 err: true,
-                loader:false
+                loader:false,
+                errmsg:"Please provide valid credentials."
             })
             
 
@@ -84,12 +135,12 @@ class login extends Component {
     }
     
     render() {
-        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">Please provide valid credentials!</div>
+        const errrmsg = <div className="my-3 text-danger font-weight-bold text-center">{this.state.errmsg}</div>
         const scsmsg = <div className="my-3 text-success font-weight-bold text-center">Your have successfully loggedin</div>
 
         return (
             <div className="tab-pane fade in show active" id="panel7" role="tabpanel">
-                {this.state.err ? errmsg:null}
+                {this.state.err ? errrmsg:null}
                 {this.state.success ? scsmsg:null}
             
                 <div className="modal-body mb-1">

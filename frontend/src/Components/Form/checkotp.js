@@ -8,7 +8,8 @@ export default class forgetPass extends Component {
     state = {
         err: false,
         success: false,
-        loader: false
+        loader: false,
+        errmsg:''
     }
     /*HandleEnter = (event)=>{
         const submitButton =document.getElementById("verifyOTPButton");
@@ -30,6 +31,16 @@ export default class forgetPass extends Component {
             success: false,
             loader: true
         })
+
+        if(this.otp.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'OTP is required',
+                loader:false
+            })
+            return
+        }
 
         faxios().post('users/check_otp/', {
             otp: this.otp.value,
@@ -67,7 +78,8 @@ export default class forgetPass extends Component {
             this.setState({
                 success: false,
                 err: true,
-                loader: false
+                loader: false,
+                errmsg:"Invalid OTP"
             })
 
             setTimeout(() => {
@@ -81,7 +93,7 @@ export default class forgetPass extends Component {
     }
 
     render() {
-        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">Invalid OTP</div>
+        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">{this.state.errmsg}</div>
         const scsmsg = <div className="my-3 text-success font-weight-bold text-center">OTP verification Successful</div>
         return (
 
