@@ -1,4 +1,11 @@
 .caportal-wrapper{
+    .progress-bar {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+    }​
     .detail_link{
         font-weight: bold;
         color: blue;
