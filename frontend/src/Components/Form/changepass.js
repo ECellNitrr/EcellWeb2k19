@@ -5,11 +5,11 @@ import Loader from "./loader";
 
 export default class changePass extends Component{
 
-    axios = faxios()
     state = {
         err: false,
         success: false,
-        loader:false
+        loader:false,
+        errmsg:''
     }
 
 
@@ -21,7 +21,27 @@ export default class changePass extends Component{
             loader:true
         })
 
-        this.axios.post('users/change_password/',{
+        if(this.password.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Password is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.password.value.length<8){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Password should have minimum 8 characters',
+                loader:false
+            })
+            return
+        }
+
+        faxios().post('users/change_password/',{
             email: this.email.value,
             otp:this.otp.value,
             password:this.password.value
@@ -45,13 +65,14 @@ export default class changePass extends Component{
             this.setState({
                 err: true,
                 success: false,
-                loader:false
+                loader:false,
+                errmsg:"Please retry"
             })
         })
     }
 
     render(){
-        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">Invalid OTP</div>
+        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">{this.state.errmsg}</div>
         const scsmsg = <div className="my-3 text-success font-weight-bold text-center">Password successfully changed. Please Login</div>
         return(
             
@@ -76,7 +97,7 @@ export default class changePass extends Component{
 
                     <div className="md-form form-sm mb-4">
                         <i className="fas fa-lock prefix"></i>
-                        <input type="password" ref={ele=>this.password = ele} className="form-control form-control-sm validate" placeholder="Your new password"></input>
+                        <input type="password" ref={ele=>this.password = ele} className="form-control form-control-sm validate" placeholder="Your new password(min 8 chars)"></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_11"></label>
                     </div>
 

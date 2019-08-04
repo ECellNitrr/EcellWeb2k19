@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class App(models.Model):
 	name = models.CharField(max_length=256, default='app1')
@@ -6,6 +7,8 @@ class App(models.Model):
 	link = models.URLField(blank=True)
 	version = models.IntegerField(default=1, blank=False, null=False)
 	flag=models.BooleanField(default=False)
+	i_date = models.DateField(default= datetime.datetime('2019,08,31'))
+	f_date = models.DateField(default= datetime.datetime('2019,09,01'))
 
 	def __str__(self):
 		return self.name

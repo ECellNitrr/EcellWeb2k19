@@ -5,11 +5,11 @@ import Loader from "./loader";
 
 export default class forgetPass extends Component{
 
-    axios = faxios()
     state = {
         err: false,
         success: false,
-        loader:false
+        loader:false,
+        errmsg:''
     }
 
     /*HandleEnter = (event)=>{
@@ -33,10 +33,37 @@ export default class forgetPass extends Component{
             success: false,
             loader:true
         })
+
+        if(this.email.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is required',
+                loader:false
+            })
+            return
+        }
+
+        let email_value= this.email.value
+
+        let verify_email=(email)=>{
+            let re = /\S+@\S+\.\S+/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        if(verify_email(email_value)===false){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is invalid',
+                loader:false
+            })
+            return
+        }
       
 
 
-        this.axios.post('users/forgot_password/',{
+        faxios().post('users/forgot_password/',{
             email: this.email.value
         }).then(d=>{
             let data = d.data
@@ -71,7 +98,8 @@ export default class forgetPass extends Component{
             this.setState({
                 success:false,
                 err: true,
-                loader:false
+                loader:false,
+                errmsg:"Account with this email id doesn't exists. Kindly signup or retry with correct email address."
             })
 
             setTimeout(()=>{
@@ -85,7 +113,7 @@ export default class forgetPass extends Component{
     }
 
     render(){
-        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">Account with this email id doesn't exists. Kindly signup or retry with correct email address.</div>
+        const errmsg = <div className="my-3 text-danger font-weight-bold text-center">{this.state.errmsg}</div>
         const scsmsg = <div className="my-3 text-success font-weight-bold text-center"></div>
         return(
             

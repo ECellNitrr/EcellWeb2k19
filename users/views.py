@@ -61,6 +61,8 @@ class RegistrationAPIView(APIView):
                 res_token = token
                 res_status = status.HTTP_200_OK
 
+            user_obj = CustomUser.objects.get(email=user['email'])
+
             return Response({
                 "message": res_message,
                 "detail": res_detail,
@@ -76,6 +78,7 @@ class RegistrationAPIView(APIView):
                 'linkedin' : 0,
                 'facebook' : 0,
                 'applied' : 0,
+                'id': user_obj.id
             }, status=res_status)
 
 class LoginAPIView(APIView):
@@ -139,6 +142,7 @@ class LoginAPIView(APIView):
                     'linkedin' : user.linkedin,
                     'facebook' : user.facebook,
                     'applied' : user.applied,
+                    'id': user.id
                 }, status=res_status)
         # except:
             # traceback.print_exc()
@@ -334,4 +338,5 @@ def get_user_details(request):
         'linkedin' : user.linkedin,
         'facebook' : user.facebook,
         'applied' : user.applied,
+        'id': user.id
     }, status=res_status)

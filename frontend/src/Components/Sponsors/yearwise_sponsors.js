@@ -4,6 +4,7 @@ import './sponsors.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import faxios from '../../axios';
+import Loader from '../api_loader/api_loader'
 
 
 
@@ -11,7 +12,8 @@ class Sponsors extends Component{
     
     axios = faxios()
     state={
-        spons_years:[]
+        spons_years:[],
+        loading:true
     }
 
     componentDidMount(){
@@ -20,8 +22,11 @@ class Sponsors extends Component{
             let data = res.data.spons_year;
             console.log(data);
             this.setState({
-                spons_years:data
+                spons_years:data,
+                loading:false
             })
+
+
         })
     }
     
@@ -39,24 +44,10 @@ class Sponsors extends Component{
 
                 <div className="header1">OUR SPONSORS</div>
                 <div className="container-fluid ctn11">
-                    <div>
-                        {/*<div><Link to="/sponsors/2019" ><button className="btn" >Sponsors 2019</button></Link></div>*/}
-                        {spons_year_html}
-                        
-                    </div>
-                </div>
-
-                {/*<h2 className="header3">SPONSORSHIP GALLERY</h2>
-                <div className="container-fluid ctn15">
-                    <div>
-                        <div><a href="#"><button className="btn" >Sponsors Of E-Summit'19</button></a></div>
-                        <div><a href="#"><button className="btn" >Sponsors Of E-Summit'18</button></a></div>
-                        <div><a href="#"><button className="btn" >Sponsors Of E-Summit'17</button></a></div>
-                        <div><a href="#"><button className="btn" >Sponsors Of E-Summit'16</button></a></div>
-                        <div><a href="#"><button className="btn" >Sponsors Of E-Summit'15</button></a></div>
-                    </div>
-        </div>*/}
-                
+                        <div>
+                            {this.state.loading ? (<Loader/>):(spons_year_html) }
+                        </div>
+                </div>    
                 
                 <Footer/>
             </div>

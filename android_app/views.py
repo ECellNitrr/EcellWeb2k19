@@ -21,11 +21,16 @@ def latest_build(request):
         res_version=app.version
         res_url= app.link
         res_message= app.log
+        res_idate = app.i_date
+        res_fdate = app.f_date
     else:
         res_status= status.HTTP_404_NOT_FOUND
     return Response({
         "message": res_message,
         "version": res_version,
         "URL": res_url,
+        "i_date": res_idate,
+        "f_date": res_fdate
+
         }, status= res_status
     )

@@ -11,7 +11,7 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -46,8 +46,12 @@ INSTALLED_APPS = [
     'speakers',
     'android_app',
     'corsheaders',
-    'ca_portal',
+    'caportal',
     'gallery',
+    'django_filters',
+    'bquiz',
+    'channels',
+    'feedback',
 ]
 
 MIDDLEWARE = [
@@ -63,11 +67,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'server.urls'
+CSRF_COOKIE_SECURE = True
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['frontend/build/','templates'],
+        'DIRS': ['frontend/build/','templates', TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -168,5 +173,26 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework.renderers.TemplateHTMLRenderer',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
     ]
+}
+
+class DisableCSRF(object):
+    def process_request(self, request):
+        setattr(request, '_dont_enforce_csrf_checks', True)
+
+MIDDLEWARE_CLASSES = (
+    DisableCSRF,
+)
+ASGI_APPLICATION = 'server.routing.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
 }

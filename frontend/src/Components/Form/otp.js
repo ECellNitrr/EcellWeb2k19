@@ -27,7 +27,8 @@ class otp extends Component {
         err: false,
         success: false,
         resend : false,
-        loader:false
+        loader:false,
+        errmsg:''
     }
 
     _verify_otp = e => {
@@ -39,6 +40,17 @@ class otp extends Component {
             err: false,
             loader:true
         })
+
+        if(this.otp.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'OTP is required',
+                loader:false
+            })
+            return
+        }
+
 
         faxios().post('/users/verify_otp/',{
             otp: this.otp.value
@@ -57,7 +69,8 @@ class otp extends Component {
             this.setState({
                 success:false,
                 err: true,
-                loader:false
+                loader:false,
+                errmsg:"The entered OTP is not valid!"
             })
             console.error(err)
         })
@@ -74,7 +87,7 @@ class otp extends Component {
     
     
     render() {
-        const errmsg = <div className="mt-3 text-danger font-weight-bold text-center">The entered OTP is not valid!</div>
+        const errmsg = <div className="mt-3 text-danger font-weight-bold text-center">{this.state.errmsg}</div>
         const scsmsg = <div className="mt-3 text-success font-weight-bold text-center">Logged in as </div>
 
         const resend_otp =

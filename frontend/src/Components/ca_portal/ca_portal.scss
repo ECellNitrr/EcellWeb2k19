@@ -1,0 +1,83 @@
+.caportal-wrapper{
+    .detail_link{
+        font-weight: bold;
+        color: blue;
+        cursor: pointer !important;
+    }
+    .progress-bar {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+    }​
+    .ecell-logo{
+        width: 200px;
+    }
+    .username{
+        margin: 0 5px;
+        padding: 5px 10px;
+        border: 1px solid black
+    }
+    .btn{
+        padding: 8px 16px;
+    }
+    .navlink{
+        margin: 10px;
+        padding: 5px 10px;
+        border-radius: 3px;
+        background: #ddd;
+        border: none;
+        outline: none;
+    }
+    .active_navlink{
+        background: skyblue;
+        // font-weight: bold;
+        color: white;
+    }
+    .logout_btn{
+        background: rgb(209, 74, 74);
+        color: white;
+    }
+    input,textarea{
+        border: 1px solid grey;
+    }
+    .upload_img{
+        box-shadow: 5px 3px 30px -10px grey;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    }
+}
+.review{
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 30px auto;
+    text-align: center;
+    img{
+        width: 100%;
+    }
+
+    .user_details{
+        span{
+            background: #ddd;
+            padding: 3px 7px;
+            margin: 8px 2px;
+            border-radius: 4px;
+        }
+    }
+}
+
+.modal_review{
+    max-width: 100%;
+    width: 100%;
+    img{
+        width: 100%;
+        max-width: 768px;
+    }
+}
