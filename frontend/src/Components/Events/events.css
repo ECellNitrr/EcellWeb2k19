@@ -234,13 +234,10 @@
  font-size: 15px;
 }
 
-<<<<<<< HEAD
 .register-btn-success:disabled{
   background: green;
 }
 
-=======
->>>>>>> 912da2d5aaffaf067fb05c95549657091f56fc2f
 .button-div{
   position: relative;
   max-width: 300px;
@@ -248,7 +245,6 @@
   flex-wrap: wrap;
   left: 50%;
   transform: translate(-50%,0);
-<<<<<<< HEAD
 }
 
 .button-div button{
@@ -261,20 +257,6 @@
   }
 }
 
-=======
-}
-
-.button-div button{
-  flex: 1 0 300px;
-}
-
-@media(max-width:350px){
-  .button-div button{
-    flex: 1 0 270px;
-  }
-}
-
->>>>>>> 912da2d5aaffaf067fb05c95549657091f56fc2f
 @media(max-width:1180px){
   .registered{
     text-align: center;
