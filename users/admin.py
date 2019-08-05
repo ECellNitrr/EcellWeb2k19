@@ -19,7 +19,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('contact','avatar', 'linkedin', 'facebook','user_type')}
         ),
     )
-    list_display = ['email','contact','user_type','otp', 'verified']
+    list_display = ['email','contact','user_type','otp', 'bquiz_score', 'verified']
 
 class CampusAmbassadorProfileAdmin(admin.ModelAdmin):
     def get_email(self,object):

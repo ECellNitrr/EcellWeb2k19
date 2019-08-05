@@ -123,6 +123,7 @@ class team extends Component {
         members = members.map(member => {
             let social_links =
                 <Fragment>
+<<<<<<< HEAD
                     {member.linkedin===null ? null : (<a className="profile_links" style={{margin:"0 15px"}} target="_blank" href={member.linkedin}><i className="fab fa-linkedin-in"></i></a>)}
                     
                     {member.facebook===null ? null: (<a className="profile_links" style={{margin:"0 15px"}} target="_blank" href={member.facebook}><i className="fab fa-facebook-f"></i></a>)}
@@ -130,6 +131,15 @@ class team extends Component {
 
             if (['FCT', 'HCD', 'DIR'].indexOf(member.member_type) > -1) {
                 social_links = member.profile_url===null ? null : (<a className="profile_links" target="_blank" style={{color:"white"}} href={member.profile_url}><i className="fa fa-link"></i></a>)
+=======
+                    {member.linkedin===null ? null : (<a style={{margin:"0 15px"}} target="_blank" href={member.linkedin}><i className="fab fa-linkedin-in"></i></a>)}
+                    
+                    {member.facebook===null ? null: (<a style={{margin:"0 15px"}} target="_blank" href={member.facebook}><i className="fab fa-facebook-f"></i></a>)}
+                </Fragment>
+
+            if (['FCT', 'HCD', 'DIR'].indexOf(member.member_type) > -1) {
+                social_links = member.profile_url===null ? null : (<a target="_blank" style={{color:"white"}} href={member.profile_url}><i className="fa fa-link"></i></a>)
+>>>>>>> 912da2d5aaffaf067fb05c95549657091f56fc2f
             }
 
             return (

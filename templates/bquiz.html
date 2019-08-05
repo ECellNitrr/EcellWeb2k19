@@ -1,0 +1,43 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Quiz</h1>
+        <br>
+        <hr>
+        <p>
+            <input type="text" id="msg">
+            <input type="button" value="Submit" id="submit" onclick="send_text()">
+        </p>
+    </body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        console.log('ws://' + window.location.host +
+        '/bquiz/live/question/');
+
+      var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/bquiz/live/question/');
+        
+        
+        function send_text() {
+            var text = $("#msg").val();
+            console.log("sent "+text);
+            chatSocket.send(text);
+        }
+
+        chatSocket.onopen = function(e) {
+            console.log('socket connected')
+        }
+
+        chatSocket.onmessage = function(e) {
+            console.log(e.data)
+        };
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+    
+    </script>
+</html>

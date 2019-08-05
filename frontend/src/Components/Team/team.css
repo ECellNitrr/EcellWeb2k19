@@ -235,6 +235,10 @@
 
 .photobox__preview{
   display: block;
+<<<<<<< HEAD
+=======
+  max-width: 100%;
+>>>>>>> 912da2d5aaffaf067fb05c95549657091f56fc2f
 }
 
 .photobox__previewbox:before{
@@ -261,6 +265,7 @@
   outline-offset: -40px;
 }
 
+<<<<<<< HEAD
 @media(max-width:450px){
   .photobox_type9 .photobox__previewbox:before{
     outline: 2px solid white;
@@ -268,6 +273,8 @@
   }
 }
 
+=======
+>>>>>>> 912da2d5aaffaf067fb05c95549657091f56fc2f
 .photobox_type9:hover .photobox__previewbox:before{
   transform: translate(-50%, -50%) scale(4);
   transition-duration: var(--photoboxAnimationDuration, .8s);
@@ -292,12 +299,15 @@
   
 }
 
+<<<<<<< HEAD
 @media(max-width:450px){
   .photobox_type9 .photobox__label{
     font-size: 22px;
   }
 }
 
+=======
+>>>>>>> 912da2d5aaffaf067fb05c95549657091f56fc2f
 .photobox_type9:hover .photobox__label{
   opacity: 1;
   transform: translate(-50%, -50%);
