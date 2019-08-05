@@ -14,7 +14,7 @@ export default class team_list extends Component {
     }
 
     componentDidMount(){
-        faxios().get('team/team_years/').then(res=>{
+        faxios().get('/team/team_years/').then(res=>{
             
             let data=res.data.years
             let team_extract=[]
