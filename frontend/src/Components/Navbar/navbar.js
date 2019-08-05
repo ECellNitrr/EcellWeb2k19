@@ -87,7 +87,7 @@ export class navbar extends Component {
                         <li><NavLink to="/startups" className="data-links" data-text="Startups" >Startups</NavLink></li>
                         <li><NavLink to="/mentors" className="data-links" data-text="Mentors" >Mentors</NavLink></li>
                         <li><NavLink to="/caportal_info" className="data-links" data-text="Caportal" >CaPortal</NavLink></li>
-                        {/* <li><NavLink to="/register" className="data-links" data-text="Register" >Register</NavLink></li> */}
+                        <li><NavLink to="/register" className="data-links" data-text="Register" >Register</NavLink></li>
                         <li><a href='https://medium.com/e-cell-nit-raipur' className="data-links" data-text="Blogs" >Blogs</a></li>
                     </ul>
                 </div>

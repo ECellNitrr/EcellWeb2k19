@@ -1,25 +1,127 @@
 import React, { Component } from 'react'
 import './form.css'
-import GoogleMapReact from 'google-map-react';
-
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import faxios from '../../../axios'
+import BtnLoader from '../../Form/loader'
 
 export default class form extends Component {
 
-    static defaultProps = {
-        center: {
-          lat: 59.95,
-          lng: 30.33
-        },
-        zoom: 11
-      };
-    
+    state={
+        err:false,
+        success:false,
+        loader:false,
+        errmsg:''
+    }
+
+    _submit=(e)=>{
+        e.preventDefault()
+        this.setState({
+            success:false,
+            err: false,
+            loader:true
+        })
+
+        if(this.your_name.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Name is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.email.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is required',
+                loader:false
+            })
+            return
+        }
+
+        let email_value= this.email.value
+
+        let verify_email=(email)=>{
+            let re = /\S+@\S+\.\S+/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        if(verify_email(email_value)===false){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is invalid',
+                loader:false
+            })
+            return
+        }
+
+        if(this.message.value.length<10){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: `Atleast 10 characters are required in your message, you are currently using ${this.message.value.length} characters `,
+                loader:false
+            })
+            return
+        }
+
+        if(this.message.value.length>100){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: `You can only send 100 chars max, currently you are using ${this.message.value.length} chars `,
+                loader:false
+            })
+            return
+        }
+
+        faxios().post('/feedback/post/',{
+            name:this.your_name.value,
+            email:this.email.value,
+            message:this.message.value
+        }).then(res=>{
+            console.log(res)
+
+            this.your_name=""
+            this.email=""
+            this.message=""
+            
+            this.setState({
+                success:true,
+                err:false,
+                loader:false
+            })
+
+            
+
+        }).catch(res=>{
+            console.log(res)
+            this.setState({
+                success:false,
+                err:true,
+                loader:false,
+                errmsg:"Something went wrong, please try later."
+            })
+
+            setTimeout(()=>{
+                this.setState({
+                    err: false,
+                    success: false,
+                    loader:false,
+                    errmsg:''
+                })
+            },3000)
+        })
+    }
 
     render() {
 
-        return (
-                
+        const errrmsg = <div className="my-3 text-danger font-weight-bold text-center">{this.state.errmsg}</div>
+        const scsmsg = <div className="my-3 text-success font-weight-bold text-center">Your message is successfully received.</div>
+
+        return (                
                 <div className="container-fluid ctn-6">
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-7">
@@ -32,11 +134,13 @@ export default class form extends Component {
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-5" style={{ textAlign: "center" }}>
                             <h2 style={{ fontWeight: "800", borderBottom: "5px solid", borderRadius: "20px", marginBottom: "15px", marginTop: "30px", paddingBottom: "15px" }} >Contact Us</h2>
                             <h6 style={{ fontWeight: "600", marginBottom: "15px" }} >Leave a Message</h6>
+                            {this.state.err ? errrmsg:null}
+                            {this.state.success ? scsmsg:null}
                             <form>
-                                <div><input type="text" name="Name" id="visitor-name" required minLength="5" maxLength="30" placeholder="Your Name"></input></div>
-                                <div><input id="visitor-email" type="email" required placeholder="Your Email"></input></div>
-                                <div><textarea id="message" required minLength="30" maxLength="100" rows="5" placeholder="Your Message"></textarea></div>
-                                <div><button className="submit" type="submit">SUBMIT</button></div>
+                                <div><input ref={ele=>this.your_name = ele} type="text" name="Name" id="visitor-name" placeholder="Your Name"></input></div>
+                                <div><input ref={ele=>this.email = ele} id="visitor-email" type="email" placeholder="Your Email"></input></div>
+                                <div><textarea ref={ele=>this.message = ele} id="message" rows="5" placeholder="Your message"></textarea></div>
+                                <div><button onClick={this._submit} className="submit" type="submit">{this.state.loader ? <BtnLoader/>:"SUBMIT"}</button></div>
                             </form>
 
                         </div>

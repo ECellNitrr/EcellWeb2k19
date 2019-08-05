@@ -115,7 +115,7 @@
     padding: 5px;
     text-transform: uppercase;
     color: #fff;
-    font-size: 2.2em;
+    font-size: 2em;
     letter-spacing: 1px;
     font-weight: 800;
     transition: 0.8s;
@@ -123,13 +123,13 @@
 
   @media(max-height:840px){
     .sidebar ul li a{
-      font-size: 1.8rem
+      font-size: 1.4rem
     }
   }
 
   @media(max-height:735px){
     .sidebar ul li a{
-      font-size: 1.6rem
+      font-size: 1.2rem
     }
 
     .logo2{
@@ -140,7 +140,7 @@
 
   @media(max-width:500px){
     .sidebar ul li a{
-      font-size: 1.7em;
+      font-size: 1.3em;
     }
   }
   
@@ -346,7 +346,7 @@
     }
 
     .sidebar ul li a{
-      font-size: 1.4em;
+      font-size: 1em;
     }
 
   }
