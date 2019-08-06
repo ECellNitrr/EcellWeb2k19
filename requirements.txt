@@ -13,7 +13,7 @@ chardet==3.0.4
 constantly==15.1.0
 cryptography==2.7
 daphne==2.3.0
-Django==2.2.2
+Django==2.2.4
 django-cors-headers==3.0.2
 django-filter==2.1.0
 djangorestframework==3.9.4
