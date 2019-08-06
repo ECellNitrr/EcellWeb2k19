@@ -29,6 +29,7 @@
     height: 150px;
     position: relative;
     left: 50%;
+    top: 0%;
     transform: translate(-50%,0);
   }
   
@@ -96,7 +97,7 @@
   }
 
   .logoback2{
-    margin-top: 100px;
+    margin-top: 70px;
   }
   
   .sidebar.active1{
