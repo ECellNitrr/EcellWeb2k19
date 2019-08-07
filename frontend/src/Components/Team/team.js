@@ -55,7 +55,14 @@ class team extends Component {
 
                 if (members.member_type === "OCO") {
                     members_dict["Overall_Coordinator"].push(members)
-
+                    members_dict["Overall_Coordinator"].sort((a,b)=>{
+                        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+                        if (nameA < nameB) //sort string ascending
+                            return -1 
+                        if (nameA > nameB)
+                            return 1
+                        return 0 //default return value (no sorting)
+                    })
                 }
 
                 if (members.member_type === "HCO") {
@@ -102,6 +109,7 @@ class team extends Component {
                     members_dict["Executive_spons"].push(members)
                 }
 
+                
 
             });
 
