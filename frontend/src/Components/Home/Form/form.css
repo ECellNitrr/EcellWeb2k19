@@ -17,15 +17,7 @@
     width: 90%;
     padding: 8px;
     font-weight: 600;
-    color: gray;
-  }
-  
-  input:valid{
-    border: 3px solid green;
-    color: #000;
-  }
-  
-  input:invalid{
+    color: black;
     border: 3px solid black;
   }
   
@@ -34,17 +26,12 @@
     width: 90%;
     padding: 8px;
     font-weight: 600;
-    color: gray;
-  }
-  
-  textarea:valid{
-    border: 3px solid green;
-    color: #000;
-  }
-  
-  textarea:invalid{
+    color: black;
     border: 3px solid black;
+
   }
+  
+  
   
   .submit{
     margin: 15px;

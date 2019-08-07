@@ -12,7 +12,7 @@ db.sqlite3
 
 static/uploads/caportal/
 */migrations/0*.py
-
+debug.log
 
 #Vscode
 .vscode
@@ -26,3 +26,4 @@ dumped/
 # static/js
 # static/media
 # static/rest_framework
+static/uploads/bquiz

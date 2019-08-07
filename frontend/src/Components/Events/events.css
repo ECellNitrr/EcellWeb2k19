@@ -234,6 +234,10 @@
  font-size: 15px;
 }
 
+.register-btn-success:disabled{
+  background: green;
+}
+
 .button-div{
   position: relative;
   max-width: 300px;
