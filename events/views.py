@@ -59,7 +59,32 @@ def event_register(request, id):
     return Response({
         "message": res_message
     }, status=res_status)
-
+@api_view(['POST', ])
+@ecell_user
+def event_unregister(request, id):
+    u = request.ecelluser
+    if u:
+        try:
+            e = Event.objects.get(id=id)
+        except:
+            res_message="Event does not exist"
+            res_status=status.HTTP_404_NOT_FOUND   
+        else:
+            try:
+                reg = EventRegister.objects.get(user = u, event= e)  
+            except:
+                res_message= "Event not registered"
+                res_status=status.HTTP_404_NOT_FOUND
+            else:
+                res_message="Registration deleted successfully"
+                reg.delete()
+                res_status=status.HTTP_200_OK
+    
+    else:
+        res_message = "Login to continue"
+    return Response({
+        "message": res_message
+    }, status=res_status)
 @api_view(['POST', ])
 @ecell_user
 def add_event(request):
