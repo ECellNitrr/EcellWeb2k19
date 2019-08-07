@@ -55,7 +55,14 @@ class team extends Component {
 
                 if (members.member_type === "OCO") {
                     members_dict["Overall_Coordinator"].push(members)
-
+                    members_dict["Overall_Coordinator"].sort((a,b)=>{
+                        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
+                        if (nameA < nameB) //sort string ascending
+                            return -1 
+                        if (nameA > nameB)
+                            return 1
+                        return 0 //default return value (no sorting)
+                    })
                 }
 
                 if (members.member_type === "HCO") {
@@ -102,6 +109,7 @@ class team extends Component {
                     members_dict["Executive_spons"].push(members)
                 }
 
+                
 
             });
 
@@ -123,13 +131,13 @@ class team extends Component {
         members = members.map(member => {
             let social_links =
                 <Fragment>
-                    {member.linkedin===null ? null : (<a style={{margin:"0 15px"}} target="_blank" href={member.linkedin}><i className="fab fa-linkedin-in"></i></a>)}
+                    {member.linkedin===null ? null : (<a className="profile_links" style={{margin:"0 15px"}} target="_blank" href={member.linkedin}><i className="fab fa-linkedin-in"></i></a>)}
                     
-                    {member.facebook===null ? null: (<a style={{margin:"0 15px"}} target="_blank" href={member.facebook}><i className="fab fa-facebook-f"></i></a>)}
+                    {member.facebook===null ? null: (<a className="profile_links" style={{margin:"0 15px"}} target="_blank" href={member.facebook}><i className="fab fa-facebook-f"></i></a>)}
                 </Fragment>
 
             if (['FCT', 'HCD', 'DIR'].indexOf(member.member_type) > -1) {
-                social_links = member.profile_url===null ? null : (<a target="_blank" style={{color:"white"}} href={member.profile_url}><i className="fa fa-link"></i></a>)
+                social_links = member.profile_url===null ? null : (<a className="profile_links" target="_blank" style={{color:"white"}} href={member.profile_url}><i className="fa fa-link"></i></a>)
             }
 
             return (
@@ -312,7 +320,7 @@ class team extends Component {
                         {this_year === "2019" ? final_html['Director'] : null}
                         {this_year === "2019" ? final_html['Head_Career_Development'] : null}
                         {this_year === "2019" ? final_html['Faculty_Incharge'] : null}
-                        {this_year === "2013" ? null : final_html['Overall_Coordinator']}
+                        {this_year === "2013" || this_year === "2014" ? null : final_html['Overall_Coordinator']}
                         {final_html['Head_Coordinator']}
                         {this_year === "2019" ? final_html['Manager_pr'] : null}
                         {this_year === "2019" ? final_html['Manager_tech'] : null}

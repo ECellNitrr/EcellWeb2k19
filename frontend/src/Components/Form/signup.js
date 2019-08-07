@@ -63,7 +63,15 @@ class signup extends Component {
             return
         }
 
-        if(this.contact.value.length!=10){
+        let contact_value = this.contact.value
+
+        let verify_contact = (contact) =>{
+
+            let re = /^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
+            return re.test(String(contact));
+        }
+
+        if(verify_contact(contact_value)===false){
             this.setState({
                 success:false,
                 err: true,
@@ -82,6 +90,8 @@ class signup extends Component {
             })
             return
         }
+
+        
 
         let email_value= this.email.value
 

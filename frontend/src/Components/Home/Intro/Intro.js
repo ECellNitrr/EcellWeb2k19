@@ -71,7 +71,7 @@ export default class Intro extends Component {
                             </div>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-5 col-lg-5 bulb-col">
-                            <p className="bulb"><img alt='bulb' className="image-1" src={require('../../../assets/bulb.png')}></img></p>
+                            <p className="bulb"><img alt='bulb' className="image-1" src={require('../../../assets/m3.svg')}></img></p>
                         </div>
                     </div>
                     <div className="wave"></div>
