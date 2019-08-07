@@ -27,6 +27,5 @@ def send_otp(contact, **kwargs):
     conn.request("GET",url)
     res = conn.getresponse()
     data = res.read()
-    print(data.decode("utf-8"))
     
     return otp

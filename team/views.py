@@ -8,6 +8,7 @@ from rest_framework import status
 from .serializer import TeamSerializer
 
 
+
 @api_view(['GET', ])
 def get_members(request,year):
     members = Member.objects.filter(year=year)

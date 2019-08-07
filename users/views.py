@@ -22,7 +22,7 @@ class RegistrationAPIView(APIView):
     serializer_class = RegistrationSerializer
     
     def post(self, request):
-        res_message = "Registration failed! "
+        res_message = "Registration failed"
         res_detail = ""
         res_token = ""
         res_status = status.HTTP_400_BAD_REQUEST
@@ -57,7 +57,7 @@ class RegistrationAPIView(APIView):
                     payload,
                     settings.SECRET_KEY,
                     algorithm='HS256').decode('UTF-8')
-                res_message = "Registration Successful!"
+                res_message = "Registration Successful"
                 res_token = token
                 res_status = status.HTTP_200_OK
 
@@ -121,7 +121,7 @@ class LoginAPIView(APIView):
                     payload,
                     settings.SECRET_KEY,
                     algorithm='HS256').decode('UTF-8')
-                res_message = "Login successful!"
+                res_message = "Login successful"
                 res_detail = ""
                 res_token = token
                 res_status = status.HTTP_200_OK
@@ -260,8 +260,7 @@ def resend_otp(request):
     contact = user.contact
     if otp:
         duration = user.last_modified
-        print(duration)
-        if duration<=1000:
+        if duration<=1200:
             otp = send_otp(contact, otp=otp)
         else:
             otp = send_otp(contact)
@@ -313,7 +312,7 @@ def request_ca_approval(request):
     user = request.ecelluser
     user.applied = True
     user.save()
-    message = "Congradulations! Applied for CA successfully"
+    message = "Congradulations. Applied for CA successfully"
     res_status = status.HTTP_200_OK
     return Response({
             "message": message,

@@ -47,7 +47,7 @@ def event_register(request, id):
         try:
             eventregister.event = Event.objects.get(id=id)
         except:
-            res_message="Registration Failed! Event does not exist"
+            res_message="Registration Failed. Event does not exist."
             res_status=status.HTTP_404_NOT_FOUND
             
         else:

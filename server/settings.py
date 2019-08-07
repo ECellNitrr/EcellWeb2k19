@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'gallery',
     'django_filters',
     'bquiz',
-    'channels'
+    'channels',
+    'feedback',
 ]
 
 MIDDLEWARE = [

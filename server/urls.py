@@ -21,6 +21,7 @@ urlpatterns = [
     path('gallery/', include('gallery.urls')),
     url(r'^is_update_available', latest_build),
     path('bquiz/', include('bquiz.urls')),
+    path('feedback/', include('feedback.urls'))
 ]
 urlpatterns+=staticfiles_urlpatterns()
 # for the media urls
