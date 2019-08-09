@@ -68,8 +68,6 @@ class event_detail extends Component {
                         people_registered: (total_registrations + 1)
                     })
 
-                    alert(`You have succesfully registered for ${this.state.event_detail.name}.`)
-
                 }).catch(res => {
                     console.log(res)
                     this.setState({
@@ -107,7 +105,6 @@ class event_detail extends Component {
                 people_registered: (total_registrations - 1)
             })
 
-            alert(`You have successfully unregistered from ${this.state.event_detail.name}.`)
 
         }).catch(res => {
             console.log(res)
