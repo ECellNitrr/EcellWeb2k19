@@ -111,6 +111,14 @@
   max-height: 100%;
 }
 
+@media(max-width:450px){
+  .event-detail-pic{
+    max-width: 280px;
+    max-height: 280px;
+  }
+}
+
+
 .event-detail-name{
   width: 300px;
   text-align: center;
@@ -220,6 +228,19 @@
   color: white !important;
   position: relative;
   font-size: 20px;
+}
+
+.unregister-btn{
+  background: black !important;
+  font-weight: 800;
+  color: white !important;
+  position: relative;
+  font-size: 20px;
+}
+
+.unregister-btn:hover{
+  background: #801E0E !important;
+  color: white;
 }
 
 .register-btn:hover{

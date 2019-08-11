@@ -75,7 +75,6 @@
   }
   
   .sidebar{
-    scroll-behavior: auto;
     position: fixed;
     top: 0;
     right: -100%;
@@ -99,6 +98,13 @@
   .logoback2{
     margin-top: 70px;
   }
+
+  @media(max-width:450px){
+    .logoback2{
+      margin-top: 30px;
+    }
+  }
+
   
   .sidebar.active1{
     right:0;
@@ -116,7 +122,7 @@
     padding: 5px;
     text-transform: uppercase;
     color: #fff;
-    font-size: 2em;
+    font-size: 2.1em;
     letter-spacing: 1px;
     font-weight: 800;
     transition: 0.8s;
@@ -124,13 +130,13 @@
 
   @media(max-height:840px){
     .sidebar ul li a{
-      font-size: 1.4rem
+      font-size: 1.5rem
     }
   }
 
   @media(max-height:735px){
     .sidebar ul li a{
-      font-size: 1.2rem
+      font-size: 1.4rem
     }
 
     .logo2{
@@ -141,7 +147,7 @@
 
   @media(max-width:500px){
     .sidebar ul li a{
-      font-size: 1.3em;
+      font-size: 1.5em;
     }
   }
   
@@ -347,7 +353,7 @@
     }
 
     .sidebar ul li a{
-      font-size: 1em;
+      font-size: 1.2em;
     }
 
   }
@@ -363,7 +369,7 @@
     }
 
     .sidebar ul li a{
-      font-size: 1em;
+      font-size: 1.2em;
     }
 
   }

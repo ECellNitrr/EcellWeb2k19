@@ -38,7 +38,7 @@ const footer = ()=>{
                       <div><a href='#' style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div><br></br>
                       <Link style={{color:"white",}} to='/terms'>Terms and Conditions</Link><br></br>
                       <Link style={{color:"white"}} to="/policy">Private Policy</Link>
-
+                      <p className="arr" style={{color:"white",marginTop:"5px"}}>&copy; All Rights Reserved</p>
 
                     </div>
                 </div>

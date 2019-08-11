@@ -313,7 +313,10 @@ class team extends Component {
         return (
             <div className="team-whole">
                 <Navbar />
+                
                 <div className="team-div"><Link className="team-links shadow p-3 mb-5 bg-white rounded" to='/team/yearwise'>Previous Year Teams</Link></div>
+
+                <div style={{marginBottom:"20px"}} className="team-year">Team of {this_year}-{this_year-2000+1}</div>
                 {this.state.loading ? (<div style={{ marginTop: "10%" }}><Loader /></div>) : (
                     <div>
 
