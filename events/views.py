@@ -71,7 +71,7 @@ def event_unregister(request, id):
             res_status=status.HTTP_404_NOT_FOUND   
         else:
             try:
-                reg = EventRegister.objects.get(user = u, event= e)  
+                reg = EventRegister.objects.filter(user = u, event= e)  
             except:
                 res_message= "Event not registered"
                 res_status=status.HTTP_404_NOT_FOUND
