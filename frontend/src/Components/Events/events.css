@@ -185,6 +185,10 @@
     text-align:justify;
     font-weight: 600;
   }
+  .speakers {
+    display:block;
+    flex-wrap:none;
+  }
 }
 
 @media(max-width:1060px){
@@ -271,6 +275,15 @@
 .button-div button{
   flex: 1 0 300px;
 }
+.speakers {
+  display:flex;
+  flex-wrap:wrap;
+  padding:20px;
+  justify-content:space-around;
+  align-items:center;
+  width:100%;
+}
+
 
 @media(max-width:350px){
   .button-div button{

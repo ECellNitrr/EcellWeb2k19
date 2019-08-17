@@ -5,6 +5,10 @@ import Footer from "../Footer/footer";
 import Loader from '../api_loader/api_loader'
 import './events.css'
 import BtnLoader from '../Form/loader'
+import ent1 from '../../assets/event_details/1.jpeg'
+import ent2 from '../../assets/event_details/2.jpeg'
+import ent3 from '../../assets/event_details/3.jpeg'
+import ent4 from '../../assets/event_details/4.jpeg'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -120,6 +124,39 @@ class event_detail extends Component {
         let event_detail = null
         if (!this.state.loading) {
             const event = this.state.event_detail;
+
+            if(Number(event.id) === 18)
+            {
+                event_detail = (
+                    <div className="event_detail">
+    
+                        <div className="event-item1">
+                            <img className="shadow-lg p-3 mb-5 bg-white rounded event-detail-pic" width="400" height="400" alt={event.name} src={event.icon} />
+                        </div>
+                        <div className="event-item2">
+                            <div className="event-content">
+                                <div className="event-detail-name"><h4 className="e-name shadow p-3 mb-5 bg-white rounded">{event.name}</h4></div><br></br>
+                                <div className="event-venue" style={{ color: 'black' }}><i className="fas fa-map-marker-alt"></i>&nbsp;Venue:&nbsp;<span style={{ color: 'white' }}>{event.venue}</span></div><br></br>
+                                <div className="event-time" style={{ color: 'black' }}><span><i className="far fa-clock"></i>&nbsp;Time:</span>&nbsp;<span style={{ color: "white" }}>{event.time}</span></div><br></br>
+                                <div className="event-details">{event.details}</div><br></br>
+                                <div className="speakers">
+                                <div><div classname="container"><img className="bg-white rounded event-detail-pic" width="300" height="300" alt={event.name} src={ent1} /></div></div>
+                                <div><div classname="container"><img className="bg-white rounded event-detail-pic" width="300" height="300" alt={event.name} src={ent2} /></div></div>
+                                </div>
+                                <div className="speakers">
+                                <div><div classname="container"><img className="bg-white rounded event-detail-pic" width="300" height="300" alt={event.name} src={ent3} /></div></div>
+                                <div><div classname="container"><img className="bg-white rounded event-detail-pic" width="300" height="300" alt={event.name} src={ent4} /></div></div>
+                                </div>
+                                <br/>
+                                <div className="event-email"><i className="far fa-paper-plane"></i>&nbsp;Email:&nbsp;<a className="e-email" href={`mailto:${event.email}`}>{event.email}</a></div>
+                                <div className="registered" style={{ color: 'black', fontWeight: '800', marginTop: "15px" }}><i class="fas fa-user-friends"></i>&nbsp; Total Registered : <span style={{ color: "white", fontSize: "40px" }}>{this.state.people_registered}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+            else
+            {
             event_detail = (
                 <div className="event_detail">
 
@@ -138,6 +175,7 @@ class event_detail extends Component {
                     </div>
                 </div>
             );
+        }
         }
 
         return (
