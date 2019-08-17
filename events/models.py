@@ -49,8 +49,8 @@ class EventRegister(models.Model):
 
 class NoticeBoard(models.Model):
 	title = models.CharField(max_length=200)
-	description = models.TextField(null=True)
-	url = models.URLField(null=True)
+	description = models.TextField(blank=True)
+	url = models.URLField(blank=True)
 	show = models.BooleanField(default=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	
