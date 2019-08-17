@@ -23,6 +23,8 @@ const Yearwise_spons = lazy(()=> import('./Components/Sponsors/yearwise_sponsors
 const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 const Terms = lazy(()=> import('./Components/Footer/terms'));
 const Policy= lazy(()=>import('./Components/Footer/privacy'));
+const IportalStartup = lazy(()=>import('./Components/iportal/startup/startup'));
+const IportalJobs = lazy(()=>import('./Components/iportal/jobs/jobs'));
 
 class App extends Component {
   render() {
@@ -52,6 +54,8 @@ class App extends Component {
               <Route path='/team' component={() => <Redirect to='/team/2019' />} />
               <Route path='/terms' component={Terms} />
               <Route path='/policy' component={Policy} />
+              <Route path='/iportal/jobs' component={IportalJobs} />
+              <Route path='/iportal/startup' component={IportalStartup} />
             </Switch>
           </div>
         </BrowserRouter>
