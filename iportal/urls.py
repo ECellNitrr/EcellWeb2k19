@@ -1,10 +1,13 @@
 from django.urls import path
 from .views import *
-from rest_framework.routers import BaseRouter 
+from rest_framework.routers import SimpleRouter 
 
-router = BaseRouter()
+router = SimpleRouter()
 router.register('startup',StartupViewset)
+router.register('job',JobViewset)
+router.register('job_application',JobApplicationViewset)
+router.register('logo',LogoViewset)
 
-url_patterns = []
+urlpatterns = []
 
-url_patterns+=router.urls
+urlpatterns+=router.urls

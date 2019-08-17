@@ -12,16 +12,16 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('events/', include('events.urls')),
-    path('startups/', include('startups.urls')),
     path('sponsors/', include('sponsors.urls')),
     path('mentors/', include('mentors.urls')),
     path('team/', include('team.urls')),
     path('speakers/', include('speakers.urls')),
     path('portal/', include('caportal.urls')),
     path('gallery/', include('gallery.urls')),
-    url(r'^is_update_available', latest_build),
+    path('is_update_available/', latest_build),
     path('bquiz/', include('bquiz.urls')),
-    path('feedback/', include('feedback.urls'))
+    path('feedback/', include('feedback.urls')),
+    path('iportal/', include('iportal.urls')),
 ]
 urlpatterns+=staticfiles_urlpatterns()
 # for the media urls

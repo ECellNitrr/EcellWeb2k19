@@ -36,8 +36,8 @@ class Founder(models.Model):
         return self.name 
 
 
-class startupLogo(models.Model):
-    startup = models.ForeignKey(Startup,on_delete=models.CASCADE)
+class StartupLogo(models.Model):
+    startup = models.OneToOneField(Startup,on_delete=models.CASCADE)
 
     logo = models.ImageField(upload_to='static/uploads/iportal/logos/')
 
