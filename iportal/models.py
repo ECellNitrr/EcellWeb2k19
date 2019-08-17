@@ -80,10 +80,10 @@ class Job(models.Model):
 
 class JobApplication(models.Model):
     application_status_choices = (
-        ('pending','pending'),
-        ('rejected','rejected'),
-        ('hired','hired'),
-        ('Under Review', 'Under Review'),
+        ('PND','pending'),
+        ('RJD','rejected'),
+        ('HRD','hired'),
+        ('URV', 'Under Review'),
     )
 
     job = models.ForeignKey(Job,on_delete=models.CASCADE)
