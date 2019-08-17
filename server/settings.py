@@ -61,10 +61,10 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -197,6 +197,12 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+# celery setup
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/'
+CELERY_IMPORTS = ('bquiz',)
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
 
 
 # LOGGING = {
