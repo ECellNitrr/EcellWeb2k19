@@ -1,12 +1,20 @@
 from rest_framework import serializers
-from .models import Event
+from .models import *
 from decorators import get_user
 
-# icon = serializers.ImageField(default='http://127.0.0.1:8000/static/defaults/ecell.png')
+
+
+class NoticeBoardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NoticeBoard
+        fields = '__all__'
+
+
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = '__all__'
+
 
 class EventListSerializer(serializers.ModelSerializer):
     registered  = serializers.SerializerMethodField()

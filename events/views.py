@@ -2,8 +2,9 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
+from rest_framework.generics import ListAPIView
 from .models import Event, EventRegister
-from .serializers import EventSerializer, EventListSerializer
+from .serializers import *
 from decorators import ecell_user,relax_ecell_user
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -134,3 +135,8 @@ def generate_spreadsheet(request):
         writer.writerow(event)
 
     return response
+
+
+class NoticeBoardListView(ListAPIView):
+    queryset = NoticeBoard.objects.filter(show=True)
+    serializer_class = NoticeBoardSerializer
