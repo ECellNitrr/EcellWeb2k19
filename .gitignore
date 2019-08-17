@@ -11,6 +11,7 @@ db.sqlite3
 *.pyc
 
 static/uploads/caportal/
+static/uploads/iportal/
 */migrations/0*.py
 debug.log
 
