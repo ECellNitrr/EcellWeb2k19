@@ -14,7 +14,7 @@ class Command(BaseCommand):
         for x in range(150):
             fname, lname = fake.name().split()[0],fake.name().split()[0]
             fname += str(random.randrange(0,10000))
-            email = fname + '@gmail.com'
+            email = 'tester' + fname + '@gmail.com'
             contact = 8940073123
 
             user = CustomUser.objects.create(
