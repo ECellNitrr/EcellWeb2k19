@@ -8,6 +8,8 @@ router.register('job',JobViewset)
 router.register('job_application',JobApplicationViewset)
 router.register('logo',LogoViewset)
 
-urlpatterns = []
+urlpatterns = [
+    # path('pro_startup/',pro_get_startup),
+]
 
 urlpatterns+=router.urls

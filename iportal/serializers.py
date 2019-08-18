@@ -7,8 +7,18 @@ class LogoSerializer(serializers.ModelSerializer):
         model = StartupLogo
 
 
+class JobSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = Job
+
+
 class StartupSerializer(serializers.ModelSerializer):
     logo = serializers.SerializerMethodField()
+    jobs = serializers.SerializerMethodField()
+
+    def get_jobs(self,instance):
+        return JobSerializer(instance.job_set,many=True).data
 
     def get_logo(self,instance):
         try:
@@ -22,12 +32,6 @@ class StartupSerializer(serializers.ModelSerializer):
         read_only_fields = ['startup']
         fields = "__all__"
         model = Startup
-
-
-class JobSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = "__all__"
-        model = Job
 
 
 class JobApplicationSerializer(serializers.ModelSerializer):

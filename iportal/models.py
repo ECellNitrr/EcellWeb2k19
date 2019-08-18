@@ -3,6 +3,8 @@ from users.models import CustomUser
 
 
 class Startup(models.Model):
+    user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+
     name = models.CharField(max_length=200)
     email = models.EmailField()
     contact = models.CharField(max_length=15)
