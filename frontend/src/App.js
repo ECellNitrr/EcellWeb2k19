@@ -56,8 +56,8 @@ class App extends Component {
               <Route path='/team' component={() => <Redirect to='/team/2019' />} />
               <Route path='/terms' component={Terms} />
               <Route path='/policy' component={Policy} />
-              <Route path='/iportal/jobs/:startup_id/:startup_name/:job_title' component={IportalJobDetail} />
-              <Route path='/iportal/jobs/:startup_name/:startup_id' component={IportalIndivStartup} />
+              <Route path='/iportal/job/:startup_id/opening/:job_id' component={IportalJobDetail} />
+              <Route path='/iportal/jobs/:startup_id' component={IportalIndivStartup} />
               <Route path='/iportal/jobs' component={IportalJobs} />
           
               <Route path='/iportal/startup' component={IportalStartup} />
