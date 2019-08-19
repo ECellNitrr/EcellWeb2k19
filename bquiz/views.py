@@ -58,7 +58,7 @@ def submit_answer(request):
     
 
 @api_view(['GET'])
-def get_daily_leaderboard(request,id):
+def get_daily_leaderboard(request):
     questionset = Questionset.objects.get(flag=True)
     try:
         leaderboard = Leader.objects.filter(questionset=questionset).order_by('-score')
