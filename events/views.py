@@ -2,8 +2,9 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
+from rest_framework.generics import ListAPIView
 from .models import Event, EventRegister
-from .serializers import EventSerializer, EventListSerializer
+from .serializers import *
 from decorators import ecell_user,relax_ecell_user
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -47,7 +48,7 @@ def event_register(request, id):
         try:
             eventregister.event = Event.objects.get(id=id)
         except:
-            res_message="Registration Failed! Event does not exist"
+            res_message="Registration Failed. Event does not exist."
             res_status=status.HTTP_404_NOT_FOUND
             
         else:
@@ -59,7 +60,32 @@ def event_register(request, id):
     return Response({
         "message": res_message
     }, status=res_status)
-
+@api_view(['POST', ])
+@ecell_user
+def event_unregister(request, id):
+    u = request.ecelluser
+    if u:
+        try:
+            e = Event.objects.get(id=id)
+        except:
+            res_message="Event does not exist"
+            res_status=status.HTTP_404_NOT_FOUND   
+        else:
+            try:
+                reg = EventRegister.objects.filter(user = u, event= e)  
+            except:
+                res_message= "Event not registered"
+                res_status=status.HTTP_404_NOT_FOUND
+            else:
+                res_message="Registration deleted successfully"
+                reg.delete()
+                res_status=status.HTTP_200_OK
+    
+    else:
+        res_message = "Login to continue"
+    return Response({
+        "message": res_message
+    }, status=res_status)
 @api_view(['POST', ])
 @ecell_user
 def add_event(request):
@@ -109,3 +135,8 @@ def generate_spreadsheet(request):
         writer.writerow(event)
 
     return response
+
+
+class NoticeBoardListView(ListAPIView):
+    queryset = NoticeBoard.objects.filter(show=True)
+    serializer_class = NoticeBoardSerializer

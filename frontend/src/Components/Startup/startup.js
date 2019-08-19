@@ -35,7 +35,7 @@ class Startup extends Component {
     const startups = this.state.startups.map(startup =>
       <div className="startup" key={startup.id}>
         <div className="cont1">
-          <div className="front1 shadow-lg p-3 mb-5 bg-white rounded"><img className="startup-pic" src={startup.pic_url} alt={startup.name} /></div>
+          <div className="front1 shadow-lg p-3 mb-5 bg-white rounded"><img className="startup-pic"  src={startup.pic_url} alt={startup.name} /></div>
           <div className="back2 shadow-lg p-3 mb-5 bg-white rounded">
             <div className="inner1">
               <h4 className="startup-name" style={{ fontWeight: "800" }}>{startup.name}</h4>

@@ -43,7 +43,7 @@ class Question(models.Model):
         ('IMG', 'Image Question'),
         ('TXT', 'Text Question')
     )
-    question = models.CharField(max_length=256)
+    question = models.TextField()
     description = models.TextField()
     meta = models.ImageField(upload_to='static/uploads/bquiz/question', null=True, blank=True)
     time_limit = models.IntegerField()

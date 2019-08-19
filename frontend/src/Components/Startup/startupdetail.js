@@ -40,7 +40,7 @@ export default class startupdetail extends Component {
                 <div className="startup_detail">
                     
                     <div className="startup-item1">
-                        <img alt='startup' className="shadow-lg p-3 mb-5 bg-white rounded startup-detail-pic" src={startup.pic} />
+                        <img alt='startup' width="400" height="400" className="shadow-lg p-3 mb-5 bg-white rounded startup-detail-pic" src={startup.pic} />
                     </div>
                     <div className="startup-item2">
                         <div className="startup-content">

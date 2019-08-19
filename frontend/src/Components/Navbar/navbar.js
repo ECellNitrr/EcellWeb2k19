@@ -10,8 +10,6 @@ import ForgetPass from '../Form/forgetpass'
 import ChangePass from '../Form/changepass'
 import CheckOtp from '../Form/checkotp'
 
-import Team2014 from '../Team/modal_2014'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../actions/authActions'
@@ -53,8 +51,6 @@ export class navbar extends Component {
                 <CheckOtp emailToBeFilled={this.state.forgetmail} handleOTPChange={this.setForgetOTP} />
                 {this.props.auth.loggedin ? <LogoutModal /> : false}
 
-                <Team2014/>
-
 
                 {/* hack for opening the modal when needed */}
                 <a href="" className="btn btn1 d-none" data-toggle="modal" id='forgetPasModal_toggle' data-target="#forgetPasModal"></a>
@@ -62,7 +58,6 @@ export class navbar extends Component {
                 <a href="" className="btn btn1 d-none" data-toggle="modal" id='adforcaModal_toggle' data-target="#adforcaModal"></a>
                 <a href="" className="btn btn1 d-none" data-toggle="modal" id='changepass_toggle' data-target="#changePasModal"></a>
                 <a href="" className="btn btn1 d-none" data-toggle="modal" id='checkotp_toggle' data-target="#checkOtpModal"></a>
-                <a href="" className="btn btn1 d-none" data-toggle="modal" id='team_2014_toggle' data-target="#TeamModal2014"></a>
 
 
                 <h3 className="brand-header">ENTREPRENEURSHIP CELL</h3>{this.props.name}
@@ -87,7 +82,7 @@ export class navbar extends Component {
                         <li><NavLink to="/startups" className="data-links" data-text="Startups" >Startups</NavLink></li>
                         <li><NavLink to="/mentors" className="data-links" data-text="Mentors" >Mentors</NavLink></li>
                         <li><NavLink to="/caportal_info" className="data-links" data-text="Caportal" >CaPortal</NavLink></li>
-                        {/* <li><NavLink to="/register" className="data-links" data-text="Register" >Register</NavLink></li> */}
+                        <li><NavLink to="/register" className="data-links" data-text="Register" >Register</NavLink></li>
                         <li><a href='https://medium.com/e-cell-nit-raipur' className="data-links" data-text="Blogs" >Blogs</a></li>
                     </ul>
                 </div>

@@ -1,7 +1,7 @@
 import React, { Component, lazy, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Loader from './Components/api_loader/api_loader'
+import PageLoader from './Components/api_loader/page_loader'
 
 
 const Home = lazy(() => import('./Components/Home/home'))
@@ -23,11 +23,14 @@ const Yearwise_spons = lazy(()=> import('./Components/Sponsors/yearwise_sponsors
 const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 const Terms = lazy(()=> import('./Components/Footer/terms'));
 const Policy= lazy(()=>import('./Components/Footer/privacy'));
+const IportalStartup = lazy(()=>import('./Components/iportal/startup/startup'));
+const IportalJobs = lazy(()=>import('./Components/iportal/jobs/jobs'));
+const Error404 = lazy(()=>import('./Components/err404'))
 
 class App extends Component {
   render() {
     return (
-      <Suspense fallback={<Loader className="page-loader"/>}>
+      <Suspense fallback={<PageLoader className="page-loader"/>}>
         <BrowserRouter>
           <div className="App">
             <Switch>
@@ -36,7 +39,7 @@ class App extends Component {
               <Route path="/sponsors/sponsors_heads" component={Spons_hc}/>
               <Route path="/sponsors/yearwise" component={Yearwise_spons}/>
               <Route path='/sponsors/:year' component={Sponsors} />
-              <Route path='/sponsors' component={() => <Redirect to='/sponsors/2018' />} />
+              <Route path='/sponsors' component={() => <Redirect to='/sponsors/2019' />} />
               <Route path='/events/:id' component={EventDetail} />
               <Route path='/events' component={Events} />
               <Route path='/startups/:year/:id' component={StartupDetail} />
@@ -52,6 +55,9 @@ class App extends Component {
               <Route path='/team' component={() => <Redirect to='/team/2019' />} />
               <Route path='/terms' component={Terms} />
               <Route path='/policy' component={Policy} />
+              <Route path='/iportal/jobs' component={IportalJobs} />
+              <Route path='/iportal/startup' component={IportalStartup} />
+              <Route path='/' component={Error404}/>
             </Switch>
           </div>
         </BrowserRouter>

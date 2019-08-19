@@ -2,7 +2,10 @@
   background: #7b4397 !important;  /* fallback for old browsers */
     background: -webkit-linear-gradient(20deg, #dc2430, #7b4397) !important;  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(20deg, #dc2430, #7b4397) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+
+    padding-top: 170px !important;
+
+  }
 
 .team1{
   text-align: center;
@@ -215,6 +218,7 @@
   display: flex;
   justify-content: center;
   margin-top:20px;
+  margin-bottom: 0px;
 }
 
 
@@ -234,12 +238,12 @@
 
 .photobox__preview{
   display: block;
-  max-width: 100%;
 }
 
 .photobox__previewbox:before{
   content: "";
 }
+
 
 .photobox_type9 .photobox__previewbox:before{
   width: 0;
@@ -259,6 +263,13 @@
   transform: translate(-50%, -50%) scale(0);
   outline: 3px solid white;
   outline-offset: -40px;
+}
+
+@media(max-width:450px){
+  .photobox_type9 .photobox__previewbox:before{
+    outline: 2px solid white;
+    outline-offset: -38px;
+  }
 }
 
 .photobox_type9:hover .photobox__previewbox:before{
@@ -285,6 +296,12 @@
   
 }
 
+@media(max-width:450px){
+  .photobox_type9 .photobox__label{
+    font-size: 22px;
+  }
+}
+
 .photobox_type9:hover .photobox__label{
   opacity: 1;
   transform: translate(-50%, -50%);
@@ -300,4 +317,13 @@
 
 .photobox_type9:hover .photobox__preview{
   transform: scale(1.2);
+}
+
+.team-year{
+  font-size: 35px;
+  color:white;
+  font-weight: 800;
+  text-transform: uppercase;
+ text-align: center;
+ text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
 }
