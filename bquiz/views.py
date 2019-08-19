@@ -30,6 +30,7 @@ def submit_answer(request):
         msg = "Wrong Question Id!"
     else:
         question_acknowledge = QuestionAcknowledge(user=request.ecelluser, question=question)
+        question_acknowledge.save()
         if answer_id!=0:        
             answer = Option.objects.get(id=answer_id)
             answer = Answer(question=question, option=answer, user=request.ecelluser)
