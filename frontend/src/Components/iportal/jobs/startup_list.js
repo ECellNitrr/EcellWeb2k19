@@ -55,7 +55,7 @@ export default class startup_list extends Component {
                     <div className="start-brief">{startup.brief}</div><br></br>
                     
                     <div className="start-email">{startup.email}</div><br></br>
-                    <Link to={`/iportal/jobs/${startup.id}`} >Know More</Link>
+                    <Link to={`/iportal/jobs/${startup.name}/${startup.id}`} >Know More</Link>
                     
                 </div>
         ))
