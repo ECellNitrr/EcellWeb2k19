@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from .models import Event, EventRegister
 from .serializers import EventSerializer, EventListSerializer
-from decorators import ecell_user
+from decorators import ecell_user,relax_ecell_user
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 # from django.utils.six.moves.urllib.parse import urlsplit
@@ -35,15 +35,15 @@ def get_events(request, year):
         "data": res_data
     }, status=res_status)
 
-@ecell_user
-@csrf_exempt
+
 @api_view(['POST', ])
+@ecell_user
 def event_register(request, id):
     eventregister = EventRegister()
     user = request.ecelluser
     res_status = status.HTTP_401_UNAUTHORIZED
     if user.verified:
-        eventregister.profile = user
+        eventregister.user = user
         try:
             eventregister.event = Event.objects.get(id=id)
         except:

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import faxios from "../../axios";
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
+import Loader from '../api_loader/api_loader'
+import './startup.css'
 
 export default class startupdetail extends Component {
     axios = faxios();
@@ -55,7 +57,7 @@ export default class startupdetail extends Component {
             <div className="startups">
                 <Navbar/>
                     <div>
-                        {this.state.loading ? "loading" : startup_detail}
+                        {this.state.loading ? (<div style={{paddingTop:"20%"}}><Loader/></div>) : startup_detail}
                     </div> 
                 <Footer/>
             </div>

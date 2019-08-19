@@ -9,11 +9,11 @@ from .serializer import TeamSerializer
 
 
 @api_view(['GET', ])
-def get_members(request):
-    members = Member.objects.all()
+def get_members(request,year):
+    members = Member.objects.filter(year=year)
+    res_data = TeamSerializer(members, many=True,context={
+            'request': request}).data
     if len(members) > 0:
-        res_data = TeamSerializer(members, many=True,context={
-                'request': request}).data
         res_message = "Team members Fetched successfully."
         res_status = status.HTTP_200_OK
     else:
@@ -24,3 +24,11 @@ def get_members(request):
         "message": res_message,
         "data": res_data
     }, status=res_status)
+
+
+@api_view(['GET'])
+def team_years(req):
+    years = Member.objects.values_list('year').distinct()
+    return Response({
+        'years': [x for x in years]
+    })

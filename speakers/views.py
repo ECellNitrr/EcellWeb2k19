@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import Speaker
 from .serializers import SpeakerSerializer, SpeakerListSerializer
 from decorators import ecell_user
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import csv
 
 
@@ -16,7 +16,7 @@ def get_speakers(request, year):
     res_status = ""
     res_data = []
 
-    speakers = Speaker.objects.filter(year=year, flag=True)
+    speakers = Speaker.objects.filter(year=year, flag=True).order_by('-year')
     if len(speakers) > 0:
         res_data = SpeakerListSerializer(
             speakers, many=True, context={
@@ -80,3 +80,10 @@ def generate_spreadsheet(request):
         writer.writerow(speaker)
 
     return response
+
+
+@api_view(['GET', ])
+def get_speakers_list(request):
+    speakers_objs = Speaker.objects.all()
+    speakers = SpeakerSerializer(speakers_objs, many=True).data
+    return JsonResponse(speakers,safe=False)

@@ -1,32 +1,118 @@
 import React, { Component } from 'react'
-import fuser from '../../axios'
+import faxios from '../../axios'
+import Loader from "./loader";
 
-export default class signup extends Component {
-    axios = fuser()
+
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
+
+
+class signup extends Component {
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateUser: PropTypes.func.isRequired,
+    }
+
     state = {
         err: false,
-        success: false
+        success: false,
+        loader:false
     }
-        
+
+    static propTypes = {
+    }
+
     _singup = e => {
         e.preventDefault()
-
-        if(this.password.value.length<8){
-            this.setState({
-                success:false,
-                err: true,
-                errmsg: 'password should have minimum 8 characters'
-            })
-            return
-        }
 
         this.setState({
             success:false,
             err: false,
             errmsg: '',
+            loader:true
         })
 
-        this.axios.post('/users/register/',{
+        if(this.first_name.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'First Name is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.last_name.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Last Name is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.contact.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Contact is required',
+                loader:false
+            })
+            return
+        }
+
+        if(this.contact.value.length!=10){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Contact is invalid',
+                loader:false
+            })
+            return
+        }
+
+        if(this.email.value.length<1){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is required',
+                loader:false
+            })
+            return
+        }
+
+        let email_value= this.email.value
+
+        let verify_email=(email)=>{
+            let re = /\S+@\S+\.\S+/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        if(verify_email(email_value)===false){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Email is invalid',
+                loader:false
+            })
+            return
+        }
+
+        if(this.password.value.length<8){
+            this.setState({
+                success:false,
+                err: true,
+                errmsg: 'Password should have minimum 8 characters',
+                loader:false
+            })
+            return
+        }
+
+       
+
+        faxios().post('/users/register/',{
             first_name: this.first_name.value,
             last_name: this.last_name.value,
             email: this.email.value,
@@ -34,6 +120,7 @@ export default class signup extends Component {
             password: this.password.value,
         }).then(d=>{
             let data = d.data
+            console.log(data)
             
             this.first_name.value = ''
             this.last_name.value = ''
@@ -42,17 +129,33 @@ export default class signup extends Component {
             this.password.value = ''
             
             this.setState({
-                success:true,
-                err: false
+                err: false,
+                loader:false
             })
-            console.log(data)
+
+            this.props.updateUser({
+                ...data,
+                loggedin: true
+            })
+            this.close_btn.click()   
+            document.querySelector('#otpModal_toggle').click()
+            
+
+            setTimeout(()=>{
+                this.setState({
+                    err: false,
+                    success: false,
+                    loader:false,
+                    errmsg: "",
+                })
+            },5000)              
         
         }).catch(err=>{
             let errmsg = '' 
             console.error(err)
-            let error = err.response.data
-
+            
             try{
+                let error = err.response.data
                 errmsg = JSON.stringify(error.detail)
             } catch(e){
                 errmsg = err
@@ -61,8 +164,17 @@ export default class signup extends Component {
             this.setState({
                 success:false,
                 err: true,
-                errmsg: errmsg
+                errmsg: errmsg,
+                loader:false
             })
+            setTimeout(()=>{
+                this.setState({
+                    err: false,
+                    success: false,
+                    loader:false,
+                    errmsg: "",
+                })
+            },5000)            
         })
     }
 
@@ -91,7 +203,7 @@ export default class signup extends Component {
 
                 <div className="md-form form-sm mb-5">
                     <i className="fas fa-phone prefix"></i>
-                    <input ref={ele=>this.contact=ele} type="tel"  className="form-control form-control-sm validate" placeholder="Contact"></input>
+                    <input type="text" ref={ele=>this.contact=ele} className="form-control form-control-sm validate" placeholder="Contact"></input>
                     <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
                 </div>
 
@@ -109,8 +221,8 @@ export default class signup extends Component {
 
 
                 <div className="text-center form-sm mt-2">
-                    <button disabled={this.state.success} onClick={this._singup} className="btn text-white btn-info">Sign up <i className="fas fa-sign-in ml-1"></i></button>
-                    <button type="button" className="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                    <button disabled={this.state.success} id="signupBtn" onClick={this._singup} className="btn font-weight-bold text-white btn-info">{this.state.loader ?<Loader/>:"Sign up" } <i className="fas fa-sign-in ml-1"></i></button>
+                    <button ref={ele=>this.close_btn=ele} type="button" className="btn font-weight-bold btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
 
                 </div>
             </div>
@@ -124,3 +236,9 @@ export default class signup extends Component {
         )
     }
 }
+
+
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, actions)(signup)

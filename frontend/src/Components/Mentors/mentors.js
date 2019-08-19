@@ -3,6 +3,7 @@ import faxios from '../../axios'
 import "./mentors.css";
 import Navbar from "../Navbar/navbar";
 import Footer from '../Footer/footer';
+import Loader from '../api_loader/api_loader'
 
 class mentors extends Component {
   axios = faxios();
@@ -38,7 +39,7 @@ class mentors extends Component {
         let mentors = this.state.mentors[year]
         mentors = mentors.map(mentor => 
             <div className="individual_mentors" key={mentor.id}>
-                <div><img className="mentors_pic shadow-lg p-3 mb-5 bg-white rounded" src={mentor.profile_pic} alt={mentor.name}/></div>
+                <div><img className="mentors_pic shadow-lg p-3 mb-5 bg-white rounded" src={mentor.profile_pic_url} alt={mentor.name}/></div>
                 <h3 className="mentors_name">{mentor.name}</h3>
                 <p className="center2">{mentor.detail}</p>
             </div>
@@ -55,7 +56,7 @@ class mentors extends Component {
         <Navbar />
         <div className="header4">PREVIOUS MENTORS</div>          
             <div className="container-fluid ctn13">
-              {this.state.loading? 'loading...':mentors_html}
+              {this.state.loading? (<div style={{marginTop:"20%"}}><Loader/></div>):mentors_html}
             </div>
                   
         <Footer/>
