@@ -1,0 +1,35 @@
+.summernote{
+    .btn{
+        background: #ddd !important;
+        padding: 5px 13px;
+        margin: 5px;
+        transition: none;
+        transition-delay: none;
+        
+        // &:hover{
+        //     background: black !important;
+        //     color: white;
+        // }
+    }
+    
+    .active{
+        color: white;
+    }
+    
+    
+    .note-icon-caret{
+        display: none;
+    }
+    
+    .note-toolbar{
+        text-align: center;
+    }
+} 
+
+.popover-content{
+    display: none !important;
+}
+
+.tooltip-inner, .arrow{
+    display: none !important;
+}
