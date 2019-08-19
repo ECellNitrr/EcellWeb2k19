@@ -43,7 +43,7 @@ export default class indiv_startups extends Component {
 
                     <div>Duration: {job.duration}</div>
                     <div>Stipend: {job.stipend}</div><br></br>
-                    <Link to={`/iportal/jobs/${this.state.startup_detail.id}/opening/${job.name}/${job.id}/`} className="btn btn-primary">Know More</Link>
+                    <Link to={`/iportal/jobs/${this.state.startup_detail.id}/${this.state.startup_detail.name}/${job.name}`} className="btn btn-primary">Know More</Link>
                 </div>
             )
         })

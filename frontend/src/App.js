@@ -26,7 +26,6 @@ const Policy= lazy(()=>import('./Components/Footer/privacy'));
 const IportalStartup = lazy(()=>import('./Components/iportal/startup/startup'));
 const IportalIndivStartup = lazy(()=>import('./Components/iportal/jobs/indiv_startups.js'));
 const IportalJobDetail = lazy(()=>import('./Components/iportal/jobs/job_detail'));
-const IportalJobApply = lazy(()=>import('./Components/iportal/jobs/job_application'));
 const IportalJobs = lazy(()=>import('./Components/iportal/jobs/jobs'));
 
 class App extends Component {
@@ -57,9 +56,8 @@ class App extends Component {
               <Route path='/team' component={() => <Redirect to='/team/2019' />} />
               <Route path='/terms' component={Terms} />
               <Route path='/policy' component={Policy} />
-              <Route path='/iportal/jobs/:startup_id/:startup_name/:job_title/:job_id/apply' component={IportalJobApply} />
-              <Route path='/iportal/jobs/:startup_id/opening/:job_title/:job_id' component={IportalJobDetail} />
-              <Route path='/iportal/jobs/:startup_name/:startup_id' component={IportalIndivStartup} />
+              <Route path='/iportal/jobs/:startup_id/:startup_name/:job_title' component={IportalJobDetail} />
+              <Route path='/iportal/jobs/:startup_id' component={IportalIndivStartup} />
               <Route path='/iportal/jobs' component={IportalJobs} />
           
               <Route path='/iportal/startup' component={IportalStartup} />

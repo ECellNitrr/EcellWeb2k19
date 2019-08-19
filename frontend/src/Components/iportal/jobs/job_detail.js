@@ -1,41 +1,40 @@
 import React, { Component } from 'react'
 import faxios from '../../../axios'
-import {Link} from 'react-router-dom'
 
 export default class job_detail extends Component {
 
     state={
         startup_detail:[],
-        jobs:[],
-        loading:false
+        jobs:[]
     }
 
     componentDidMount(){
-        
-        this.setState({
-            loading:true
-        })
-
         const startup_id = this.props.match.params.startup_id;
         faxios().get(`/iportal/startup/${startup_id}/`).then(res=>{
             console.log(res)
             let data = res.data
+            let jobs = data.jobs
 
             this.setState({
-                startup_detail:data
-                
+                startup_detail:data,
+                jobs:jobs
             })
             console.log(this.state.startup_detail)
 
-        })
-
-        const job_id = this.props.match.params.job_id;
-        faxios().get(`/iportal/job/${job_id}/`).then(res=>{
-            var data=res.data
+            let job_det_name = this.props.match.params.job_title;
+            let indi_jobs = this.state.jobs.filter(job=>{
+                return job.name==job_det_name
+             }
+            )
 
             this.setState({
-                jobs:data
+                jobs:indi_jobs
             })
+
+            console.log(this.state.jobs)
+
+
+
         })
     }
 
@@ -45,37 +44,33 @@ export default class job_detail extends Component {
         let job_render= this.state.jobs[0]
         console.log(job_render)
 
-        let jobs_html_tab =(job)=>{
+        let jobs_html_tab = this.state.jobs.map(job=>(
             
-            
-            return (
             <div className="m-3 p-3 d-flex" style={{border:"3px solid black",justifyContent:"space-around"}} key={job.id} >
                     
                 <div>{job.name}</div>
                 <div>Stipend: {job.stipend}</div><br></br>
 
                 <div>Duration: {job.duration}</div>
-                <div>Start Date : {job.start_date}</div><br></br>
+                <div>Start Date : {job.start_date.slice(0,10)}</div><br></br>
                 
             </div>
-        )}
+        ))
 
-        let jobs_html_detail = (job)=>{
-            
-            return(
+        let jobs_html_detail = this.state.jobs.map(job=>(
             <div>
-                <div>Posted On: {job.posted_on}</div><br></br>
+                <div>Posted On: {job.posted_on.slice(0,10)}</div><br></br>
                 <div>About the job :<br></br> {job.about_the_job}</div><br></br><br></br>
                 <div>Job Type : {job.job_type}</div><br></br><br></br>
                 <div>Perks : {job.perks}</div><br></br>
                 <div>Skills Required : {job.skills_required}</div><br></br>
                 <div>Who can apply: {job.who_can_apply} </div><br></br><br></br>
                 <div>No of openings: {job.no_of_opening}</div><br></br><br></br>
-                <div>Apply By: {job.apply_by}</div><br></br><br></br>
+                <div>Apply By: {job.apply_by.slice(0,10)}</div><br></br><br></br>
                 <div>Location: {job.location}</div>
             </div>
 
-        )}
+        ))
 
            
         
@@ -87,11 +82,11 @@ export default class job_detail extends Component {
                 <div>
                     
                     <img src={startup.logo}></img><br></br>
-                    {jobs_html_tab(this.state.jobs)}
+                    {jobs_html_tab}
                     <div className="start-name font-weight-bold" style={{fontSize:"20px"}}>{startup.name}</div><br></br>
                     <div className="start-sect">{startup.sector}</div><br></br>
                     <div className="start-brief">{startup.brief}</div><br></br>
-                    {jobs_html_detail(this.state.jobs)}
+                    {jobs_html_detail}
 
                 </div>
             )

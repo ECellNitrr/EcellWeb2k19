@@ -11,6 +11,7 @@ export default class job_application extends Component {
         return (
             <div>
                 Hello
+                Hi
             </div>
         )
     }
