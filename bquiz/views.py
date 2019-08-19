@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Question, Questionset, Answer, Option, Leader, ActivateQuiz
+from .models import Question, Questionset, Answer, Option, Leader, ActivateQuiz, QuestionAcknowledge
 from users.models import CustomUser
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -24,34 +24,22 @@ def submit_answer(request):
     answer_id = request.data.get('answer_id')
     time = request.data.get('time')
     score = request.data.get('score')
-    # score = 0.0
-    # total_score = 0.0
-    # bonus = 0.0
     try:
-        question = Question.objects.get(id=question_id)
-        answer = Option.objects.get(id=answer_id) 
+        question = Question.objects.get(id=question_id) 
     except:
-        msg = "Wrong Question/Answer Id!"
+        msg = "Wrong Question Id!"
     else:
-        leader = Leader.objects.filter(user=request.ecelluser, questionset=question.set)
-        print(leader)
-        if len(leader) == 0:
-            leader = Leader(user=request.ecelluser, questionset=question.set)
-            leader.save()
-            leader = [leader]
-        # print(question.right_answer)
-        # print(question.right_answer, answer)
-        # if question.right_answer.right_option == answer:
-        #     score = question.score
-        #     bonus = time #time left
-        #     print('correct')
-        leader[0].score += score
-        leader[0].save()
+        question_acknowledge = QuestionAcknowledge(user=request.ecelluser, question=question)
+        if answer_id!=0:        
+            answer = Option.objects.get(id=answer_id)
+            answer = Answer(question=question, option=answer, user=request.ecelluser)
+            answer.save()
+        leader = Leader.objects.get(user=request.ecelluser, questionset=question.set)
+        leader.score += score
+        leader.save()
         request.ecelluser.bquiz_score += score
         request.ecelluser.save()
         msg = "Answer evaluated successfully"
-        answer = Answer(question=question, option=answer, user=request.ecelluser)
-        answer.save()
         tot_score = request.ecelluser.bquiz_score
     # async_to_sync(channel_layer.group_send)(
     #     "bquiz",{
@@ -70,9 +58,9 @@ def submit_answer(request):
     
 
 @api_view(['GET'])
-def get_daily_leaderboard(request):
+def get_daily_leaderboard(request,id):
+    questionset = Questionset.objects.get(flag=True)
     try:
-        questionset = request.data.get('question_set')
         leaderboard = Leader.objects.filter(questionset=questionset).order_by('-score')
         leaderboard = LeaderSerializer(leaderboard, many=True).data
     except:
@@ -112,8 +100,13 @@ def is_bquiz_active(request):
             break
     if loc_flag:
         user = request.ecelluser
-        leader = Leader(user=request.ecelluser, questionset=questionset)
-        leader.save()
+        try:
+            leader = Leader.objects.get(user=request.ecelluser, questionset=questionset)
+        except:
+            leader = Leader(user=request.ecelluser, questionset=questionset)
+            leader.save()
+        else:
+            pass
 
     return Response({
         'live':loc_flag
