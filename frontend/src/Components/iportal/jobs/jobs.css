@@ -1,0 +1,10 @@
+.startup-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.indiv-startup{
+    flex:  1 0 30%;
+    border: 3px solid black;
+}
+

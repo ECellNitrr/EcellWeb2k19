@@ -5,6 +5,7 @@ import './startup.css';
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import Loader from '../api_loader/api_loader'
+import {Link} from 'react-router-dom'
 
 
 class Startup extends Component {
@@ -14,47 +15,67 @@ class Startup extends Component {
     loading:true
   }
 
-  componentDidMount() {
-    this.axios.get(`/startups/full_list/`).then(res => {
-      console.log(res)
-      let data = res.data
-      if (data.length > 0) {
-        this.setState({
-          loading: false,
-          startups: [
-            ...this.state.startups,
-            ...data
-          ]
-        })
-      }
-    })
-  }
+  // componentDidMount() {
+  //   this.axios.get(`/startups/full_list/`).then(res => {
+  //     console.log(res)
+  //     let data = res.data
+  //     if (data.length > 0) {
+  //       this.setState({
+  //         loading: false,
+  //         startups: [
+  //           ...this.state.startups,
+  //           ...data
+  //         ]
+  //       })
+  //     }
+  //   })
+  // }
 
 
   render() {
-    const startups = this.state.startups.map(startup =>
-      <div className="startup" key={startup.id}>
-        <div className="cont1">
-          <div className="front1 shadow-lg p-3 mb-5 bg-white rounded"><img className="startup-pic"  src={startup.pic_url} alt={startup.name} /></div>
-          <div className="back2 shadow-lg p-3 mb-5 bg-white rounded">
-            <div className="inner1">
-              <h4 className="startup-name" style={{ fontWeight: "800" }}>{startup.name}</h4>
-              <div className="image-text"><NavLink className="startup-detail-link" to={`/startups/${startup.year}/${startup.id}`}>Know More!</NavLink></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+    // const startups = this.state.startups.map(startup =>
+    //   <div className="startup" key={startup.id}>
+    //     <div className="cont1">
+    //       <div className="front1 shadow-lg p-3 mb-5 bg-white rounded"><img className="startup-pic"  src={startup.pic_url} alt={startup.name} /></div>
+    //       <div className="back2 shadow-lg p-3 mb-5 bg-white rounded">
+    //         <div className="inner1">
+    //           <h4 className="startup-name" style={{ fontWeight: "800" }}>{startup.name}</h4>
+    //           <div className="image-text"><NavLink className="startup-detail-link" to={`/startups/${startup.year}/${startup.id}`}>Know More!</NavLink></div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // )
 
     return (
       <div className='startups'>
         <Navbar />
-        <div className="container-fluid ctn16">
+        {/* <div className="container-fluid ctn16">
           <h2 className="header6">Our Startups</h2>
           <div className="list">
             {this.state.loading ? (<Loader/>):(startups)}
           </div>
+        </div> */}
+
+        <div className="container" style={{paddingTop:"400px"}}>
+          <div className="row">
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+            </div>
+
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <div>
+                <Link className="btn bg-white" to='/iportal/startup'>Register as Startup</Link>
+              </div>
+
+              <div>
+                <Link className="btn bg-white" to='/iportal/jobs'>Register for Jobs</Link>
+              </div>
+            </div>
+          </div>
         </div>
+
+
         <Footer />
       </div>
     )

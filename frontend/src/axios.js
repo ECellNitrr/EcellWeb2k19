@@ -1,8 +1,8 @@
 import axios from "axios";
 import { store } from './index'
 
-// export let baseURL = "http://localhost:8000"
-export let baseURL ="https://ecell.nitrr.ac.in";
+export let baseURL = "http://e8ac5280.ngrok.io/"
+//export let baseURL ="https://ecell.nitrr.ac.in";
     
 if (process.env.NODE_ENV === 'production') {
     baseURL = ""
