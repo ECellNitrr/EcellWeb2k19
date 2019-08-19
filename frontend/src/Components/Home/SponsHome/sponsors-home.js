@@ -15,7 +15,7 @@ export default class Responsive extends Component {
   }
 
   componentDidMount(){
-    this.axios.get("/sponsors/list/2018/").then(res=>{
+    this.axios.get("/sponsors/list/2019/").then(res=>{
       const data = res.data.data;
       console.log(data)
 
