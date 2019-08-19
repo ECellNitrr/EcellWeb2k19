@@ -45,6 +45,7 @@ export default class job_detail extends Component {
         console.log(job_render)
 
         let jobs_html_tab = this.state.jobs.map(job=>(
+            
             <div className="m-3 p-3 d-flex" style={{border:"3px solid black",justifyContent:"space-around"}} key={job.id} >
                     
                 <div>{job.name}</div>

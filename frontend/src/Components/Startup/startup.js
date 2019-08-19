@@ -6,7 +6,7 @@ import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import Loader from '../api_loader/api_loader'
 import {Link} from 'react-router-dom'
-
+import Hero from '../../assets/startup.svg'
 
 class Startup extends Component {
   axios = faxios()
@@ -57,19 +57,24 @@ class Startup extends Component {
           </div>
         </div> */}
 
-        <div className="container" style={{paddingTop:"400px"}}>
+        <div className="container" style={{paddingTop:"200px"}}>
           <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
+            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+              <img className="hero" src={Hero} alt="hero" height="400" width="600"/>
             </div>
 
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <div className="container-fluid register">
+              <div className="head1">
+              <span>Welcome to Startup Portal</span>
+              </div>
               <div>
-                <Link className="btn bg-white" to='/iportal/startup'>Register as Startup</Link>
+                <Link style={{width:"250px"}} className="btn font-weightbold bg-white round" to='/iportal/startup'>Register as Startup</Link>
               </div>
 
               <div>
-                <Link className="btn bg-white" to='/iportal/jobs'>Register for Jobs</Link>
+                <Link style={{width:"250px"}} className="btn bg-white round" to='/iportal/jobs'>Register for Jobs</Link>
+              </div>
               </div>
             </div>
           </div>
