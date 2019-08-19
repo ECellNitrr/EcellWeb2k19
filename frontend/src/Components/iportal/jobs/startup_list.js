@@ -48,22 +48,58 @@ export default class startup_list extends Component {
         
 
         let startup_html= this.state.startups.map(startup => (
-            
-                <div className="indiv-startup" key={startup.id}>
-                    <div className="start-name font-weight-bold" style={{fontSize:"20px"}}>{startup.name}</div>
-                    <div className="start-sect">{startup.sector}</div><br></br>
-                    <div className="start-brief">{startup.brief}</div><br></br>
+
+
+                <div className="jumbotron text-center hoverable p-4" key={startup.id}>
+                <div className="row">
+                    <div className="col-lg-4 offset-md-1 mx-3 my-3">
+                    <div className="view overlay">
+                        <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" className="img-fluid" alt="Sample image for first version of blog listing"></img>
+                        <Link to={`/iportal/jobs/${startup.name}/${startup.id}`}>
+                        <div className="mask rgba-white-slight"></div>
+                        </Link>
+                    </div>
+                    </div>
                     
-                    <div className="start-email">{startup.email}</div><br></br>
-                    <Link to={`/iportal/jobs/${startup.name}/${startup.id}`} >Know More</Link>
-                    
+                    <div className="col-lg-7 text-md-left ml-3 mt-3">  
+                        <div className="green-text">
+                            <h6 className="h6 pb-1"><i className="fas fa-desktop pr-1"></i> {startup.sector}</h6>
+                        </div>
+
+                        <h4 className="h4 mb-4">{startup.name}</h4>
+
+                        <p className="font-weight-normal">{startup.brief}</p>
+                        <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated at</strong>: {startup.updated_at.slice(0,10)}</p>
+                        <Link className="btn btn-primary" to={`/iportal/jobs/${startup.name}/${startup.id}`} >Read More</Link>
+
+                    </div>
                 </div>
+                </div>
+            
+                // <div className="indiv-startup" key={startup.id}>
+                //     <div className="start-name font-weight-bold" style={{fontSize:"20px"}}>{startup.name}</div>
+                //     <div className="start-sect">{startup.sector}</div><br></br>
+                //     <div className="start-brief">{startup.brief}</div><br></br>
+                    
+                //     <div className="start-email">{startup.email}</div><br></br>
+                //     <Link to={`/iportal/jobs/${startup.name}/${startup.id}`} >Know More</Link>
+                    
+                // </div>
         ))
 
         return (
             <div>
-                <div className="startup-flex" >
-                    {startup_html}
+                <div className="container-fluid"style={{maxWidth:"1600px"}}>
+                    <div className="row">
+                        <div className="col-xs-12 col-sm-12 col-md-5 col-lg-3">
+
+                        </div>
+
+                        <div className="col-xs-12 col-sm-12 col-md-7 col-lg-9">
+                            {startup_html}
+                        </div>
+                    </div>
+                    
                 </div>
                 <div className="d-flex justify-content-center">
                     <Pagination

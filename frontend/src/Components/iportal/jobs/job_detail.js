@@ -100,7 +100,7 @@ export default class job_detail extends Component {
         return (
             <div>
                {indiv_startup_html(startup)}
-               {/* {this.state.loading ?(<div>Loading...</div>):(<div className="d-flex justify-content-center"><Link to={`/iportal/jobs/${this.state.startup_detail.id}/${this.state.startup_detail.name}/${this.state.jobs[0].name}/${this.state.jobs[0].id}/apply`}><button className="btn btn-primary" >Apply Now</button></Link></div>)} */}
+               <div className="d-flex justify-content-center"><button className="btn btn-primary" >Apply Now</button></div>
             </div>
         )
     }
