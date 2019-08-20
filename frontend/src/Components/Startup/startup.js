@@ -69,11 +69,11 @@ class Startup extends Component {
               <span>Welcome to Startup Portal</span>
               </div>
               <div>
-                <Link style={{width:"250px"}} className="btn font-weightbold bg-white round" to='/iportal/startup'>Register as Startup</Link>
+                <Link style={{width:"250px", fontSize:"15px"}} className="btn font-weightbold bg-white round" to='/iportal/startup'>Register as Startup</Link>
               </div>
 
               <div>
-                <Link style={{width:"250px"}} className="btn bg-white round" to='/iportal/jobs'>Register for Jobs</Link>
+                <Link style={{width:"250px", fontSize:"15px"}} className="btn bg-white round" to='/iportal/jobs'>Register for Jobs</Link>
               </div>
               </div>
             </div>
