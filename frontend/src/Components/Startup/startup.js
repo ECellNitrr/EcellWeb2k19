@@ -8,11 +8,20 @@ import Loader from '../api_loader/api_loader'
 import {Link} from 'react-router-dom'
 import Hero from '../../assets/startup.svg'
 
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from '../../actions/authActions'
+
 class Startup extends Component {
   axios = faxios()
   state = {
     startups: [],
     loading:true
+  }
+
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+    updateUser: PropTypes.func.isRequired,
   }
 
   // componentDidMount() {
@@ -31,8 +40,27 @@ class Startup extends Component {
   //   })
   // }
 
+  _route_func1=()=>{
+    if(this.props.auth.loggedin){
+      document.querySelector('.startup_dashboard_btn').click()
+    }else{
+      alert("Please login to continue")
+    }
+  }
+
+  _route_func2=()=>{
+    if(this.props.auth.loggedin){
+      document.querySelector('.startup_detail_btn').click()
+    }else{
+      alert("Please login to continue")
+    }
+  }
 
   render() {
+
+
+    
+
     // const startups = this.state.startups.map(startup =>
     //   <div className="startup" key={startup.id}>
     //     <div className="cont1">
@@ -69,11 +97,13 @@ class Startup extends Component {
               <span>Welcome to Startup Portal</span>
               </div>
               <div>
-                <Link style={{width:"250px", fontSize:"15px"}} className="btn font-weightbold bg-white round" to='/iportal/startup'>Register as Startup</Link>
+                <button style={{width:"250px", fontSize:"15px"}} className="btn font-weight-bold bg-white round" onClick={this._route_func1}>Register as Startup</button>
+                <Link className="startup_dashboard_btn" to='/iportal/startup' style={{display:"none"}}></Link>
               </div>
 
               <div>
-                <Link style={{width:"250px", fontSize:"15px"}} className="btn bg-white round" to='/iportal/jobs'>Register for Jobs</Link>
+                <button style={{width:"250px", fontSize:"15px"}} className="btn font-weight-bold bg-white round" onClick={this._route_func2}>Register for Jobs</button>
+                <Link className="startup_detail_btn" to='/iportal/jobs' style={{display:"none"}}>Register for Jobs</Link>
               </div>
               </div>
             </div>
@@ -87,4 +117,6 @@ class Startup extends Component {
   }
 }
 
-export default Startup;
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, actions)(Startup)

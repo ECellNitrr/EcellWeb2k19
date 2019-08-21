@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import faxios from '../../../axios'
 import Loader from '../../Form/loader'
+import {Link} from 'react-router-dom'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -73,6 +74,10 @@ class job_detail extends Component {
 
     }
 
+    _job_apply_ = () =>{
+        document.querySelector('.job_apply_btn').click()
+    }
+
 
     render() {
         
@@ -134,8 +139,8 @@ class job_detail extends Component {
         return (
             <div>
                {indiv_startup_html(startup)}
-               <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-primary"disabled >{this.state.msg}</button>):(<button className="btn btn-primary" >{this.state.msg}</button>)}</button></div>
-               {/* <div className="d-flex justify-content-center"><button className="btn btn-primary" >{this.state.msg}</button></div> */}
+               <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-primary"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary" >{this.state.msg}</button>)}</button></div>
+               <Link className="job_apply_btn" style={{display:"none"}} to={`/iportal/jobs/application/${this.props.match.params.job_id}`}></Link>
             </div>
         )
     }
