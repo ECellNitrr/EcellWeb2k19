@@ -25,7 +25,9 @@ const Terms = lazy(()=> import('./Components/Footer/terms'));
 const Policy= lazy(()=>import('./Components/Footer/privacy'));
 const IportalStartup = lazy(()=>import('./Components/iportal/startup/startup'));
 const IportalJobs = lazy(()=>import('./Components/iportal/jobs/jobs'));
+const Investors = lazy(() => import('./Components/Investors/investors'));
 const Error404 = lazy(()=>import('./Components/err404'))
+
 
 class App extends Component {
   render() {
@@ -57,7 +59,9 @@ class App extends Component {
               <Route path='/policy' component={Policy} />
               <Route path='/iportal/jobs' component={IportalJobs} />
               <Route path='/iportal/startup' component={IportalStartup} />
+              <Route path='/investors' component={Investors} />
               <Route path='/' component={Error404}/>
+              
             </Switch>
           </div>
         </BrowserRouter>
