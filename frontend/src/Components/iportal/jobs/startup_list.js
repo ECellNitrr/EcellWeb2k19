@@ -5,6 +5,7 @@ import Pagination from "react-js-pagination";
 import { thisExpression } from '@babel/types';
 import {Link} from 'react-router-dom'
 import Navbar from '../navbar_iportal/navbar_ip'
+
 import Footer from '../../Footer/footer'
 
 export default class startup_list extends Component {
@@ -90,9 +91,9 @@ export default class startup_list extends Component {
         ))
 
         return (
-            <div>
+            <div id="outer-container">
                 <Navbar/>
-                <div className="container-fluid"style={{maxWidth:"1600px",marginTop:"200px"}}>
+                <div className="container-fluid"style={{maxWidth:"1600px"}}>
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-5 col-lg-3">
 
