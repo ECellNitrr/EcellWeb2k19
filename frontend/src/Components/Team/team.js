@@ -46,7 +46,7 @@ class team extends Component {
                 }
 
                 if (members.member_type === "HCD") {
-                    members_dict["Head_Career_Development Centre"].push(members)
+                    members_dict["Head_Career_Development"].push(members)
                 }
 
                 if (members.member_type === "FCT") {
@@ -143,7 +143,7 @@ class team extends Component {
             return (
                 <div key={member.id} className='text-center'>
                     <div>
-                        {title === "Head of Career Development" || title === "Director" || title === "Faculty Incharge" || title === "Overall Co-ordinators" || title === "Head Co-ordinators" ? (
+                        {title === "Head of Career Development Centre" || title === "Director" || title === "Faculty Incharge" || title === "Overall Co-ordinators" || title === "Head Co-ordinators" ? (
                             <div>
                                 <div className="page ">
                                     <div className="page__demo">
@@ -219,7 +219,7 @@ class team extends Component {
                     break;
                 case "Head_Career_Development":
                     final_html["Head_Career_Development"] = this.members_html(
-                        "Head of Career Development",
+                        "Head of Career Development Centre",
                         members,
                         type
                     );
