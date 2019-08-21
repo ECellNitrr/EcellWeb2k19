@@ -13,7 +13,18 @@ class navbar_ip extends Component {
         updateUser: PropTypes.func.isRequired,
     }
 
+    _logout = e => {
+        this.props.updateUser({ 
+            loggedin: false,
+            token: null
+         })
+
+         window.location.assign('/');
+    }
+
     render() {
+
+        console.log(this.props.auth)
         return (
           
             <div>
@@ -37,11 +48,11 @@ class navbar_ip extends Component {
                         </ul>
                         <ul class="navbar-nav nav-flex-icons">
                             <li class="nav-item">
-                                <a class="nav-link ip-links mx-3" href="#">Name</a>
+                                <a class="nav-link ip-links mx-3" href="#">{this.props.auth.first_name} {this.props.auth.last_name}</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link ip-links mx-2" href="#">Logout</a>
+                                <a onClick={this._logout} class="nav-link ip-links mx-2" href="#"><i class="fas fa-power-off"></i>Logout</a>
                             </li>
                         </ul>
                     </div>
