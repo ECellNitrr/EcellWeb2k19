@@ -58,32 +58,10 @@ class Startup extends Component {
 
   render() {
 
-
-    
-
-    // const startups = this.state.startups.map(startup =>
-    //   <div className="startup" key={startup.id}>
-    //     <div className="cont1">
-    //       <div className="front1 shadow-lg p-3 mb-5 bg-white rounded"><img className="startup-pic"  src={startup.pic_url} alt={startup.name} /></div>
-    //       <div className="back2 shadow-lg p-3 mb-5 bg-white rounded">
-    //         <div className="inner1">
-    //           <h4 className="startup-name" style={{ fontWeight: "800" }}>{startup.name}</h4>
-    //           <div className="image-text"><NavLink className="startup-detail-link" to={`/startups/${startup.year}/${startup.id}`}>Know More!</NavLink></div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // )
-
     return (
       <div className='startups'>
         <Navbar />
-        {/* <div className="container-fluid ctn16">
-          <h2 className="header6">Our Startups</h2>
-          <div className="list">
-            {this.state.loading ? (<Loader/>):(startups)}
-          </div>
-        </div> */}
+        
 
         <div className="container" style={{paddingTop:"200px"}}>
           <div className="row">

@@ -91,7 +91,7 @@ export default class startup_list extends Component {
         ))
 
         return (
-            <div id="outer-container">
+            <div id="outer-container" style={{background:"lightgray"}}>
                 <Navbar/>
                 <div className="container-fluid"style={{maxWidth:"1600px"}}>
                     <div className="row">
