@@ -7,14 +7,14 @@ import Footer from '../Footer/footer';
 
 class investors extends Component {
 
-  axios = faxios();
+  
   state = {
     investors: [],
     loading: true
   }
 
   componentDidMount() {
-      this.axios.get(`/investors/full_list/`).then(res => {
+      faxios().get(`/investors/full_list/`).then(res => {
         console.log(res)
         let data = res.data
         this.setState({

@@ -7,14 +7,14 @@ import Footer from '../Footer/footer';
 
 class speaker extends Component {
 
-  axios = faxios();
+  
   state = {
     speakers: [],
     loading: true
   }
 
   componentDidMount() {
-      this.axios.get(`/speakers/full_list/`).then(res => {
+    faxios().get('/speakers/full_list/').then(res => {
         console.log(res)
         let data = res.data
         this.setState({
