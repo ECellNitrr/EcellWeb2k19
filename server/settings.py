@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'channels',
     'feedback',
     'iportal',
+    'investors'
 ]
 
 MIDDLEWARE = [
