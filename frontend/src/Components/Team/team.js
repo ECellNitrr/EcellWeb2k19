@@ -46,7 +46,7 @@ class team extends Component {
                 }
 
                 if (members.member_type === "HCD") {
-                    members_dict["Head_Career_Development"].push(members)
+                    members_dict["Head_Career_Development Centre"].push(members)
                 }
 
                 if (members.member_type === "FCT") {
