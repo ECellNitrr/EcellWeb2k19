@@ -12,6 +12,7 @@ import csv
 
 
 @api_view(['GET', ])
+
 @permission_classes((IsAdminUser,))
 def generate_spreadsheet(request):
     response = HttpResponse(content_type='text/csv')
