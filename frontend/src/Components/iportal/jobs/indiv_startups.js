@@ -193,11 +193,9 @@ export default class indiv_startups extends Component {
          }
         return (
             <div style={{background:"lightgray"}}>
-                <Navbar/>
                 <div className="container-fluid" style={{maxWidth:"1400px",paddingTop:"150px"}}>
                     {indiv_startup_html(startup)}
                 </div>
-                <Footer/>
             </div>
         )
     }
