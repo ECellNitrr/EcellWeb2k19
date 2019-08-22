@@ -46,7 +46,7 @@ class navbar_ip extends Component {
                                 <Link class="nav-link ip-links mx-3" to='/iportal/jobs'>View Startups </Link>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link ip-links mx-3" href="#">My Applications</a>
+                                <Link class="nav-link ip-links mx-3" to="/iportal/jobs/my_application">My Applications</Link>
                             </li>
                             <li class="nav-item mx-3">
                                 <Link class="nav-link ip-links" to='/'>Go to Main Site</Link>

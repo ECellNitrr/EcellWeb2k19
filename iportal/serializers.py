@@ -50,6 +50,14 @@ class StartupSerializer(serializers.ModelSerializer):
 
 class JobApplicationSerializer(serializers.ModelSerializer):
     applicant_obj = serializers.SerializerMethodField()
+    startup_name = serializers.SerializerMethodField()
+    opening_name  = serializers.SerializerMethodField()
+
+    def get_startup_name(self,instance):
+        return instance.job.startup.name
+
+    def get_opening_name(self,instance):
+        return instance.job.name
 
     def get_applicant_obj(self,instance):
         applicant_obj = RegistrationSerializer(instance.applicant).data
