@@ -39,10 +39,10 @@ class openings extends Component {
         )
 
         return (
-            <div className="container">
+            <div className="container jumbotron hoverable">
 
                 <div className='d-flex'>
-                    <h1 className="text-center flex-grow-1 my-5">Openings</h1>
+                    <h1 className="text-center font-weight-bold flex-grow-1 my-5">Openings</h1>
                     <button onClick={() => this.props.history.push('/iportal/startup/openings/new/')} className="btn align-self-center btn-primary">new opening</button>
                 </div>
 

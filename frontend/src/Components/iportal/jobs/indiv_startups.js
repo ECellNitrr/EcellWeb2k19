@@ -83,6 +83,8 @@ export default class indiv_startups extends Component {
                                     </div>
                                 </div>
 
+                                
+
                                 {/*For Mobile*/}
 
                                 <div className="job_flex2">
@@ -110,13 +112,17 @@ export default class indiv_startups extends Component {
                                     </div>
                                 </div>
 
+                                
+
                             </div>
 
                             <hr className="gray"></hr>
                             
                             <Link to={`/iportal/jobs/${this.state.startup_detail.id}/opening/${job.id}`} style={{fontSize:"12px",float:"right"}} className="btn btn-danger font-weight-bold">View Details</Link> 
                         </div>
+                        
                         </div>
+                        <hr class="my-4 rgba-white-light"/>
                     </div>
                 )
             }
@@ -133,9 +139,14 @@ export default class indiv_startups extends Component {
                                 <div>
                                     <h2 class="card-title h2">{startup.name}</h2> 
                                     <div>
-                                        <p class="mx-2 text-success h5">{startup.sector}</p>
+                                        <p class="mx-2 font-weight-bold text-success">{startup.sector}</p>
                                     </div>
-                                </div>
+                                    <div><span className="font-weight-bold">Email :</span>{startup.email}</div>
+                                    <div><span className="font-weight-bold">Contact :</span>{startup.contact}</div><br></br>
+                                    <div><span className="font-weight-bold">Address :</span><br></br>{startup.address1}<br></br>{startup.address2}</div><br></br>
+                                    <div><span className="font-weight-bold">District :</span>{startup.district}</div>
+                                    <div><span className="font-weight-bold">Country :</span>{startup.country}</div>
+                                    </div>
                             </div>
                             <hr className="my-4 rgba-white-light"/>
 
@@ -154,40 +165,13 @@ export default class indiv_startups extends Component {
                         <div className="card-text" dangerouslySetInnerHTML={{ __html:startup.description }}></div>
                         </div>
                     </div>
+
                     <hr class="my-4 rgba-white-light"/>
-
-                    <div class="pt-2 ">
-                        <ul class="nav nav-pills text-md-left ml-3 mt-3" id="pills-tab" role="tablist">
-                            <li class="nav-item">
-                                <a class="btn btn-primary " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                                aria-controls="pills-home" aria-selected="true">More Info</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-primary " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                                aria-controls="pills-profile" aria-selected="false">Jobs Offered</a>
-                            </li>
-                        </ul>
-
-
-                        <div class="tab-content pt-2 pl-1" id="pills-tabContent">
-                            <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                <div>Email : {startup.email}</div>
-                                <div>Contact: {startup.contact}</div><br></br>
-                                <div>Address : <br></br>{startup.address1}<br></br>{startup.address2}</div><br></br>
-                                <div>{startup.district}</div>
-                                <div>{startup.country}</div>
-                            </div>
-                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                <div>
-                                    {jobs_html}
-                                </div>
-                            </div>
-                        </div>
+                    <div style={{marginBottom:"-30px"}}>
+                        {jobs_html}
                     </div>
+                    
                 </div>
-
-
-
             </div>
             )
          }

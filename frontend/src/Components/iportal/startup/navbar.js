@@ -20,14 +20,15 @@ class navbar extends Component {
     }
 
     _logout = (e) => {
+
+        
         e.preventDefault()
         this.props.updateUser({ 
             loggedin: false,
             token: null
          })
-
-         this.props.history.push('/');
     
+         this.props.history.push('/');
     }
 
     render() {

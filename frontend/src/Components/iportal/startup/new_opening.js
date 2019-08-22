@@ -122,13 +122,13 @@ class new_opening extends Component {
                     <div className="">
                         <button 
                             onClick={() => this.props.history.goBack()}
-                            className="btn btn-warning font-weight-bold" style={{position:"absolute",top:"21%"}}>Go back</button>
+                            className="btn btn-info font-weight-bold" style={{position:"absolute",top:"21%"}}>Go back</button>
                         <h1 className="text-center font-weight-bold flex-grow-1 my-5">
                             {this.job_id ? 'Edit Opening' : 'Create new Opening'}
                         </h1>
                         {this.job_id? <button 
                             onClick={this._delete_opening}
-                            className="btn btn-danger align-self-center">Delete</button>:null}
+                            className="btn btn-danger font-weight-bold align-self-center">Delete</button>:null}
                     </div>
 
                     {this.state.initial_load ? <div className="my-5">

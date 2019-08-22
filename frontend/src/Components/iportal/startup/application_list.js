@@ -55,11 +55,11 @@ class applications_list extends Component {
         )
 
         return (
-            <div className="container">
+            <div className="container jumbotron hoverable">
 
                 <div className='d-flex'>
                     <button onClick={() => this.props.history.goBack()} className="btn align-self-center btn-primary">GoBack</button>
-                    <h1 className="text-center flex-grow-1 my-5">Applicants - {this.state.job.name}({this.state.job.job_type})</h1>
+                    <h1 className="text-center font-weight-bold flex-grow-1 my-5">Applicants - {this.state.job.name}({this.state.job.job_type})</h1>
                 </div>
 
                 <table className="table table-striped">

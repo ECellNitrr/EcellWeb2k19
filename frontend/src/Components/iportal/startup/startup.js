@@ -15,7 +15,7 @@ import ApplicationDetail from './application_detail'
 export default class iportal extends Component {
     render() {
         return (
-            <div style={{background:"lightgray"}}>
+            <div style={{background:"lightgray",paddingTop:"150px"}}>
                 <Navbar/>
                 <Switch>
                     <Route path='/iportal/startup/application_detail/:application_id/' component={ApplicationDetail}/> // view detail of application

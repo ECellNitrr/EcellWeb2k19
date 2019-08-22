@@ -136,9 +136,9 @@ class RegisterStartup extends Component {
 
 
         return (
-            <div className='container jumbotron' >
+            <div className='container jumbotron' style={{paddingTop:"100px"}} >
                 <div>
-                    <h1 className="text-center my-5">
+                    <h1 className="text-center font-weight-bold my-5">
                         {this.isEdit?'Edit Startup' :'Register Startup'}
                     </h1>
 
@@ -148,64 +148,64 @@ class RegisterStartup extends Component {
 
                     <form>
                         <div className="form-group">
-                            <label>Name</label>
+                            <label className="font-weight-bold">Name</label>
                             <input type="text" ref={ele => this.name = ele} className="form-control" />
                             {error_html['name']}
                         </div>
                         <div className="form-group">
-                            <label>Email</label>
+                            <label className="font-weight-bold">Email</label>
                             <input type="email" ref={ele => this.email = ele} className="form-control" />
                             {error_html['email']}
                         </div>
                         <div className="form-group">
-                            <label>Contact</label>
+                            <label className="font-weight-bold">Contact</label>
                             <input type="text" ref={ele => this.contact = ele} className="form-control" />
                             {error_html['contact']}
                         </div>
                         <div className="form-group">
-                            <label>Brief</label>
+                            <label className="font-weight-bold">Brief</label>
                             <input type="text" ref={ele => this.brief = ele} className="form-control" />
                             {error_html['brief']}
                         </div>
                         <div className="form-group">
-                            <label>Description</label>
+                            <label className="font-weight-bold">Description</label>
                             {error_html['description']}
                             <Wysiwyg onRef={ref => this.description = ref} />
                         </div>
                         <div className="form-group">
-                            <label>Sector</label>
+                            <label className="font-weight-bold">Sector</label>
                             <input type="text" ref={ele => this.sector = ele} className="form-control" />
                             {error_html['sector']}
                         </div>
                         <div className="form-group">
-                            <label>Address line 1</label>
+                            <label className="font-weight-bold">Address line 1</label>
                             <input type="text" ref={ele => this.address1 = ele} className="form-control" />
                             {error_html['address1']}
                         </div>
                         <div className="form-group">
-                            <label>Address line 2</label>
+                            <label className="font-weight-bold">Address line 2</label>
                             <input type="text" ref={ele => this.address2 = ele} className="form-control" />
                             {error_html['address2']}
                         </div>
                         <div className="form-group">
-                            <label>District</label>
+                            <label className="font-weight-bold">District</label>
                             <input type="text" ref={ele => this.district = ele} className="form-control" />
                             {error_html['district']}
                         </div>
                         <div className="form-group">
-                            <label>State</label>
+                            <label className="font-weight-bold">State</label>
                             <input type="text" ref={ele => this.lstate = ele} className="form-control" />
                             {error_html['state']}
                         </div>
                         <div className="form-group">
-                            <label>Country</label>
+                            <label className="font-weight-bold">Country</label>
                             <input type="text" ref={ele => this.country = ele} className="form-control" />
                             {error_html['country']}
                         </div>
 
                         <div className="text-center">
-                            <button disabled={this.state.requesting || this.state.success} onClick={this._register_startup} className="btn btn-primary">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'submit'}</button>
-                            <button onClick={this._reset_form} className="btn btn-danger">reset</button>
+                            <button disabled={this.state.requesting || this.state.success} onClick={this._register_startup} className="btn font-weight-bold btn-primary">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'submit'}</button>
+                            <button onClick={this._reset_form} className="btn font-weight-bold btn-danger">reset</button>
                         </div>
                     </form>
                 </div>
