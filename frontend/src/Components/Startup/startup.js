@@ -50,8 +50,11 @@ class Startup extends Component {
 
   _to_jobs = (e) =>{
     e.preventDefault()
-
-    document.querySelector('.startup_detail_btn').click()
+    if(this.props.auth.loggedin){
+      document.querySelector('.startup_detail_btn').click()
+    }else(
+      alert('Please login to continue')
+    )
   }
 
 

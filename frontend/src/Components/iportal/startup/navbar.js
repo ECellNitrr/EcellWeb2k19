@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 
 import Modal from '../../Form/modal'
 import { user_type } from '../../constants'
@@ -26,7 +26,8 @@ class navbar extends Component {
             token: null
          })
 
-         window.location.assign('/');
+         this.props.history.push('/');
+    
     }
 
     render() {
@@ -35,32 +36,32 @@ class navbar extends Component {
             //     <NavLink exact to='/iportal/startup/'>Dashboard</NavLink>
             //     <NavLink to='/iportal/startup/openings/'>Openings</NavLink>
             // </div>
-            <div>
-                <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
-                    <Link class="navbar-brand" to='/'><img width="70px" height="70px" src={require('../../../assets/logo-white.png')}></img></Link>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+            <div className='iportal_navbar'>
+                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
+                    <Link className="navbar-brand" to='/'><img width="70px" height="70px" src={require('../../../assets/logo-white.png')}></img></Link>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <Link exact to='/iportal/startup/' class="nav-link ip-links mx-3">Dashboard</Link>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item">
+                                <NavLink exact to='/iportal/startup/' className="nav-link ip-links mx-3">Dashboard</NavLink>
                             </li>
-                            <li class="nav-item">
-                                <Link to='/iportal/startup/openings/' class="nav-link ip-links mx-3">Openings</Link>
+                            <li className="nav-item">
+                                <NavLink exact to='/iportal/startup/openings/' className="nav-link ip-links mx-3">Openings</NavLink>
                             </li>
-                            <li class="nav-item mx-3">
-                                <Link class="nav-link ip-links" to='/'>Go to Main Site</Link>
+                            <li className="nav-item mx-3">
+                                <NavLink exact className="nav-link ip-links" to='/'>Go to Main Site</NavLink>
                             </li>
                            
                         </ul>
-                        <ul class="navbar-nav nav-flex-icons">
-                            <li class="nav-item">
-                                <button className="iplogout" data-toggle="modal" data-target="#ipLogout" style={{background:"#EA4763",border:"none"}} class="nav-link ip-links mx-3" href="#">{this.props.auth.first_name} {this.props.auth.last_name}</button>
+                        <ul className="navbar-nav nav-flex-icons">
+                            <li className="nav-item">
+                                <button className="iplogout" data-toggle="modal" data-target="#ipLogout" style={{background:"#EA4763",border:"none"}} className="nav-link ip-links mx-3" href="#">{this.props.auth.first_name} {this.props.auth.last_name}</button>
                             </li>
 
-                            <li class="nav-item">
-                                <button style={{background:"#EA4763",border:"none"}} onClick={this._logout} class="nav-link ip-links mx-2"><i class="fas fa-power-off"></i>Logout</button>
+                            <li className="nav-item">
+                                <button style={{background:"#EA4763",border:"none"}} onClick={this._logout} className="nav-link ip-links mx-2"><i className="fas fa-power-off"></i>Logout</button>
                             </li>
                         </ul>
                     </div>

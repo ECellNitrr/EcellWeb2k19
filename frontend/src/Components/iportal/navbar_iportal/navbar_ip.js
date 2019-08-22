@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import './navbar_ip.css'
-import {Link} from 'react-router-dom'
+import {Link,NavLink} from 'react-router-dom'
 import Modal from '../../Form/modal'
 import { user_type } from '../../constants'
 
@@ -43,13 +43,13 @@ class navbar_ip extends Component {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <Link class="nav-link ip-links mx-3" to='/iportal/jobs'>View Startups </Link>
+                                <NavLink class="nav-link ip-links mx-3" to='/iportal/jobs'>View Startups </NavLink>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link ip-links mx-3" href="#">My Applications</a>
                             </li>
                             <li class="nav-item mx-3">
-                                <Link class="nav-link ip-links" to='/'>Go to Main Site</Link>
+                                <NavLink class="nav-link ip-links" to='/'>Go to Main Site</NavLink>
                             </li>
                            
                         </ul>

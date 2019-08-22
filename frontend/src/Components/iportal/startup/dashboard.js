@@ -43,11 +43,11 @@ class dashboard extends Component {
 
         return (
             <div className="pb-2"  style={{background:"lightgray",paddingTop:"150px",marginBottom:"-50px"}}>
-                <div className='container jumbotron hoverable'>
+                <div style={{border:"3px solid skyblue"}} className='container jumbotron hoverable'>
                 <div>
                     <div className="d-flex my-5">
-                    <h1 className="text-center flex-grow-1">Dashboard</h1>
-                    <button onClick={() => this.props.history.push('/iportal/startup/edit/')} className="btn btn-primary">edit</button>
+                    <h1 className="text-center flex-grow-1 font-weight-bold" style={{color:"#333333",textTransform:"uppercase",textShadow:"3px 2px 0px #fff, 7px 6px 0px rgba(0,0,0,0.15)"}}>Dashboard</h1>
+                    <button onClick={() => this.props.history.push('/iportal/startup/edit/')} className="btn btn-danger font-weight-bold">edit</button>
                     </div>
 
 
@@ -72,14 +72,12 @@ class dashboard extends Component {
                             <label className='font-weight-bold'>Contact:</label>
                             <span>{this.state.startup.contact}</span>
                         </div>
-                        <div className="form-group">
-                            <label className='font-weight-bold'>Brief:</label>
-                            <span>{this.state.startup.brief}</span>
-                        </div>
+
                         <div className="form-group">
                             <label className='font-weight-bold'>Sector:</label>
-                            <span>{this.state.startup.sector}</span>
+                            <span className="text-success font-weight-bold">{this.state.startup.sector}</span>
                         </div>
+
                         <div className="form-group">
                             <label className='font-weight-bold'>Address: line 1</label>
                             <span>{this.state.startup.address1}</span>
@@ -88,23 +86,22 @@ class dashboard extends Component {
                             <label className='font-weight-bold'>Address: line 2</label>
                             <span>{this.state.startup.address2}</span>
                         </div>
-                        <div className="form-group">
-                            <label className='font-weight-bold'>District:</label>
-                            <span>{this.state.startup.district}</span>
-                        </div>
-                        <div className="form-group">
-                            <label className='font-weight-bold'>State:</label>
-                            <span>{this.state.startup.state}</span>
-                        </div>
-                        <div className="form-group">
-                            <label className='font-weight-bold'>Country:</label>
-                            <span>{this.state.startup.name}</span>
-                        </div>
+
+                        
+                        
+                        
+                        
                     </div>
                     <div className="col-md-4 text-right">
                         <img className='logo_img' src={logo_url} alt=""/>
                     </div>
                 </div>
+
+                <div className="form-group">
+                    <label className='font-weight-bold'>Brief:</label>
+                    <span>{this.state.startup.brief}</span>
+                </div>
+
                 <div className="form-group">
                     <label className='font-weight-bold'>Description:</label>
                     <div dangerouslySetInnerHTML={{ __html: this.state.startup.description }}></div>

@@ -136,7 +136,7 @@ class RegisterStartup extends Component {
 
 
         return (
-            <div className='container-fluid'>
+            <div className='container jumbotron' >
                 <div>
                     <h1 className="text-center my-5">
                         {this.isEdit?'Edit Startup' :'Register Startup'}
