@@ -48,6 +48,13 @@ class Startup extends Component {
       })
   }
 
+  _to_jobs = (e) =>{
+    e.preventDefault()
+
+    document.querySelector('.startup_detail_btn').click()
+  }
+
+
   render() {
     return (
       <div className='startups'>
@@ -78,7 +85,7 @@ class Startup extends Component {
                 </div>
 
                 <div>
-                  <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._route_func2}>For Jobs</button>
+                  <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Jobs</button>
                   <Link className="startup_detail_btn" to='/iportal/jobs' style={{ display: "none" }}>Register for Jobs</Link>
                 </div>
               </div>

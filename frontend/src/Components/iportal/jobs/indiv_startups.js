@@ -129,7 +129,7 @@ export default class indiv_startups extends Component {
 
                     <div className="container-fluid" style={{marginBottom:"40px"}}>
                         <div className="row">
-                            <div className="col-6 d-flex" style={{alignItems:"center"}} >
+                            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8 d-flex" style={{alignItems:"center"}} >
                                 <div>
                                     <h2 class="card-title h2">{startup.name}</h2> 
                                     <div>
@@ -139,8 +139,8 @@ export default class indiv_startups extends Component {
                             </div>
                             <hr className="my-4 rgba-white-light"/>
 
-                            <div className="col-6 d-flex" style={{justifyContent:"flex-end"}}>
-                                <img width="300px" height="250px" className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg"></img>
+                            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 d-flex" style={{justifyContent:"center"}}>
+                                <img style={{maxWidth:"300px",maxWidth:"300px",objectFit:"contain"}} className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg"></img>
                             </div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@ export default class indiv_startups extends Component {
                     <div class="d-flex">
                         <div class="pb-2">
                         <p class="card-text">{startup.brief}</p>
-                        <p class="card-text">{startup.description}</p>
+                        <div className="card-text" dangerouslySetInnerHTML={{ __html:startup.description }}></div>
                         </div>
                     </div>
                     <hr class="my-4 rgba-white-light"/>

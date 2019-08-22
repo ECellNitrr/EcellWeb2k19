@@ -42,11 +42,13 @@ class dashboard extends Component {
         let logo_url = this.state.startup.logo ? this.state.startup.logo : require('../../../assets/no_pic.svg')
 
         return (
-            <div className='container'>
-                <div className="d-flex my-5">
+            <div className="pb-2"  style={{background:"lightgray",paddingTop:"150px",marginBottom:"-50px"}}>
+                <div className='container jumbotron hoverable'>
+                <div>
+                    <div className="d-flex my-5">
                     <h1 className="text-center flex-grow-1">Dashboard</h1>
                     <button onClick={() => this.props.history.push('/iportal/startup/edit/')} className="btn btn-primary">edit</button>
-                </div>
+                    </div>
 
 
 
@@ -107,6 +109,8 @@ class dashboard extends Component {
                     <label className='font-weight-bold'>Description:</label>
                     <div dangerouslySetInnerHTML={{ __html: this.state.startup.description }}></div>
                 </div>
+                </div>
+            </div>
             </div>
         )
     }

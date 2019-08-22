@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import './navbar_ip.css'
 import {Link} from 'react-router-dom'
 import Modal from '../../Form/modal'
 import { user_type } from '../../constants'
 
 import PropTypes from 'prop-types'
+import {compose} from 'redux'
 import { connect } from 'react-redux'
 import * as actions from '../../../actions/authActions'
 import { sign } from 'crypto';
@@ -24,7 +26,7 @@ class navbar_ip extends Component {
             token: null
          })
 
-         window.location.assign('/');
+         this.props.history.push('/');
     }
 
     render() {
@@ -82,4 +84,4 @@ class navbar_ip extends Component {
 }
 
 const mapStateToProps = (state) => state
-export default connect(mapStateToProps, actions)(navbar_ip)
+export default compose(connect(mapStateToProps, actions),withRouter)(navbar_ip)

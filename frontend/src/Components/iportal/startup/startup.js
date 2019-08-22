@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch,Route } from 'react-router-dom'
+import Footer from '../../Footer/footer'
 
 import './datetimepicker.scss'
 
@@ -15,7 +16,7 @@ export default class iportal extends Component {
     render() {
         return (
             <div>
-                <Navbar></Navbar>
+                <Navbar/>
                 <Switch>
                     <Route path='/iportal/startup/application_detail/:application_id/' component={ApplicationDetail}/> // view detail of application
                     <Route path='/iportal/startup/application/:job_id/' component={ApplicationList}/> // list of applications
@@ -25,6 +26,7 @@ export default class iportal extends Component {
                     <Route path='/iportal/startup/edit' component={EditStartup}/> //edit startup profile
                     <Route path='/iportal/startup/' component={Dashboard}/> //landing page for startups
                 </Switch>
+                <Footer/>
             </div>
         )
     }
