@@ -7,3 +7,10 @@ export const user_type = {
     OCO: 'Overall Co-ordinator',
     CAB: 'Campus Ambassador',
 }
+
+export const application_status = {
+    'PND':'pending',
+    'RJD':'rejected',
+    'HRD':'hired',
+    'URV': 'under review',
+}

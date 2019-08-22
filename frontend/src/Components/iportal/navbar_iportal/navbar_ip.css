@@ -1,0 +1,10 @@
+.ip-links{
+    font-size: 22px !important;
+    font-weight: 600;
+}
+
+@media(max-width:500px){
+    .ip-links{
+        font-size:17px !important;
+    }
+}
