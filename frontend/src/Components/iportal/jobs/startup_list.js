@@ -93,7 +93,7 @@ export default class startup_list extends Component {
         return (
             <div id="outer-container" style={{background:"lightgray"}}>
                 <Navbar/>
-                <div className="container-fluid"style={{maxWidth:"1600px"}}>
+                <div className="container-fluid"style={{maxWidth:"1700px",paddingTop:"10%"}}>
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-5 col-lg-3">
 
