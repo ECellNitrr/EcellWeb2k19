@@ -53,7 +53,7 @@ export default class indiv_startups extends Component {
         let indiv_startup_html= (startup) => {
             return(
                 <div>
-                {/* <div class="jumbotron mdb-color lighten-2 white-text" style={{margin:"0"}}>
+                <div class="jumbotron mdb-color lighten-2 white-text" style={{margin:"0"}}>
                 <img src={startup.logo}></img><br></br>
                 <h2 class="card-title h2">{startup.name}</h2>
                 <p class="my-4 h6">{startup.sector}</p>
@@ -93,7 +93,7 @@ export default class indiv_startups extends Component {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
 
 
