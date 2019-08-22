@@ -64,13 +64,13 @@ class Job(models.Model):
     duration = models.CharField(max_length=200)
     job_type = models.CharField(max_length=200, choices=job_type_choices)
 
-    about_the_job = models.TextField()
-    no_of_opening = models.IntegerField()
-    skills_required = models.TextField()
-    who_can_apply = models.TextField()
+    about_the_job = models.TextField(blank=False)
+    no_of_opening = models.IntegerField(blank=False)
+    skills_required = models.TextField(blank=False)
+    who_can_apply = models.TextField(blank=False)
     perks = models.TextField(blank=True)
 
-    stipend = models.IntegerField()
+    stipend = models.CharField(max_length=400)
     apply_by = models.DateTimeField()
     posted_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

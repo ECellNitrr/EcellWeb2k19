@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'events',
     'sponsors',
     'mentors',
-    'startups',
     'team',
     'speakers',
     'android_app',
