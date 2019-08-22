@@ -14,21 +14,23 @@ export default class startup_list extends Component {
         startups: [],
         activePage: 1,
         totalStartups: 1,
-        totalPages: 1
+        totalPages: 1,
+        loading: true
     }
 
 
     handlePageChange = (pageNumber) => {
         console.log(`active page is ${pageNumber}`);
 
-
+        this.setState({ loading: true })
         faxios().get(`/iportal/startup/?page=${pageNumber}`).then(res => {
             let data = res.data.results
             this.setState({
+                loading: false,
                 activePage: pageNumber,
                 startups: data,
                 totalStartups: res.data.count,
-                totalPages: res.data.total_pages
+                totalPages: res.data.total_pages,
             })
         })
     }
@@ -39,6 +41,7 @@ export default class startup_list extends Component {
             let data = res.data.results
             console.log(data)
             this.setState({
+                loading: false,
                 startups: data,
                 activePage: res.data.current_page,
                 totalStartups: res.data.count
@@ -46,10 +49,26 @@ export default class startup_list extends Component {
         })
     }
 
+
+    _search = e => {
+        e.preventDefault()
+
+        this.setState({ loading: true })
+        faxios().get(`/iportal/startup/?search=${this.search_box.value}`).then(res => {
+            console.log(res);
+            let data = res.data.results
+            console.log(data)
+            this.setState({
+                loading: false,
+                startups: data,
+                activePage: res.data.current_page,
+                totalStartups: res.data.count
+            })
+        })
+    }
+
+
     render() {
-
-
-
         let startup_html = this.state.startups.map(startup => (
 
 
@@ -78,22 +97,20 @@ export default class startup_list extends Component {
                     </div>
                 </div>
             </div>
-
-            // <div className="indiv-startup" key={startup.id}>
-            //     <div className="start-name font-weight-bold" style={{fontSize:"20px"}}>{startup.name}</div>
-            //     <div className="start-sect">{startup.sector}</div><br></br>
-            //     <div className="start-brief">{startup.brief}</div><br></br>
-
-            //     <div className="start-email">{startup.email}</div><br></br>
-            //     <Link to={`/iportal/jobs/${startup.name}/${startup.id}`} >Know More</Link>
-
-            // </div>
         ))
 
         return (
-            <div id="outer-container" style={{ background: "lightgray" }}>
+            <div id="outer-container" style={{ background: "lightgray", paddingTop: '150px' }}>
+                <form className='text-center'>
+                    <input ref={ele => this.search_box = ele} placeholder="Search for Startups and Jobs" type="text" />
+                    <button onClick={this._search} className="btn btn-primary">Search</button>
+                </form>
                 <div className="container" style={{ paddingTop: "10% 0 0 0" }}>
-                    {startup_html}
+                    {this.state.loading ?
+                        <div className="my-5 text-center">
+                            <i className="fa fa-2x fa-spinner fa-spin"></i>
+                        </div>
+                        : startup_html}
                 </div>
                 <div className="d-flex justify-content-center">
                     <Pagination
