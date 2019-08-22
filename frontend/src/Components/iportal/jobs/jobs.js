@@ -12,7 +12,22 @@ import Navbar from '../navbar_iportal/navbar_ip'
 import Footer from '../../Footer/footer.js'
 
 
-export default class iportal extends Component {
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+class Job extends Component {
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateUser: PropTypes.func.isRequired,
+      }
+    
+    componentDidMount() {
+        if(!this.props.auth.loggedin){
+            this.props.history.push('/internship')
+        }
+    }
+    
+    
     render() {
         return (
             <div>
@@ -29,3 +44,8 @@ export default class iportal extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, )(Job)

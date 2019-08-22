@@ -47,7 +47,7 @@ class dashboard extends Component {
                 <div>
                     <div className="d-flex my-5">
                     <h1 className="text-center flex-grow-1">Dashboard</h1>
-                    <button onClick={() => this.props.history.push('/iportal/startup/edit/')} className="btn btn-primary">edit</button>
+                    <button onClick={() => this.props.history.push('/internship/startup/edit/')} className="btn btn-primary">edit</button>
                     </div>
 
 

@@ -12,7 +12,23 @@ import NewOpening from './new_opening'
 import ApplicationList from './application_list'
 import ApplicationDetail from './application_detail'
 
-export default class iportal extends Component {
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+
+class Startup extends Component {
+    static propTypes = {
+        auth: PropTypes.object.isRequired,
+        updateUser: PropTypes.func.isRequired,
+      }
+    
+    componentDidMount() {
+        if(!this.props.auth.loggedin || !this.props.auth.startup_id){
+            this.props.history.push('/internship')
+        }
+    }
+    
+    
     render() {
         return (
             <div>
@@ -31,3 +47,8 @@ export default class iportal extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps, )(Startup)

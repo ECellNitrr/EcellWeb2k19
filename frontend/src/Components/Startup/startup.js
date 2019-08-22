@@ -28,15 +28,16 @@ class Startup extends Component {
   _to_startup = e => {
     e.preventDefault()
 
+    if(!this.props.auth.loggedin){
+      document.querySelector('#login-signup-btn').click()
+      return
+    }
     this.setState({ loading: true })
-
 
     faxios().get(`/iportal/startup/?user=${this.props.auth.id}`)
       .then(d => {
         const data = d.data
         console.log(data)
-
-        // this.setState({loading:false})
 
         if (data.count == 1) {
           const startup_id = data.results[0].id
@@ -50,8 +51,13 @@ class Startup extends Component {
 
   _to_jobs = (e) =>{
     e.preventDefault()
+    console.log('object',this.props.auth)
 
-    document.querySelector('.startup_detail_btn').click()
+    if(this.props.auth.loggedin){
+      this.props.history.push('/internship/jobs')
+    }else{
+      document.querySelector('#login-signup-btn').click()
+    }
   }
 
 
@@ -81,12 +87,11 @@ class Startup extends Component {
                     For Companies
                     {this.state.loading ? <i className="fa fa-spinner fa-spin mx-2 d-inline-block"></i> : null}
                   </button>
-                  <Link className="startup_dashboard_btn" to='/iportal/startup' style={{ display: "none" }}></Link>
+                  {/* <Link className="startup_dashboard_btn" to='/iportal/startup' style={{ display: "none" }}></Link> */}
                 </div>
 
                 <div>
                   <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Jobs</button>
-                  <Link className="startup_detail_btn" to='/iportal/jobs' style={{ display: "none" }}>Register for Jobs</Link>
                 </div>
               </div>
             </div>
