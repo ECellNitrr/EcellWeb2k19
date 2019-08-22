@@ -46,8 +46,8 @@ class dashboard extends Component {
                 <div style={{border:"3px solid skyblue"}} className='container jumbotron hoverable'>
                 <div>
                     <div className="d-flex my-5">
-                    <h1 className="text-center flex-grow-1 font-weight-bold" style={{color:"#333333",textTransform:"uppercase",textShadow:"3px 2px 0px #fff, 7px 6px 0px rgba(0,0,0,0.15)"}}>Dashboard</h1>
-                    <button onClick={() => this.props.history.push('/iportal/startup/edit/')} className="btn btn-danger font-weight-bold">edit</button>
+                    <h1 className="text-center flex-grow-1">Dashboard</h1>
+                    <button onClick={() => this.props.history.push('/internship/startup/edit/')} className="btn btn-primary">edit</button>
                     </div>
 
 

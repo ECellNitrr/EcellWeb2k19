@@ -23,12 +23,10 @@ const Yearwise_spons = lazy(()=> import('./Components/Sponsors/yearwise_sponsors
 const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 const Terms = lazy(()=> import('./Components/Footer/terms'));
 const Policy= lazy(()=>import('./Components/Footer/privacy'));
-const IportalStartup = lazy(()=>import('./Components/iportal/startup/startup'));
-const IportalIndivStartup = lazy(()=>import('./Components/iportal/jobs/indiv_startups.js'));
-const IportalJobDetail = lazy(()=>import('./Components/iportal/jobs/job_detail'));
-const IportalJobs = lazy(()=>import('./Components/iportal/jobs/jobs'));
-const JobApplication = lazy(()=>import('./Components/iportal/jobs/job_application'));
-const RegisterStartup = lazy(()=>import('./Components/iportal/startup/register_startup'));
+
+const IportalStartup  = lazy(()=>import('./Components/iportal/startup/startup'))
+const IportalJobs  = lazy(()=>import('./Components/iportal/jobs/jobs'))
+const RegisterStartup  = lazy(()=>import('./Components/iportal/startup/register_startup'))
 
 
 class App extends Component {
@@ -39,7 +37,7 @@ class App extends Component {
           <div className="App">
             <Switch>
               <Route exact path='/' component={Home} />
-              <Route path='/internship' component={()=><Redirect to='startups' />} />
+              <Route path='/internship' exact component={() => <Redirect to='/startups' />} />
               <Route path='/speakers' component={Speakers} />
               <Route path="/sponsors/sponsors_heads" component={Spons_hc}/>
               <Route path="/sponsors/yearwise" component={Yearwise_spons}/>
@@ -60,13 +58,10 @@ class App extends Component {
               <Route path='/team' component={() => <Redirect to='/team/2019' />} />
               <Route path='/terms' component={Terms} />
               <Route path='/policy' component={Policy} />
-              <Route path='/iportal/jobs/application/:job_id' component={JobApplication}/>
-              <Route path='/iportal/jobs/:startup_id/opening/:job_id' component={IportalJobDetail} />
-              <Route path='/iportal/jobs/:startup_id' component={IportalIndivStartup} />
-              <Route path='/iportal/jobs' component={IportalJobs} />
-          
-              <Route path='/iportal/startup/register' component={RegisterStartup}/>
-              <Route path='/iportal/startup' component={IportalStartup} />
+
+              <Route path='/internship/jobs' component={IportalJobs} />
+              <Route path='/internship/startup/register' component={RegisterStartup} />
+              <Route path='/internship/startup' component={IportalStartup} />
             </Switch>
           </div>
         </BrowserRouter>

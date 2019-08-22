@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.filters import SearchFilter
 from .serializers import *
 from .models import *
 import math
@@ -27,7 +28,8 @@ class GeneralPagination(PageNumberPagination):
 class StartupViewset(ModelViewSet):
     queryset = Startup.objects.all()
     serializer_class = StartupSerializer
-    filter_backends = (filters.DjangoFilterBackend,)
+    search_fields = ['name','job__name']
+    filter_backends = (filters.DjangoFilterBackend, SearchFilter)
     filterset_fields = ('name','approved','sector','user')
     pagination_class = GeneralPagination
 

@@ -114,7 +114,7 @@ export default class indiv_startups extends Component {
 
                             <hr className="gray"></hr>
                             
-                            <Link to={`/iportal/jobs/${this.state.startup_detail.id}/opening/${job.id}`} style={{fontSize:"12px",float:"right"}} className="btn btn-danger font-weight-bold">View Details</Link> 
+                            <Link to={`/internship/jobs/${this.state.startup_detail.id}/opening/${job.id}`} style={{fontSize:"12px",float:"right"}} className="btn btn-danger font-weight-bold">View Details</Link> 
                         </div>
                         </div>
                     </div>
@@ -193,11 +193,9 @@ export default class indiv_startups extends Component {
          }
         return (
             <div style={{background:"lightgray"}}>
-                <Navbar/>
                 <div className="container-fluid" style={{maxWidth:"1400px",paddingTop:"150px"}}>
                     {indiv_startup_html(startup)}
                 </div>
-                <Footer/>
             </div>
         )
     }
