@@ -30,7 +30,6 @@ class new_opening extends Component {
             .then(d => {
                 const data = d.data
                 console.log(data)
-                debugger
 
                 this.name.value = data.name
                 this.stipend.value = data.stipend
@@ -154,12 +153,12 @@ class new_opening extends Component {
                     </div>
                     <div className="form-group">
                         <label>Apply by</label>
-                        <Datetime value={this.state.apply_by} onChange={e => this.setState({ apply_by: e })} />
+                        <Datetime closeOnTab closeOnSelect value={this.state.apply_by} onChange={e => this.setState({ apply_by: e })} />
                         {error_html['apply_by']}
                     </div>
                     <div className="form-group">
                         <label>Start Date</label>
-                        <Datetime value={this.state.start_date} onChange={e => this.setState({ start_date: e })} />
+                        <Datetime  closeOnTab closeOnSelect value={this.state.start_date} onChange={e => this.setState({ start_date: e })} />
                         {error_html['state_date']}
                     </div>
                     <div className="form-group">

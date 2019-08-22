@@ -70,12 +70,12 @@ export default class application_detail extends Component {
 
                 <div>
                     <div className="font-weight-bold">How you are suitable for this job?: </div>
-                    <div>{application.ques1}</div>
+                    <div dangerouslySetInnerHTML={{__html:application.ques1}}></div>
                 </div>
 
                 <div>
                     <div className="font-weight-bold">During what timeframe you are available for the job?</div>
-                    <div>{application.ques2}</div>
+                    <div dangerouslySetInnerHTML={{__html:application.ques2}}></div>
                 </div>
 
                 <div className="text-center">
