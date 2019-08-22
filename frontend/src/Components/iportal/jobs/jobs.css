@@ -1,3 +1,26 @@
 .indiv-startup{
     border: 3px solid black;
 }
+
+.job_flex{
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.job_flex div{
+    flex: 1 0 19%;
+}
+
+.job_flex2{
+    display: none !important;
+}
+
+@media(max-width:800px){
+    .job_flex{
+        display: none !important;
+    }
+
+    .job_flex2{
+        display: block !important;
+    }
+}

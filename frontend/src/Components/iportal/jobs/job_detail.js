@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import faxios from '../../../axios'
 import Loader from '../../Form/loader'
 import {Link} from 'react-router-dom'
+import './jobs.css'
+import Navbar from '../navbar_iportal/navbar_ip'
+import Footer from '../../Footer/footer'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -86,15 +89,77 @@ class job_detail extends Component {
         let jobs_html_tab = (job)=>{
             
             return(
-                <div className="m-3 p-3 d-flex" style={{border:"3px solid black",justifyContent:"space-around"}} key={job.id} >
-                    
-                <div>{job.name}</div>
-                <div>Stipend: {job.stipend}</div><br></br>
+                <div className="my-4" key={job.id}>
 
-                <div>Duration: {job.duration}</div>
-                <div>Start Date : {job.start_date}</div><br></br>
-                
-                </div>
+                        <div class="card">
+                        <div class="card-header green text-white d-flex" style={{justifyContent:"space-between"}}>
+                            <div ><h4 className="font-weight-bold">{job.name}</h4></div>
+                            <div style={{fontSize:"15px"}} className="badge badge-dark p-2">{job.job_type}</div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <div className="mb-2"><strong>Location : </strong>{job.location}</div>
+                                <hr className="gray"></hr>
+
+                                {/*For Desktop*/}
+                                <div className="d-flex job_flex">
+                                    <div className="text-center">
+                                        <div style={{fontSize:"14px"}}><strong>Start Date</strong></div>
+                                        <div style={{fontSize:"13px"}}>{job.start_date}</div>
+                                    </div>
+
+                                    <div className="text-center">
+                                        <div style={{fontSize:"14px"}}><strong>Duration</strong></div>
+                                        <div style={{fontSize:"13px"}}>{job.duration}</div>
+                                    </div>
+
+                                    <div className="text-center">
+                                        <div style={{fontSize:"14px"}}><strong>Stipend</strong></div>
+                                        <div style={{fontSize:"13px"}}>{job.stipend}</div>
+                                    </div>
+
+                                    <div className="text-center">
+                                        <div style={{fontSize:"14px"}}><strong>Posted On</strong></div>
+                                        <div style={{fontSize:"13px"}}>{job.posted_on}</div>
+                                    </div>
+
+                                    <div className="text-center">
+                                        <div style={{fontSize:"14px"}}><strong>Apply By</strong></div>
+                                        <div style={{fontSize:"13px"}}>{job.apply_by}</div>
+                                    </div>
+                                </div>
+
+                                {/*For Mobile*/}
+
+                                <div className="job_flex2">
+                                    <div className="">
+                                        <div style={{fontSize:"13px"}}><strong>Start Date : </strong>{job.start_date}</div>
+                                        
+                                    </div>
+
+                                    <div className="">
+                                        <div style={{fontSize:"13px"}}><strong>Duration : </strong>{job.duration}</div>
+                                        
+                                    </div>
+
+                                    <div className="">
+                                        <div style={{fontSize:"13px"}}><strong>Stipend : </strong>{job.stipend}</div>
+                                        
+                                    </div>
+
+                                    <div className="">
+                                        <div style={{fontSize:"13px"}}><strong>Posted On : </strong>{job.posted_on}</div>
+                                    </div>
+
+                                    <div className="">
+                                        <div style={{fontSize:"13px"}}><strong>Apply By :</strong>{job.apply_by}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>
+                    </div>
             )
         }
 
@@ -102,15 +167,13 @@ class job_detail extends Component {
             
             return(
             <div>
-                <div>Posted On: {job.posted_on}</div><br></br>
-                <div>About the job :<br></br> {job.about_the_job}</div><br></br><br></br>
-                <div>Job Type : {job.job_type}</div><br></br><br></br>
-                <div>Perks : {job.perks}</div><br></br>
-                <div>Skills Required : {job.skills_required}</div><br></br>
-                <div>Who can apply: {job.who_can_apply} </div><br></br><br></br>
-                <div>No of openings: {job.no_of_opening}</div><br></br><br></br>
-                <div>Apply By: {job.apply_by}</div><br></br><br></br>
-                <div>Location: {job.location}</div>
+                <div><strong className="font-weight-bold">Posted On :</strong> {job.posted_on}</div><br></br>
+                <div><strong className="font-weight-bold">About the job :</strong><br></br> {job.about_the_job}</div><br></br><br></br>
+                <div><span className="font-weight-bold">Perks :</span><br></br> {job.perks}</div><br></br>
+                <div><span className="font-weight-bold">Skills Required : </span><br></br> {job.skills_required}</div><br></br>
+                <div><span className="font-weight-bold">Who can apply :</span><br></br> {job.who_can_apply} </div><br></br><br></br>
+                <div><span className="font-weight-bold">No of openings :</span> {job.no_of_opening}</div><br></br><br></br>
+                <div><span className="font-weight-bold">Apply By : </span> {job.apply_by}</div><br></br><br></br>
             </div>
 
             )
@@ -124,11 +187,8 @@ class job_detail extends Component {
         let indiv_startup_html= (startup) => {
             return(
                 <div>
-                    
-                    <img src={startup.logo}></img><br></br>
-                    {jobs_html_tab(this.state.jobs)}
                     <div className="start-name font-weight-bold" style={{fontSize:"20px"}}>{startup.name}</div><br></br>
-                    <div className="start-sect">{startup.sector}</div><br></br>
+                    <div className="start-sect font-weight-bold text-success">{startup.sector}</div><br></br>
                     <div className="start-brief">{startup.brief}</div><br></br>
                     {jobs_html_detail(this.state.jobs)}
 
@@ -137,10 +197,26 @@ class job_detail extends Component {
         }
 
         return (
-            <div>
-               {indiv_startup_html(startup)}
-               <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-primary"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary" >{this.state.msg}</button>)}</button></div>
-               <Link className="job_apply_btn" style={{display:"none"}} to={`/iportal/jobs/application/${this.props.match.params.job_id}`}></Link>
+            <div  style={{background:"lightgray"}}>
+                <Navbar/>
+                <div className="container-fluid" style={{paddingTop:"100px",maxWidth:"1200px"}}>
+                    {jobs_html_tab(this.state.jobs)}
+                </div>
+                <div className="container-fluid" style={{maxWidth:"1200px"}}>
+
+                    <div class="jumbotron">
+                        {indiv_startup_html(startup)}            
+                        <hr class="my-4"></hr>
+
+                        <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-success font-weight-bold"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary font-weight-bold" >{this.state.msg}</button>)}</button></div>
+                        <Link className="job_apply_btn" style={{display:"none"}} to={`/iportal/jobs/application/${this.props.match.params.job_id}`}></Link>
+                    </div>
+
+                    {/* {indiv_startup_html(startup)}
+                    <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-primary"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary" >{this.state.msg}</button>)}</button></div>
+                    <Link className="job_apply_btn" style={{display:"none"}} to={`/iportal/jobs/application/${this.props.match.params.job_id}`}></Link> */}
+                </div>
+                <Footer/>
             </div>
         )
     }
