@@ -31,7 +31,6 @@ class new_opening extends Component {
             .then(d => {
                 const data = d.data
                 console.log(data)
-                debugger
 
                 this.name.value = data.name
                 this.stipend.value = data.stipend

@@ -198,7 +198,6 @@ class job_detail extends Component {
 
         return (
             <div  style={{background:"lightgray"}}>
-                <Navbar/>
                 <div className="container-fluid" style={{paddingTop:"100px",maxWidth:"1200px"}}>
                     {jobs_html_tab(this.state.jobs)}
                 </div>
@@ -209,14 +208,13 @@ class job_detail extends Component {
                         <hr class="my-4"></hr>
 
                         <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-success font-weight-bold"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary font-weight-bold" >{this.state.msg}</button>)}</button></div>
-                        <Link className="job_apply_btn" style={{display:"none"}} to={`/iportal/jobs/application/${this.props.match.params.job_id}`}></Link>
+                        <Link className="job_apply_btn" style={{display:"none"}} to={`/internship/jobs/application/${this.props.match.params.job_id}`}></Link>
                     </div>
 
                     {/* {indiv_startup_html(startup)}
                     <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-primary"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary" >{this.state.msg}</button>)}</button></div>
                     <Link className="job_apply_btn" style={{display:"none"}} to={`/iportal/jobs/application/${this.props.match.params.job_id}`}></Link> */}
                 </div>
-                <Footer/>
             </div>
         )
     }

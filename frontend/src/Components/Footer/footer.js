@@ -4,9 +4,9 @@ import './footer.css';
 import logo from '../../assets/logo-white.png';
 
 
-const footer = ()=>{
+const footer = (props)=>{
     return(
-        <div className="footer" style={{background:"#0A0908",textAlign:'center',marginTop:"50px",position:"relative",bottom:"0"}}>
+        <div className="footer" style={{background:"#0A0908",textAlign:'center',marginTop: props.noMarginTop? null: "50px",position:"relative",bottom:"0"}}>
             <div className="container-fluid" style={{maxWidth:"1500px",padding:"50px"}}>
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-lg-4 col5">
