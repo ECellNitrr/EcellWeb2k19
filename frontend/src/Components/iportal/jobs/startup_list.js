@@ -58,7 +58,7 @@ export default class startup_list extends Component {
                     <div className="col-lg-4 offset-md-1 mx-3 my-3">
                         <div className="view overlay">
                             <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" className="img-fluid" alt="Sample image for first version of blog listing"></img>
-                            <Link to={`/iportal/jobs/${startup.name}/${startup.id}`}>
+                            <Link to={`/internship/jobs/${startup.name}/${startup.id}`}>
                                 <div className="mask rgba-white-slight"></div>
                             </Link>
                         </div>
@@ -73,7 +73,7 @@ export default class startup_list extends Component {
 
                         <p className="font-weight-normal">{startup.brief}</p>
                         <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated at</strong>: {startup.updated_at.slice(0, 10)}</p>
-                        <Link className="btn btn-primary" to={`/iportal/jobs/${startup.id}`} >Read More</Link>
+                        <Link className="btn btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link>
 
                     </div>
                 </div>

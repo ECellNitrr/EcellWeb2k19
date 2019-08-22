@@ -41,9 +41,9 @@ class Startup extends Component {
         if (data.count == 1) {
           const startup_id = data.results[0].id
           this.props.updateUser({ startup_id })
-          this.props.history.push(`/iportal/startup/`)
+          this.props.history.push(`/internship/startup/`)
         } else {
-          this.props.history.push(`/iportal/startup/register/`)
+          this.props.history.push(`/internship/startup/register/`)
         }
       })
   }

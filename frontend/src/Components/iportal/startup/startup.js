@@ -18,13 +18,13 @@ export default class iportal extends Component {
             <div>
                 <Navbar/>
                 <Switch>
-                    <Route path='/iportal/startup/application_detail/:application_id/' component={ApplicationDetail}/> // view detail of application
-                    <Route path='/iportal/startup/application/:job_id/' component={ApplicationList}/> // list of applications
-                    <Route path='/iportal/startup/openings/new/' component={NewOpening}/> // new opening
-                    <Route path='/iportal/startup/openings/:job_id/' component={NewOpening}/> // edit a opening
-                    <Route path='/iportal/startup/openings/' component={Openings}/> // list of openings
-                    <Route path='/iportal/startup/edit' component={EditStartup}/> //edit startup profile
-                    <Route path='/iportal/startup/' component={Dashboard}/> //landing page for startups
+                    <Route path='/internship/startup/application_detail/:application_id/' component={ApplicationDetail}/> // view detail of application
+                    <Route path='/internship/startup/application/:job_id/' component={ApplicationList}/> // list of applications
+                    <Route path='/internship/startup/openings/new/' component={NewOpening}/> // new opening
+                    <Route path='/internship/startup/openings/:job_id/' component={NewOpening}/> // edit a opening
+                    <Route path='/internship/startup/openings/' component={Openings}/> // list of openings
+                    <Route path='/internship/startup/edit' component={EditStartup}/> //edit startup profile
+                    <Route path='/internship/startup/' component={Dashboard}/> //landing page for startups
                 </Switch>
                 <Footer/>
             </div>

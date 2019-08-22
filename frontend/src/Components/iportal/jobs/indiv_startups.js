@@ -114,7 +114,7 @@ export default class indiv_startups extends Component {
 
                             <hr className="gray"></hr>
                             
-                            <Link to={`/iportal/jobs/${this.state.startup_detail.id}/opening/${job.id}`} style={{fontSize:"12px",float:"right"}} className="btn btn-danger font-weight-bold">View Details</Link> 
+                            <Link to={`/internship/jobs/${this.state.startup_detail.id}/opening/${job.id}`} style={{fontSize:"12px",float:"right"}} className="btn btn-danger font-weight-bold">View Details</Link> 
                         </div>
                         </div>
                     </div>

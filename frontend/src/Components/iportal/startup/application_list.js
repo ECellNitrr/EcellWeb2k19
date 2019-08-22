@@ -46,7 +46,7 @@ class applications_list extends Component {
         let jobs = this.state.applications.map((application, i) =>
             <tr key={application.id}>
                 <th scope="row">{i + 1}</th>
-                <td><Link className='text-primary font-weight-bold' to={`/iportal/startup/application_detail/${application.id}/`} >
+                <td><Link className='text-primary font-weight-bold' to={`/internship/startup/application_detail/${application.id}/`} >
                     {application.applicant_obj.first_name} {application.applicant_obj.last_name}
                 </Link></td>
                 <td>{application_status[application.status]}</td>

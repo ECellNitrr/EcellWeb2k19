@@ -18,11 +18,11 @@ export default class iportal extends Component {
             <div>
                 <Navbar />
                 <Switch>
-                    <Route path='/iportal/jobs/my_application' component={MyApplication} />
-                    <Route path='/iportal/jobs/application/:job_id' component={JobApplication} />
-                    <Route path='/iportal/jobs/:startup_id/opening/:job_id' component={IportalJobDetail} />
-                    <Route path='/iportal/jobs/:startup_id' component={IportalIndivStartup} />
-                    <Route path='/iportal/jobs/' component={StartupList} />
+                    <Route path='/internship/jobs/my_application' component={MyApplication} />
+                    <Route path='/internship/jobs/application/:job_id' component={JobApplication} />
+                    <Route path='/internship/jobs/:startup_id/opening/:job_id' component={IportalJobDetail} />
+                    <Route path='/internship/jobs/:startup_id' component={IportalIndivStartup} />
+                    <Route path='/internship/jobs/' component={StartupList} />
                 </Switch>
                 <Footer noMarginTop />
             </div>

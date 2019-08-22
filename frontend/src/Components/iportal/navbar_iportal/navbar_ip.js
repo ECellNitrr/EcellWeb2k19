@@ -43,10 +43,10 @@ class navbar_ip extends Component {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <Link class="nav-link ip-links mx-3" to='/iportal/jobs'>View Startups </Link>
+                                <Link class="nav-link ip-links mx-3" to='/internship/jobs'>View Startups </Link>
                             </li>
                             <li class="nav-item">
-                                <Link class="nav-link ip-links mx-3" to="/iportal/jobs/my_application">My Applications</Link>
+                                <Link class="nav-link ip-links mx-3" to="/internship/jobs/my_application">My Applications</Link>
                             </li>
                             <li class="nav-item mx-3">
                                 <Link class="nav-link ip-links" to='/'>Go to Main Site</Link>

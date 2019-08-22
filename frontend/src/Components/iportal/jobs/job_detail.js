@@ -208,7 +208,7 @@ class job_detail extends Component {
                         <hr class="my-4"></hr>
 
                         <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-success font-weight-bold"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary font-weight-bold" >{this.state.msg}</button>)}</button></div>
-                        <Link className="job_apply_btn" style={{display:"none"}} to={`/iportal/jobs/application/${this.props.match.params.job_id}`}></Link>
+                        <Link className="job_apply_btn" style={{display:"none"}} to={`/internship/jobs/application/${this.props.match.params.job_id}`}></Link>
                     </div>
 
                     {/* {indiv_startup_html(startup)}
