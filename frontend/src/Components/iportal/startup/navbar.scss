@@ -1,0 +1,12 @@
+.startup_navbar{
+    background: #ccc;
+    padding: 15px;
+    a{
+        display: inline-block;
+        margin: 0 20px;
+    }
+    .active{
+        background: red;
+        color: white;
+    }
+}
