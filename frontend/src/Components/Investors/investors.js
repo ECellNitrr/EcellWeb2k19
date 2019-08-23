@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import faxios from '../../axios'
-import './speakers.css';
+import './investors.css';
 import Loader from '../api_loader/api_loader'
 import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 
-class speaker extends Component {
+class investors extends Component {
 
   
   state = {
-    speakers: [],
+    investors: [],
     loading: true
   }
 
   componentDidMount() {
-    faxios().get('/speakers/full_list/').then(res => {
+      faxios().get(`/investors/`).then(res => {
         console.log(res)
         let data = res.data
         this.setState({
-          speakers: data,
+          investors: data,
           loading:false
         })
 
@@ -26,30 +26,30 @@ class speaker extends Component {
   }
 
   render() {
-    const speakers = this.state.speakers.sort((a,b)=>b.year-a.year)
+    const investors = this.state.investors.sort((a,b)=>b.year-a.year)
 
-    let speakers_html = speakers.map(speaker =>
-      <div className="wrapper" key={speaker.name}>
+    let investors_html = investors.map(investor =>
+      <div className="wrapper" key={investor.name}>
 
         <div className="profile-card js-profile-card">
 
           <div className="profile-card__img">
-            <img src={speaker.profile_pic} alt={speaker.name}></img>
+            <img src={investor.profile_pic} alt={investor.name}></img>
           </div>
 
           <div className="profile-card__cnt js-profile-cnt">
-            <div className="profile-card__name">{speaker.name}</div>
-            <div className="profile-card__txt"><strong>{speaker.company}</strong></div>
-            <div className="profile-card__year">SPEAKER {speaker.year}</div>
+            <div className="profile-card__name">{investor.name}</div>
+            <div className="profile-card__txt"><strong>{investor.company}</strong></div>
+            <div className="profile-card__year">INVESTOR {investor.year}</div>
 
             <div className="profile-card-loc">
               <span className="profile-card-loc__txt">
-                {speaker.description}
+                {investor.description}
               </span>
             </div>
 
             <div className="profile-card-ctr">
-              <a href={speaker.social_media} target="_blank" ><button className="profile-card__button button--orange">Follow</button></a>
+              <a href={investor.social_media} target="_blank" ><button className="profile-card__button button--orange">Follow</button></a>
             </div>
           </div>
 
@@ -63,9 +63,9 @@ class speaker extends Component {
     return (
       <div className="speaker">
         <Navbar />
-        <div className="header1">SPEAKERS</div>
+        <div className="header1">Investors</div>
         <div className="container-fluid ctn7" style={{ maxWidth: "1500px" }}>
-          {this.state.loading ? (<div style={{marginTop:"20%"}}><Loader/></div>):speakers_html}
+          {this.state.loading ? (<div style={{marginTop:"20%"}}><Loader/></div>):investors_html}
         </div>
         <Footer />
       </div>
@@ -73,4 +73,4 @@ class speaker extends Component {
   }
 }
 
-export default speaker;
+export default investors;
