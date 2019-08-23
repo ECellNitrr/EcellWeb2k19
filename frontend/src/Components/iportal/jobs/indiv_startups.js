@@ -128,18 +128,20 @@ export default class indiv_startups extends Component {
             }
         })
 
+        let no_logo = require('../../../assets/no-logo.svg')
+
         let indiv_startup_html= (startup) => {
             return(
                 <div>
-                <div class="jumbotron hoverable" style={{margin:"0"}}>
+                <div class="jumbotron hoverable" style={{marginBottom:"50px"}}>
 
                     <div className="container-fluid" style={{marginBottom:"40px"}}>
                         <div className="row">
-                            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8 d-flex" style={{alignItems:"center"}} >
+                            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8 d-flex" style={{alignItems:"center",padding:"0px"}} >
                                 <div>
                                     <h2 class="card-title h2">{startup.name}</h2> 
                                     <div>
-                                        <p class="mx-2 font-weight-bold text-success">{startup.sector}</p>
+                                        <p class="font-weight-bold text-success">{startup.sector}</p>
                                     </div>
                                     <div><span className="font-weight-bold">Email :</span>{startup.email}</div>
                                     <div><span className="font-weight-bold">Contact :</span>{startup.contact}</div><br></br>
@@ -151,7 +153,7 @@ export default class indiv_startups extends Component {
                             <hr className="my-4 rgba-white-light"/>
 
                             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 d-flex" style={{justifyContent:"center"}}>
-                                <img style={{maxWidth:"300px",maxWidth:"300px",objectFit:"contain"}} className="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg"></img>
+                                <img style={{maxWidth:"300px",maxWidth:"300px",objectFit:"contain"}} className="img-fluid" src={startup.logo ? startup.logo : no_logo}></img>
                             </div>
                         </div>
                     </div>
@@ -161,13 +163,15 @@ export default class indiv_startups extends Component {
                     
                     <div class="d-flex">
                         <div class="pb-2">
-                        <p class="card-text">{startup.brief}</p>
+                        <p class="card-text"><span className="font-weight-bold">Brief: </span><br></br>{startup.brief}</p>
+                        <div><span className="font-weight-bold">Description: </span></div>
                         <div className="card-text" dangerouslySetInnerHTML={{ __html:startup.description }}></div>
                         </div>
                     </div>
 
                     <hr class="my-4 rgba-white-light"/>
-                    <div style={{marginBottom:"-30px"}}>
+                    <div style={{marginBottom:"-30px",marginTop:"50px"}}>
+                        <h1 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Job Openings</h1>
                         {jobs_html}
                     </div>
                     
@@ -177,7 +181,7 @@ export default class indiv_startups extends Component {
          }
         return (
             <div style={{background:"lightgray"}}>
-                <div className="container-fluid" style={{maxWidth:"1400px",paddingTop:"150px"}}>
+                <div className="container-fluid" style={{maxWidth:"1400px"}}>
                     {indiv_startup_html(startup)}
                 </div>
             </div>

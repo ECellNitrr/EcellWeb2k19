@@ -19,7 +19,7 @@ export default class startup_list extends Component {
         console.log(`active page is ${pageNumber}`);
 
         this.setState({ loading: true })
-        faxios().get(`/iportal/startup/?page=${pageNumber}`).then(res => {
+        faxios().get(`/iportal/startup/?page=${pageNumber}&approved=true`).then(res => {
             let data = res.data.results
             this.setState({
                 loading: false,
@@ -65,7 +65,7 @@ export default class startup_list extends Component {
 
 
     render() {
-        let no_logo = require('../../../assets/no_pic.svg')
+        let no_logo = require('../../../assets/no-logo.svg')
 
         let startup_html = this.state.startups.map(startup => (
 
@@ -73,9 +73,9 @@ export default class startup_list extends Component {
             <div className="jumbotron text-center hoverable p-4" key={startup.id}>
                 <div className="row">
                     <div className="col-lg-4 offset-md-1 mx-3 my-3">
-                        <div className="view overlay">
-                            <img src={startup.logo? startup.logo: no_logo} className="img-fluid" alt="Sample image for first version of blog listing"></img>
-                            <Link to={`/internship/jobs/${startup.name}/${startup.id}`}>
+                        <div className="view overlay d-flex" style={{ alignItems: "center", justifyContent: "center" }}>
+                            <img width="300px" height="300px" src={startup.logo ? startup.logo : no_logo} className="img-fluid" alt={startup.name}></img>
+                            <Link style={{ display: "none" }} to={`/internship/jobs/${startup.name}/${startup.id}`}>
                                 <div className="mask rgba-white-slight"></div>
                             </Link>
                         </div>
@@ -90,7 +90,7 @@ export default class startup_list extends Component {
 
                         <p className="font-weight-normal">{startup.brief}</p>
                         <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated at</strong>: {startup.updated_at.slice(0, 10)}</p>
-                        <Link className="btn btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link>
+                        <Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link>
 
                     </div>
                 </div>
@@ -98,10 +98,10 @@ export default class startup_list extends Component {
         ))
 
         return (
-            <div id="outer-container" style={{ background: "lightgray", paddingTop: '150px' }}>
-                <form className='text-center'>
-                    <input ref={ele => this.search_box = ele} placeholder="Search for Startups and Jobs" type="text" />
-                    <button onClick={this._search} className="btn btn-primary">Search</button>
+            <div id="outer-container" style={{ background: "lightgray" }}>
+                <form className='text-center d-flex mb-5' style={{ maxWidth: "1100px", alignItems: "center", justifyContent: "center", margin: "auto" }}>
+                    <input style={{height:"50px"}} className="form-control m-3" ref={ele => this.search_box = ele} placeholder="Search for Startups and Jobs" type="text" />
+                    <button onClick={this._search} className="m-3 font-weight-bold btn btn-primary">Search</button>
                 </form>
                 <div className="container" style={{ paddingTop: "10% 0 0 0" }}>
                     {this.state.loading ?
@@ -116,8 +116,8 @@ export default class startup_list extends Component {
                         itemsCountPerPage={15}
                         totalItemsCount={this.state.totalStartups}
                         pageRangeDisplayed={10}
-                        itemClass = 'page-item'
-                        linkClass = 'page-link'
+                        itemClass='page-item'
+                        linkClass='page-link'
                         onChange={this.handlePageChange}
                     />
                 </div>

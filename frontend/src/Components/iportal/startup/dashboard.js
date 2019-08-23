@@ -92,7 +92,7 @@ class dashboard extends Component {
                         
                         
                     </div>
-                    <div className="col-md-4 text-right">
+                    <div className="col-md-4 text-right my-5 d-flex" style={{justifyContent:"center",alignItems:"center"}}>
                         <img className='logo_img image-fluid align-self-center' style={{outline:"3px solid #EA4763",outlineOffset:"8px"}} src={logo_url} alt=""/>
                     </div>
                 </div>

@@ -121,13 +121,13 @@ class new_opening extends Component {
                     <div className="">
                         <button 
                             onClick={() => this.props.history.goBack()}
-                            className="btn btn-info font-weight-bold" style={{position:"absolute",top:"21%"}}>Go back</button>
+                            className="btn btn-info font-weight-bold">Go back</button>
                         <h1 className="text-center font-weight-bold flex-grow-1 my-5">
                             {this.job_id ? 'Edit Opening' : 'Create new Opening'}
                         </h1>
                         {this.job_id? <button 
                             onClick={this._delete_opening}
-                            className="btn btn-danger font-weight-bold align-self-center">Delete</button>:null}
+                            className="btn btn-danger mb-4 font-weight-bold align-self-center" style={{position:"relative",left:"50%",transform:"translate(-50%,0)"}}>Delete</button>:null}
                     </div>
 
                     {this.state.initial_load ? <div className="my-5">
@@ -174,7 +174,7 @@ class new_opening extends Component {
                         </div>
                         <div className="form-group">
                             <label className='mr-2 font-weight-bold d-inline-block'>Job type</label>
-                            <select className="" ref={ele => this.job_type = ele}>
+                            <select className="form-control" ref={ele => this.job_type = ele}>
                                 <option value='Internship'>Internship</option>
                                 <option value='Internship with job offer'>Internship with job offer</option>
                                 <option value='Full time employee'>Full time employee</option>

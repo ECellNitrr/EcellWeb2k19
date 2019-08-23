@@ -35,8 +35,8 @@ class navbar_ip extends Component {
         return (
           
             <div>
-                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
-                    <Link className="navbar-brand" to='/'><img width="70px" height="70px" src={require('../../../assets/logo-white.png')}></img></Link>
+                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar" style={{padding:"5px"}}>
+                    <Link className="navbar-brand" to='/'><img width="50px" height="50px" src={require('../../../assets/logo-white.png')}></img></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
