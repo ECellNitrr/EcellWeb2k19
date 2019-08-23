@@ -43,16 +43,16 @@ class navbar extends Component {
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <Link exact to='/internship/startup/' class="nav-link ip-links mx-3">Dashboard</Link>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item">
+                                <Link to='/internship/startup/' className="nav-link ip-links mx-3">Dashboard</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link to='/internship/startup/openings/' class="nav-link ip-links mx-3">Openings</Link>
+                            <li className="nav-item">
+                                <Link to='/internship/startup/openings/' className="nav-link ip-links mx-3">Openings</Link>
                             </li>
                             <li className="nav-item mx-3">
-                                <NavLink exact className="nav-link ip-links" to='/'>Go to Main Site</NavLink>
+                                <NavLink className="nav-link ip-links" to='/'>Go to Main Site</NavLink>
                             </li>
                            
                         </ul>

@@ -2,14 +2,9 @@ import axios from "axios";
 import { store } from './index'
 
 
-<<<<<<< HEAD
-export let baseURL ="https://ecell.nitrr.ac.in";
+  export let baseURL ="https://ecell.nitrr.ac.in";
 //export let baseURL ="http://localhost:8000";
-=======
-//  export let baseURL ="https://ecell.nitrr.ac.in";
-export let baseURL ="http://localhost:8000";
 
->>>>>>> 7c711481b71dc901f0c662cbee22d443ee0860a1
     
 if (process.env.NODE_ENV === 'production') {
     baseURL = ""

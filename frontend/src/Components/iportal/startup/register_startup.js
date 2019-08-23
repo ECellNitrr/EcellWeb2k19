@@ -37,7 +37,7 @@ class RegisterStartup extends Component {
                     this.address1.value = data.address1
                     this.address2.value = data.address2
                     this.district.value = data.district
-                    this.lstate.value = data.lstate
+                    this.lstate.value = data.state
                     this.country.value = data.country
                     this.description.set_value(data.description)
                 })
