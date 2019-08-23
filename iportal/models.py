@@ -69,8 +69,8 @@ class Job(models.Model):
     skills_required = models.TextField(blank=False)
     who_can_apply = models.TextField(blank=False)
     perks = models.TextField(blank=True)
-
     stipend = models.CharField(max_length=400)
+
     apply_by = models.DateTimeField()
     posted_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

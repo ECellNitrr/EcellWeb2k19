@@ -22,7 +22,7 @@ def start_bquiz(qs_id):
     print(questions)
     channel_layer = get_channel_layer()
     print(channel_layer)
-    time.sleep(2)
+    time.sleep(5)
 
 
     for question in questions:
@@ -72,7 +72,7 @@ def start_bquiz(qs_id):
                 "end":False
             }
         )
-        time.sleep(10) #time between two questions
+        time.sleep(20) #time between two questions
             
     async_to_sync(channel_layer.group_send)(
     "bquiz",{

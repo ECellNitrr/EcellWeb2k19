@@ -79,7 +79,8 @@ export class navbar extends Component {
                         <li><NavLink to="/gallery" className="data-links" data-text="Gallery" >Gallery</NavLink></li>
                         <li><NavLink to="/sponsors" className="data-links" data-text="Sponsors" >Sponsors</NavLink></li>
                         <li><NavLink to="/speakers" className="data-links" data-text="Speakers" >Speakers</NavLink></li>
-                        <li><NavLink to="/startups" className="data-links" data-text="Startups" >Startups</NavLink></li>
+                        <li><NavLink to="/investors" className="data-links" data-text="Investors" >Investors</NavLink></li>
+                        {/* <li><NavLink to="/startups" className="data-links" data-text="Startups" >Startups</NavLink></li> */}
                         <li><NavLink to="/mentors" className="data-links" data-text="Mentors" >Mentors</NavLink></li>
                         <li><NavLink to="/caportal_info" className="data-links" data-text="Caportal" >CaPortal</NavLink></li>
                         <li><NavLink to="/register" className="data-links" data-text="Register" >Register</NavLink></li>

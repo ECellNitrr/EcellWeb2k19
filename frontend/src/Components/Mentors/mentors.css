@@ -46,6 +46,12 @@
     text-transform: uppercase;
 }
 
+@media(max-width:450px)
+{
+    .mentors_pic{
+    max-width:300px;
+    }
+}
 @media(max-width:375px){
     .individual_mentors{
         flex: 1 0 250px;
@@ -55,6 +61,7 @@
     
     .mentors_pic{
         max-height: 250px;
+        max-width:250px;
         position: relative;
         left: 50%;
         transform: translate(-50%,0);
