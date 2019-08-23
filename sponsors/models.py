@@ -5,7 +5,7 @@ from decouple import config
 class Sponsor(models.Model):
     SPONS_TYPE = (
         ('ATS', 'Associate Sponsors'),
-        ('PTS', 'Platinum Sponsors'),
+        ('PLS', 'Platinum Sponsors'),
         ('GDS', 'Gold Sponsors'),
         ('TLS', 'Title Sponsors'),
         ('PRS', 'Partner Sponsors'),
