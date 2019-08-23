@@ -33,24 +33,49 @@ class applications_list extends Component {
             })
     }
 
+    _status_func = (application) =>{
+        if(application.status ==="RJD"){
+            return <span class="badge py-2 badge-danger">Rejected</span>
+        }
+
+        if(application.status ==="HRD"){
+            return <span class="badge py-2 badge-success">Hired</span>
+        }
+
+        if(application.status ==="PND"){
+            return <span class="badge py-2 badge-info">Pending</span>
+        }
+
+        if(application.status ==="URV"){
+            return <span class="badge py-2 badge-warning">Reviewing</span>
+        }
+
+
+    }
 
     render() {
+
+        
+
         let applications = this.state.applications.map((application, i) =>
             <tr key={application.id}>
                 <th scope="row">{i + 1}</th>
                 <td>{application.startup_name}</td>
                 <td>{application.opening_name}</td>
-                <td>{application.status}</td>
+                <td>{this._status_func(application)}</td>
                 <td>{application.created_at}</td>
             </tr>
         )
 
         return (
-            <div className="container">
+            <div className="container jumbotron hoverable">
+
+                <div>
+                    <button onClick={() => this.props.history.goBack()} className="btn align-self-center font-weight-bold btn-primary">Go Back</button>
+                </div>
 
                 <div className='d-flex'>
-                    <button onClick={() => this.props.history.goBack()} className="btn align-self-center btn-primary">GoBack</button>
-                    <h1 className="text-center flex-grow-1 my-5">My Applications</h1>
+                    <h1  className="text-center font-weight-bold flex-grow-1 my-5">My Applications</h1>
                 </div>
 
                 <table className="table table-striped">

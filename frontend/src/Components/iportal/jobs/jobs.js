@@ -30,7 +30,7 @@ class Job extends Component {
     
     render() {
         return (
-            <div>
+            <div style={{background:"lightgray",paddingTop:"170px"}}>
                 <Navbar />
                 <Switch>
                     <Route path='/internship/jobs/my_application' component={MyApplication} />

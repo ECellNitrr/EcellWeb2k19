@@ -127,7 +127,7 @@ class new_opening extends Component {
                         </h1>
                         {this.job_id? <button 
                             onClick={this._delete_opening}
-                            className="btn btn-danger font-weight-bold align-self-center">Delete</button>:null}
+                            className="btn btn-danger mb-4 font-weight-bold align-self-center" style={{position:"relative",left:"50%",transform:"translate(-50%,0)"}}>Delete</button>:null}
                     </div>
 
                     {this.state.initial_load ? <div className="my-5">
@@ -174,7 +174,7 @@ class new_opening extends Component {
                         </div>
                         <div className="form-group">
                             <label className='mr-2 font-weight-bold d-inline-block'>Job type</label>
-                            <select className="" ref={ele => this.job_type = ele}>
+                            <select className="form-control" ref={ele => this.job_type = ele}>
                                 <option value='Internship'>Internship</option>
                                 <option value='Internship with job offer'>Internship with job offer</option>
                                 <option value='Full time employee'>Full time employee</option>

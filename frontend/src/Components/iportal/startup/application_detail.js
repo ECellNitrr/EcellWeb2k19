@@ -43,46 +43,54 @@ export default class application_detail extends Component {
         )
 
         return (
-            <div className='container'>
-                <div className="d-flex my-5">
-                    <button className="btn btn-primary" onClick={() => this.props.history.goBack()}>Goback</button>
-                    <h1 className="text-center flex-grow-1">Job Application</h1>
+            <div className='container jumbotron hoverable'>
+            
+                <div style={{marginBottom:"50px"}}>
+                    <button style={{float:"left"}} className="btn btn-primary font-weight-bold" onClick={() => this.props.history.goBack()}>Go back</button>
+                </div><br></br>
+
+                <div>
+                <div className="text-center my-3">    
+                    <h1 className="text-center font-weight-bold flex-grow-1">Job Application</h1>
                 </div>
 
                 <div className="text-center">
-                    <a href={application.resume} target='_blank' className="btn btn-primary">Resume</a>
+                    <a href={application.resume} target='_blank' className="btn my-3 btn-danger font-weight-bold">Resume</a>
                 </div>
 
-                <div>
+                <div className="my-3">
                     <span className="font-weight-bold">Name: </span>
                     <span>{application.applicant_obj.first_name} {application.applicant_obj.last_name}</span>
                 </div>
 
-                <div>
+                <div className="my-3">
                     <span className="font-weight-bold">Email: </span>
                     <span>{application.applicant_obj.email}</span>
                 </div>
 
-                <div>
+                <div className="my-3">
                     <span className="font-weight-bold">Contact: </span>
                     <span>{application.applicant_obj.contact}</span>
                 </div>
 
-                <div>
+                <div className="my-3">
                     <div className="font-weight-bold">How you are suitable for this job?: </div>
                     <div dangerouslySetInnerHTML={{__html:application.ques1}}></div>
                 </div>
 
-                <div>
+                <div className="my-3">
                     <div className="font-weight-bold">During what timeframe you are available for the job?</div>
                     <div dangerouslySetInnerHTML={{__html:application.ques2}}></div>
                 </div>
 
-                <div className="text-center">
-                    <select ref={ele => this.status = ele}>
+                <div className="my-3 d-flex justify-content-center">
+                    <div>
+                    <select style={{maxWidth:"300px",border:"2px solid gray"}} className="text-center my-4 form-control" ref={ele => this.status = ele}>
                         {application_status_html}
                     </select>
-                    <button onClick={this._update_status} className="btn btn-primary">Submit</button>
+                    <button onClick={this._update_status} className="btn btn-success font-weight-bold">Submit</button>
+                    </div>
+                </div>
                 </div>
             </div>
         )

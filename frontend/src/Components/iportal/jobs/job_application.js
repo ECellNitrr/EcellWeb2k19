@@ -92,12 +92,12 @@ class job_application extends Component {
     render() {
         return (
             <div>
-                <div className='container'>
-                    <h1 className="mt-5 text-center">Job Application</h1>
-                    <h2 className="mt-4 text-center">{this.state.job_detail.name} ({this.state.job_detail.job_type})</h2>
+                <div className='container jumbotron'>
+                    <h1 className="mt-5 font-weight-bold text-center">Job Application</h1>
+                    <h2 className="mt-4 font-weight-bold text-center">{this.state.job_detail.name} ({this.state.job_detail.job_type})</h2>
 
-                    <div className="text-center">
-                        <input ref={ele => this.resume = ele} type="file" /> <span className="font-weight-bold">{this.state.progress? `${this.state.progress}%`:null}</span>   
+                    <div className="text-center font-weight-bold my-5">
+                        Upload your Resume : <input className="btn btn-success text-center font-weight-bold" ref={ele => this.resume = ele} type="file" /> <span className="font-weight-bold">{this.state.progress? `${this.state.progress}%`:null}</span>   
                     </div>
 
                     {this.state.uploading ?
@@ -111,17 +111,17 @@ class job_application extends Component {
                         :
                         null}
 
-                    <div>How you are suitable for this job?</div>
+                    <div className="font-weight-bold my-4">How you are suitable for this job?</div>
                     <Wysiwyg onRef={ele => this.ques1 = ele} />
 
-                    <div>During what timeframe you are available for the job?</div>
+                    <div className="font-weight-bold my-4">During what timeframe you are available for the job?</div>
                     <Wysiwyg onRef={ele => this.ques2 = ele} />
 
                     <div className="text-center">
                         <div className="text center text-danger">
                             {this.state.error? 'Please ensure that all questions are answered and resume file selected for upload.':null}
                         </div>
-                        <button onClick={this._upload_application} disabled={this.state.uploading} type="submit" className="btn btn-primary">{this.state.uploading ? 'Uploading' : 'Submit'}</button>
+                        <button onClick={this._upload_application} disabled={this.state.uploading} type="submit" className="btn font-weight-bold my-4 btn-primary">{this.state.uploading ? 'Uploading' : 'Submit'}</button>
                     </div>
                 </div>
             </div>

@@ -168,12 +168,12 @@ class job_detail extends Component {
             return(
             <div>
                 <div><strong className="font-weight-bold">Posted On :</strong> {job.posted_on}</div><br></br>
-                <div><strong className="font-weight-bold">About the job :</strong><br></br> <div dangerouslySetInnerHTML={{ __html:job.about_the_job }}></div></div><br></br><br></br>
+                <div><strong className="font-weight-bold">About the job :</strong><br></br> <div dangerouslySetInnerHTML={{ __html:job.about_the_job }}></div></div><br></br>
                 <div><span className="font-weight-bold">Perks :</span><br></br> <div dangerouslySetInnerHTML={{ __html:job.perks }}></div></div><br></br>
                 <div><span className="font-weight-bold">Skills Required : </span><br></br> <div dangerouslySetInnerHTML={{ __html:job.skills_required }}></div></div><br></br>
-                <div><span className="font-weight-bold">Who can apply :</span><br></br> <div dangerouslySetInnerHTML={{ __html:job.who_can_apply }}></div> </div><br></br><br></br>
-                <div><span className="font-weight-bold">No of openings :</span> {job.no_of_opening}</div><br></br><br></br>
-                <div><span className="font-weight-bold">Apply By : </span> {job.apply_by}</div><br></br><br></br>
+                <div><span className="font-weight-bold">Who can apply :</span><br></br> <div dangerouslySetInnerHTML={{ __html:job.who_can_apply }}></div> </div><br></br>
+                <div><span className="font-weight-bold">No of openings :</span> {job.no_of_opening}</div><br></br>
+                <div><span className="font-weight-bold">Apply By : </span> {job.apply_by}</div><br></br>
             </div>
 
             )
@@ -197,8 +197,8 @@ class job_detail extends Component {
         }
 
         return (
-            <div  style={{background:"lightgray"}}>
-                <div className="container-fluid" style={{paddingTop:"100px",maxWidth:"1200px"}}>
+            <div  style={{background:"lightgray",marginTop:"-60px"}}>
+                <div className="container-fluid" style={{maxWidth:"1200px"}}>
                     {jobs_html_tab(this.state.jobs)}
                 </div>
                 <div className="container-fluid" style={{maxWidth:"1200px"}}>

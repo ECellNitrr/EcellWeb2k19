@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import {NavLink, Link} from 'react-router-dom'
+import {NavLink, Link, withRouter} from 'react-router-dom'
 
 import Modal from '../../Form/modal'
 import { user_type } from '../../constants'
-
+import {compose} from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../../actions/authActions'
@@ -38,8 +38,8 @@ class navbar extends Component {
             //     <NavLink to='/iportal/startup/openings/'>Openings</NavLink>
             // </div>
             <div className='iportal_navbar'>
-                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
-                    <Link className="navbar-brand" to='/'><img width="70px" height="70px" src={require('../../../assets/logo-white.png')}></img></Link>
+                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar" style={{padding:"5px"}}>
+                    <Link className="navbar-brand" to='/'><img width="50px" height="50px" src={require('../../../assets/logo-white.png')}></img></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -89,4 +89,4 @@ class navbar extends Component {
 }
 
 const mapStateToProps = (state) => state
-export default connect(mapStateToProps, actions)(navbar)
+export default compose(connect(mapStateToProps, actions),withRouter)(navbar)
