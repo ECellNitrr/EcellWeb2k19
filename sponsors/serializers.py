@@ -11,6 +11,7 @@ class SponsorListSerializer(serializers.ModelSerializer):
     
     def get_sponsor_type(self,instance):
         return instance.get_spons_type_display()
+        
     class Meta:
         model = Sponsor
-        fields = ['id','name', 'details','pic','pic_url','contact','website','sponsor_type','year', 'flag','ecell_user']
+        fields = ['id','name', 'details','pic','pic_url','contact','website','sponsor_type','spons_type', 'year', 'flag','ecell_user']

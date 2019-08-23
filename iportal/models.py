@@ -70,7 +70,7 @@ class Job(models.Model):
     who_can_apply = models.TextField()
     perks = models.TextField(blank=True)
 
-    stipend = models.IntegerField()
+    stipend = models.CharField(max_length=200)
     apply_by = models.DateTimeField()
     posted_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

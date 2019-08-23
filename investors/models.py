@@ -14,7 +14,7 @@ class Investor(models.Model):
     contact = models.TextField(max_length=13, null=True, blank=True)
     description = models.TextField(default='none', null=True, blank=True)
     year = models.IntegerField(default=2019)
-    social_media = models.TextField(default='blank')
+    social_media = models.URLField()
     flag = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)

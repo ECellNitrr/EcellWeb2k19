@@ -4,11 +4,11 @@ from decouple import config
 
 class Sponsor(models.Model):
     SPONS_TYPE = (
-        ('ATS', 'Associate'),
-        ('PTS', 'Platinum'),
-        ('GDS', 'Gold'),
-        ('TLS', 'Title'),
-        ('PRS', 'Partner'),
+        ('ATS', 'Associate Sponsors'),
+        ('PTS', 'Platinum Sponsors'),
+        ('GDS', 'Gold Sponsors'),
+        ('TLS', 'Title Sponsors'),
+        ('PRS', 'Partner Sponsors'),
     )
 
     name = models.CharField(max_length=200)

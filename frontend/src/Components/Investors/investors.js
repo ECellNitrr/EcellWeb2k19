@@ -14,7 +14,7 @@ class investors extends Component {
   }
 
   componentDidMount() {
-      faxios().get(`/investors/full_list/`).then(res => {
+      faxios().get(`/investors/`).then(res => {
         console.log(res)
         let data = res.data
         this.setState({
