@@ -29,20 +29,20 @@ class openings extends Component {
         let jobs = this.state.jobs.map((job,i) =>
             <tr key={job.id}>
                 <th scope="row">{i+1}</th>
-                <td><Link class='text-primary font-weight-bold' to={`/iportal/startup/openings/${job.id}/`} >{job.name}</Link></td>
+                <td><Link class='text-primary font-weight-bold' to={`/internship/startup/openings/${job.id}/`} >{job.name}</Link></td>
                 <td>{job.job_type}</td>
                 <td>{job.total_applicants}</td>
                 <td>
-                    <button onClick={()=> this.props.history.push(`/iportal/startup/application/${job.id}/`)} className="btn py-1 px-2">list</button>
+                    <button onClick={()=> this.props.history.push(`/internship/startup/application/${job.id}/`)} className="btn py-1 px-2">list</button>
                 </td>
             </tr>
         )
 
         return (
-            <div className="container">
+            <div className="container jumbotron hoverable">
 
                 <div className='d-flex'>
-                    <h1 className="text-center flex-grow-1 my-5">Openings</h1>
+                    <h1 className="text-center font-weight-bold flex-grow-1 my-5">Openings</h1>
                     <button onClick={() => this.props.history.push('/iportal/startup/openings/new/')} className="btn align-self-center btn-primary">new opening</button>
                 </div>
 

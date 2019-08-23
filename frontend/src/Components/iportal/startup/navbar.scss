@@ -1,12 +1,11 @@
-.startup_navbar{
-    background: #ccc;
-    padding: 15px;
-    a{
-        display: inline-block;
-        margin: 0 20px;
-    }
-    .active{
-        background: red;
-        color: white;
+.ip-links{
+    font-size: 22px !important;
+    font-weight: 600;
+}
+
+@media(max-width:500px){
+    .ip-links{
+        font-size:17px !important;
     }
 }
+

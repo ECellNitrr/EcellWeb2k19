@@ -115,20 +115,22 @@ class upload_logo extends Component {
 
         return (
             <div>
-                <img className='logo_img' src={logo_url} alt="" />
-                <button
-                    disabled={this.state.uploading}
-                    onClick={this._upload_logo}
-                    className="btn btn-success">
-                    {this.state.uploading ? 'uploading' : 'Change logo'}
-                    {this.state.uploading ?
-                        <span>
-                            <i className="fa fa-spinner fa-spin"></i>
-                            {this.state.progress ? this.state.progress : null}
-                        </span>
-                        :
-                        null}
-                </button>
+                <img style={{outline:"4px solid #57C952",outlineOffset:"12px",maxWidth:"300px",maxHeight:"250px"}} className='logo_img' src={logo_url} alt="" />
+                <div>
+                    <button
+                        disabled={this.state.uploading}
+                        onClick={this._upload_logo}
+                        className="btn font-weight-bold btn-success">
+                        {this.state.uploading ? 'uploading' : 'Change logo'}
+                        {this.state.uploading ?
+                            <span>
+                                <i className="fa fa-spinner fa-spin"></i>
+                                {this.state.progress ? this.state.progress : null}
+                            </span>
+                            :
+                            null}
+                    </button>
+                </div>
             </div>
         )
     }

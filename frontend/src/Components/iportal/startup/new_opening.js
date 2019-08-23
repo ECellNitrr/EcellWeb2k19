@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import faxios from '../../../axios'
 
+import faxios from '../../../axios'
+import './dashboard.scss'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Wysiwyg from '../../common/wysiwyg'
@@ -30,7 +31,6 @@ class new_opening extends Component {
             .then(d => {
                 const data = d.data
                 console.log(data)
-                debugger
 
                 this.name.value = data.name
                 this.stipend.value = data.stipend
@@ -117,100 +117,100 @@ class new_opening extends Component {
 
 
         return (
-            <div className='container'>
-                <div className="d-flex">
-                    <button 
-                        onClick={() => this.props.history.goBack()}
-                        className="btn btn-warning align-self-center">Goback</button>
-                    <h1 className="text-center flex-grow-1 my-5">
-                        {this.job_id ? 'Edit Opening' : 'Create new Opening'}
-                    </h1>
-                    {this.job_id? <button 
-                        onClick={this._delete_opening}
-                        className="btn btn-danger align-self-center">Delete</button>:null}
+                <div className='jumbo container hoverable jumbotron' style={{marginTop:"100px"}}> 
+                    <div className="">
+                        <button 
+                            onClick={() => this.props.history.goBack()}
+                            className="btn btn-info font-weight-bold" style={{position:"absolute",top:"21%"}}>Go back</button>
+                        <h1 className="text-center font-weight-bold flex-grow-1 my-5">
+                            {this.job_id ? 'Edit Opening' : 'Create new Opening'}
+                        </h1>
+                        {this.job_id? <button 
+                            onClick={this._delete_opening}
+                            className="btn btn-danger font-weight-bold align-self-center">Delete</button>:null}
+                    </div>
+
+                    {this.state.initial_load ? <div className="my-5">
+                        <h1 className="text-center">
+                            <i className="fa fa-spinner fa-spin"></i>
+                        </h1>
+                    </div> : null}
+
+                    <form>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Opening name</label>
+                            <input type="text" ref={ele => this.name = ele} className="form-control" />
+                            {error_html['name']}
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Stipend</label>
+                            <input type="text" ref={ele => this.stipend = ele} className="form-control" />
+                            {error_html['stipend']}
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Location</label>
+                            <input type="email" ref={ele => this.location = ele} className="form-control" />
+                            {error_html['location']}
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Apply by</label>
+                            <Datetime value={this.state.apply_by} onChange={e => this.setState({ apply_by: e })} />
+                            {error_html['apply_by']}
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Start Date</label>
+                            <Datetime value={this.state.start_date} onChange={e => this.setState({ start_date: e })} />
+                            {error_html['state_date']}
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">No of Openings</label>
+                            <input type="text" ref={ele => this.no_of_opening = ele} className="form-control" />
+                            {error_html['no_of_opening']}
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Duration</label>
+                            <input type="text" ref={ele => this.duration = ele} className="form-control" />
+                            {error_html['duration']}
+                        </div>
+                        <div className="form-group">
+                            <label className='mr-2 font-weight-bold d-inline-block'>Job type</label>
+                            <select className="" ref={ele => this.job_type = ele}>
+                                <option value='Internship'>Internship</option>
+                                <option value='Internship with job offer'>Internship with job offer</option>
+                                <option value='Full time employee'>Full time employee</option>
+                                <option value='Parttime'>Part time</option>
+                                <option value='Freelance'>Freelance</option>
+                            </select>
+                            {error_html['job_type']}
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">About the job</label>
+                            {error_html['about_the_job']}
+                            <Wysiwyg onRef={ref => this.about_the_job = ref} />
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Skills required</label>
+                            {error_html['skills_required']}
+                            <Wysiwyg onRef={ref => this.skills_required = ref} />
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Who can apply</label>
+                            {error_html['who_can_apply']}
+                            <Wysiwyg onRef={ref => this.who_can_apply = ref} />
+                        </div>
+                        <div className="form-group">
+                            <label className="font-weight-bold">Perks</label>
+                            {error_html['perks']}
+                            <Wysiwyg onRef={ref => this.perks = ref} />
+                        </div>
+
+
+                        <div className="text-center">
+                            <button disabled={this.state.requesting} onClick={this._new_opening} className="btn btn-primary font-weight-bold">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'submit'}</button>
+                        </div>
+                    </form>
+
                 </div>
-
-                {this.state.initial_load ? <div className="my-5">
-                    <h1 className="text-center">
-                        <i className="fa fa-spinner fa-spin"></i>
-                    </h1>
-                </div> : null}
-
-                <form>
-                    <div className="form-group">
-                        <label>Opening name</label>
-                        <input type="text" ref={ele => this.name = ele} className="form-control" />
-                        {error_html['name']}
-                    </div>
-                    <div className="form-group">
-                        <label>Stipend</label>
-                        <input type="text" ref={ele => this.stipend = ele} className="form-control" />
-                        {error_html['stipend']}
-                    </div>
-                    <div className="form-group">
-                        <label>Location</label>
-                        <input type="email" ref={ele => this.location = ele} className="form-control" />
-                        {error_html['location']}
-                    </div>
-                    <div className="form-group">
-                        <label>Apply by</label>
-                        <Datetime value={this.state.apply_by} onChange={e => this.setState({ apply_by: e })} />
-                        {error_html['apply_by']}
-                    </div>
-                    <div className="form-group">
-                        <label>Start Date</label>
-                        <Datetime value={this.state.start_date} onChange={e => this.setState({ start_date: e })} />
-                        {error_html['state_date']}
-                    </div>
-                    <div className="form-group">
-                        <label>No of Openings</label>
-                        <input type="text" ref={ele => this.no_of_opening = ele} className="form-control" />
-                        {error_html['no_of_opening']}
-                    </div>
-                    <div className="form-group">
-                        <label>Duration</label>
-                        <input type="text" ref={ele => this.duration = ele} className="form-control" />
-                        {error_html['duration']}
-                    </div>
-                    <div className="form-group">
-                        <label className='mr-2 d-inline-block'>Job type</label>
-                        <select ref={ele => this.job_type = ele}>
-                            <option value='Internship'>Internship</option>
-                            <option value='Internship with job offer'>Internship with job offer</option>
-                            <option value='Full time employee'>Full time employee</option>
-                            <option value='Parttime'>Part time</option>
-                            <option value='Freelance'>Freelance</option>
-                        </select>
-                        {error_html['job_type']}
-                    </div>
-                    <div className="form-group">
-                        <label>About the job</label>
-                        {error_html['about_the_job']}
-                        <Wysiwyg onRef={ref => this.about_the_job = ref} />
-                    </div>
-                    <div className="form-group">
-                        <label>Skills required</label>
-                        {error_html['skills_required']}
-                        <Wysiwyg onRef={ref => this.skills_required = ref} />
-                    </div>
-                    <div className="form-group">
-                        <label>Who can apply</label>
-                        {error_html['who_can_apply']}
-                        <Wysiwyg onRef={ref => this.who_can_apply = ref} />
-                    </div>
-                    <div className="form-group">
-                        <label>Perks</label>
-                        {error_html['perks']}
-                        <Wysiwyg onRef={ref => this.perks = ref} />
-                    </div>
-
-
-                    <div className="text-center">
-                        <button disabled={this.state.requesting} onClick={this._new_opening} className="btn btn-primary">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'submit'}</button>
-                    </div>
-                </form>
-
-            </div>
 
         )
     }
