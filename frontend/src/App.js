@@ -5,6 +5,7 @@ import PageLoader from './Components/api_loader/page_loader'
 
 
 const Home = lazy(() => import('./Components/Home/home'))
+const Investors = lazy(() => import('./Components/Investors/investors'))
 const Speakers = lazy(() => import('./Components/Speakers/speakers'));
 const Sponsors = lazy(() => import('./Components/Sponsors/sponsors'));
 const Events = lazy(() => import('./Components/Events/events'));
@@ -48,6 +49,7 @@ class App extends Component {
               <Route path='/sponsors' component={() => <Redirect to='/sponsors/2019' />} />
               <Route path='/events/:id' component={EventDetail} />
               <Route path='/events' component={Events} />
+              <Route path='/investors' component={Investors} />
               <Route path='/startups/:year/:id' component={StartupDetail} />
               <Route path='/startups' component={Startups} />
               <Route path='/mentors' component={Mentors} />
