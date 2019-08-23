@@ -22,6 +22,7 @@ urlpatterns = [
     path('bquiz/', include('bquiz.urls')),
     path('feedback/', include('feedback.urls')),
     path('iportal/', include('iportal.urls')),
+    path('investors/', include('investors.urls')),
 ]
 urlpatterns+=staticfiles_urlpatterns()
 # for the media urls

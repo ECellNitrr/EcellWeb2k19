@@ -22,7 +22,7 @@ class Sponsor(models.Model):
     spons_type = models.CharField(
         max_length=3,
         choices=SPONS_TYPE,
-        default='AS')
+        default='ATS')
     flag = models.BooleanField(default=False)
     year = models.IntegerField(default=2019)
     ecell_user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)

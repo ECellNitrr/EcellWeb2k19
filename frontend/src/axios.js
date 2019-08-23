@@ -4,6 +4,7 @@ import { store } from './index'
 
 //  export let baseURL ="https://ecell.nitrr.ac.in";
 export let baseURL ="http://localhost:8000";
+
     
 if (process.env.NODE_ENV === 'production') {
     baseURL = ""
