@@ -46,13 +46,13 @@ class navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <Link to='/internship/startup/' className="nav-link ip-links mx-3">Dashboard</Link>
+                                <NavLink activeClassName='' exact to='/internship/startup/' className="nav-link ip-links mx-3">Dashboard</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link to='/internship/startup/openings/' className="nav-link ip-links mx-3">Openings</Link>
+                                <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3">Openings</NavLink>
                             </li>
                             <li className="nav-item mx-3">
-                                <NavLink className="nav-link ip-links" to='/'>Go to Main Site</NavLink>
+                                <NavLink className="nav-link ip-links" exact to='/'>Go to Main Site</NavLink>
                             </li>
                            
                         </ul>

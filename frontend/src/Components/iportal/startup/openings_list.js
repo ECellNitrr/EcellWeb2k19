@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import faxios from '../../../axios'
 import { Link } from 'react-router-dom'
+import './dashboard.scss'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -41,11 +42,15 @@ class openings extends Component {
         return (
             <div className="container jumbotron hoverable">
 
-                <div className='d-flex'>
-                    <h1 className="text-center font-weight-bold flex-grow-1 my-5">Openings</h1>
+                <div style={{float:"right"}} >
                     <button onClick={() => this.props.history.push('/internship/startup/openings/new/')} className="btn font-weight-bold align-self-center btn-primary">new opening</button>
+                </div><br></br>
+
+                <div className='text-center'>
+                    <h1 className="text-center font-weight-bold flex-grow-1 my-5 open">Openings</h1>
                 </div>
 
+                <div className="table-responsive">
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -58,6 +63,7 @@ class openings extends Component {
                     </thead>
                     <tbody>{jobs}</tbody>
                 </table>
+                </div>
             </div>
         )
     }

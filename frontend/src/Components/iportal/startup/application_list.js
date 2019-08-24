@@ -5,6 +5,7 @@ import './dashboard.scss'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { application_status } from '../../constants'
+import './dashboard.scss'
 
 class applications_list extends Component {
     job_id = Number(this.props.match.params.job_id)
@@ -77,13 +78,14 @@ class applications_list extends Component {
         return (
             <div className="container jumbo2 jumbotron hoverable">
 
-                <div style={{position:"relative",top:"100px"}}>
+                <div className="my-5" style={{position:"relative",top:"30px"}}>
                     <button onClick={() => this.props.history.goBack()} className="btn font-weight-bold btn-primary">Go Back</button>
                 </div>
-                <div className='d-flex'>
-                    <h1 className="text-center font-weight-bold flex-grow-1 my-5">Applicants - {this.state.job.name}({this.state.job.job_type})</h1>
+                <div>
+                    <h1 className="text-center open font-weight-bold flex-grow-1 my-1">Applicants - {this.state.job.name}({this.state.job.job_type})</h1>
                 </div>
 
+                <div className="table-responsive">
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -95,6 +97,7 @@ class applications_list extends Component {
                     </thead>
                     <tbody>{jobs}</tbody>
                 </table>
+                </div>
             </div>
         )
     }

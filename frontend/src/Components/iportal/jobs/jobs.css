@@ -40,3 +40,16 @@
     margin: 1px;
 }
 
+@media(max-width:500px){
+    .indiv_job{
+        font-size:18px;
+    }
+
+    .jb_app{
+        font-size:30px;
+    }
+
+    .jb_apps{
+        font-size:20px;
+    }
+}
