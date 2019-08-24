@@ -67,16 +67,16 @@ class Startup extends Component {
         <Navbar />
 
 
-        <div className="container" style={{ paddingTop: "200px" }}>
+        <div className="container" style={{ paddingTop: "225px" }}>
           <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-6">
-              <img className="hero" src={Hero} alt="hero" height="400" width="600" />
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <img className="hero img-fluid" src={Hero} alt="hero"></img>
             </div>
 
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-              <div className="container-fluid register">
-                <div className="head1">
-                  <span>Welcome to Startup Portal</span>
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex "  >
+              <div className="register shadow-lg p-3 mb-5 rounded">
+                <div className="head1 ">
+                  <span className="font-weight-bold" >Welcome to Startup Portal</span>
                 </div>
                 <div>
                   <button 
@@ -91,7 +91,7 @@ class Startup extends Component {
                 </div>
 
                 <div>
-                  <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Jobs</button>
+                  <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Students</button>
                 </div>
               </div>
             </div>

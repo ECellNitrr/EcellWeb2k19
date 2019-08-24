@@ -67,10 +67,28 @@ export default class startup_list extends Component {
     render() {
         let no_logo = require('../../../assets/no-logo.svg')
 
-        let startup_html = this.state.startups.map(startup => (
+        let startup_html = this.state.startups.map(startup => {
+            
+            let job_tab = startup.jobs
+            console.log(job_tab)
 
+            let jobs = job_tab.map(job =>{
+                if(job == null){
+                    return(
+                        <span key={job.id} className="badge badge-danger p-2" > No Vacancies :( </span>
+                    )
+                }else{
+                    return(
+                        
+                        <div key={job.id}>
+                            <span  className="badge badge-light p-2" style={{fontSize:"15px",margin:"0 20px 0 0"}}>{job.name.slice(0,10)} ...</span>
+                        </div>
+                    )
+                }
+            })
 
-            <div className="jumbotron text-center hoverable p-4" key={startup.id}>
+            return(
+                <div className="jumbotron text-center hoverable p-4" key={startup.id}>
                 <div className="row">
                     <div className="col-lg-4 offset-md-1 mx-3 my-3">
                         <div className="view overlay d-flex" style={{ alignItems: "center", justifyContent: "center" }}>
@@ -83,19 +101,27 @@ export default class startup_list extends Component {
 
                     <div className="col-lg-7 text-md-left ml-3 mt-3">
                         <div className="green-text">
-                            <h6 className="h6 pb-1"><i className="fas fa-desktop pr-1"></i> {startup.sector}</h6>
+                            <h6 className="h6 pb-1"><i className="fas fa-laptop pr-1"></i> {startup.sector}</h6>
                         </div>
 
-                        <h4 className="h4 mb-4">{startup.name}</h4>
+                        <h4 className="h4 font-weight-bold mb-4">{startup.name}</h4>
 
                         <p className="font-weight-normal">{startup.brief}</p>
-                        <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated at</strong>: {startup.updated_at.slice(0, 10)}</p>
+
+                        
+                        <div className="my-2">
+                            <div className="font-weight-bold">Job Openings :</div>   
+                            <div className="d-flex table-responsive scrollbar scrollbar-pink bordered-pink thin my-2">{jobs}</div>   
+                        </div><br></br>
+
+                        <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated on</strong>: {startup.updated_at.slice(0, 10)}</p>
                         <Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link>
 
                     </div>
                 </div>
             </div>
-        ))
+            )
+            })
 
         return (
             <div id="outer-container" style={{ background: "lightgray" }}>

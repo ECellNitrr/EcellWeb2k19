@@ -11,7 +11,8 @@ export default class indiv_startups extends Component {
 
     state={
         startup_detail:[],
-        jobs:[]
+        jobs:[],
+        loading:true
     }
 
     componentDidMount(){
@@ -23,7 +24,8 @@ export default class indiv_startups extends Component {
 
             this.setState({
                 startup_detail:data,
-                jobs:jobs
+                jobs:jobs,
+                loading:false
             })
             console.log(this.state.startup_detail)
             console.log(this.state.jobs)
@@ -47,7 +49,7 @@ export default class indiv_startups extends Component {
 
                         <div class="card" style={{border:"2px solid green"}}>
                         <div class="card-header green text-white d-flex" style={{justifyContent:"space-between"}}>
-                            <div ><h4 className="font-weight-bold">{job.name}</h4></div>
+                            <div ><h4 className="indiv_job font-weight-bold">{job.name}</h4></div>
                             <div style={{fontSize:"15px"}} className="badge badge-dark p-2">{job.job_type}</div>
                         </div>
                         <div class="card-body">
@@ -129,6 +131,7 @@ export default class indiv_startups extends Component {
         })
 
         let no_logo = require('../../../assets/no-logo.svg')
+        let no_vacancies = require('../../../assets/no-vacancies.gif')
 
         let indiv_startup_html= (startup) => {
             return(
@@ -139,9 +142,9 @@ export default class indiv_startups extends Component {
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-8 d-flex" style={{alignItems:"center",padding:"0px"}} >
                                 <div>
-                                    <h2 class="card-title h2">{startup.name}</h2> 
+                                    <h2 class="card-title font-weight-bold h2">{startup.name}</h2> 
                                     <div>
-                                        <p class="font-weight-bold text-success">{startup.sector}</p>
+                                        <p class="font-weight-bold text-success"><i className="fas fa-laptop pr-1"></i> {startup.sector}</p>
                                     </div>
                                     <div><span className="font-weight-bold">Email :</span>{startup.email}</div>
                                     <div><span className="font-weight-bold">Contact :</span>{startup.contact}</div><br></br>
@@ -171,10 +174,9 @@ export default class indiv_startups extends Component {
 
                     <hr class="my-4 rgba-white-light"/>
                     <div style={{marginBottom:"-30px",marginTop:"50px"}}>
-                        <h1 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Job Openings</h1>
-                        {jobs_html}
+                        <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Job Openings</h3>
+                        {jobs_html.length==0 ? <div className="d-flex justify-content-center py-5"><img className="img-fluid" src={no_vacancies}></img></div>:jobs_html}
                     </div>
-                    
                 </div>
             </div>
             )
@@ -182,7 +184,13 @@ export default class indiv_startups extends Component {
         return (
             <div style={{background:"lightgray"}}>
                 <div className="container-fluid" style={{maxWidth:"1400px"}}>
-                    {indiv_startup_html(startup)}
+
+                {this.state.loading ?
+                        <div className="my-5 text-center">
+                            <i className="fa fa-2x fa-spinner fa-spin"></i>
+                        </div>
+                        : indiv_startup_html(startup)}
+                    
                 </div>
             </div>
         )

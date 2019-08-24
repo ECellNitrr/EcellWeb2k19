@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import faxios, { baseURL } from '../../../axios'
 import UploadLogo from './upload_logo'
+import './dashboard.scss'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -37,7 +38,7 @@ class RegisterStartup extends Component {
                     this.address1.value = data.address1
                     this.address2.value = data.address2
                     this.district.value = data.district
-                    this.lstate.value = data.lstate
+                    this.lstate.value = data.state
                     this.country.value = data.country
                     this.description.set_value(data.description)
                 })
@@ -136,9 +137,15 @@ class RegisterStartup extends Component {
 
 
         return (
-            <div className='container jumbotron' style={{paddingTop:"100px"}} >
+            <div className="reg-pad">
+                <div className='container hoverable jumbotron' >
+
+                <div className="">
+                    <button onClick={() => this.props.history.goBack()} className="btn font-weight-bold btn-primary">Go Back</button>
+                </div>
+
                 <div>
-                    <h1 className="text-center font-weight-bold my-5">
+                    <h1 className="open text-center font-weight-bold my-5">
                         {this.isEdit?'Edit Startup' :'Register Startup'}
                     </h1>
 
@@ -173,7 +180,7 @@ class RegisterStartup extends Component {
                             <Wysiwyg onRef={ref => this.description = ref} />
                         </div>
                         <div className="form-group">
-                            <label className="font-weight-bold">Sector</label>
+                            <label ><span className="font-weight-bold">Sector</span>*&nbsp; <i>(eg: technical, education)</i></label>
                             <input type="text" ref={ele => this.sector = ele} className="form-control" />
                             {error_html['sector']}
                         </div>
@@ -209,6 +216,7 @@ class RegisterStartup extends Component {
                         </div>
                     </form>
                 </div>
+            </div>
             </div>
         )
     }

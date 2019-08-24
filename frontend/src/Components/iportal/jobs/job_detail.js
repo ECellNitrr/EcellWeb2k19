@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import faxios from '../../../axios'
 import Loader from '../../Form/loader'
 import {Link} from 'react-router-dom'
 import './jobs.css'
-import Navbar from '../navbar_iportal/navbar_ip'
-import Footer from '../../Footer/footer'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -93,7 +91,7 @@ class job_detail extends Component {
 
                         <div class="card">
                         <div class="card-header green text-white d-flex" style={{justifyContent:"space-between"}}>
-                            <div ><h4 className="font-weight-bold">{job.name}</h4></div>
+                            <div ><h4 className=" indiv_job font-weight-bold">{job.name}</h4></div>
                             <div style={{fontSize:"15px"}} className="badge badge-dark p-2">{job.job_type}</div>
                         </div>
                         <div class="card-body">
@@ -197,24 +195,27 @@ class job_detail extends Component {
         }
 
         return (
-            <div  style={{background:"lightgray",marginTop:"-60px"}}>
-                <div className="container-fluid" style={{maxWidth:"1200px"}}>
-                    {jobs_html_tab(this.state.jobs)}
-                </div>
-                <div className="container-fluid" style={{maxWidth:"1200px"}}>
+            <div>
+                {this.state.loading ?<div className="my-5 text-center">
+                            <i className="fa fa-2x fa-spinner fa-spin"></i>
+                        </div> : <Fragment>
+                    <div  style={{background:"lightgray",marginTop:"-60px"}}>
+                        <div className="container-fluid" style={{maxWidth:"1200px"}}>
+                            {jobs_html_tab(this.state.jobs)}
+                        </div>
+                        <div className="container-fluid" style={{maxWidth:"1200px"}}>
 
-                    <div class="jumbotron">
-                        {indiv_startup_html(startup)}            
-                        <hr class="my-4"></hr>
+                            <div class="jumbotron">
+                                {indiv_startup_html(startup)}            
+                                <hr class="my-4"></hr>
 
-                        <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-success font-weight-bold"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary font-weight-bold" >{this.state.msg}</button>)}</button></div>
-                        <Link className="job_apply_btn" style={{display:"none"}} to={`/internship/jobs/application/${this.props.match.params.job_id}`}></Link>
+                                <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-success font-weight-bold"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary font-weight-bold" >{this.state.msg}</button>)}</button></div>
+                                <Link className="job_apply_btn" style={{display:"none"}} to={`/internship/jobs/application/${this.props.match.params.job_id}`}></Link>
+                            </div>
+
+                        </div>
                     </div>
-
-                    {/* {indiv_startup_html(startup)}
-                    <div className="d-flex justify-content-center"><button className="bg-white" style={{border:"none"}} >{this.state.loading?<Loader/>:this.state.applied?(<button className="btn btn-primary"disabled >{this.state.msg}</button>):(<button onClick={this._job_apply_} className="btn btn-primary" >{this.state.msg}</button>)}</button></div>
-                    <Link className="job_apply_btn" style={{display:"none"}} to={`/iportal/jobs/application/${this.props.match.params.job_id}`}></Link> */}
-                </div>
+                </Fragment>}
             </div>
         )
     }

@@ -117,12 +117,12 @@ class new_opening extends Component {
 
 
         return (
-                <div className='jumbo container hoverable jumbotron' style={{marginTop:"100px"}}> 
-                    <div className="">
+                <div className='jumbo container hoverable jumbotron' style={{marginTop:""}}> 
+                    <div >
                         <button 
                             onClick={() => this.props.history.goBack()}
-                            className="btn btn-info font-weight-bold" style={{position:"absolute",top:"21%"}}>Go back</button>
-                        <h1 className="text-center font-weight-bold flex-grow-1 my-5">
+                            className="btn btn-info font-weight-bold">Go back</button>
+                        <h1 className="text-center open font-weight-bold flex-grow-1 my-5">
                             {this.job_id ? 'Edit Opening' : 'Create new Opening'}
                         </h1>
                         {this.job_id? <button 

@@ -11,3 +11,20 @@
 .jumbo2{
     padding-top: 0px !important;
 }
+
+@media(max-width:500px){
+    .open{
+        font-size: 30px;
+    }
+}
+
+.reg-pad{
+    background: lightgray;
+    padding: 30px 0;
+}
+
+@media(max-width:575px){
+    .reg-pad{
+        padding: 0;
+    }
+}

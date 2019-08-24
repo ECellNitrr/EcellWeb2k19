@@ -213,7 +213,11 @@
   padding-bottom:20px;
   word-wrap: break-word;
   width:400px;
-  margin:auto;
+    
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+
 
 }
 .head1 
@@ -222,6 +226,10 @@
   padding:20px;
   padding-bottom:20px;
   font-size:25px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+
 }
 .btn2
 {
@@ -229,4 +237,8 @@
   font-size:18px !important;
   color:black;
   font-style:bold;
+}
+
+.hero{
+  object-fit: contain;
 }

@@ -93,8 +93,13 @@ class job_application extends Component {
         return (
             <div>
                 <div className='container jumbotron'>
-                    <h1 className="mt-5 font-weight-bold text-center">Job Application</h1>
-                    <h2 className="mt-4 font-weight-bold text-center">{this.state.job_detail.name} ({this.state.job_detail.job_type})</h2>
+
+                    <div>
+                        <button onClick={() => this.props.history.goBack()} className="btn align-self-center font-weight-bold btn-primary">Go Back</button>
+                    </div>
+
+                    <h1 className="mt-5 jb_app font-weight-bold text-center" style={{paddingTop:"-40px"}}>Job Application</h1>
+                    <h2 className="mt-4 jb_apps font-weight-bold text-center">{this.state.job_detail.name} ({this.state.job_detail.job_type})</h2>
 
                     <div className="text-center font-weight-bold my-5">
                         Upload your Resume : <input className="btn btn-success text-center font-weight-bold" ref={ele => this.resume = ele} type="file" /> <span className="font-weight-bold">{this.state.progress? `${this.state.progress}%`:null}</span>   

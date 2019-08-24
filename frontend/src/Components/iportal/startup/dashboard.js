@@ -46,7 +46,7 @@ class dashboard extends Component {
                 <div className='container jumbotron hoverable'>
                 <div>
                     <div className="d-flex my-5">
-                    <h1 className="text-center flex-grow-1 font-weight-bold" style={{color:"#333333",textTransform:"uppercase"}}>Dashboard</h1>
+                    <h1 className="text-center flex-grow-1 font-weight-bold">Dashboard</h1>
                     <button onClick={() => this.props.history.push('/internship/startup/edit/')} className="btn btn-danger font-weight-bold">edit</button>
                     </div>
 

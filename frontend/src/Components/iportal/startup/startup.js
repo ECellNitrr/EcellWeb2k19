@@ -19,7 +19,6 @@ import { connect } from 'react-redux'
 class Startup extends Component {
     static propTypes = {
         auth: PropTypes.object.isRequired,
-        updateUser: PropTypes.func.isRequired,
       }
     
     componentDidMount() {
@@ -31,7 +30,7 @@ class Startup extends Component {
     
     render() {
         return (
-            <div style={{background:"lightgray",paddingTop:"150px"}}>
+            <div style={{background:"lightgray",paddingTop:"100px"}}>
                 <Navbar/>
                 <Switch>
                     <Route path='/internship/startup/application_detail/:application_id/' component={ApplicationDetail}/> // view detail of application

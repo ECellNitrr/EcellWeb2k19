@@ -68,7 +68,7 @@ class applications_list extends Component {
         )
 
         return (
-            <div className="container jumbotron hoverable">
+            <div className="container jumbotron hoverable " style={{marginBottom:"80px"}}>
 
                 <div>
                     <button onClick={() => this.props.history.goBack()} className="btn align-self-center font-weight-bold btn-primary">Go Back</button>
@@ -78,18 +78,20 @@ class applications_list extends Component {
                     <h1  className="text-center font-weight-bold flex-grow-1 my-5">My Applications</h1>
                 </div>
 
+                <div className="table-responsive ">
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th className="font-weight-bold">#</th>
-                            <th className="font-weight-bold">Company</th>
-                            <th className="font-weight-bold">Posting</th>
-                            <th className="font-weight-bold">Status</th>
-                            <th className="font-weight-bold">Applied on</th>
+                            <th scope="col" className="font-weight-bold">#</th>
+                            <th  scope="col" className="font-weight-bold">Company</th>
+                            <th  scope="col" className="font-weight-bold">Posting</th>
+                            <th  scope="col" className="font-weight-bold">Status</th>
+                            <th scope="col" className="font-weight-bold">Applied on</th>
                         </tr>
                     </thead>
                     <tbody>{applications}</tbody>
                 </table>
+                </div>
             </div>
         )
     }
