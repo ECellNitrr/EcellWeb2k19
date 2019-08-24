@@ -75,7 +75,7 @@ class Startup extends Component {
 
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex "  >
               <div className="register shadow-lg p-3 mb-5 rounded">
-                <div className="head1">
+                <div className="head1 ">
                   <span className="font-weight-bold" >Welcome to Startup Portal</span>
                 </div>
                 <div>
