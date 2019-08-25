@@ -1,19 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, lazy } from 'react'
 import { Switch, Route } from 'react-router-dom'
-
-
-import IportalIndivStartup from './indiv_startups.js'
-import IportalJobDetail from './job_detail'
-import JobApplication from './job_application'
-import MyApplication from './my_applications'
-import StartupList from './startup_list'
 
 import Navbar from '../navbar_iportal/navbar_ip'
 import Footer from '../../Footer/footer.js'
 
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+
+const IportalIndivStartup =  lazy(() => import('./indiv_startups'))
+const IportalJobDetail =  lazy(() => import('./job_detail'))
+const JobApplication =  lazy(() => import('./job_application'))
+const MyApplication =  lazy(() => import('./my_applications'))
+const StartupList =  lazy(() => import('./startup_list'))
+
 
 class Job extends Component {
     static propTypes = {
