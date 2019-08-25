@@ -16,7 +16,11 @@ export const application_status = {
 }
 
 export const format_date = date => {
-    date = new Date(date)
-    date = date.toISOString()
-    return `${date.slice(8,10)}-${date.slice(5,7)}-${date.slice(0,4)}`
+    try{
+        date = new Date(date)
+        date = date.toISOString()
+        return `${date.slice(8,10)}-${date.slice(5,7)}-${date.slice(0,4)}`
+    }catch{
+        return 'invalid-format'
+    }
 }
