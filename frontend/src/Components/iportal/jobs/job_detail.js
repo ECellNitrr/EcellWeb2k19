@@ -7,6 +7,8 @@ import './jobs.css'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../../actions/authActions'
+import { format_date } from '../../constants'
+
 
 class job_detail extends Component {
 
@@ -103,7 +105,7 @@ class job_detail extends Component {
                                 <div className="d-flex job_flex">
                                     <div className="text-center">
                                         <div style={{fontSize:"14px"}}><strong>Start Date</strong></div>
-                                        <div style={{fontSize:"13px"}}>{job.start_date}</div>
+                                        <div style={{fontSize:"13px"}}>{format_date(job.start_date)}</div>
                                     </div>
 
                                     <div className="text-center">
@@ -118,12 +120,12 @@ class job_detail extends Component {
 
                                     <div className="text-center">
                                         <div style={{fontSize:"14px"}}><strong>Posted On</strong></div>
-                                        <div style={{fontSize:"13px"}}>{job.posted_on}</div>
+                                        <div style={{fontSize:"13px"}}>{format_date(job.posted_on)}</div>
                                     </div>
 
                                     <div className="text-center">
                                         <div style={{fontSize:"14px"}}><strong>Apply By</strong></div>
-                                        <div style={{fontSize:"13px"}}>{job.apply_by}</div>
+                                        <div style={{fontSize:"13px"}}>{format_date(job.apply_by)}</div>
                                     </div>
                                 </div>
 
@@ -165,13 +167,13 @@ class job_detail extends Component {
             
             return(
             <div>
-                <div><strong className="font-weight-bold">Posted On :</strong> {job.posted_on}</div><br></br>
+                <div><strong className="font-weight-bold">Posted On :</strong> {format_date(job.posted_on)}</div><br></br>
                 <div><strong className="font-weight-bold">About the job :</strong><br></br> <div dangerouslySetInnerHTML={{ __html:job.about_the_job }}></div></div><br></br>
                 <div><span className="font-weight-bold">Perks :</span><br></br> <div dangerouslySetInnerHTML={{ __html:job.perks }}></div></div><br></br>
                 <div><span className="font-weight-bold">Skills Required : </span><br></br> <div dangerouslySetInnerHTML={{ __html:job.skills_required }}></div></div><br></br>
                 <div><span className="font-weight-bold">Who can apply :</span><br></br> <div dangerouslySetInnerHTML={{ __html:job.who_can_apply }}></div> </div><br></br>
                 <div><span className="font-weight-bold">No of openings :</span> {job.no_of_opening}</div><br></br>
-                <div><span className="font-weight-bold">Apply By : </span> {job.apply_by}</div><br></br>
+                <div><span className="font-weight-bold">Apply By : </span> {format_date(job.apply_by)}</div><br></br>
             </div>
 
             )

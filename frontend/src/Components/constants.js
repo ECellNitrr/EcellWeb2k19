@@ -14,3 +14,9 @@ export const application_status = {
     'HRD':'hired',
     'URV': 'under review',
 }
+
+export const format_date = date => {
+    date = new Date(date)
+    date = date.toISOString()
+    return `${date.slice(8,10)}-${date.slice(5,7)}-${date.slice(0,4)}`
+}
