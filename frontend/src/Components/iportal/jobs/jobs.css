@@ -1,0 +1,55 @@
+.indiv-startup{
+    border: 3px solid black;
+}
+
+.job_flex{
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.job_flex div{
+    flex: 1 0 19%;
+}
+
+.job_flex2{
+    display: none !important;
+}
+
+@media(max-width:800px){
+    .job_flex{
+        display: none !important;
+    }
+
+    .job_flex2{
+        display: block !important;
+    }
+}
+
+
+.pagination .page-item.active .page-link{
+    background:#4385F4 !important;
+}
+
+.pagination{
+    font-weight: bold;
+}
+
+.pagination .page-item .page-link{
+    background:white;
+    border:1px solid lightgray;
+    margin: 1px;
+}
+
+@media(max-width:500px){
+    .indiv_job{
+        font-size:18px;
+    }
+
+    .jb_app{
+        font-size:30px;
+    }
+
+    .jb_apps{
+        font-size:20px;
+    }
+}

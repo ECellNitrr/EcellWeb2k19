@@ -2,7 +2,6 @@
     background: #7b4397 !important;  /* fallback for old browsers */
     background: -webkit-linear-gradient(20deg, #dc2430, #7b4397) !important;  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(20deg, #dc2430, #7f479b) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
 }
 
 
@@ -206,4 +205,40 @@
     margin: 15px;
   }
 }
+.register
+{
+  justify-content: center;
+  background-color:rgb(55, 19, 121);
+  text-align:center;
+  padding-bottom:20px;
+  word-wrap: break-word;
+  width:400px;
+    
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
 
+
+}
+.head1 
+{
+  color:white;
+  padding:20px;
+  padding-bottom:20px;
+  font-size:25px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+
+}
+.btn2
+{
+  width:250px;
+  font-size:18px !important;
+  color:black;
+  font-style:bold;
+}
+
+.hero{
+  object-fit: contain;
+}

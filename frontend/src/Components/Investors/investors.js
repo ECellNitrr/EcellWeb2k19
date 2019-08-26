@@ -7,14 +7,14 @@ import Footer from '../Footer/footer';
 
 class investors extends Component {
 
-  axios = faxios();
+  
   state = {
     investors: [],
     loading: true
   }
 
   componentDidMount() {
-      this.axios.get(`/investors/full_list/`).then(res => {
+      faxios().get(`/investors/`).then(res => {
         console.log(res)
         let data = res.data
         this.setState({
@@ -58,6 +58,10 @@ class investors extends Component {
       </div>
 
     )
+
+    if(this.state.investors.length==0){
+      investors_html = <h1 className="my-5 text-center text-white">Comming soon ...</h1>
+    }
 
 
     return (

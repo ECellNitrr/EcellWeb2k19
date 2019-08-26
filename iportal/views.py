@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.filters import SearchFilter
 from .serializers import *
 from .models import *
 import math
@@ -25,9 +26,10 @@ class GeneralPagination(PageNumberPagination):
         
 
 class StartupViewset(ModelViewSet):
-    queryset = Startup.objects.filter(approved=True)
+    queryset = Startup.objects.all()
     serializer_class = StartupSerializer
-    filter_backends = (filters.DjangoFilterBackend,)
+    search_fields = ['name','job__name']
+    filter_backends = (filters.DjangoFilterBackend, SearchFilter)
     filterset_fields = ('name','approved','sector','user')
     pagination_class = GeneralPagination
 
@@ -36,7 +38,7 @@ class JobViewset(ModelViewSet):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('startup','name','location','start_date','duration','job_type','skills_required','stipend')
+    filterset_fields = ('startup','name','location','start_date','duration','job_type','skills_required','stipend','startup__user')
     pagination_class = GeneralPagination
         
 class JobApplicationViewset(ModelViewSet):
@@ -50,7 +52,7 @@ class LogoViewset(ModelViewSet):
     queryset = StartupLogo.objects.all()
     serializer_class = LogoSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('startup','logo')    
+    filterset_fields = ('startup',)    
     pagination_class = GeneralPagination
 
 

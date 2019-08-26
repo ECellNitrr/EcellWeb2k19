@@ -50,6 +50,10 @@
       font-size: 20px;
       width: 200px;
     }
+    .profile-card__button
+    {
+      font-size:15px;
+    }
   }
 
 

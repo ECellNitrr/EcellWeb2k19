@@ -19,6 +19,7 @@ class Sponsors extends Component {
         this.axios.get(`/sponsors/list/${year}/`).then(res => {
             console.log(res);
             let data = res.data.data;
+            data = data.sort((a,b)=>b.importance-a.importance)
             this.setState({
                 loading: false,
                 sponsors: data ,

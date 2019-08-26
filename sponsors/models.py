@@ -5,7 +5,7 @@ from decouple import config
 class Sponsor(models.Model):
     SPONS_TYPE = (
         ('ATS', 'Associate'),
-        ('PTS', 'Platinum'),
+        ('PLS', 'Platinum'),
         ('GDS', 'Gold'),
         ('TLS', 'Title'),
         ('PRS', 'Partner'),
@@ -25,6 +25,7 @@ class Sponsor(models.Model):
         default='ATS')
     flag = models.BooleanField(default=False)
     year = models.IntegerField(default=2019)
+    importance = models.IntegerField(default=0)
     ecell_user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)
