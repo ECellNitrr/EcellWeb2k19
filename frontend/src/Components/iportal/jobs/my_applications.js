@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import faxios from '../../../axios'
 import { Link } from 'react-router-dom'
-
+import {format_date} from '../../constants'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { application_status } from '../../constants'
@@ -58,29 +58,14 @@ class applications_list extends Component {
 
         
 
-        let applications = this.state.applications.map((application, i) =>{
-            
-            if(application==null){
-                return (
-                    <tr>
-                        <th scope="row">{i + 1}</th>
-                        <td><h3>No Applications</h3></td>
-                    </tr>
-                )
-            }
-            else{
-            return(
-                <tr key={application.id}>
-                    <th scope="row">{i + 1}</th>
-                    
-                    <td>{application.opening_name}</td>
-                    <td>{this._status_func(application)}</td>
-                    <td>{application.created_at}</td>
-                </tr>
-            )
-        }
-        }
-            
+        let applications = this.state.applications.map((application, i) =>
+            <tr key={application.id}>
+                <th scope="row">{i + 1}</th>
+                <td>{application.startup_name}</td>
+                <td>{application.opening_name}</td>
+                <td>{this._status_func(application)}</td>
+                <td>{format_date(application.created_at)}</td>
+            </tr>
         )
 
         return (
@@ -100,23 +85,22 @@ class applications_list extends Component {
                         <div className="my-5 text-center" >
                             <i style={{margin:"0 auto"}} className="fa fa-2x fa-spinner fa-spin"></i>
                         </div>
-                        :<Fragment>
+                        : <Fragment>
                             <table className="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" className="font-weight-bold">#</th>
-                                        <th  scope="col" className="font-weight-bold">Company</th>
-                                        <th  scope="col" className="font-weight-bold">Posting</th>
-                                        <th  scope="col" className="font-weight-bold">Status</th>
-                                        <th scope="col" className="font-weight-bold">Applied on</th>
-                                    </tr>
-                                </thead>
+                    <thead>
+                        <tr>
+                            <th scope="col" className="font-weight-bold">#</th>
+                            <th  scope="col" className="font-weight-bold">Company</th>
+                            <th  scope="col" className="font-weight-bold">Posting</th>
+                            <th  scope="col" className="font-weight-bold">Status</th>
+                            <th scope="col" className="font-weight-bold">Applied on</th>
+                        </tr>
+                    </thead>
 
-                                 <tbody>{applications}</tbody>
+                    <tbody>{applications}</tbody>
                     
-                            </table>
-                        </Fragment>}        
-                
+                </table>
+                        </Fragment>}
                 </div>
             </div>
         )
