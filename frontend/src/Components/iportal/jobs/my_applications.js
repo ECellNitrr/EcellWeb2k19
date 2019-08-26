@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import faxios from '../../../axios'
 import { Link } from 'react-router-dom'
 
@@ -13,6 +13,7 @@ class applications_list extends Component {
 
     state = {
         applications: [],
+        loading:true
     }
 
     componentDidMount() {
@@ -29,7 +30,7 @@ class applications_list extends Component {
                 applications = applications.sort((a,b)=>b.id-a.id)
 
                 console.log({ applications })
-                this.setState({ applications })
+                this.setState({ applications,loading:false })
             })
     }
 
@@ -57,14 +58,29 @@ class applications_list extends Component {
 
         
 
-        let applications = this.state.applications.map((application, i) =>
-            <tr key={application.id}>
-                <th scope="row">{i + 1}</th>
-                <td>{application.startup_name}</td>
-                <td>{application.opening_name}</td>
-                <td>{this._status_func(application)}</td>
-                <td>{application.created_at}</td>
-            </tr>
+        let applications = this.state.applications.map((application, i) =>{
+            
+            if(application==null){
+                return (
+                    <tr>
+                        <th scope="row">{i + 1}</th>
+                        <td><h3>No Applications</h3></td>
+                    </tr>
+                )
+            }
+            else{
+            return(
+                <tr key={application.id}>
+                    <th scope="row">{i + 1}</th>
+                    
+                    <td>{application.opening_name}</td>
+                    <td>{this._status_func(application)}</td>
+                    <td>{application.created_at}</td>
+                </tr>
+            )
+        }
+        }
+            
         )
 
         return (
@@ -79,18 +95,28 @@ class applications_list extends Component {
                 </div>
 
                 <div className="table-responsive ">
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" className="font-weight-bold">#</th>
-                            <th  scope="col" className="font-weight-bold">Company</th>
-                            <th  scope="col" className="font-weight-bold">Posting</th>
-                            <th  scope="col" className="font-weight-bold">Status</th>
-                            <th scope="col" className="font-weight-bold">Applied on</th>
-                        </tr>
-                    </thead>
-                    <tbody>{applications}</tbody>
-                </table>
+
+                {this.state.loading ?
+                        <div className="my-5 text-center" >
+                            <i style={{margin:"0 auto"}} className="fa fa-2x fa-spinner fa-spin"></i>
+                        </div>
+                        :<Fragment>
+                            <table className="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" className="font-weight-bold">#</th>
+                                        <th  scope="col" className="font-weight-bold">Company</th>
+                                        <th  scope="col" className="font-weight-bold">Posting</th>
+                                        <th  scope="col" className="font-weight-bold">Status</th>
+                                        <th scope="col" className="font-weight-bold">Applied on</th>
+                                    </tr>
+                                </thead>
+
+                                 <tbody>{applications}</tbody>
+                    
+                            </table>
+                        </Fragment>}        
+                
                 </div>
             </div>
         )

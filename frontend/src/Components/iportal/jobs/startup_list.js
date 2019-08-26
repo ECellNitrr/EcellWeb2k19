@@ -99,7 +99,7 @@ export default class startup_list extends Component {
                         </div>
                     </div>
 
-                    <div className="col-lg-7 text-md-left ml-3 mt-3">
+                    <div className="col-lg-7 text-md-left">
                         <div className="green-text">
                             <h6 className="h6 pb-1"><i className="fas fa-laptop pr-1"></i> {startup.sector}</h6>
                         </div>
