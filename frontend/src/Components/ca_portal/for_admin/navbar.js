@@ -31,6 +31,7 @@ class navbar extends Component {
                     <div className="d-flex flex-grow-1">
                         <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + ''}>Dashboard</NavLink>
                         <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'users/'}>EcellUsers</NavLink>
+                        <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'startups/'}>Startups</NavLink>
                         <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'tasks/'}>Tasks</NavLink>
                         <NavLink activeClassName='active_navlink' exact className='navlink' to={this.base_route + 'leaderboard/'}>Leaderboard</NavLink>
                     </div>

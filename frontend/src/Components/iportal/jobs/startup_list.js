@@ -20,7 +20,7 @@ export default class startup_list extends Component {
         console.log(`active page is ${pageNumber}`);
 
         this.setState({ loading: true })
-        faxios().get(`/iportal/startup/?page=${pageNumber}&approved=true`).then(res => {
+        faxios().get(`/iportal/startup/?page=${pageNumber}&approved=true&search=${this.search_box.value}`).then(res => {
             let data = res.data.results
             this.setState({
                 loading: false,
@@ -33,7 +33,7 @@ export default class startup_list extends Component {
     }
 
     componentDidMount() {
-        faxios().get('/iportal/startup/').then(res => {
+        faxios().get('/iportal/startup/?approved=true').then(res => {
             console.log(res);
             let data = res.data.results
             console.log(data)
@@ -138,7 +138,7 @@ export default class startup_list extends Component {
                 <div className="d-flex justify-content-center">
                     <Pagination
                         activePage={this.state.activePage}
-                        itemsCountPerPage={15}
+                        itemsCountPerPage={14}
                         totalItemsCount={this.state.totalStartups}
                         pageRangeDisplayed={10}
                         itemClass='page-item'
