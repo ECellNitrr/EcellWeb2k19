@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import Navbar from '../navbar_iportal/navbar_ip'
 import Footer from '../../Footer/footer'
 import './jobs.css'
+import { format_date } from '../../constants'
 
 
 
@@ -61,7 +62,7 @@ export default class indiv_startups extends Component {
                                 <div className="d-flex job_flex">
                                     <div className="text-center">
                                         <div style={{fontSize:"14px"}}><strong>Start Date</strong></div>
-                                        <div style={{fontSize:"13px"}}>{job.start_date}</div>
+                                        <div style={{fontSize:"13px"}}>{format_date(job.start_date)}</div>
                                     </div>
 
                                     <div className="text-center">
@@ -76,12 +77,12 @@ export default class indiv_startups extends Component {
 
                                     <div className="text-center">
                                         <div style={{fontSize:"14px"}}><strong>Posted On</strong></div>
-                                        <div style={{fontSize:"13px"}}>{job.posted_on}</div>
+                                        <div style={{fontSize:"13px"}}>{format_date(job.posted_on)}</div>
                                     </div>
 
                                     <div className="text-center">
                                         <div style={{fontSize:"14px"}}><strong>Apply By</strong></div>
-                                        <div style={{fontSize:"13px"}}>{job.apply_by}</div>
+                                        <div style={{fontSize:"13px"}}>{format_date(job.apply_by)}</div>
                                     </div>
                                 </div>
 

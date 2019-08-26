@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component, lazy } from 'react'
 import { Switch,Route } from 'react-router-dom'
 import Footer from '../../Footer/footer'
 
 import './datetimepicker.scss'
-
-import Navbar from './navbar'
-import Dashboard from './dashboard'
-import EditStartup from './register_startup'
-import Openings from './openings_list'
-import NewOpening from './new_opening'
-import ApplicationList from './application_list'
-import ApplicationDetail from './application_detail'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+
+
+const Navbar =  lazy(() => import('./navbar'))
+const Dashboard =  lazy(() => import('./dashboard'))
+const EditStartup =  lazy(() => import('./register_startup'))
+const Openings =  lazy(() => import('./openings_list'))
+const NewOpening =  lazy(() => import('./new_opening'))
+const ApplicationList =  lazy(() => import('./application_list'))
+const ApplicationDetail =  lazy(() => import('./application_detail'))
 
 
 class Startup extends Component {

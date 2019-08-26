@@ -3,6 +3,7 @@ import faxios from '../../../axios'
 import './jobs.css'
 import Pagination from "react-js-pagination";
 import { Link } from 'react-router-dom'
+import {format_date} from '../../constants'
 
 export default class startup_list extends Component {
 
@@ -73,19 +74,17 @@ export default class startup_list extends Component {
             console.log(job_tab)
 
             let jobs = job_tab.map(job =>{
-                if(job == null){
-                    return(
-                        <span key={job.id} className="badge badge-danger p-2" > No Vacancies :( </span>
-                    )
-                }else{
                     return(
                         
                         <div key={job.id}>
-                            <span  className="badge badge-light p-2" style={{fontSize:"15px",margin:"0 20px 0 0"}}>{job.name.slice(0,10)} ...</span>
+                            <span  className="badge badge-light p-2" style={{fontSize:"15px",margin:"0 20px 0 0"}}>{job.name}</span>
                         </div>
                     )
-                }
             })
+
+            if(job_tab.length===0){
+                jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0 20px 0 0"}}> <div className="text-danger font-weight-bold">No Vacancies</div> </span>
+            }
 
             return(
                 <div className="jumbotron text-center hoverable p-4" key={startup.id}>
@@ -114,7 +113,7 @@ export default class startup_list extends Component {
                             <div className="d-flex table-responsive scrollbar scrollbar-pink bordered-pink thin my-2">{jobs}</div>   
                         </div><br></br>
 
-                        <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated on</strong>: {startup.updated_at.slice(0, 10)}</p>
+                        <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated on</strong>: {format_date(startup.updated_at)}</p>
                         <Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link>
 
                     </div>
