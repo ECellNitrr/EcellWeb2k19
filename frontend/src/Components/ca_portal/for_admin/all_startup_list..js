@@ -46,25 +46,21 @@ export default class users_list extends Component {
         })
     }
 
-    /*_to_cab = user => {
-        faxios().put(`/iportal/startup/${user.id}/`, {
-            ...user,
-            user_type: 'CAB',
-        }).then(d => {
-            let ecell_users = this.state.ecell_users
-            const uid = ecell_users.findIndex(temp => temp.id === user.id)
-            console.log(uid)
-            ecell_users[uid].user_type = 'CAB'
-
-            this.setState({ ecell_users })
-        })
-    }*/
-
     _approve = (user) => {
+
         faxios().put(`/iportal/startup/${user.id}/`, {
             ...user,
-            approve:true
+            approved:true
         })
+
+    }
+
+    _dis_approve = (user) => {
+        faxios().put(`/iportal/startup/${user.id}/`, {
+            ...user,
+            approved:false
+        })
+        
     }
 
     render() {
@@ -78,7 +74,7 @@ export default class users_list extends Component {
                 <td><a className='detail_link' href={`mailto:${user.email}`}>{user.email}</a></td>
                 
                 <td>{user.approved ? correct : wrong}</td>
-                <td>{user.approved ? <button className='badge badge-danger'>Disapprove</button> : <button onClick={()=>this._approve(user)} className='badge badge-success'>Approve</button>} </td>
+                <td>{user.approved ? <button onClick={()=>this._dis_approve(user)} className='badge badge-danger'>Disapprove</button> : <button onClick={()=>this._approve(user)} className='badge badge-success'>Approve</button>} </td>
             </tr>
         )
 
@@ -102,7 +98,8 @@ export default class users_list extends Component {
                         {startup_html}
                     </tbody>
                 </table>
-                {/* {this.state.loading?<h3 className="text-center mt-3">...loading</h3>:null} */}
+                {this.state.loading?<h3 className="text-center mt-3">...loading</h3>:null}
+                <div className="d-flex justify-content-center my-5">
                 <Pagination
                         activePage={this.state.activePage}
                         itemsCountPerPage={14}
@@ -112,6 +109,7 @@ export default class users_list extends Component {
                         linkClass='page-link'
                         onChange={this.handlePageChange}
                 />
+                </div>
             </div>
         )
     }
