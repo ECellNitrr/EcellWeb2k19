@@ -51,6 +51,12 @@ export default class users_list extends Component {
         faxios().put(`/iportal/startup/${user.id}/`, {
             ...user,
             approved:true
+        }).then(res=>{
+            let startups=this.state.startups
+            const appr_state= startups.findIndex(temp => temp.id === user.id)
+            console.log(appr_state)
+            startups[appr_state].approved= true
+            this.setState(startups)
         })
 
     }
@@ -59,6 +65,12 @@ export default class users_list extends Component {
         faxios().put(`/iportal/startup/${user.id}/`, {
             ...user,
             approved:false
+        }).then(res=>{
+            let startups=this.state.startups
+            const appr_state= startups.findIndex(temp => temp.id === user.id)
+            console.log(appr_state)
+            startups[appr_state].approved= false
+            this.setState(startups)
         })
         
     }
@@ -86,12 +98,12 @@ export default class users_list extends Component {
                 <table className='table table-striped'>
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th><strong>#</strong></th>
                             <th><strong>Name</strong><i> (details)</i></th>
-                            <th>Email</th>
+                            <th><strong>Email</strong></th>
                             
-                            <th>Approve Status</th>
-                            <th>Change Status</th>
+                            <th><strong>Approve Status</strong></th>
+                            <th><strong>Change Status</strong></th>
                         </tr>
                     </thead>
                     <tbody>
