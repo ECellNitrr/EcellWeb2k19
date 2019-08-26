@@ -14,4 +14,4 @@ class SponsorListSerializer(serializers.ModelSerializer):
         
     class Meta:
         model = Sponsor
-        fields = ['id','name', 'details','pic','pic_url','contact','website','spons_type', 'year', 'flag','ecell_user']
+        fields = ['id','name', 'details','pic','pic_url','contact','website','spons_type', 'importance', 'year', 'flag','ecell_user']
