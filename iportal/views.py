@@ -28,7 +28,7 @@ class GeneralPagination(PageNumberPagination):
 class StartupViewset(ModelViewSet):
     queryset = Startup.objects.all()
     serializer_class = StartupSerializer
-    search_fields = ['name','job__name']
+    search_fields = ['name','job__name','sector']
     filter_backends = (filters.DjangoFilterBackend, SearchFilter)
     filterset_fields = ('name','approved','sector','user')
     pagination_class = GeneralPagination
