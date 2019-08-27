@@ -82,7 +82,7 @@ export default class users_list extends Component {
         const startup_html = this.state.startups.map((user, i) =>
             <tr key={i}>
                 <td>{(this.state.activePage-1)*14 + i + 1}</td>
-                <td><Link className='detail_link' to={`/internship/jobs/${user.id}`}>{user.name}</Link></td>
+                <td><Link target='_blank' className='detail_link' to={`/internship/jobs/${user.id}`}>{user.name}</Link></td>
                 <td><a className='detail_link' href={`mailto:${user.email}`}>{user.email}</a></td>
                 
                 <td>{user.approved ? correct : wrong}</td>
