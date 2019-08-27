@@ -23,6 +23,7 @@ urlpatterns = [
     path('feedback/', include('feedback.urls')),
     path('iportal/', include('iportal.urls')),
     path('investors/', include('investors.urls')),
+    path('summernote/', include('django_summernote.urls')),
 ]
 urlpatterns+=staticfiles_urlpatterns()
 # for the media urls

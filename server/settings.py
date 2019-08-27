@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'channels',
     'feedback',
     'iportal',
-    'investors'
+    'investors',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
