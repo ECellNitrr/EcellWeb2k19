@@ -27,7 +27,6 @@ class Questionset(models.Model):
                     questionset.flag = False
                     questionset.save()
             self.flag = True
-        super(Questionset, self).save(*args, **kwargs)
         
         try:
             curr_activate = ActivateQuiz.objects.get(questionset=self)
@@ -38,6 +37,8 @@ class Questionset(models.Model):
         else:
             pass
 
+        super(Questionset, self).save(*args, **kwargs)
+        
 class Question(models.Model):
     CHOICES = (
         ('IMG', 'Image Question'),
