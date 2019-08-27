@@ -53,3 +53,17 @@
         font-size:20px;
     }
 }
+
+.job-scroll{
+    margin: 0 20px 0 0;
+}
+
+@media(max-width:500px){
+    .content-center{
+           justify-content: center;
+    }
+
+    .job-scroll{
+        margin: 10px;
+    }
+}

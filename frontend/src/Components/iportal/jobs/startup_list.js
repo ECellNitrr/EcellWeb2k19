@@ -76,14 +76,14 @@ export default class startup_list extends Component {
             let jobs = job_tab.map(job =>{
                     return(
                         
-                        <div key={job.id}>
-                            <span  className="badge badge-light p-2" style={{fontSize:"15px",margin:"0 20px 0 0"}}>{job.name}</span>
+                        <div className="" key={job.id}>
+                            <span  className="badge job-scroll badge-light p-2" style={{fontSize:"15px"}}>{job.name}</span>
                         </div>
                     )
             })
 
             if(job_tab.length===0){
-                jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0 20px 0 0"}}> <div className="text-danger font-weight-bold">No Vacancies</div> </span>
+                jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0px"}}> <div className="text-danger font-weight-bold">No Vacancies</div> </span>
             }
 
             return(
@@ -110,7 +110,7 @@ export default class startup_list extends Component {
                         
                         <div className="my-2">
                             <div className="font-weight-bold">Job Openings :</div>   
-                            <div className="d-flex table-responsive scrollbar scrollbar-pink bordered-pink thin my-2">{jobs}</div>   
+                            <div className="d-flex table-responsive content-center scrollbar scrollbar-pink bordered-pink thin my-2">{jobs}</div>   
                         </div><br></br>
 
                         <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated on</strong>: {format_date(startup.updated_at)}</p>
