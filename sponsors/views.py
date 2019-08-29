@@ -40,6 +40,7 @@ def get_sponsors(request, year):
 def get_sorted_sponsors(request, year):
     sponsors_objs = Sponsor.objects.filter(flag=True, year=year)
 
+    spons_categories = []
     res_data = {}
     for x in spons_types:
         display_name = spons_types[x]['display_name']
@@ -51,10 +52,14 @@ def get_sorted_sponsors(request, year):
         res_data[display_name] = [SponsorListSerializer(x).data for x in res_data[display_name]]
         if not res_data[display_name]:
             res_data.pop(display_name)
+        else: 
+            spons_categories.append(display_name)
 
 
     return Response({
-        "data": res_data
+        "data": res_data,
+        'message': 'fetched successfully',
+        'spons_categories': spons_categories,
     }, status=status.HTTP_200_OK)
 
 
