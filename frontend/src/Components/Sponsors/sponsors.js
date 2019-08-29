@@ -62,7 +62,7 @@ class Sponsors extends Component {
                 </div>
             </div>
             )
-            return <div className="my-5 p-2">
+            return <div className="my-5">
                     <div style={{marginBottom:"20px"}} className="team-year">{category}&nbsp; Sponsors</div>
                     <div className="ctn9">{sponsors_list}</div>
                     </div>
