@@ -2,14 +2,32 @@ from django.db import models
 from users.models import CustomUser
 from decouple import config
 
+spons_types = {
+    'TLS': {
+        'display_name': 'Title',
+        'importance': 10,
+    },
+    'ATS': {
+        'display_name': 'Associate',
+        'importance': 9,
+    },
+    'PLS': {
+        'display_name': 'Platinum',
+        'importance': 8,
+    },
+    'GDS': {
+        'display_name': 'Gold',
+        'importance': 7,
+    },
+    'PRS': {
+        'display_name': 'Partner',
+        'importance': 6,
+    },
+}
+
+
 class Sponsor(models.Model):
-    SPONS_TYPE = (
-        ('ATS', 'Associate'),
-        ('PLS', 'Platinum'),
-        ('GDS', 'Gold'),
-        ('TLS', 'Title'),
-        ('PRS', 'Partner'),
-    )
+    SPONS_TYPE = [[x,spons_types[x]['importance']] for x in spons_types]
 
     name = models.CharField(max_length=200)
     details = models.TextField(blank=True, null=True)
