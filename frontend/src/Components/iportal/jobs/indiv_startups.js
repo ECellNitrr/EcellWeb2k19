@@ -147,11 +147,11 @@ export default class indiv_startups extends Component {
                                     <div>
                                         <p class="font-weight-bold text-success"><i className="fas fa-laptop pr-1"></i> {startup.sector}</p>
                                     </div>
-                                    <div><span className="font-weight-bold">Email :</span>{startup.email}</div>
-                                    <div><span className="font-weight-bold">Contact :</span>{startup.contact}</div><br></br>
-                                    <div><span className="font-weight-bold">Address :</span><br></br>{startup.address1}<br></br>{startup.address2}</div><br></br>
-                                    <div><span className="font-weight-bold">District :</span>{startup.district}</div>
-                                    <div><span className="font-weight-bold">Country :</span>{startup.country}</div>
+                                    <div><span className="font-weight-bold">Email : </span>{startup.email}</div>
+                                    <div><span className="font-weight-bold">Contact : </span>{startup.contact}</div><br></br>
+                                    <div><span className="font-weight-bold">Address : </span><br></br>{startup.address1}<br></br>{startup.address2}</div><br></br>
+                                    <div><span className="font-weight-bold">District : </span>{startup.district}</div>
+                                    <div><span className="font-weight-bold">Country : </span>{startup.country}</div>
                                     </div>
                             </div>
                             <hr className="my-4 rgba-white-light"/>

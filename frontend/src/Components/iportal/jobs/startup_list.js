@@ -20,7 +20,7 @@ export default class startup_list extends Component {
         console.log(`active page is ${pageNumber}`);
 
         this.setState({ loading: true })
-        faxios().get(`/iportal/startup/?page=${pageNumber}&approved=true`).then(res => {
+        faxios().get(`/iportal/startup/?page=${pageNumber}&approved=true&search=${this.search_box.value}`).then(res => {
             let data = res.data.results
             this.setState({
                 loading: false,
@@ -33,7 +33,7 @@ export default class startup_list extends Component {
     }
 
     componentDidMount() {
-        faxios().get('/iportal/startup/').then(res => {
+        faxios().get('/iportal/startup/?approved=true').then(res => {
             console.log(res);
             let data = res.data.results
             console.log(data)
@@ -76,14 +76,14 @@ export default class startup_list extends Component {
             let jobs = job_tab.map(job =>{
                     return(
                         
-                        <div key={job.id}>
-                            <span  className="badge badge-light p-2" style={{fontSize:"15px",margin:"0 20px 0 0"}}>{job.name}</span>
+                        <div className="" key={job.id}>
+                            <span  className="badge job-scroll badge-light p-2" style={{fontSize:"15px"}}>{job.name}</span>
                         </div>
                     )
             })
 
             if(job_tab.length===0){
-                jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0 20px 0 0"}}> <div className="text-danger font-weight-bold">No Vacancies</div> </span>
+                jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0px"}}> <div className="text-danger font-weight-bold">No Vacancies</div> </span>
             }
 
             return(
@@ -98,7 +98,7 @@ export default class startup_list extends Component {
                         </div>
                     </div>
 
-                    <div className="col-lg-7 text-md-left ml-3 mt-3">
+                    <div className="col-lg-7 text-md-left">
                         <div className="green-text">
                             <h6 className="h6 pb-1"><i className="fas fa-laptop pr-1"></i> {startup.sector}</h6>
                         </div>
@@ -110,7 +110,7 @@ export default class startup_list extends Component {
                         
                         <div className="my-2">
                             <div className="font-weight-bold">Job Openings :</div>   
-                            <div className="d-flex table-responsive scrollbar scrollbar-pink bordered-pink thin my-2">{jobs}</div>   
+                            <div className="d-flex table-responsive content-center scrollbar scrollbar-pink bordered-pink thin my-2">{jobs}</div>   
                         </div><br></br>
 
                         <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated on</strong>: {format_date(startup.updated_at)}</p>
@@ -138,7 +138,7 @@ export default class startup_list extends Component {
                 <div className="d-flex justify-content-center">
                     <Pagination
                         activePage={this.state.activePage}
-                        itemsCountPerPage={15}
+                        itemsCountPerPage={14}
                         totalItemsCount={this.state.totalStartups}
                         pageRangeDisplayed={10}
                         itemClass='page-item'

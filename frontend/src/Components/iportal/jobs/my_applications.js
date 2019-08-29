@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import faxios from '../../../axios'
 import { Link } from 'react-router-dom'
-
+import {format_date} from '../../constants'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { application_status } from '../../constants'
@@ -13,6 +13,7 @@ class applications_list extends Component {
 
     state = {
         applications: [],
+        loading:true
     }
 
     componentDidMount() {
@@ -29,7 +30,7 @@ class applications_list extends Component {
                 applications = applications.sort((a,b)=>b.id-a.id)
 
                 console.log({ applications })
-                this.setState({ applications })
+                this.setState({ applications,loading:false })
             })
     }
 
@@ -63,7 +64,7 @@ class applications_list extends Component {
                 <td>{application.startup_name}</td>
                 <td>{application.opening_name}</td>
                 <td>{this._status_func(application)}</td>
-                <td>{application.created_at}</td>
+                <td>{format_date(application.created_at)}</td>
             </tr>
         )
 
@@ -79,7 +80,13 @@ class applications_list extends Component {
                 </div>
 
                 <div className="table-responsive ">
-                <table className="table table-striped">
+
+                {this.state.loading ?
+                        <div className="my-5 text-center" >
+                            <i style={{margin:"0 auto"}} className="fa fa-2x fa-spinner fa-spin"></i>
+                        </div>
+                        : <Fragment>
+                            <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col" className="font-weight-bold">#</th>
@@ -89,8 +96,11 @@ class applications_list extends Component {
                             <th scope="col" className="font-weight-bold">Applied on</th>
                         </tr>
                     </thead>
+
                     <tbody>{applications}</tbody>
+                    
                 </table>
+                        </Fragment>}
                 </div>
             </div>
         )

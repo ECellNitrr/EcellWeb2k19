@@ -3,6 +3,8 @@ import faxios, { baseURL } from '../../../axios'
 import UploadLogo from './upload_logo'
 import './dashboard.scss'
 
+import {job_sectors} from '../../constants'
+
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Wysiwyg from '../../common/wysiwyg'
@@ -116,6 +118,11 @@ class RegisterStartup extends Component {
 
 
     render() {
+
+        let sector_options = job_sectors.map(sectors =>(
+            <option value={sectors}>{sectors}</option>
+        ))
+
         if (this.state.success) {
             return (
                 <div>
@@ -181,7 +188,9 @@ class RegisterStartup extends Component {
                         </div>
                         <div className="form-group">
                             <label ><span className="font-weight-bold">Sector</span>*&nbsp; <i>(eg: technical, education)</i></label>
-                            <input type="text" ref={ele => this.sector = ele} className="form-control" />
+                            <select className="form-control" ref={ele => this.sector = ele}>
+                                {sector_options}
+                            </select>
                             {error_html['sector']}
                         </div>
                         <div className="form-group">

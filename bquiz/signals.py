@@ -12,7 +12,11 @@ from .tasks import *
 @receiver(post_save, sender=Questionset)
 def announce_new_questions(sender, instance, created, **kwargs):
     print('signal triggered')
-    activate_quiz = ActivateQuiz.objects.get(questionset=instance)
-    if instance.flag and activate_quiz.active:
-        start_bquiz.delay(instance.id)
-    print('signal is done')
+    try:
+        activate_quiz = ActivateQuiz.objects.get(questionset=instance)
+    except:
+        pass
+    else:
+        if instance.flag and activate_quiz.active:
+            start_bquiz.delay(instance.id)
+        print('signal is done')

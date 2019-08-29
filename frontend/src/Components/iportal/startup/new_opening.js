@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 import faxios from '../../../axios'
 import './dashboard.scss'
 import PropTypes from 'prop-types'
@@ -114,6 +113,8 @@ class new_opening extends Component {
                 <div key={i} className="text-danger">{ele}</div>
             )
         })
+
+        
 
 
         return (

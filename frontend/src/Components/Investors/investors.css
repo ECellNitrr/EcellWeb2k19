@@ -61,6 +61,7 @@
 
   @media screen and (max-width: 450px) {
     .wrapper {
+      padding: 0px !important;
       height: auto;
       min-height: 10vh;
       margin-top: 100px;
@@ -182,6 +183,19 @@
 
     .profile-card-loc{
       font-size: 16px;
+    }
+
+    .profile-card-loc__txt{
+      padding: 5px;
+    }
+
+    .profile-card__cnt {
+      padding:0 5px 30px ;
+      
+    }
+
+    .profile-card{
+      margin-bottom: 35px;
     }
 
   }

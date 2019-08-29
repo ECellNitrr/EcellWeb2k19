@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.response import Response
-from .models import Sponsor
+from .models import Sponsor, spons_types
 from .serializers import SponsorSerializer, SponsorListSerializer
 from decorators import ecell_user
 from django.http import HttpResponse, JsonResponse
@@ -33,6 +33,35 @@ def get_sponsors(request, year):
         "message": res_message,
         "data": res_data
     }, status=res_status)
+
+
+
+@api_view(['GET', ])
+def get_sorted_sponsors(request, year):
+    sponsors_objs = Sponsor.objects.filter(flag=True, year=year)
+
+    spons_categories = []
+    res_data = {}
+    for x in spons_types:
+        display_name = spons_types[x]['display_name']
+        res_data[display_name] = list(sorted(
+            [x for x in sponsors_objs.filter(spons_type=x)], 
+            key=lambda x: x.importance, 
+            reverse=True
+            ))
+        res_data[display_name] = [SponsorListSerializer(x).data for x in res_data[display_name]]
+        if not res_data[display_name]:
+            res_data.pop(display_name)
+        else: 
+            spons_categories.append(display_name)
+
+
+    return Response({
+        "data": res_data,
+        'message': 'fetched successfully',
+        'spons_categories': spons_categories,
+    }, status=status.HTTP_200_OK)
+
 
 
 @api_view(['POST', ])

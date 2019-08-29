@@ -19,6 +19,11 @@ class EventSerializer(serializers.ModelSerializer):
 class EventListSerializer(serializers.ModelSerializer):
     registered  = serializers.SerializerMethodField()
     no_of_ppl_registered = serializers.SerializerMethodField()
+    website_url = serializers.SerializerMethodField()
+    
+    def get_website_url(self,obj):
+        req = self.context['request']
+        return '{}://{}/events/{}/'.format(req.scheme, req.get_host() ,obj.id)
 
     def get_no_of_ppl_registered(self,obj):
         return obj.eventregister_set.count()
@@ -34,4 +39,4 @@ class EventListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ['id','name','venue','date','time','details','cover_pic','cover_pic_url','icon','icon_url','email',  'flag', 'year', 'ecell_user','registered','no_of_ppl_registered']
+        fields = ['id','name','website_url', 'venue','date','time','details','details_html','cover_pic','cover_pic_url','icon','icon_url','email',  'flag', 'year', 'ecell_user','registered','no_of_ppl_registered']
