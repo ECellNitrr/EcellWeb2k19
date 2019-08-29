@@ -10,7 +10,7 @@ class Startup(models.Model):
     contact = models.CharField(max_length=15)
     brief = models.CharField(max_length=256)
     description = models.TextField(blank=True)
-    sector = models.CharField(max_length=100)
+    sector = models.CharField(max_length=400)
     
     address1 = models.CharField(max_length=200)
     address2 = models.CharField(max_length=200)
@@ -106,5 +106,5 @@ class JobApplication(models.Model):
         unique_together = ('job', 'applicant',)
 
     def __str__(self):
-        return self.job.name + ' ' + self.applicant.name 
+        return self.job.name + ' ' + self.applicant.first_name 
 

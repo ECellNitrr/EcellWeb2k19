@@ -28,3 +28,4 @@ dumped/
 # static/rest_framework
 static/uploads/bquiz
 static/uploads/sponsors/Oyo Rooms.jpeg
+celerybeat-schedule
