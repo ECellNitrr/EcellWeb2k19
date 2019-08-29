@@ -27,7 +27,13 @@ spons_types = {
 
 
 class Sponsor(models.Model):
-    SPONS_TYPE = [[x,spons_types[x]['display_name']] for x in spons_types]
+    SPONS_TYPE = (
+        ('ATS', 'Associate Sponsors'),
+        ('PTS', 'Platinum Sponsors'),
+        ('GDS', 'Gold Sponsors'),
+        ('TLS', 'Title Sponsors'),
+        ('PRS', 'Partner Sponsors'),
+    )
 
     name = models.CharField(max_length=200)
     details = models.TextField(blank=True, null=True)
