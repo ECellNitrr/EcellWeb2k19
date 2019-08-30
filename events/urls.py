@@ -3,6 +3,10 @@ from django.urls import path
 from . import views
 from django.views.decorators.csrf import csrf_exempt
 from utils.events_trans import data_transfer
+from rest_framework.routers import SimpleRouter
+
+router = SimpleRouter()
+router.register('inauguration',views.InaugurationViewset)
 
 
 urlpatterns = [
@@ -14,3 +18,5 @@ urlpatterns = [
     path('data_transfer/', data_transfer),
     path('unregister/<int:id>/', csrf_exempt(views.event_unregister), name='eventunregister'),
 ]
+
+urlpatterns+=router.urls

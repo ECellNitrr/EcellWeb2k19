@@ -15,7 +15,8 @@ import * as actions from '../../actions/authActions'
 class Startup extends Component {
   state = {
     startups: [],
-    loading: false
+    loading: false,
+    inauguration_check: true
   }
 
 
@@ -24,11 +25,25 @@ class Startup extends Component {
     updateUser: PropTypes.func.isRequired,
   }
 
+  componentDidMount() {
+    faxios().get('/events/inauguration/').then(d => {
+      let data = d.data
+
+      let iportal = data.find(event => event.name == 'iportal')
+
+      if (iportal) {
+        this.props.history.push('/')
+      }else{
+        this.setState({inauguration_check:false})
+      }
+    })
+  }
+
 
   _to_startup = e => {
     e.preventDefault()
 
-    if(!this.props.auth.loggedin){
+    if (!this.props.auth.loggedin) {
       document.querySelector('#login-signup-btn').click()
       return
     }
@@ -49,56 +64,62 @@ class Startup extends Component {
       })
   }
 
-  _to_jobs = (e) =>{
+  _to_jobs = (e) => {
     e.preventDefault()
-    console.log('object',this.props.auth)
+    console.log('object', this.props.auth)
 
-    if(this.props.auth.loggedin){
+    if (this.props.auth.loggedin) {
       this.props.history.push('/internship/jobs')
-    }else{
+    } else {
       document.querySelector('#login-signup-btn').click()
     }
   }
 
 
   render() {
-    return (
-      <div className='startups'>
-        <Navbar />
+    let startup_landing_page = (
+      <div className="container" style={{ paddingTop: "225px" }}>
+        <div className="row">
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <img className="hero img-fluid" src={Hero} alt="hero"></img>
+          </div>
 
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex "  >
+            <div className="register shadow-lg p-3 mb-5 rounded">
+              <div className="head1 ">
+                <span className="font-weight-bold" >Welcome to Startup Portal</span>
+              </div>
+              <div>
+                <button
+                  style={{ width: "250px", fontSize: "15px" }}
+                  className="btn font-weight-bold bg-white round"
+                  disabled={this.state.loading}
+                  onClick={this._to_startup}>
+                  For Companies
+                {this.state.loading ? <i className="fa fa-spinner fa-spin mx-2 d-inline-block"></i> : null}
+                </button>
+                {/* <Link className="startup_dashboard_btn" to='/iportal/startup' style={{ display: "none" }}></Link> */}
+              </div>
 
-        <div className="container" style={{ paddingTop: "225px" }}>
-          <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-              <img className="hero img-fluid" src={Hero} alt="hero"></img>
-            </div>
-
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex "  >
-              <div className="register shadow-lg p-3 mb-5 rounded">
-                <div className="head1 ">
-                  <span className="font-weight-bold" >Welcome to Startup Portal</span>
-                </div>
-                <div>
-                  <button 
-                    style={{ width: "250px", fontSize: "15px" }} 
-                    className="btn font-weight-bold bg-white round" 
-                    disabled={this.state.loading} 
-                    onClick={this._to_startup}>
-                    For Companies
-                    {this.state.loading ? <i className="fa fa-spinner fa-spin mx-2 d-inline-block"></i> : null}
-                  </button>
-                  {/* <Link className="startup_dashboard_btn" to='/iportal/startup' style={{ display: "none" }}></Link> */}
-                </div>
-
-                <div>
-                  <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Students</button>
-                </div>
+              <div>
+                <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Students</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    )
 
+    if(this.state.inauguration_check){
+      startup_landing_page = (
+        <Loader />
+      )
+    }
 
+    return (
+      <div className='startups'>
+        <Navbar />
+        {startup_landing_page}
         <Footer />
       </div>
     )

@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
+from rest_framework.viewsets import ModelViewSet
 from .models import Event, EventRegister
 from .serializers import *
 from decorators import ecell_user,relax_ecell_user
@@ -140,3 +141,8 @@ def generate_spreadsheet(request):
 class NoticeBoardListView(ListAPIView):
     queryset = NoticeBoard.objects.filter(show=True)
     serializer_class = NoticeBoardSerializer
+
+
+class InaugurationViewset(ModelViewSet):
+    queryset = Inauguration.objects.filter()
+    serializer_class = InaugurationSerializer

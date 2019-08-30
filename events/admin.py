@@ -12,3 +12,4 @@ class EventAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
 admin.site.register(Event, EventAdmin)
 admin.site.register(EventRegister)
 admin.site.register(NoticeBoard)
+admin.site.register(Inauguration)

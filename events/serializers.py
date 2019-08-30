@@ -3,6 +3,12 @@ from .models import *
 from decorators import get_user
 
 
+class InaugurationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Inauguration
+        fields = '__all__'
+
+
 
 class NoticeBoardSerializer(serializers.ModelSerializer):
     class Meta:

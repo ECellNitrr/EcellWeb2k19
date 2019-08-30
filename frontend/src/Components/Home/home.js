@@ -8,6 +8,7 @@ import Spons from "../Home/SponsHome/sponsors-home";
 // import SpeakersHome from "../Home/SpeakerHome/speaker-home";
 import Form from "../Home/Form/form";
 import Footer from "../Footer/footer";
+import Inauguration from './inauguration'
 
 
 
@@ -21,6 +22,7 @@ export default class home extends Component {
             <div>
                 <Navbar />
                 <Intro />
+                <Inauguration />
                 <About />
                 <Vision />
                 <Spons />
