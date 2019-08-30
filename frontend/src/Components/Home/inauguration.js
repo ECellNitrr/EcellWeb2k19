@@ -14,7 +14,7 @@ class inauguration extends Component {
         loading: true,
         inaugrated: true,
         iportal: {},
-        timer: 15,
+        timer: 10,
         inaug_started: false,
         inaug_finished: false,
     }
@@ -59,7 +59,7 @@ class inauguration extends Component {
                     })
                 })
             }
-        }, 100)
+        }, 1000)
     }
 
     render() {
@@ -104,7 +104,7 @@ class inauguration extends Component {
                 borderRadius: '5px',
                 fontSize: '18px',
             }}
-            onClick={this._inaugurate}>Inagurate IPortal</button>
+            onClick={this._inaugurate}>Inaugurate I-Portal</button>
 
         if (!this.state.inaugrated) {
             let date = this.state.iportal.date
