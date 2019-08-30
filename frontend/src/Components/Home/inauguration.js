@@ -59,7 +59,7 @@ class inauguration extends Component {
                     })
                 })
             }
-        }, 200)
+        }, 100)
     }
 
     render() {
@@ -77,17 +77,34 @@ class inauguration extends Component {
         }
 
         if (this.state.inaug_finished) {
-            window.scrollTo(0,0)
-            
+            window.scrollTo(0, 0)
+
             return (
                 <div className='text-center'>
-                    <button className="btn btn-primary" onClick={() => this.props.history.push('/startups/')}>Go to Iportal</button>
-                    <Confetti/>
+                    <button
+                        className='btn mt-5 font-weight-bold'
+                        style={{
+                            background: "linear-gradient(to right, #a8ff78, #78ffd6)",
+                            color: "white",
+                            borderRadius: '5px',
+                            fontSize: '18px',
+                        }}
+                        onClick={() => this.props.history.push('/startups/')}>Go to I-Portal</button>
+                    <Confetti />
                 </div>
             )
         }
 
-        let inaugBtn = <button className="btn btn-primary mt-5" onClick={this._inaugurate}>Inagurate IPortal</button>
+        // let inaugBtn = <button className="btn btn-primary mt-5" onClick={this._inaugurate}>Inagurate IPortal</button>
+        let inaugBtn = <button
+            className='btn mt-5 font-weight-bold'
+            style={{
+                background: "linear-gradient(to right, #ff4e50, #f9d423)",
+                color: "white",
+                borderRadius: '5px',
+                fontSize: '18px',
+            }}
+            onClick={this._inaugurate}>Inagurate IPortal</button>
 
         if (!this.state.inaugrated) {
             let date = this.state.iportal.date
