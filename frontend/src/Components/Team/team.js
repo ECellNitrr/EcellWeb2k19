@@ -143,7 +143,7 @@ class team extends Component {
             return (
                 <div key={member.id} className='text-center'>
                     <div>
-                        {title === "Head of Career Development" || title === "Director" || title === "Faculty Incharge" || title === "Overall Co-ordinators" || title === "Head Co-ordinators" ? (
+                        {title === "Head of Career Development Centre" || title === "Director" || title === "Faculty Incharge" || title === "Overall Co-ordinators" || title === "Head Co-ordinators" ? (
                             <div>
                                 <div className="page ">
                                     <div className="page__demo">
@@ -219,7 +219,7 @@ class team extends Component {
                     break;
                 case "Head_Career_Development":
                     final_html["Head_Career_Development"] = this.members_html(
-                        "Head of Career Development",
+                        "Head of Career Development Centre",
                         members,
                         type
                     );
@@ -313,7 +313,10 @@ class team extends Component {
         return (
             <div className="team-whole">
                 <Navbar />
+                
                 <div className="team-div"><Link className="team-links shadow p-3 mb-5 bg-white rounded" to='/team/yearwise'>Previous Year Teams</Link></div>
+
+                <div style={{marginBottom:"20px"}} className="team-year">Team of {this_year}-{this_year-2000+1}</div>
                 {this.state.loading ? (<div style={{ marginTop: "10%" }}><Loader /></div>) : (
                     <div>
 

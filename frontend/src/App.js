@@ -1,10 +1,11 @@
 import React, { Component, lazy, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Loader from './Components/api_loader/api_loader'
+import PageLoader from './Components/api_loader/page_loader'
 
 
 const Home = lazy(() => import('./Components/Home/home'))
+const Investors = lazy(() => import('./Components/Investors/investors'))
 const Speakers = lazy(() => import('./Components/Speakers/speakers'));
 const Sponsors = lazy(() => import('./Components/Sponsors/sponsors'));
 const Events = lazy(() => import('./Components/Events/events'));
@@ -24,21 +25,31 @@ const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 const Terms = lazy(()=> import('./Components/Footer/terms'));
 const Policy= lazy(()=>import('./Components/Footer/privacy'));
 
+const IportalStartup  = lazy(()=>import('./Components/iportal/startup/startup'))
+const IportalJobs  = lazy(()=>import('./Components/iportal/jobs/jobs'))
+const RegisterStartup  = lazy(()=>import('./Components/iportal/startup/register_startup'))
+const Error404 = lazy(()=>import('./Components/err404'))
+
+
+
+
 class App extends Component {
   render() {
     return (
-      <Suspense fallback={<Loader className="page-loader"/>}>
+      <Suspense fallback={<PageLoader className="page-loader"/>}>
         <BrowserRouter>
           <div className="App">
             <Switch>
               <Route exact path='/' component={Home} />
+              <Route path='/internship' exact component={() => <Redirect to='/startups' />} />
               <Route path='/speakers' component={Speakers} />
               <Route path="/sponsors/sponsors_heads" component={Spons_hc}/>
               <Route path="/sponsors/yearwise" component={Yearwise_spons}/>
               <Route path='/sponsors/:year' component={Sponsors} />
-              <Route path='/sponsors' component={() => <Redirect to='/sponsors/2018' />} />
+              <Route path='/sponsors' component={() => <Redirect to='/sponsors/2019' />} />
               <Route path='/events/:id' component={EventDetail} />
               <Route path='/events' component={Events} />
+              <Route path='/investors' component={Investors} />
               <Route path='/startups/:year/:id' component={StartupDetail} />
               <Route path='/startups' component={Startups} />
               <Route path='/mentors' component={Mentors} />
@@ -52,6 +63,12 @@ class App extends Component {
               <Route path='/team' component={() => <Redirect to='/team/2019' />} />
               <Route path='/terms' component={Terms} />
               <Route path='/policy' component={Policy} />
+
+              <Route path='/internship/jobs' component={IportalJobs} />
+              <Route path='/internship/startup/register' component={RegisterStartup} />
+              <Route path='/internship/startup' component={IportalStartup} />
+              <Route path='/' component={Error404}/>
+
             </Switch>
           </div>
         </BrowserRouter>

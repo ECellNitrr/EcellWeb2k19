@@ -10,7 +10,7 @@ db.sqlite3
 .env
 *.pyc
 
-static/uploads/caportal/
+static/uploads/
 */migrations/0*.py
 debug.log
 
@@ -27,3 +27,5 @@ dumped/
 # static/media
 # static/rest_framework
 static/uploads/bquiz
+static/uploads/sponsors/Oyo Rooms.jpeg
+celerybeat-schedule

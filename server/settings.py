@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'events',
     'sponsors',
     'mentors',
-    'startups',
     'team',
     'speakers',
     'android_app',
@@ -52,6 +51,9 @@ INSTALLED_APPS = [
     'bquiz',
     'channels',
     'feedback',
+    'iportal',
+    'investors',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -60,9 +62,10 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -197,22 +200,33 @@ CHANNEL_LAYERS = {
     },
 }
 
+# celery setup
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/'
+CELERY_IMPORTS = ('bquiz',)
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'file': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': 'debug.log',
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['file'],
-#             'level': 'DEBUG',
-#             'propagate': True,
-#         },
-#     },
-# }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'gunicorn': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
+
+
+# CSRF_COOKIE_SECURE=False
+# CSRF_COOKIE_DOMAIN = '127.0.0.1'

@@ -41,7 +41,7 @@ class mentors extends Component {
             <div className="individual_mentors" key={mentor.id}>
                 <div><img className="mentors_pic shadow-lg p-3 mb-5 bg-white rounded" src={mentor.profile_pic_url} alt={mentor.name}/></div>
                 <h3 className="mentors_name">{mentor.name}</h3>
-                <p className="center2">{mentor.detail}</p>
+                <p dangerouslySetInnerHTML={{__html:mentor.detail}} className="center2"></p>
             </div>
             )
         
@@ -54,7 +54,7 @@ class mentors extends Component {
     return (
       <div className="mentors">
         <Navbar />
-        <div className="header4">PREVIOUS MENTORS</div>          
+        <div className="header4">MENTORS</div>          
             <div className="container-fluid ctn13">
               {this.state.loading? (<div style={{marginTop:"20%"}}><Loader/></div>):mentors_html}
             </div>

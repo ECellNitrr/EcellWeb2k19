@@ -110,8 +110,9 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     bottom: 0;
     left: -10%;
     background: url("../../../assets/wave.png");
-    background-position:-300px;
-    /* animation: animate 10s linear infinite; */
+    /* background-position:-300px; */
+    background-position:-30px;
+    animation: animate 10s linear infinite;
   }
   
   .ctn-1 .wave::before{
@@ -124,8 +125,9 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     left: 0;
     opacity: 0.6;
     animation-delay: -5s;
-    background-position:500px;
-    /* animation: animate-reverse 10s linear infinite; */
+    background-position:150px;
+    /* background-position:500px; */
+    animation: animate-reverse 10s linear infinite;
   }
   
   .ctn-1 .wave::after{
@@ -137,9 +139,9 @@ background: linear-gradient(20deg, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Fire
     top: 0;
     left: 0;
     opacity: 0.4;
-    background-position:250px;
+    /* background-position:250px; */
 
-    /* animation: animate 15s linear infinite; */
+    animation: animate 15s linear infinite;
   }
   
   @keyframes animate{

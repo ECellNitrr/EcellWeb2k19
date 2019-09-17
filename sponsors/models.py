@@ -2,14 +2,32 @@ from django.db import models
 from users.models import CustomUser
 from decouple import config
 
+spons_types = {
+    'TLS': {
+        'display_name': 'Title',
+        'importance': 10,
+    },
+    'ATS': {
+        'display_name': 'Associate',
+        'importance': 9,
+    },
+    'PLS': {
+        'display_name': 'Platinum',
+        'importance': 8,
+    },
+    'GDS': {
+        'display_name': 'Gold',
+        'importance': 7,
+    },
+    'PRS': {
+        'display_name': 'Partner',
+        'importance': 6,
+    },
+}
+
+
 class Sponsor(models.Model):
-    SPONS_TYPE = (
-        ('ATS', 'Associate Sponsors'),
-        ('PTS', 'Platinum Sponsors'),
-        ('GDS', 'Gold Sponsors'),
-        ('TLS', 'Title Sponsors'),
-        ('PRS', 'Partner Sponsors'),
-    )
+    SPONS_TYPE = [[x,spons_types[x]['display_name']] for x in spons_types]
 
     name = models.CharField(max_length=200)
     details = models.TextField(blank=True, null=True)
@@ -22,9 +40,10 @@ class Sponsor(models.Model):
     spons_type = models.CharField(
         max_length=3,
         choices=SPONS_TYPE,
-        default='AS')
+        default='ATS')
     flag = models.BooleanField(default=False)
     year = models.IntegerField(default=2019)
+    importance = models.IntegerField(default=0)
     ecell_user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     modified_at = models.DateTimeField(auto_now=True, editable=False)

@@ -10,6 +10,7 @@ class Event(models.Model):
     date = models.DateField(null=True, blank=True)
     time = models.CharField(max_length=10)
     details = models.TextField()
+    details_html = models.TextField(blank=True)
     cover_pic = models.ImageField(upload_to='static/uploads/events/cover',default='/static/defaults/ecell.png', null=True, blank=True)
     icon = models.ImageField(upload_to='static/uploads/events/icon',default='static/defaults/ecell.png')
     email = models.EmailField(null=True, blank=True)
@@ -38,5 +39,30 @@ class Event(models.Model):
 class EventRegister(models.Model):
 	user = models.ForeignKey(CustomUser,on_delete=models.CASCADE )
 	event = models.ForeignKey(Event,on_delete=models.CASCADE)
+    
 	def __str__(self):
 		return self.user.username
+
+	class Meta:
+		unique_together = ('user', 'event',)
+
+
+
+class NoticeBoard(models.Model):
+	title = models.CharField(max_length=200)
+	description = models.TextField(blank=True)
+	url = models.URLField(blank=True)
+	show = models.BooleanField(default=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+	
+	def __str__(self):
+		return self.title
+
+
+class Inauguration(models.Model):
+	name = models.CharField(max_length=300)
+	flag = models.BooleanField(default=False)
+	date = models.DateTimeField(blank=True)
+    
+	def __str__(self):
+		return self.name

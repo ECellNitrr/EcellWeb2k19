@@ -2,8 +2,10 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
+from rest_framework.generics import ListAPIView
+from rest_framework.viewsets import ModelViewSet
 from .models import Event, EventRegister
-from .serializers import EventSerializer, EventListSerializer
+from .serializers import *
 from decorators import ecell_user,relax_ecell_user
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -71,7 +73,7 @@ def event_unregister(request, id):
             res_status=status.HTTP_404_NOT_FOUND   
         else:
             try:
-                reg = EventRegister.objects.get(user = u, event= e)  
+                reg = EventRegister.objects.filter(user = u, event= e)  
             except:
                 res_message= "Event not registered"
                 res_status=status.HTTP_404_NOT_FOUND
@@ -134,3 +136,13 @@ def generate_spreadsheet(request):
         writer.writerow(event)
 
     return response
+
+
+class NoticeBoardListView(ListAPIView):
+    queryset = NoticeBoard.objects.filter(show=True)
+    serializer_class = NoticeBoardSerializer
+
+
+class InaugurationViewset(ModelViewSet):
+    queryset = Inauguration.objects.filter()
+    serializer_class = InaugurationSerializer

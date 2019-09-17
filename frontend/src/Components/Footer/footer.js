@@ -4,9 +4,9 @@ import './footer.css';
 import logo from '../../assets/logo-white.png';
 
 
-const footer = ()=>{
+const footer = (props)=>{
     return(
-        <div className="footer" style={{background:"#0A0908",textAlign:'center',marginTop:"50px",position:"relative",bottom:"0"}}>
+        <div className="footer" style={{background:"#0A0908",textAlign:'center',marginTop: props.noMarginTop? null: "50px",position:"relative",bottom:"0"}}>
             <div className="container-fluid" style={{maxWidth:"1500px",padding:"50px"}}>
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-lg-4 col5">
@@ -37,8 +37,8 @@ const footer = ()=>{
                       <div><a href='#' style={{color:"white"}} href="tel:8094966697">+91 80949 66697</a></div>
                       <div><a href='#' style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div><br></br>
                       <Link style={{color:"white",}} to='/terms'>Terms and Conditions</Link><br></br>
-                      <Link style={{color:"white"}} to="/policy">Private Policy</Link>
-
+                      <Link style={{color:"white"}} to="/policy">Privacy Policy</Link>
+                      <p className="arr" style={{color:"white",marginTop:"5px"}}>&copy; All Rights Reserved</p>
 
                     </div>
                 </div>

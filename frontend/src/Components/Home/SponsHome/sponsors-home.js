@@ -15,7 +15,7 @@ export default class Responsive extends Component {
   }
 
   componentDidMount(){
-    this.axios.get("/sponsors/list/2018/").then(res=>{
+    this.axios.get("/sponsors/list/2019/").then(res=>{
       const data = res.data.data;
       console.log(data)
 
@@ -36,7 +36,7 @@ export default class Responsive extends Component {
     var settings = {
       dots: true,
       infinite: false,
-      speed: 500,
+      speed: 1000,
       slidesToShow: 5,
       slidesToScroll: 5,
       initialSlide: 0,

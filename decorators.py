@@ -80,9 +80,8 @@ def relax_ecell_user(function):
 
         # hack to make ca portal work
         # authenticate the post request via hidden input field
-        token = request.POST.get('token')        
+        token = request.POST.get('token') or request.POST.get('Token')  
         token = request.META.get("HTTP_AUTHORIZATION", None) if not token else token
-
         if token is not None: 
             request.ecelluser = get_user(token)
 

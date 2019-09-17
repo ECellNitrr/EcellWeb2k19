@@ -8,7 +8,7 @@
   }
 
   .ctn16{
-    padding-top: 300px;
+    padding-top: 220px;
   }
 
   .cont1{
@@ -199,8 +199,8 @@
   }
 
   .col{
-    height: 350px;
-
+    height: 280px;
+    
   }
 
 
@@ -301,7 +301,7 @@
   
   .ctn11{
     display: flex;
-    padding-top: 300px;
+    padding-top: 380px;
     justify-content: center;
     align-items: center;
 }
@@ -514,3 +514,32 @@
     background: linear-gradient(20deg, #dc2430, #7b4397) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
   }
+
+  .pagination .page-item.active .page-link{
+    background:#4385F4 !important;
+}
+
+.pagination{
+    font-weight: bold;
+}
+
+.pagination .page-item .page-link{
+    background:white;
+    border:1px solid lightgray;
+    margin: 1px;
+}
+
+.team-year{
+  font-size: 35px;
+  color:white;
+  font-weight: 800;
+  text-transform: uppercase;
+ text-align: center;
+ text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+}
+
+@media(max-width:500px){
+  .team-year{
+    font-size: 25px;
+  }
+}
