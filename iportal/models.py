@@ -108,3 +108,55 @@ class JobApplication(models.Model):
     def __str__(self):
         return self.job.name + ' ' + self.applicant.name 
 
+class ApplicantEducation(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    study_program = models.CharField(max_length=200)
+    institution = models.CharField(max_length=500)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    city = models.CharField(max_length=200, null=True, blank=True)
+    result = models.CharField(max_length=200, null=True, blank=True)
+    courses = models.TextField(null=True, blank=True)
+
+class ApplicantExperience(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    company = models.CharField(max_length=200)
+    start_date =models.DateField()
+    end_date = models.DateField()
+    city = models.CharField(max_length=200,null=True, blank=True) 
+    company_description = models.TextField(null=True, blank=True)
+    achievements = models.TextField(null=True, blank=True)
+    
+class ApplicantSkill(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    skill = models.CharField(max_length=200)
+
+class ApplicantProject(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    project_name = models.CharField(max_length=200) 
+    start_date =models.DateField()
+    end_date = models.DateField()
+    description = models.TextField(null=True, blank=True)
+
+
+class ApplicantOrganisation(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE) 
+    organisation_name = models.CharField(max_length=200)
+    start_date =models.DateField()
+    end_date = models.DateField()
+    role = models.TextField(null=True, blank=True)
+
+
+class ApplicantLanguage(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    language = models.CharField(max_length=200)
+
+class ApplicantInterest(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    interest = models.CharField(max_length=200)
+
+
+
+
+
