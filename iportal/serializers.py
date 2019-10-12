@@ -103,3 +103,8 @@ class ApplicantLanguageSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = ApplicantLanguage
+
+class ApplicantAchievementSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantAchievement

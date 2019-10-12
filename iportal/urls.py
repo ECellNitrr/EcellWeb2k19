@@ -14,6 +14,7 @@ router.register('applicant_skill',ApplicantSkillViewset)
 router.register('applicant_project',ApplicantProjectViewset)
 router.register('applicant_language',ApplicantLanguageViewset)
 router.register('applicant_interest',ApplicantInterestViewset)
+router.register('applicant_achievement',ApplicantAchievementViewset)
 
 urlpatterns = [
     # path('pro_startup/',pro_get_startup),

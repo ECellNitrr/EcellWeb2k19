@@ -104,6 +104,13 @@ class ApplicantInterestViewset(ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_fields = ('applicant','interest')    
     pagination_class = GeneralPagination
+
+class ApplicantAchievementViewset(ModelViewSet):
+    queryset = ApplicantAchievement.objects.all()
+    serializer_class = ApplicantAchievementSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('applicant',)    
+    pagination_class = GeneralPagination
 # @api_view(['get'])
 # @relax_ecell_user
 # def pro_get_startup(req):
