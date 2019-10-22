@@ -25,7 +25,7 @@ incremental==17.5.0
 Markdown==3.1.1
 msgpack==0.6.1
 mysqlclient==1.4.2.post1
-Pillow==6.0.0
+Pillow==6.2.0
 pycparser==2.19
 PyHamcrest==1.9.0
 PyJWT==1.7.1
