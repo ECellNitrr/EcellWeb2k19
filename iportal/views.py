@@ -55,8 +55,62 @@ class LogoViewset(ModelViewSet):
     filterset_fields = ('startup',)    
     pagination_class = GeneralPagination
 
+class ApplicantEducationViewset(ModelViewSet):
+    queryset = ApplicantEducation.objects.all()
+    serializer_class = ApplicantEducationSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('study_program','applicant')    
+    pagination_class = GeneralPagination
+
+class ApplicantExperienceViewset(ModelViewSet):
+    queryset = ApplicantExperience.objects.all()
+    serializer_class = ApplicantExperienceSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('applicant','company','title')    
+    pagination_class = GeneralPagination
+
+class ApplicantSkillViewset(ModelViewSet):
+    queryset = ApplicantSkill.objects.all()
+    serializer_class = ApplicantSkillSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('applicant','skill')    
+    pagination_class = GeneralPagination
+
+class ApplicantOrganisationViewset(ModelViewSet):
+    queryset = ApplicantOrganisation.objects.all()
+    serializer_class = ApplicantOrganisationSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('applicant','organisation_name','role')    
+    pagination_class = GeneralPagination
+
+class ApplicantProjectViewset(ModelViewSet):
+    queryset = ApplicantProject.objects.all()
+    serializer_class = ApplicantProjectSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('applicant',)    
+    pagination_class = GeneralPagination
 
 
+class ApplicantLanguageViewset(ModelViewSet):
+    queryset = ApplicantLanguage.objects.all()
+    serializer_class = ApplicantLanguageSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('applicant','language')    
+    pagination_class = GeneralPagination   
+
+class ApplicantInterestViewset(ModelViewSet):
+    queryset = ApplicantInterest.objects.all()
+    serializer_class = ApplicantInterestSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('applicant','interest')    
+    pagination_class = GeneralPagination
+
+class ApplicantAchievementViewset(ModelViewSet):
+    queryset = ApplicantAchievement.objects.all()
+    serializer_class = ApplicantAchievementSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('applicant',)    
+    pagination_class = GeneralPagination
 # @api_view(['get'])
 # @relax_ecell_user
 # def pro_get_startup(req):

@@ -108,3 +108,96 @@ class JobApplication(models.Model):
     def __str__(self):
         return self.job.name + ' ' + self.applicant.name 
 
+
+class State(models.Model):
+    name = models.CharField(max_length=200)
+    
+class City(models.Model):
+    name = models.CharField(max_length=200)
+    state = models.ForeignKey(State,on_delete=models.CASCADE)
+
+class Institute(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.CharField(max_length=300, null=True, blank=True)
+    state = models.ForeignKey(State, on_delete=models.CASCADE, default = 1)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, default = 1)
+    affliation = models.CharField(max_length=200)
+    founder = models.CharField(max_length=200, null=True, blank=True)
+    head = models.CharField(max_length=200, null=True, blank=True)
+
+class Skill(models.Model):
+    name = models.CharField(max_length=200)
+    brief = models.CharField(max_length=300, null=True, blank=True)
+    proficiency_level = models.IntegerField() #max=10
+
+
+class Organisation(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.CharField(max_length=300, null=True, blank=True)
+    state = models.ForeignKey(State, on_delete=models.CASCADE, default = 1)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, default = 1)
+    brief = models.CharField(max_length=256, null=True, blank=True)
+    description = models.TextField(blank=True)
+    sector = models.CharField(max_length=100)
+    
+
+
+class ApplicantEducation(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    study_program = models.CharField(max_length=200)
+    institution = models.ForeignKey(Institute, on_delete=models.CASCADE)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    result = models.CharField(max_length=200, null=True, blank=True)
+    courses = models.TextField( null=True, blank=True)
+
+class ApplicantExperience(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    company = models.CharField(max_length=200)
+    start_date =models.DateField()
+    end_date = models.DateField()
+    state = models.ForeignKey(State, on_delete=models.CASCADE, default = 1)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, default = 1)
+    company_description = models.TextField(null=True, blank=True)
+    certi_url = models.URLField(blank= True)
+    
+class ApplicantSkill(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
+
+class ApplicantProject(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    project_name = models.CharField(max_length=200) 
+    start_date =models.DateField()
+    end_date = models.DateField()
+    description = models.TextField(null=True, blank=True)
+    project_url = models.URLField(blank= True)
+
+
+class ApplicantOrganisation(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE) 
+    organisation = models.ForeignKey(Organisation,on_delete=models.CASCADE) 
+    start_date =models.DateField()
+    end_date = models.DateField()
+    role = models.TextField(null=True, blank=True)
+
+
+class ApplicantLanguage(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    language = models.CharField(max_length=200)
+
+class ApplicantInterest(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    interest = models.CharField(max_length=200)
+
+class ApplicantAchievement(models.Model):
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    achievement = models.TextField()
+
+
+
+
+
+
+

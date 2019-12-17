@@ -68,3 +68,43 @@ class JobApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = JobApplication
+
+class ApplicantEducationSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantEducation
+
+class ApplicantExperienceSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantExperience
+
+class ApplicantProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantProject
+
+class ApplicantOrganisationSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantOrganisation
+
+class ApplicantSkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantSkill
+
+class ApplicantInterestSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantInterest
+
+class ApplicantLanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantLanguage
+
+class ApplicantAchievementSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = ApplicantAchievement
