@@ -62,7 +62,7 @@ class submit_task extends Component {
         
         // just to make the upload btn disappear
         let selected_imgs = this.state.selected_imgs
-        const uploading_img_index = selected_imgs.findIndex(img => img.src==src)
+        const uploading_img_index = selected_imgs.findIndex(img => img.src===src)
         selected_imgs[uploading_img_index].progress = 0
 
         this.setState({                
@@ -86,7 +86,7 @@ class submit_task extends Component {
             console.log({progress})
             
             let selected_imgs = this.state.selected_imgs
-            const uploading_img_index = selected_imgs.findIndex(img => img.src==src)
+            const uploading_img_index = selected_imgs.findIndex(img => img.src===src)
             selected_imgs[uploading_img_index].progress = progress
 
             this.setState({                

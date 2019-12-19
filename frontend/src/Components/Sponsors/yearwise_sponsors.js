@@ -5,7 +5,7 @@ import Navbar from '../Navbar/navbar';
 import Footer from '../Footer/footer';
 import faxios from '../../axios';
 import Loader from '../api_loader/api_loader'
-import { reverse } from 'dns';
+//import { reverse } from 'dns';
 
 
 
@@ -21,7 +21,7 @@ class Sponsors extends Component{
         this.axios.get('/sponsors/spons_years/').then(res=>{
             
             let data = res.data.spons_year;
-            let data_reverse = data.reverse()
+            //let data_reverse = data.reverse()
             console.log(data);
             this.setState({
                 spons_years:data,
