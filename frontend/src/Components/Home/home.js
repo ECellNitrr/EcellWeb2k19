@@ -14,7 +14,7 @@ import Footer from "../Footer/footer";
 
 export default class home extends Component {
     componentDidMount() {
-        document.querySelector("#adforcaModal_toggle").click();
+        // document.querySelector("#adforcaModal_toggle").click();
     }
 
     render() {
