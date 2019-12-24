@@ -7,6 +7,9 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
 from android_app.views import latest_build
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='E-Cell Web 2k19 API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +27,7 @@ urlpatterns = [
     path('iportal/', include('iportal.urls')),
     path('investors/', include('investors.urls')),
     path('summernote/', include('django_summernote.urls')),
+    path('doc/', schema_view)
 ]
 urlpatterns+=staticfiles_urlpatterns()
 # for the media urls

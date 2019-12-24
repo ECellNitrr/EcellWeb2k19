@@ -1,6 +1,8 @@
 import os
 import sys
 from decouple import config
+from rest_framework.settings import APISettings
+from django.conf import settings
 
 
 from corsheaders.defaults import default_headers
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
     'iportal',
     'investors',
     'django_summernote',
+    'rest_framework_swagger'
 ]
 
 MIDDLEWARE = [
@@ -179,8 +182,41 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-    ]
+    ],
 }
+DEFAULTS = {
+    'USE_SESSION_AUTH': True,
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'LOGIN_URL': getattr(settings, 'LOGIN_URL', None),
+    'LOGOUT_URL': getattr(settings, 'LOGOUT_URL', None),
+    'DOC_EXPANSION': None,
+    'APIS_SORTER': None,
+    'OPERATIONS_SORTER': None,
+    'JSON_EDITOR': False,
+    'SHOW_REQUEST_HEADERS': False,
+    'SUPPORTED_SUBMIT_METHODS': [
+        'get',
+        'post',
+        'put',
+        'delete',
+        'patch'
+    ],
+    'VALIDATOR_URL': '',
+    'ACCEPT_HEADER_VERSION': None,  # e.g. '1.0'
+    'CUSTOM_HEADERS': {}  # A dictionary of key/vals to override headers
+}
+
+IMPORT_STRINGS = []
+
+swagger_settings = APISettings(
+    user_settings=getattr(settings, 'SWAGGER_SETTINGS', {}),
+    defaults=DEFAULTS,
+    import_strings=IMPORT_STRINGS
+)
 
 class DisableCSRF(object):
     def process_request(self, request):
@@ -230,3 +266,4 @@ LOGGING = {
 
 # CSRF_COOKIE_SECURE=False
 # CSRF_COOKIE_DOMAIN = '127.0.0.1'
+
