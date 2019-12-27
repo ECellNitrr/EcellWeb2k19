@@ -6,7 +6,6 @@ export const user_type = {
     HCO: 'Head Co-ordinator',
     OCO: 'Overall Co-ordinator',
     CAB: 'Campus Ambassador',
-    CAB: 'Campus Ambassador',
     DRT: 'Director',
 }
 

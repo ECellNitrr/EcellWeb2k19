@@ -199,40 +199,42 @@ class signup extends Component {
                 {this.state.err ? errmsg:null}
                 {this.state.success ? scsmsg:null}
                 {/* {errmsg} */}
-                <div className="md-form form-sm mb-5">
-                    <i className="fas fa-user prefix"></i>
+                <br/>
+                <div className="form-group d-flex form-sm mb-5">
+                    <i className="fas fa-user prefix input-group-text"></i>
                     <input ref={ele=>this.first_name=ele} type="text"  className="form-control form-control-sm validate" placeholder="First Name"></input>
                     <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
                 </div>
 
-                <div className="md-form form-sm mb-5">
-                    <i className="fas fa-user prefix"></i>
+                <div className="form-group d-flex form-sm mb-5">
+                    <i className="fas fa-user prefix input-group-text"></i>
                     <input ref={ele=>this.last_name=ele} type="text"  className="form-control form-control-sm validate" placeholder="Last Name"></input>
                     <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
                 </div>
 
-                <div className="md-form form-sm mb-5">
-                    <i className="fas fa-phone prefix"></i>
+                <div className="form-group d-flex form-sm mb-5">
+                    <i className="fas fa-phone prefix input-group-text"></i>
                     <input type="text" ref={ele=>this.contact=ele} className="form-control form-control-sm validate" placeholder="Contact"></input>
                     <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
                 </div>
 
-                <div className="md-form form-sm mb-5">
-                    <i className="fas fa-envelope prefix"></i>
+                <div className="form-group d-flex form-sm mb-5">
+                    <i className="fas fa-envelope prefix input-group-text"></i>
                     <input ref={ele=>this.email=ele} type="email"  className="form-control form-control-sm validate" placeholder="Email"></input>
                     <label data-error="wrong" data-success="right" htmlFor="mlr_12"></label>
                 </div>
 
-                <div className="md-form form-sm mb-5">
-                    <i className="fas fa-lock prefix"></i>
+                <div className="form-group d-flex form-sm mb-5">
+                    <i className="fas fa-lock prefix input-group-text"></i>
                     <input ref={ele=>this.password=ele} type="password" id="mlr_13" className="form-control form-control-sm validate" placeholder="Password (min 8 chars)"></input>
                     <label data-error="wrong" data-success="right" htmlFor="mlr_13"></label>
                 </div>
 
 
                 <div className="text-center form-sm mt-2">
-                    <button disabled={this.state.success} id="signupBtn" onClick={this._singup} className="btn font-weight-bold text-white btn-info">{this.state.loader ?<Loader/>:"Sign up" } <i className="fas fa-sign-in ml-1"></i></button>
-                    <button ref={ele=>this.close_btn=ele} type="button" className="btn font-weight-bold btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                    <button disabled={this.state.success} id="signupBtn" onClick={this._singup} className="btn font-weight-bold text-white btn-info">{this.state.loader ?<Loader/>:"Sign up"}</button>
+                    &nbsp;
+                    <button ref={ele=>this.close_btn=ele} type="button" className="btn font-weight-bold btn-outline-info ml-auto" data-dismiss="modal">Close</button>
 
                 </div>
             </div>

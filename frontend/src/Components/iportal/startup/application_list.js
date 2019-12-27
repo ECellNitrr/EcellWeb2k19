@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './dashboard.scss'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { application_status } from '../../constants'
+//import { application_status } from '../../constants'
 import './dashboard.scss'
 
 class applications_list extends Component {

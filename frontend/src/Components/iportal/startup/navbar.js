@@ -7,7 +7,7 @@ import {compose} from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../../actions/authActions'
-import { sign } from 'crypto';
+//import { sign } from 'crypto';
 
 import './navbar.scss'
 
@@ -38,31 +38,31 @@ class navbar extends Component {
             //     <NavLink to='/iportal/startup/openings/'>Openings</NavLink>
             // </div>
             <div className='iportal_navbar'>
-                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar" style={{padding:"5px"}}>
-                    <Link className="navbar-brand" to='/'><img width="50px" height="50px" src={require('../../../assets/logo-white.png')}></img></Link>
+                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar" style={{padding:"5px", backgroundColor:"#E91E63"}}>
+                    <Link className="navbar-brand" to='/'><img width="50px" height="50px" src={require('../../../assets/logo-white.png')} alt="img"></img></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <NavLink activeClassName='' exact to='/internship/startup/' className="nav-link ip-links mx-3">Dashboard</NavLink>
+                                <NavLink activeClassName='' exact to='/internship/startup/' className="nav-link ip-links mx-3 text-white">Dashboard</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3">Openings</NavLink>
+                                <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3 text-white">Openings</NavLink>
                             </li>
                             <li className="nav-item mx-3">
-                                <NavLink className="nav-link ip-links" exact to='/'>Go to Main Site</NavLink>
+                                <NavLink className="nav-link ip-links text-white" exact to='/'>Go to Main Site</NavLink>
                             </li>
                            
                         </ul>
                         <ul className="navbar-nav nav-flex-icons">
                             <li className="nav-item">
-                                <button className="iplogout" data-toggle="modal" data-target="#ipLogout" style={{background:"#EA4763",border:"none"}} className="nav-link ip-links mx-3" href="#">{this.props.auth.first_name} {this.props.auth.last_name}</button>
+                                <button className="iplogout nav-link ip-links mx-3 text-white" data-toggle="modal" data-target="#ipLogout" style={{background:"#EA4763",border:"none"}} href="#">{this.props.auth.first_name} {this.props.auth.last_name}</button>
                             </li>
 
                             <li className="nav-item">
-                                <button style={{background:"#EA4763",border:"none"}} onClick={this._logout} className="nav-link ip-links mx-2"><i className="fas fa-power-off"></i>Logout</button>
+                                <button style={{background:"#EA4763",border:"none"}} onClick={this._logout} className="nav-link ip-links mx-2 text-white"><i className="fas fa-power-off"></i> Logout</button>
                             </li>
                         </ul>
                     </div>
