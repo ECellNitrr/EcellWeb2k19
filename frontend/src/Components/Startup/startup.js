@@ -82,10 +82,8 @@ class Startup extends Component {
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <img className="hero img-fluid" src={Hero} alt="hero"></img>
-            <br/>
           </div>
-
-          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex "  >
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex"  >
             <div className="register shadow-lg p-3 mb-5 rounded">
               <div className="head1 ">
                 <span className="font-weight-bold" >Welcome to <br/>Internship Portal</span>
@@ -121,6 +119,7 @@ class Startup extends Component {
       <div className='startups'>
         <Navbar />
         {startup_landing_page}
+        <br/><br/>
         <Footer />
       </div>
     )

@@ -144,14 +144,15 @@ class login extends Component {
                 {this.state.success ? scsmsg:null}
             
                 <div className="modal-body mb-1">
-                    <div className="md-form form-sm mb-5">
-                        <i className="fas fa-envelope prefix"></i>
+                    <br/>
+                    <div className="form-group d-flex form-sm mb-5">
+                        <i className="fas fa-envelope prefix input-group-text"></i>
                         <input type="email" ref={ele=>this.email = ele} className="form-control form-control-sm validate" placeholder="Your email"></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_10"></label>
                     </div>
 
-                    <div className="md-form form-sm mb-4">
-                        <i className="fas fa-lock prefix"></i>
+                    <div className="form-group form-sm mb-4 d-flex ">
+                        <i className="fas fa-lock prefix input-group-text"></i>
                         <input type="password" ref={ele=>this.password = ele} className="form-control form-control-sm validate" placeholder="Your password"></input>
                         <label data-error="wrong" data-success="right" htmlFor="mlr_11"></label>
                     </div>
@@ -159,7 +160,8 @@ class login extends Component {
                         <span onClick={this._forget_pass} style={styles.forgetpas} id="forgetpas" > Forgot Password?</span>
                     </div>
                     <div className="text-center mt-2">
-                        <button onClick={this._login} id="loginbtn" className="btn text-white font-weight-bold btn-info login-button">{this.state.loader ?<Loader/>:"Log in" } <i className="fas fa-sign-in ml-1"></i></button>
+                        <button onClick={this._login} id="loginbtn" className="btn text-white font-weight-bold btn-info login-button ">{this.state.loader ?<Loader/>:"Log In" }</button>
+                        &nbsp;
                         <button ref={ele=>this.close_btn=ele} type="button" className="btn btn-outline-info font-weight-bold waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>
