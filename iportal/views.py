@@ -80,7 +80,7 @@ class ApplicantOrganisationViewset(ModelViewSet):
     queryset = ApplicantOrganisation.objects.all()
     serializer_class = ApplicantOrganisationSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('applicant','organisation_name','role')    
+    filterset_fields = ('applicant','organisation','role')    
     pagination_class = GeneralPagination
 
 class ApplicantProjectViewset(ModelViewSet):
