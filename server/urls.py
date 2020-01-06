@@ -8,6 +8,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 from android_app.views import latest_build
 
+## for swagger apis
+from rest_framework_swagger.views import get_swagger_view
+schema_view = get_swagger_view(title='ECell Web API Documentation', url='/swagger')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
@@ -24,6 +28,7 @@ urlpatterns = [
     path('iportal/', include('iportal.urls')),
     path('investors/', include('investors.urls')),
     path('summernote/', include('django_summernote.urls')),
+    path('api/', schema_view),
 ]
 urlpatterns+=staticfiles_urlpatterns()
 # for the media urls
