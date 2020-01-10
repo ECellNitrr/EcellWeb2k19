@@ -49,3 +49,8 @@ To Setup this Project and contribute follow below guidelines.
 10. Run the server
   
     `python manage.py runserver`
+
+11. For Documentation of the project go to
+
+    `ecell.nitrr.ac.in/api/`
+
