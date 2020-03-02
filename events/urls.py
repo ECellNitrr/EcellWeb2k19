@@ -7,6 +7,7 @@ from rest_framework.routers import SimpleRouter
 
 router = SimpleRouter()
 router.register('inauguration',views.InaugurationViewset)
+router.register('cadets',views.EcellCadets)
 
 
 urlpatterns = [

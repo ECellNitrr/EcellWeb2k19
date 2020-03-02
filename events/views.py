@@ -146,3 +146,7 @@ class NoticeBoardListView(ListAPIView):
 class InaugurationViewset(ModelViewSet):
     queryset = Inauguration.objects.filter()
     serializer_class = InaugurationSerializer
+
+class EcellCadets(ModelViewSet):
+    queryset = Event.objects.filter(year=2020)
+    serializer_class = EventSerializer
