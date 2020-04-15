@@ -28,6 +28,8 @@ class ideadashboard extends Component {
             })
     }
 
+   
+
 
     render() {
         if (this.state.loading) {
@@ -47,8 +49,10 @@ class ideadashboard extends Component {
                 <div>
                     <div className="d-flex my-5">
                     <h1 className="text-center flex-grow-1 font-weight-bold">Idea Dashboard</h1>
-                    <button onClick={() => this.props.history.push('/internship/submit_idea/edit_idea/')} className="btn btn-danger font-weight-bold">edit</button>
-                    <button onClick={() => this.props.history.push('/internship/startup/register')} className="btn btn-success font-weight-bold">Register Startup</button>
+                    {/* <button onClick={() => this.props.history.push('/internship/submit_idea/edit_idea/')} className="btn btn-danger font-weight-bold">Edit</button> */}
+                    {this.state.startup.can_hire_interns?null:<Fragment>
+                        <button onClick={() => this.props.history.push('/internship/startup/register')} className="btn btn-success font-weight-bold">Register Startup</button>
+                        </Fragment>}
                     </div>
 
 
@@ -65,7 +69,7 @@ class ideadashboard extends Component {
 
                         <div className="form-group">
                             <label className='font-weight-bold'>Idea in a Nutshell : </label>
-                            <span>{this.state.startup.idea_in_a_nutshell}</span>
+                            <span>{this.state.startup.idea_in_a_nut_shell}</span>
                         </div>
 
                         <div className="form-group">

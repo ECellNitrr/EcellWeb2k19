@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {NavLink, Link, withRouter} from 'react-router-dom'
-
+import faxios, { baseURL } from '../../../axios'
 import Modal from '../../Form/modal'
 import { user_type } from '../../constants'
 import {compose} from 'redux'
@@ -17,6 +17,22 @@ class navbar extends Component {
     static propTypes = {
         auth: PropTypes.object.isRequired,
         updateUser: PropTypes.func.isRequired,
+    }
+
+    state={
+        loading:true,
+        startup:{}
+    }
+
+    componentDidMount() {
+        faxios().get(`/iportal/startup/${this.props.auth.startup_id}/`)
+            .then(d => {
+                console.log(d.data)
+                this.setState({
+                    loading: false,
+                    startup: d.data
+                })
+            })
     }
 
     _logout = (e) => {
@@ -49,13 +65,16 @@ class navbar extends Component {
                                 <NavLink activeClassName='' exact to='/internship/idea/' className="nav-link ip-links mx-3">Your Idea</NavLink>
                             </li>
 
-                            <li className="nav-item">
+                            {this.state.startup.can_hire_interns?<Fragment>
+                                <li className="nav-item">
                                 <NavLink to='/internship/startup/' className="nav-link ip-links mx-3">Startup Profile</NavLink>
-                            </li>
+                                </li>
 
-                            <li className="nav-item">
-                                <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3">Working Profile</NavLink>
-                            </li>
+                                <li className="nav-item">
+                                    <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3">Working Profile</NavLink>
+                                </li>
+                            </Fragment>:null}
+                            
                             <li className="nav-item mx-3">
                                 <NavLink className="nav-link ip-links" exact to='/'>Go to Main Site</NavLink>
                             </li>

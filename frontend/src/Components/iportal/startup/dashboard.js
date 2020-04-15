@@ -6,7 +6,6 @@ import './dashboard.scss'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-
 class dashboard extends Component {
     state = {
         loading: true,
