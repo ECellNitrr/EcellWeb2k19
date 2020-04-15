@@ -72,7 +72,7 @@ class logout extends Component {
                 <hr />
             </div>
 
-        const phone_no_verified = this.props.auth.verified ? null : <span onClick={this._verify_otp} id='phnoverified_btn'>click to verify phone no</span>
+        const phone_no_verified = this.props.auth.verified ? null : <span onClick={this._verify_otp} id='phnoverified_btn'>click to verify email id</span>
 
         let button_to_show = this.props.auth.applied ? applied_for_ca : apply_for_ca
 

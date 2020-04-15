@@ -98,7 +98,7 @@ export default class forgetPass extends Component {
         return (
 
             <Modal id="checkOtpModal">
-                <div className="text-center text-success font-weight-bold mt-3">An OTP has been sent to your registered mobile, please verify.</div>
+                <div className="text-center text-success font-weight-bold mt-3">Please check your email for OTP.</div>
 
                 {this.state.err ? errmsg : null}
                 {this.state.success ? scsmsg : null}

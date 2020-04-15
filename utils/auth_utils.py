@@ -32,9 +32,15 @@ def send_otp(contact, **kwargs):
     return otp
 
 
-def send_email_otp(recipient_list, subject, body):
-    email_from = settings.EMAIL_HOST_USER
+def send_email_otp(recipient_list, **kwargs):
+    otp = str(randint(1000, 9999))
+    if 'otp' in kwargs:
+        otp = kwargs['otp']
     
-    send_mail( subject, body, email_from, recipient_list )
+    email_from = settings.EMAIL_HOST_USER
+    message = "Your OTP for E-Cell NIT Raipur portal is {}.".format(otp)
+    subject = 'E-Cell NITRR OTP Verification'
 
-# send_email_otp(['naveennvrgup@gmail.com'], 'subject', 'body')
+    send_mail( subject, message, email_from, recipient_list )
+    return otp
+
