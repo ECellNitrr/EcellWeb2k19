@@ -6,6 +6,12 @@ class LogoSerializer(serializers.ModelSerializer):
     class Meta:
         fields = "__all__"
         model = StartupLogo
+    
+
+class StartupPlanFileSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model = StartupPlanFile
 
 
 class JobSerializer(serializers.ModelSerializer):
@@ -22,6 +28,9 @@ class JobSerializer(serializers.ModelSerializer):
 class StartupSerializer(serializers.ModelSerializer):
     logo = serializers.SerializerMethodField()
     logo_id = serializers.SerializerMethodField()
+    startup_plan_file = serializers.SerializerMethodField()
+    startup_plan_file_id = serializers.SerializerMethodField()
+    
     jobs = serializers.SerializerMethodField()
 
     def get_jobs(self,instance):
@@ -41,6 +50,20 @@ class StartupSerializer(serializers.ModelSerializer):
         except:
             return None
 
+
+    def get_startup_plan_file(self,instance):
+        try:
+            uri = instance.startupplanfile.file.url
+            request = self.context.get('request')
+            return request.build_absolute_uri(uri)
+        except:
+            return None
+
+    def get_startup_plan_file_id(self,instance):
+        try:
+            return instance.startupplanfile.id
+        except:
+            return None
 
     class Meta:
         read_only_fields = ['startup']

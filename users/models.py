@@ -15,6 +15,8 @@ class CustomUser(AbstractUser):
         ('CAB', 'Campus Ambassador'),
         ('STO', 'Startup Owner'),
         ('DRT', 'Director'),
+        ('CDC', 'CDC Admin'),
+        ('FAC', 'Faculty'),
     )
 
     username = models.CharField(max_length=64, unique=True)

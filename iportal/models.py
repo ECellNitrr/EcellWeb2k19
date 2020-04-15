@@ -10,18 +10,18 @@ class Startup(models.Model):
 
     user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
 
-    name = models.CharField(max_length=200)
-    email = models.EmailField()
-    contact = models.CharField(max_length=15)
-    brief = models.CharField(max_length=256)
+    name = models.CharField(max_length=200, blank=True)
+    email = models.EmailField(blank=True)
+    contact = models.CharField(max_length=15, blank=True)
+    brief = models.CharField(max_length=256, blank=True)
     description = models.TextField(blank=True)
-    sector = models.CharField(max_length=100)
+    sector = models.CharField(max_length=100, blank=True)
     
-    address1 = models.CharField(max_length=200)
-    address2 = models.CharField(max_length=200)
-    district = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
+    address1 = models.CharField(max_length=200, blank=True)
+    address2 = models.CharField(max_length=200, blank=True)
+    district = models.CharField(max_length=100, blank=True)
+    state = models.CharField(max_length=100, blank=True)
+    country = models.CharField(max_length=100, blank=True)
     approved = models.BooleanField(default=False)
 
     
@@ -43,7 +43,7 @@ class Startup(models.Model):
 
 
     def __str__(self):
-        return self.name 
+        return self.user.email 
 
     
 class Founder(models.Model):
