@@ -83,10 +83,11 @@ class Startup extends Component {
           <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <img className="hero img-fluid" src={Hero} alt="hero"></img>
           </div>
-          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex"  >
+
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 d-flex "  >
             <div className="register shadow-lg p-3 mb-5 rounded">
               <div className="head1 ">
-                <span className="font-weight-bold" >Welcome to <br/>Internship Portal</span>
+                <span className="font-weight-bold" >Welcome to Startup Portal</span>
               </div>
               <div>
                 <button
@@ -99,7 +100,7 @@ class Startup extends Component {
                 </button>
                 {/* <Link className="startup_dashboard_btn" to='/iportal/startup' style={{ display: "none" }}></Link> */}
               </div>
-              <br/>
+
               <div>
                 <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Students</button>
               </div>
@@ -119,7 +120,6 @@ class Startup extends Component {
       <div className='startups'>
         <Navbar />
         {startup_landing_page}
-        <br/><br/>
         <Footer />
       </div>
     )

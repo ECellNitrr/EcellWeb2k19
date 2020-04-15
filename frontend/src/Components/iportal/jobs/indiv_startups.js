@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import faxios from '../../../axios'
 import {Link} from 'react-router-dom'
-//import Navbar from '../navbar_iportal/navbar_ip'
-//import Footer from '../../Footer/footer'
+import Navbar from '../navbar_iportal/navbar_ip'
+import Footer from '../../Footer/footer'
 import './jobs.css'
 import { format_date } from '../../constants'
 
@@ -157,7 +157,7 @@ export default class indiv_startups extends Component {
                             <hr className="my-4 rgba-white-light"/>
 
                             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 d-flex" style={{justifyContent:"center"}}>
-                                <img style={{maxWidth:"300px",objectFit:"contain"}} className="img-fluid" src={startup.logo ? startup.logo : no_logo} alt="img"></img>
+                                <img style={{maxWidth:"300px",maxWidth:"300px",objectFit:"contain"}} className="img-fluid" src={startup.logo ? startup.logo : no_logo}></img>
                             </div>
                         </div>
                     </div>
@@ -176,7 +176,7 @@ export default class indiv_startups extends Component {
                     <hr class="my-4 rgba-white-light"/>
                     <div style={{marginBottom:"-30px",marginTop:"50px"}}>
                         <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Job Openings</h3>
-                        {jobs_html.length===0 ? <div className="d-flex justify-content-center py-5"><img className="img-fluid" src={no_vacancies}></img></div>:jobs_html}
+                        {jobs_html.length==0 ? <div className="d-flex justify-content-center py-5"><img className="img-fluid" src={no_vacancies}></img></div>:jobs_html}
                     </div>
                 </div>
             </div>

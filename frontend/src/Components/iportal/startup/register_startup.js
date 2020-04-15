@@ -145,7 +145,7 @@ class RegisterStartup extends Component {
 
         return (
             <div className="reg-pad">
-                <div className='container hoverable jumbotron' style={{backgroundColor:"white"}} >
+                <div className='container hoverable jumbotron' >
 
                 <div className="">
                     <button onClick={() => this.props.history.goBack()} className="btn font-weight-bold btn-primary">Go Back</button>
@@ -220,9 +220,8 @@ class RegisterStartup extends Component {
                         </div>
 
                         <div className="text-center">
-                            <button disabled={this.state.requesting || this.state.success} onClick={this._register_startup} className="btn font-weight-bold btn-primary">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'Submit'}</button>
-                            &nbsp;
-                            <button onClick={this._reset_form} className="btn font-weight-bold btn-danger">Reset</button>
+                            <button disabled={this.state.requesting || this.state.success} onClick={this._register_startup} className="btn font-weight-bold btn-primary">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'submit'}</button>
+                            <button onClick={this._reset_form} className="btn font-weight-bold btn-danger">reset</button>
                         </div>
                     </form>
                 </div>

@@ -43,11 +43,11 @@ class dashboard extends Component {
 
         return (
             <div className="pb-2"  style={{background:"lightgray",paddingTop:"",marginBottom:"-50px"}}>
-                <div className='container jumbotron hoverable' style={{backgroundColor:"white"}}>
+                <div className='container jumbotron hoverable'>
                 <div>
                     <div className="d-flex my-5">
                     <h1 className="text-center flex-grow-1 font-weight-bold">Dashboard</h1>
-                    <button onClick={() => this.props.history.push('/internship/startup/edit/')} className="btn btn-danger font-weight-bold">Edit</button>
+                    <button onClick={() => this.props.history.push('/internship/startup/edit/')} className="btn btn-danger font-weight-bold">edit</button>
                     </div>
 
 

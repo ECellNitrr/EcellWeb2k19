@@ -29,7 +29,7 @@ class inauguration extends Component {
             console.log(this.props.auth)
 
             this.setState({ loading: false })
-            let iportal = data.find(event => event.name === 'iportal')
+            let iportal = data.find(event => event.name == 'iportal')
 
             if (iportal) {
                 this.setState({
@@ -114,7 +114,7 @@ class inauguration extends Component {
                     <h1 className='font-weight-bold'>Dr. A. M Rawani, Director NIT Raipur</h1>
                     <h3>on</h3>
                     <h2>{format_date(date)}</h2>
-                    {this.props.auth.loggedin && this.props.auth.user_type === 'DRT' ? inaugBtn : null}
+                    {this.props.auth.loggedin && this.props.auth.user_type == 'DRT' ? inaugBtn : null}
                 </div>
             )
         } else {

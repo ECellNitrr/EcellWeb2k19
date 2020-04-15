@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import './sponsorHome.css';
 import Slider from "react-slick";
+import { Parallax } from 'react-parallax';
 import faxios from '../../../axios';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 
 
@@ -36,7 +35,7 @@ export default class Responsive extends Component {
   render() {
     var settings = {
       dots: true,
-      infinite: true,
+      infinite: false,
       speed: 1000,
       slidesToShow: 5,
       slidesToScroll: 5,
@@ -90,12 +89,14 @@ export default class Responsive extends Component {
     return (
       <div className="spons">
 
-        {/* <div className="heading4-cont"><h2 className="heading-4">SPONSORS {this.state.year}</h2></div> */}
+        <Parallax blur={3} bgImage={require('../../../assets/spons.svg')} bgImageAlt="sponsors" strength={700}>
+          {/* <div className="heading4-cont"><h2 className="heading-4">SPONSORS {this.state.year}</h2></div> */}
           <Slider {...settings}>
           
             {this.state.loading? <h1 className='text-center text-white w-100 my-5'>loading...</h1>:sponsors_html}
 
           </Slider>
+        </Parallax>
       </div>
     );
   }
