@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 from .serializers import RegistrationSerializer, LoginSerializer
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
-from utils.auth_utils import send_otp
+from utils.auth_utils import send_otp, send_email_otp
 from rest_framework.decorators import api_view
 from decorators import ecell_user, client_check
 from random import randint

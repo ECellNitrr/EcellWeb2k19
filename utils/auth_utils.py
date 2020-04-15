@@ -2,7 +2,8 @@ from decouple import config
 from random import randint
 import requests
 import http.client
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 def send_otp(contact, **kwargs):
     otp = str(randint(1000, 9999))
@@ -29,3 +30,11 @@ def send_otp(contact, **kwargs):
     data = res.read()
     
     return otp
+
+
+def send_email_otp(recipient_list, subject, body):
+    email_from = settings.EMAIL_HOST_USER
+    
+    send_mail( subject, body, email_from, recipient_list )
+
+# send_email_otp(['naveennvrgup@gmail.com'], 'subject', 'body')

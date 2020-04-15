@@ -202,7 +202,7 @@ CHANNEL_LAYERS = {
 
 # celery setup
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/'
-CELERY_IMPORTS = ('bquiz',)
+CELERY_IMPORTS = ('bquiz','users')
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
 
@@ -230,3 +230,11 @@ LOGGING = {
 
 # CSRF_COOKIE_SECURE=False
 # CSRF_COOKIE_DOMAIN = '127.0.0.1'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
