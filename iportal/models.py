@@ -38,8 +38,6 @@ class Startup(models.Model):
     idea_approved = models.BooleanField(default=False)
     can_hire_interns = models.BooleanField(default=False)
 
-    file = models.FileField(upload_to='static/uploads/iportal/more_details/', blank=True)
-
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -59,11 +57,17 @@ class Founder(models.Model):
     def __str__(self):
         return self.name 
 
-
 class StartupLogo(models.Model):
     startup = models.OneToOneField(Startup,on_delete=models.CASCADE)
+    logo = models.ImageField(upload_to='static/uploads/iportal/logos/',blank=True)
 
-    logo = models.ImageField(upload_to='static/uploads/iportal/logos/')
+    def __str__(self):
+        return self.startup.name 
+
+
+class StartupPlanFile(models.Model):
+    startup = models.OneToOneField(Startup,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='static/uploads/iportal/startup_plan/',)
 
     def __str__(self):
         return self.startup.name 
