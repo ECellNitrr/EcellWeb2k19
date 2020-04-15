@@ -8,7 +8,9 @@ import { connect } from 'react-redux'
 
 
 const Navbar =  lazy(() => import('./navbar'))
+const EditIdea =  lazy(() => import('./submit_idea'))
 const Dashboard =  lazy(() => import('./dashboard'))
+const ideaDashboard = lazy(() => import('./dashboard_idea'))
 const EditStartup =  lazy(() => import('./register_startup'))
 const Openings =  lazy(() => import('./openings_list'))
 const NewOpening =  lazy(() => import('./new_opening'))
@@ -33,6 +35,9 @@ class Startup extends Component {
             <div style={{background:"lightgray",paddingTop:"100px"}}>
                 <Navbar/>
                 <Switch>
+                    <Route path='/internship/submit_idea/edit_idea/' component={EditIdea}/> //edit idea
+                    <Route path='/internship/idea/' component={ideaDashboard}/> //landing page for idea
+                    
                     <Route path='/internship/startup/application_detail/:application_id/' component={ApplicationDetail}/> // view detail of application
                     <Route path='/internship/startup/application/:job_id/' component={ApplicationList}/> // list of applications
                     <Route path='/internship/startup/openings/new/' component={NewOpening}/> // new opening
@@ -40,6 +45,10 @@ class Startup extends Component {
                     <Route path='/internship/startup/openings/' component={Openings}/> // list of openings
                     <Route path='/internship/startup/edit' component={EditStartup}/> //edit startup profile
                     <Route path='/internship/startup/' component={Dashboard}/> //landing page for startups
+                    
+                    
+                   
+
                 </Switch>
                 <Footer/>
             </div>

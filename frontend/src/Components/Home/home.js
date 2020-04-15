@@ -22,7 +22,7 @@ export default class home extends Component {
             <div>
                 <Navbar />
                 <Intro />
-                <Inauguration />
+                {/* <Inauguration /> */}
                 <About />
                 <Vision />
                 <Spons />

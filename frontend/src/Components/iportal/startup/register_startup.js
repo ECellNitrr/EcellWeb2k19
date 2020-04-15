@@ -30,7 +30,7 @@ class RegisterStartup extends Component {
             faxios().get(`/iportal/startup/${this.props.auth.startup_id}/`)
                 .then(d=>{
                     const data=d.data 
-                    console.log(data)
+                    console.log(data,"running")
 
                     this.name.value = data.name
                     this.email.value = data.email
