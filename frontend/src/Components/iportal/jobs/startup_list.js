@@ -122,6 +122,12 @@ export default class startup_list extends Component {
             )
             })
 
+        if(this.state.startups.length==0 && this.state.loading == false){
+            startup_html = <h1 className="text-center my-5">
+                Great startups and ideas comming soon...
+            </h1>
+        }
+
         return (
             <div id="outer-container" style={{ background: "lightgray" }}>
                 <form className='text-center d-flex mb-5' style={{ maxWidth: "1100px", alignItems: "center", justifyContent: "center", margin: "auto" }}>

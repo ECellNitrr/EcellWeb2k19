@@ -95,14 +95,14 @@ class Startup extends Component {
                   className="btn font-weight-bold bg-white round"
                   disabled={this.state.loading}
                   onClick={this._to_startup}>
-                  For Companies
+                  For Startups/Ideas
                 {this.state.loading ? <i className="fa fa-spinner fa-spin mx-2 d-inline-block"></i> : null}
                 </button>
                 {/* <Link className="startup_dashboard_btn" to='/iportal/startup' style={{ display: "none" }}></Link> */}
               </div>
 
               <div>
-                <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Students</button>
+                <button style={{ width: "250px", fontSize: "15px" }} className="btn font-weight-bold bg-white round" onClick={this._to_jobs}>For Interns</button>
               </div>
             </div>
           </div>

@@ -39,7 +39,7 @@ def send_email_otp(recipient_list, **kwargs):
     
     email_from = settings.EMAIL_HOST_USER
     message = "Your OTP for E-Cell NIT Raipur portal is {}.".format(otp)
-    subject = 'E-Cell NITRR OTP Verification'
+    subject = 'E-Cell NITRR'
 
     send_mail( subject, message, email_from, recipient_list )
     return otp
