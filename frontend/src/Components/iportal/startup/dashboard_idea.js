@@ -41,7 +41,7 @@ class ideadashboard extends Component {
             )
         }
 
-        let logo_url = this.state.startup.logo ? this.state.startup.logo : require('../../../assets/no_pic.svg')
+        //let logo_url = this.state.startup.logo ? this.state.startup.logo : require('../../../assets/no_pic.svg')
 
         return (
             <div className="pb-2"  style={{background:"lightgray",paddingTop:"",marginBottom:"-50px"}}>
@@ -61,9 +61,9 @@ class ideadashboard extends Component {
 
                 <div className="row">
 
-                    <div className="col-md-4 text-right my-5 d-flex" style={{justifyContent:"center",alignItems:"center"}}>
+                    {/* <div className="col-md-4 text-right my-5 d-flex" style={{justifyContent:"center",alignItems:"center"}}>
                         <img className='logo_img image-fluid align-self-center' style={{outline:"3px solid #EA4763",outlineOffset:"8px"}} src={logo_url} alt=""/>
-                    </div>
+                    </div> */}
 
                     <div className="col-md-12">
 
