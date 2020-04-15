@@ -5,7 +5,7 @@ import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
 import HeaderLinks from "./header_links";
 import Loader from '../api_loader/api_loader';
-//import { createCoverageSummary } from "istanbul-lib-coverage";
+import { createCoverageSummary } from "istanbul-lib-coverage";
 
 class Sponsors extends Component {
     axios = faxios();

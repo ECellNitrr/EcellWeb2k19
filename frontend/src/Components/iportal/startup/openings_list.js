@@ -40,10 +40,10 @@ class openings extends Component {
         )
 
         return (
-            <div className="container jumbotron hoverable" style={{backgroundColor:"white"}}>
+            <div className="container jumbotron hoverable">
 
                 <div style={{float:"right"}} >
-                    <button onClick={() => this.props.history.push('/internship/startup/openings/new/')} className="btn font-weight-bold align-self-center btn-primary">New Opening</button>
+                    <button onClick={() => this.props.history.push('/internship/startup/openings/new/')} className="btn font-weight-bold align-self-center btn-primary">new opening</button>
                 </div><br></br>
 
                 <div className='text-center'>
@@ -55,9 +55,9 @@ class openings extends Component {
                     <thead>
                         <tr>
                             <th className="font-weight-bold">#</th>
-                            <th className="font-weight-bold">Opening Name</th>
+                            <th className="font-weight-bold">Opening name</th>
                             <th className="font-weight-bold">Type</th>
-                            <th className="font-weight-bold">No. Applied</th>
+                            <th className="font-weight-bold">no. applied</th>
                             <th className="font-weight-bold">Applicants</th>
                         </tr>
                     </thead>

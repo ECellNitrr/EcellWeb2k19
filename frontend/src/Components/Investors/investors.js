@@ -49,7 +49,7 @@ class investors extends Component {
             </div>
 
             <div className="profile-card-ctr">
-              <a href={investor.social_media} target="_blank" rel="noopener noreferrer" ><button className="profile-card__button button--orange">Follow</button></a>
+              <a href={investor.social_media} target="_blank" ><button className="profile-card__button button--orange">Follow</button></a>
             </div>
           </div>
 
@@ -59,7 +59,7 @@ class investors extends Component {
 
     )
 
-    if(this.state.investors.length===0){
+    if(this.state.investors.length==0){
       investors_html = <h1 className="my-5 text-center text-white">Comming soon ...</h1>
     }
 

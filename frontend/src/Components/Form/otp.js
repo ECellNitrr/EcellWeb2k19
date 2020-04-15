@@ -33,7 +33,7 @@ class otp extends Component {
 
     _verify_otp = e => {
         e.preventDefault()
-        //let user = this.props.auth
+        let user = this.props.auth
 
         this.setState({
             success:false,

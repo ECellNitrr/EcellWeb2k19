@@ -49,7 +49,7 @@ class speaker extends Component {
             </div>
 
             <div className="profile-card-ctr">
-              <a href={speaker.social_media} target="_blank" rel="noopener noreferrer"><button className="profile-card__button button--orange">Follow</button></a>
+              <a href={speaker.social_media} target="_blank" ><button className="profile-card__button button--orange">Follow</button></a>
             </div>
           </div>
 

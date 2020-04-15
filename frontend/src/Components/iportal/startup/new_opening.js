@@ -118,7 +118,7 @@ class new_opening extends Component {
 
 
         return (
-                <div className='jumbo container hoverable jumbotron' style={{backgroundColor:"white"}}> 
+                <div className='jumbo container hoverable jumbotron' style={{marginTop:""}}> 
                     <div >
                         <button 
                             onClick={() => this.props.history.goBack()}
