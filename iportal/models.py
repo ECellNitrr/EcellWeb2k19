@@ -3,6 +3,11 @@ from users.models import CustomUser
 
 
 class Startup(models.Model):
+    ideator_choices = (
+        ('student','student'),
+        ('faculty','faculty'),
+    )
+
     user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
 
     name = models.CharField(max_length=200)
@@ -19,8 +24,25 @@ class Startup(models.Model):
     country = models.CharField(max_length=100)
     approved = models.BooleanField(default=False)
 
+    
+    idea_in_a_nut_shell = models.CharField(max_length=30,blank=True)
+    end_product = models.TextField(blank=True)
+    describe_idea = models.TextField(blank=True)
+    beneficiaries = models.TextField(blank=True)
+    innovation_in_this = models.TextField(blank=True)
+    
+    ideator_designation = models.TextField(max_length=30,default='student', choices=ideator_choices)
+    mentor_name = models.CharField(max_length=50,blank=True)
+    mentor_designation = models.CharField(max_length=50,blank=True)
+
+    idea_approved = models.BooleanField(default=False)
+    can_hire_interns = models.BooleanField(default=False)
+
+    file = models.FileField(upload_to='static/uploads/iportal/more_details/', blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
     def __str__(self):
         return self.name 
@@ -64,6 +86,7 @@ class Job(models.Model):
     duration = models.CharField(max_length=200)
     job_type = models.CharField(max_length=200, choices=job_type_choices)
 
+    brief = models.CharField(blank=False, max_length=40)
     about_the_job = models.TextField(blank=False)
     no_of_opening = models.IntegerField(blank=False)
     skills_required = models.TextField(blank=False)
@@ -106,7 +129,7 @@ class JobApplication(models.Model):
         unique_together = ('job', 'applicant',)
 
     def __str__(self):
-        return self.job.name + ' ' + self.applicant.name 
+        return self.job.name + ' ' + self.applicant.username 
 
 
 class State(models.Model):
