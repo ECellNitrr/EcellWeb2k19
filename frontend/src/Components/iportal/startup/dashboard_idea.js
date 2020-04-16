@@ -50,9 +50,9 @@ class ideadashboard extends Component {
                     <div className="d-flex my-5">
                     <h1 className="text-center flex-grow-1 font-weight-bold">Idea Dashboard</h1>
                     {/* <button onClick={() => this.props.history.push('/internship/submit_idea/edit_idea/')} className="btn btn-danger font-weight-bold">Edit</button> */}
-                    {this.state.startup.can_hire_interns?null:<Fragment>
+                    {/* {this.state.startup.can_hire_interns?null:<Fragment>
                         <button onClick={() => this.props.history.push('/internship/startup/register')} className="btn btn-success font-weight-bold">Register Startup</button>
-                        </Fragment>}
+                        </Fragment>} */}
                     </div>
 
 
@@ -72,27 +72,17 @@ class ideadashboard extends Component {
                             <span>{this.state.startup.idea_in_a_nut_shell}</span>
                         </div>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label className='font-weight-bold'>Ideator Name : </label>
                             <span className="font-weight-bold">{this.state.startup.name}</span>
-                        </div>
+                        </div> */}
 
                         {/* <div className="form-group">
                             <label className='font-weight-bold'>Ideator Designation : </label>
                             <span className="font-weight-bold">{this.state.startup.ideator_designation}</span>
                         </div> */}
 
-                        {this.state.startup.ideator_designation==="student"?<Fragment>
-                            <div className="form-group">
-                                <label className='font-weight-bold'>Mentor Name : </label>
-                                <span className="font-weight-bold">{this.state.startup.mentor_name}</span>
-                            </div>
-
-                            <div className="form-group">
-                                <label className='font-weight-bold'>Mentor Designation : </label>
-                                <span className="font-weight-bold">{this.state.startup.mentor_designation}</span>
-                            </div>
-                        </Fragment>:null}
+                        
                         
                         <div className="form-group">
                             <label className='font-weight-bold'>Description : </label>
@@ -108,16 +98,18 @@ class ideadashboard extends Component {
                             <label className='font-weight-bold'>End Product : </label>
                             <span>{this.state.startup.end_product}</span>
                         </div>
+
+                        <div className="form-group">
+                            <label className='font-weight-bold'>Beneficiaries : </label>
+                            <span>{this.state.startup.beneficiaries}</span>
+                        </div>  
                         
                         <div className="form-group">
                             <label className='font-weight-bold'>Idea Approved : </label>
                             <span>{this.state.startup.idea_approved ? <i className="fa fa-check text-success"></i> : <i className="fa fa-times text-danger"></i>}</span>
                         </div>
 
-                        <div className="form-group">
-                            <label className='font-weight-bold'>Beneficiaries : </label>
-                            <span>{this.state.startup.beneficiaries}</span>
-                        </div>     
+                           
                     </div>
                    
                 </div>

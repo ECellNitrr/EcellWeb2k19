@@ -65,11 +65,15 @@ class navbar extends Component {
                                 <NavLink activeClassName='' exact to='/internship/idea/' className="nav-link ip-links mx-3">Your Idea</NavLink>
                             </li>
 
-                            {this.state.startup.can_hire_interns?<Fragment>
+                            {this.state.startup.idea_approved?<Fragment>
                                 <li className="nav-item">
-                                <NavLink to='/internship/startup/' className="nav-link ip-links mx-3">Startup Profile</NavLink>
+                                <NavLink to='/internship/startup/register/' className="nav-link ip-links mx-3">Startup Profile</NavLink>
                                 </li>
 
+                               
+                            </Fragment>:null}
+
+                            {this.state.startup.can_hire_interns?<Fragment>
                                 <li className="nav-item">
                                     <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3">Working Profile</NavLink>
                                 </li>
