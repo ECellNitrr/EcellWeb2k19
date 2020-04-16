@@ -193,7 +193,7 @@ export default class indiv_startups extends Component {
                         </div> */}
 
 
-                                   {this.state.jobs.length===0 ?null:<Fragment>
+                                   {this.state.jobs.length===0 && !startup.can_hire_interns ?null:<Fragment>
                                        
                                     <h2 class="card-title font-weight-bold h2">{startup.name}</h2> 
                                     {/* <div>
@@ -227,12 +227,12 @@ export default class indiv_startups extends Component {
                         </div>
                     </div> */}
 
-                    {this.state.jobs.length===0 ?null:<Fragment>
+                    {this.state.jobs.length===0 && !startup.can_hire_interns ?null:<Fragment>
                         
                         <hr class="my-4 rgba-white-light"/>
                     <div style={{marginBottom:"-30px",marginTop:"50px"}}>
                         <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Job Openings</h3>
-                        {jobs_html.length==0 ? <div className="d-flex justify-content-center py-5"><img className="img-fluid" src={no_vacancies}></img></div>:jobs_html}
+                        {jobs_html.length===0 ? <div className="d-flex justify-content-center py-5"><img className="img-fluid" src={no_vacancies}></img></div>:jobs_html}
                     </div>
 
                         </Fragment>}
