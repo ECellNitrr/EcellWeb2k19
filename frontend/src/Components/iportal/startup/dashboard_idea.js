@@ -77,12 +77,12 @@ class ideadashboard extends Component {
                             <span className="font-weight-bold">{this.state.startup.name}</span>
                         </div>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label className='font-weight-bold'>Ideator Designation : </label>
                             <span className="font-weight-bold">{this.state.startup.ideator_designation}</span>
-                        </div>
+                        </div> */}
 
-                        {this.state.startup.ideator_designation==="Student"?<Fragment>
+                        {this.state.startup.ideator_designation==="student"?<Fragment>
                             <div className="form-group">
                                 <label className='font-weight-bold'>Mentor Name : </label>
                                 <span className="font-weight-bold">{this.state.startup.mentor_name}</span>
@@ -96,12 +96,12 @@ class ideadashboard extends Component {
                         
                         <div className="form-group">
                             <label className='font-weight-bold'>Description : </label>
-                            <span>{this.state.startup.describe_idea}</span>
+                            <div dangerouslySetInnerHTML={{ __html: this.state.startup.describe_idea }}></div>
                         </div>
                         
                         <div className="form-group">
                             <label className='font-weight-bold'>Innovation in this : </label>
-                            <span>{this.state.startup.innovation_in_this}</span>
+                            <div dangerouslySetInnerHTML={{ __html: this.state.startup.innovation_in_this}}></div>
                         </div>
 
                         <div className="form-group">

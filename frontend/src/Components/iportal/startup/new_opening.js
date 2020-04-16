@@ -83,7 +83,7 @@ class new_opening extends Component {
 
             "apply_by": this.state.apply_by,
             "start_date": this.state.start_date,
-
+            "brief":"ddvv",
             "about_the_job": this.about_the_job.get_value(),
             "skills_required": this.skills_required.get_value(),
             "who_can_apply": this.who_can_apply.get_value(),
