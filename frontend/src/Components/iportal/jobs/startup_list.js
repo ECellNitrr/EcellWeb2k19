@@ -68,6 +68,8 @@ export default class startup_list extends Component {
     render() {
         let no_logo = require('../../../assets/no-logo.svg')
 
+        
+
         let startup_html = this.state.startups.map(startup => {
             
             let job_tab = startup.jobs
@@ -77,7 +79,8 @@ export default class startup_list extends Component {
                     return(
                         
                         <div className="" key={job.id}>
-                            <span  className="badge job-scroll badge-light p-2" style={{fontSize:"15px"}}>{job.name}</span>
+                            <div  className="font-weight-bold" style={{fontSize:"15px"}}>{job.name} : {job.brief}</div>
+                            
                         </div>
                     )
             })
@@ -97,9 +100,13 @@ export default class startup_list extends Component {
                             </Link>
                         </div>
 
-                        <div className="text-center font-weight-bold">
-                            {startup.end_product}
-                        </div>
+                        {startup.idea_in_a_nutshell!==""?<Fragment>
+                            <div className="my-3 text-center font-weight-bold">
+                                {startup.idea_in_a_nut_shell}
+                            </div>
+                        </Fragment>:null}
+
+                        {true?<Fragment><Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link></Fragment>:null}
 
                     </div>
 
@@ -109,31 +116,41 @@ export default class startup_list extends Component {
                         </div> */}
 
                         <div>
-                            <h5 className="h4 font-weight-bold mb-4">Idea in Nutshell:</h5>
-                            <p>{startup.idea_in_a_nut_shell}</p>
+                            <div className="font-weight-bold mb-4">Beneficiaries:</div>
+                            <p>{startup.beneficiaries}</p>
                         </div>
 
                         <div>
-                            <h6 className="font-weight-bold">Beneficiaries</h6>
-                            <p className="font-weight-normal">{startup.beneficiaries}</p>
+                            <div className="font-weight-bold">Innovation:</div>
+                            <div dangerouslySetInnerHTML={{ __html:startup.innovation_in_this}}></div>
                         </div>
 
                         
-                        {job_tab.length!==0 && startup.can_hire_interns?<Fragment>
+                        {startup.can_hire_interns?<Fragment>
                             <div className="my-2">
-                            <div className="font-weight-bold">Job Openings :</div>   
-                            <div className="d-flex table-responsive content-center scrollbar scrollbar-pink bordered-pink thin my-2">{jobs}</div>   
+                            <div className="font-weight-bold my-3">Job Openings :</div>   
+                            <div className="d-flex">{jobs}</div>   
                         </div><br></br>
-                        </Fragment>:null}
+                        </Fragment>:<Fragment>
+                            
+                            <div className="font-weight-bold">
+                                Description:
+                            </div>
 
-                        <div><strong className="font-weight-bold">Contacts:</strong>
+                            <div>
+                                <div dangerouslySetInnerHTML={{ __html: startup.describe_idea }}></div>
+                            </div>
+
+                        </Fragment>}
+
+                        {/* <div><strong className="font-weight-bold">Contacts:</strong>
                             <p><strong>Mail</strong> : {startup.email}</p>
                             <p>Phone: {startup.contact}</p>
-                        </div>
+                        </div> */}
                         
 
-                        <p className="font-weight-normal"><strong>Updated on</strong>: {format_date(startup.updated_at)}</p>
-                        {startup.can_hire_interns?<Fragment><Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link></Fragment>:null}
+                        {/* <p className="font-weight-normal"><strong>Updated on</strong>: {format_date(startup.updated_at)}</p> */}
+                        {/* {startup.can_hire_interns?<Fragment><Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link></Fragment>:null} */}
 
                     </div>
                 </div>
