@@ -14,6 +14,8 @@ class submitIdea extends Component {
     isEdit = this.props.location.pathname.indexOf('edit_idea') > -1
     
     state = {
+        uploading:false,
+        progress:0,
         errors: {},
         requesting: false,
         success: false,
@@ -73,8 +75,8 @@ class submitIdea extends Component {
             'describe_idea': this.description.get_value(),
             'ideator_designation': this.sector.value==="Student"?"student":"faculty",
             'end_product':this.ep.value,
-           'mentor_name':this.mn.value,
-           'mentor_designation':this.dg.value,
+           'mentor_name':this.state.pfsn==="Student"?this.mn.value:"",
+           'mentor_designation':this.state.pfsn==="Student"?this.dg.value:"",
            'innovation_in_this':this.innovation.get_value(),
             user: this.props.auth.id
         }).then(d => {
@@ -97,6 +99,65 @@ class submitIdea extends Component {
             }
         })
     }
+
+    // _upload_application = (e) => {
+    //     e.preventDefault()
+    //     this.setState({
+    //         uploading: true
+    //     })
+
+    //     var data = new FormData();
+    //     var request = new XMLHttpRequest();
+
+
+    //     data.append('startup_plan_file', this.resume.files[0])
+    //     data.append('idea_in_a_nut_shell', this.idea.value)
+    //     data.append('beneficiaries', this.benef.value)
+    //     data.append('describe_idea', this.description.get_value())
+    //     data.append('ideator_designation',this.sector.value==="Student"?"student":"faculty")
+    //     data.append('end_product',this.ep.value)
+    //     data.append('mentor_name',this.mn.value)
+    //     data.append('mentor_designation',this.dg.value)
+    //     data.append('innovation_in_this',this.innovation.get_value())
+
+
+    //     // load event
+    //     request.addEventListener('load', (e) => {
+    //         const data = JSON.parse(e.target.response)
+
+    //         this.setState({
+    //             uploading: false,
+    //             progress: 0
+    //         })
+
+    //         if(data.id){
+    //             //this.props.history.goBack()
+    //             this.setState({success:true})
+    //         }else{
+    //             this.setState({error:true})
+    //             console.log(this.state.error)
+    //         }
+    //     });
+
+    //     // monitor progress of upload
+    //     request.upload.addEventListener('progress', (e) => {
+    //         var progress = Math.round((e.loaded / e.total) * 100)
+    //         console.log({ progress })
+
+    //         this.setState({ progress })
+    //     })
+
+
+
+    //     request.open('post', baseURL + `/iportal/startup/${this.props.auth.startup_id}/`);
+    //     request.setRequestHeader('Authorization', this.props.auth.token)
+    //     request.send(data);
+    //     this.setState({ uploading: false })
+
+
+
+
+    // }
 
 
     _reset_form = e => {
@@ -153,9 +214,9 @@ class submitIdea extends Component {
                         {this.isEdit?'Edit Idea' :'Submit Idea'}
                     </h1>
 
-                    <div className="text-center">
+                    {/* <div className="text-center">
                         <UploadLogo />
-                    </div>
+                    </div> */}
 
                     <form>
                         <div className="form-group">
@@ -207,11 +268,29 @@ class submitIdea extends Component {
                         </div>
                         </Fragment>:<div></div>}
 
+                        {/* <div className="text-center font-weight-bold my-5">
+                        Upload your idea(PDF) : <input className="btn btn-success text-center font-weight-bold" ref={ele => this.resume = ele} type="file" /> <span className="font-weight-bold">{this.state.progress? `${this.state.progress}%`:null}</span>   
+                        </div>
+
+                    {this.state.uploading ?
+                        <span>
+                            {this.state.progress ? <Fragment>
+                                <div class="progress md-progress" style="height: 20px">
+                                    <div class="progress-bar" role="progressbar" style={{ width: `${this.state.progress}%`, height: "20px" }} aria-valuemin="0" aria-valuemax="100">{this.state.progress}%</div>
+                                </div>
+                            </Fragment> : null}
+                        </span>
+                        :
+                        null} */}
+
                         <div className="text-center">
+                        {/* <button onClick={this._upload_application} disabled={this.state.uploading || this.state.success} type="submit" className="btn font-weight-bold my-4 btn-primary">{this.state.uploading ? <i className="fa fa-spinner fa-spin"></i> : 'Submit'}</button> */}
                             <button disabled={this.state.requesting || this.state.success} onClick={this._register_idea} className="btn font-weight-bold btn-primary">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'submit'}</button>
                             <button onClick={this._reset_form} className="btn font-weight-bold btn-danger">reset</button>
                         </div>
                     </form>
+
+                    
                 </div>
             </div>
             </div>

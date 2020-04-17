@@ -26,10 +26,12 @@ class RegisterStartup extends Component {
 
 
     componentDidMount() {
-        if(this.isEdit){
+        
             faxios().get(`/iportal/startup/${this.props.auth.startup_id}/`)
                 .then(d=>{
                     const data=d.data 
+
+                    this.setState({startup:data})
                     console.log(data,"running")
 
                     this.name.value = data.name
@@ -44,7 +46,7 @@ class RegisterStartup extends Component {
                     this.country.value = data.country
                     this.description.set_value(data.description)
                 })
-        }
+        
     }
     
 
@@ -123,17 +125,31 @@ class RegisterStartup extends Component {
             <option value={sectors}>{sectors}</option>
         ))
 
-        if (this.state.success) {
+        if (this.state.success && !this.state.startup.can_hire_interns) {
             return (
                 <div>
                     <h2 className="mt-5 text-center">Successfully submited for verification</h2>
                     <h4 className="text-center mt-3">You will receive confirmation by E-mail and SMS once the verification is complete.</h4>
                     <div className="text-center">
-                        <button className="btn btn-primary mt-5" onClick={() => this.props.history.push('/startups')}>Go to homepage</button>
+                        <button className="btn btn-primary mt-5" onClick={() => this.props.history.goBack()}>Go to homepage</button>
                     </div>
                 </div>
             )
         }
+
+        if (this.state.success && this.state.startup.can_hire_interns) {
+            return (
+                <div>
+                    <h2 className="mt-5 text-center font-weight-bold">Successfully edited the details!!</h2>
+                    {/* <h4 className="text-center mt-3">You will receive confirmation by E-mail and SMS once the verification is complete.</h4> */}
+                    <div className="text-center">
+                        <button className="btn btn-primary mt-5" onClick={() => this.props.history.goBack()}>Go to homepage</button>
+                    </div>
+                </div>
+            )
+        }
+
+        
 
         let error_html = {}
         Object.keys(this.state.errors).forEach((key) => {
@@ -153,7 +169,7 @@ class RegisterStartup extends Component {
 
                 <div>
                     <h1 className="open text-center font-weight-bold my-5">
-                        {this.isEdit?'Edit Startup' :'Register Startup'}
+                        {this.isEdit?'Edit Startup Profile' :'Startup Profile'}
                     </h1>
 
                     <div className="text-center">

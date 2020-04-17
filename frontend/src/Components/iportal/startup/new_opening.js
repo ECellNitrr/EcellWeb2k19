@@ -83,7 +83,7 @@ class new_opening extends Component {
 
             "apply_by": this.state.apply_by,
             "start_date": this.state.start_date,
-
+            "brief":this.brief.value,
             "about_the_job": this.about_the_job.get_value(),
             "skills_required": this.skills_required.get_value(),
             "who_can_apply": this.who_can_apply.get_value(),
@@ -143,6 +143,13 @@ class new_opening extends Component {
                             <input type="text" ref={ele => this.name = ele} className="form-control" />
                             {error_html['name']}
                         </div>
+
+                        <div className="form-group">
+                            <label className="font-weight-bold">Brief</label>
+                            <input type="text" ref={ele => this.brief = ele} className="form-control" />
+                            {error_html['name']}
+                        </div>
+
                         <div className="form-group">
                             <label className="font-weight-bold">Stipend</label>
                             <input type="text" ref={ele => this.stipend = ele} className="form-control" />
