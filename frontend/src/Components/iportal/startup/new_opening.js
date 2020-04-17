@@ -37,7 +37,7 @@ class new_opening extends Component {
                 this.no_of_opening.value = data.no_of_opening
                 this.job_type.value = data.job_type
                 this.duration.value = data.duration
-
+                this.brief.value=data.brief
 
                 this.about_the_job.set_value(data.about_the_job)
                 this.skills_required.set_value(data.skills_required)
@@ -124,7 +124,7 @@ class new_opening extends Component {
                             onClick={() => this.props.history.goBack()}
                             className="btn btn-info font-weight-bold">Go back</button>
                         <h1 className="text-center open font-weight-bold flex-grow-1 my-5">
-                            {this.job_id ? 'Edit Opening' : 'Create new Opening'}
+                            {this.job_id ? 'Edit Work Profile' : 'Create new Work Profile'}
                         </h1>
                         {this.job_id? <button 
                             onClick={this._delete_opening}
@@ -139,7 +139,7 @@ class new_opening extends Component {
 
                     <form>
                         <div className="form-group">
-                            <label className="font-weight-bold">Opening name</label>
+                            <label className="font-weight-bold">Work Profile Name</label>
                             <input type="text" ref={ele => this.name = ele} className="form-control" />
                             {error_html['name']}
                         </div>

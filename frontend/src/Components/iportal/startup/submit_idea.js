@@ -64,10 +64,10 @@ class submitIdea extends Component {
         let reqType = faxios().post
         let url = '/iportal/startup/'
         
-        if(this.props.auth.startup_id){
-            reqType= faxios().put
-            url = `/iportal/startup/${this.props.auth.startup_id}/`
-        }
+        // if(this.props.auth.startup_id){
+        //     reqType= faxios().put
+        //     url = `/iportal/startup/${this.props.auth.startup_id}/`
+        // }
 
         reqType(url, {
             'idea_in_a_nut_shell': this.idea.value,
@@ -75,6 +75,8 @@ class submitIdea extends Component {
             'describe_idea': this.description.get_value(),
             'ideator_designation': this.sector.value==="Student"?"student":"faculty",
             'end_product':this.ep.value,
+            'email':this.email.value,
+            'contact':this.contact.value,
            'mentor_name':this.state.pfsn==="Student"?this.mn.value:"",
            'mentor_designation':this.state.pfsn==="Student"?this.dg.value:"",
            'innovation_in_this':this.innovation.get_value(),
@@ -167,6 +169,8 @@ class submitIdea extends Component {
         this.sector.value = ''
         this.description.set_value('')
         this.innovation.set_value('')
+        this.email.value=''
+        this.contact.value=''
         this.ep.value=''
         this.mn.value=''
         this.dg.value=''
@@ -282,6 +286,18 @@ class submitIdea extends Component {
                         </span>
                         :
                         null} */}
+
+                        <div className="form-group">
+                            <label className="font-weight-bold">Email</label>
+                            <input type="mail" ref={ele => this.email = ele} required className="form-control" />
+                            {error_html['brief']}
+                        </div>
+
+                        <div className="form-group">
+                            <label className="font-weight-bold">Contact</label>
+                            <input type="number" ref={ele => this.contact = ele} required className="form-control" />
+                            {error_html['brief']}
+                        </div>
 
                         <div className="text-center">
                         {/* <button onClick={this._upload_application} disabled={this.state.uploading || this.state.success} type="submit" className="btn font-weight-bold my-4 btn-primary">{this.state.uploading ? <i className="fa fa-spinner fa-spin"></i> : 'Submit'}</button> */}

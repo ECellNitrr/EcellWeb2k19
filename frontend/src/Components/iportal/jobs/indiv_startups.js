@@ -51,11 +51,11 @@ export default class indiv_startups extends Component {
                         <div class="card" style={{border:"2px solid green"}}>
                         <div class="card-header green text-white d-flex" style={{justifyContent:"space-between"}}>
                             <div ><h4 className="indiv_job font-weight-bold">{job.name}</h4></div>
-                            <div style={{fontSize:"15px"}} className="badge badge-dark p-2">{job.job_type}</div>
+                            {/* <div style={{fontSize:"15px"}} className="badge badge-dark p-2">{job.job_type}</div> */}
                         </div>
                         <div class="card-body">
                             <div>
-                                <div className="mb-2"><strong>Location : </strong>{job.location}</div>
+                                <div className="mb-2"><strong>Brief : </strong>{job.brief}</div>
                                 <hr className="gray"></hr>
 
                                 {/*For Desktop*/}
@@ -192,6 +192,8 @@ export default class indiv_startups extends Component {
                             <span>{this.state.startup.idea_approved ? <i className="fa fa-check text-success"></i> : <i className="fa fa-times text-danger"></i>}</span>
                         </div> */}
 
+                        <hr className="my-4 rgba-white-light"/> 
+
 
                                    {this.state.jobs.length===0 && !startup.can_hire_interns ?null:<Fragment>
                                        
@@ -231,7 +233,7 @@ export default class indiv_startups extends Component {
                         
                         <hr class="my-4 rgba-white-light"/>
                     <div style={{marginBottom:"-30px",marginTop:"50px"}}>
-                        <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Job Openings</h3>
+                        <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Work Profiles</h3>
                         {jobs_html.length===0 ? <div className="d-flex justify-content-center py-5"><img className="img-fluid" src={no_vacancies}></img></div>:jobs_html}
                     </div>
 

@@ -79,7 +79,7 @@ export default class startup_list extends Component {
                     return(
                         
                         <div className="" key={job.id}>
-                            <div  className="font-weight-bold" style={{fontSize:"15px"}}>{job.name} : {job.brief}</div>
+                            <div style={{fontSize:"15px"}}> <i className="font-weight-bold">{job.name}</i> : {job.brief}</div>
                             
                         </div>
                     )
@@ -128,7 +128,7 @@ export default class startup_list extends Component {
                         
                         {startup.can_hire_interns?<Fragment>
                             <div className="my-2">
-                            <div className="font-weight-bold my-3">Job Openings :</div>   
+                            <div className="font-weight-bold my-3">Work Profiles :</div>   
                             <div className="d-flex">{jobs}</div>   
                         </div><br></br>
                         </Fragment>:<Fragment>

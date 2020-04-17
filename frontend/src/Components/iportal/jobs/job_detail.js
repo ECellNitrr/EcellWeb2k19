@@ -94,7 +94,7 @@ class job_detail extends Component {
                         <div class="card">
                         <div class="card-header green text-white d-flex" style={{justifyContent:"space-between"}}>
                             <div ><h4 className=" indiv_job font-weight-bold">{job.name}</h4></div>
-                            <div style={{fontSize:"15px"}} className="badge badge-dark p-2">{job.job_type}</div>
+                            {/* <div style={{fontSize:"15px"}} className="badge badge-dark p-2">{job.job_type}</div> */}
                         </div>
                         <div class="card-body">
                             <div>
@@ -188,8 +188,8 @@ class job_detail extends Component {
             return(
                 <div>
                     <div className="start-name font-weight-bold" style={{fontSize:"20px"}}>{startup.name}</div><br></br>
-                    <div className="start-sect font-weight-bold text-success">{startup.sector}</div><br></br>
-                    <div className="start-brief">{startup.brief}</div><br></br>
+                    {/* <div className="start-sect font-weight-bold text-success">{startup.sector}</div><br></br> */}
+                    <div className="start-brief"><strong className="font-weight-bold">Brief</strong>: {startup.brief}</div><br></br>
                     {jobs_html_detail(this.state.jobs)}
 
                 </div>
