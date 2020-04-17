@@ -30,7 +30,7 @@ class StartupViewset(ModelViewSet):
     serializer_class = StartupSerializer
     search_fields = ['name','job__name','sector']
     filter_backends = (filters.DjangoFilterBackend, SearchFilter)
-    filterset_fields = ('name','approved','sector','user')
+    filterset_fields = ('name','idea_approved','can_hire_interns','sector','user')
     pagination_class = GeneralPagination
 
 class JobViewset(ModelViewSet):

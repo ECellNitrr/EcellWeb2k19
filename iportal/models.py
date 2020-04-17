@@ -22,7 +22,6 @@ class Startup(models.Model):
     district = models.CharField(max_length=100, blank=True)
     state = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=100, blank=True)
-    approved = models.BooleanField(default=False)
 
     
     idea_in_a_nut_shell = models.CharField(max_length=30,blank=True)
