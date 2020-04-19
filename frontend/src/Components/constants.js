@@ -8,6 +8,7 @@ export const user_type = {
     CAB: 'Campus Ambassador',
     CAB: 'Campus Ambassador',
     DRT: 'Director',
+    CDC:'CDC Admin'
 }
 
 export const application_status = {

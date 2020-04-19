@@ -178,7 +178,7 @@ export default class indiv_startups extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label className='font-weight-bold'>End Product : </label>
+                            <label className='font-weight-bold'>End Product :  </label>
                             <span>{startup.end_product}</span>
                         </div>
 
@@ -193,20 +193,6 @@ export default class indiv_startups extends Component {
                         </div> */}
 
                         <hr className="my-4 rgba-white-light"/> 
-
-
-                                   {this.state.jobs.length===0 && !startup.can_hire_interns ?null:<Fragment>
-                                       
-                                    <h2 class="card-title font-weight-bold h2">{startup.name}</h2> 
-                                    {/* <div>
-                                        <p class="font-weight-bold text-success"><i className="fas fa-laptop pr-1"></i> {startup.sector}</p>
-                                    </div> */}
-                                    
-                                    <div><span className="font-weight-bold">Address : </span><br></br>{startup.address1}<br></br>{startup.address2}</div><br></br>
-                                    <div><span className="font-weight-bold">District : </span>{startup.district}</div>
-                                    <div><span className="font-weight-bold">Country : </span>{startup.country}</div>
-                                       
-                                       </Fragment>}
 
                                     <div><span className="font-weight-bold">Email : </span>{startup.email}</div>
                                     <div><span className="font-weight-bold">Contact : </span>{startup.contact}</div><br></br>
@@ -229,12 +215,12 @@ export default class indiv_startups extends Component {
                         </div>
                     </div> */}
 
-                    {this.state.jobs.length===0 && !startup.can_hire_interns ?null:<Fragment>
+                    {startup.can_hire_interns!=true && this.state.jobs.length===0 ?null:<Fragment>
                         
                         <hr class="my-4 rgba-white-light"/>
                     <div style={{marginBottom:"-30px",marginTop:"50px"}}>
                         <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Work Profiles</h3>
-                        {jobs_html.length===0 ? <div className="d-flex justify-content-center py-5"><img className="img-fluid" src={no_vacancies}></img></div>:jobs_html}
+                        {startup.can_hire_interns!=true && jobs_html.length===0? null:jobs_html}
                     </div>
 
                         </Fragment>}
