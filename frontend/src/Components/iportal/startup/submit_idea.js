@@ -437,7 +437,7 @@ class submitIdea extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label className="font-weight-bold">Innovation in this</label>
+                            <label className="font-weight-bold">Innovation in this idea?</label>
                             {/* {error_html['innovation']} */}
                             <Wysiwyg onRef={ref => this.innovation = ref} />
                             {this.state.err_num.indexOf(3)!=-1 && this.state.validate==false && this.innovation.get_value().length===8?<Fragment>
