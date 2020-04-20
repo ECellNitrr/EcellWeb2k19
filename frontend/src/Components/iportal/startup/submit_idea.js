@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Wysiwyg from '../../common/wysiwyg'
 
+//idea in a nutshell less thn 30 characters
 
 class submitIdea extends Component {
     isEdit = this.props.location.pathname.indexOf('edit_idea') > -1
@@ -16,11 +17,16 @@ class submitIdea extends Component {
     state = {
         uploading:false,
         progress:0,
+        validate:true,
         errors: {},
+        err_num:[],
         requesting: false,
         success: false,
         startup: {},
-        pfsn:""
+        pfsn:"",
+        max_chars:"",
+        email_check:true,
+        contact_check:true
     }
 
     static propTypes = {
@@ -58,8 +64,175 @@ class submitIdea extends Component {
         e.preventDefault()
 
         this.setState({
-            requesting: false
+            requesting: true
         })
+
+        if(this.idea.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,0],
+                validate:false,
+                requesting:false
+            })
+
+            
+
+            console.log("This runs 0")
+
+            return
+        }
+
+        if(this.idea.value.length>30){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,1],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        if(this.description.get_value().length<9){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,2],
+                validate:false,
+                requesting:false
+            })
+
+            console.log("This runs 2")
+            return
+        }
+
+        if(this.innovation.get_value().length<9){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,3],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        if(this.ep.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,4],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        if(this.benef.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,5],
+                validate:false,requesting:false
+            })
+            return
+        }
+
+        if(this.sector.value==="Select"){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,6],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        if(this.sector.value==="Student" && this.mn.value.length<1 ){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,7],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        if(this.sector.value==="Student" && this.dg.value.length<1 ){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,8],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        if(this.email.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,11],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        
+
+        let email_value= this.email.value
+
+        let verify_email=(email)=>{
+            let re = /\S+@\S+\.\S+/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        if(verify_email(email_value)===false){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,12],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        if(verify_email(email_value)===true){
+            this.setState({
+                email_check:false
+            })
+        }
+
+        if(this.contact.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,9],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        let contact_value = this.contact.value
+
+        let verify_contact = (contact) =>{
+
+            let re = /^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
+            return re.test(String(contact));
+        }
+
+        if(verify_contact(contact_value)===false){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,10],
+                validate:false,
+                requesting:false
+            })
+            return
+        }
+
+        if(verify_contact(contact_value)===true){
+            this.setState({
+                contact_check:false
+            })
+        }
+
+        
 
         let reqType = faxios().post
         let url = '/iportal/startup/'
@@ -85,6 +258,9 @@ class submitIdea extends Component {
             const data = d.data
             console.log(data)
 
+            this.setState({
+                requesting:false
+            })
             if(this.isEdit){
                 this.props.history.goBack()
             }else{
@@ -136,7 +312,7 @@ class submitIdea extends Component {
     //             //this.props.history.goBack()
     //             this.setState({success:true})
     //         }else{
-    //             this.setState({error:true})
+                // this.setState({error:true})
     //             console.log(this.state.error)
     //         }
     //     });
@@ -164,6 +340,7 @@ class submitIdea extends Component {
 
     _reset_form = e => {
         e.preventDefault()
+        this.setState({max_chars:""})
         this.idea.value = ''
         this.benef.value = ''
         this.sector.value = ''
@@ -172,8 +349,11 @@ class submitIdea extends Component {
         this.email.value=''
         this.contact.value=''
         this.ep.value=''
-        this.mn.value=''
-        this.dg.value=''
+        if(this.sector.value==="Student"){
+            this.mn.value=''
+            this.dg.value=''
+        }
+        
     }
 
 
@@ -204,6 +384,17 @@ class submitIdea extends Component {
             )
         })
 
+        let char_size=30-this.state.max_chars.length
+
+        let idea_size_text=char_size>=0?char_size:<i className="font-weight-bold text-danger">Limit exceeded</i>;
+    
+        
+
+        // if(this.state.max_chars.length===30){
+        //     document.getElementById("idea").disabled=true;
+        // }
+
+        
 
         return (
             <div className="reg-pad">
@@ -214,9 +405,10 @@ class submitIdea extends Component {
                 </div>
 
                 <div>
-                    <h1 className="open text-center font-weight-bold my-5">
-                        {this.isEdit?'Edit Idea' :'Submit Idea'}
-                    </h1>
+                    <div className="open text-center font-weight-bold my-5">
+                        <h1 className="font-weight-bold">{this.isEdit?'Edit Idea' :'Submit Idea'}</h1>
+                        <h6 className="font-weight-bold"><i>(All fields are mandatory)</i></h6>
+                    </div>
 
                     {/* <div className="text-center">
                         <UploadLogo />
@@ -224,31 +416,51 @@ class submitIdea extends Component {
 
                     <form>
                         <div className="form-group">
-                            <label className="font-weight-bold">Idea in a Nutshell</label>
-                            <input type="text" ref={ele => this.idea = ele} required maxLength="40" className="form-control" />
-                            {error_html['name']}
+                <label><label className="font-weight-bold">Idea in a Nutshell</label>&nbsp;&nbsp;<i>(Chars allowed: &nbsp;{idea_size_text})</i></label>
+                            <input id="idea" type="text" onChange={(e) => this.setState({max_chars: e.target.value})} ref={ele => this.idea = ele} className="form-control" />
+                            {/* {error_html['idea']} */}
+                            {this.state.err_num.indexOf(0)!=-1 && this.state.validate==false && this.idea.value.length===0 ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required with maximum 30 characters</div>
+                            </Fragment>:null}
+                            {this.state.err_num.indexOf(1)!=-1 && this.state.validate==false && this.idea.value.length>30 ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required with maximum 30 characters</div>
+                            </Fragment>:null}
+    
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Describe Your Idea</label>
-                            {error_html['description']}
+                            {/* {error_html['description']} */}
                             <Wysiwyg onRef={ref => this.description = ref} />
+                            {this.state.err_num.indexOf(2)!=-1 && this.state.validate==false && this.description.get_value().length===8?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
                         </div>
 
                         <div className="form-group">
                             <label className="font-weight-bold">Innovation in this</label>
-                            {error_html['innovation']}
+                            {/* {error_html['innovation']} */}
                             <Wysiwyg onRef={ref => this.innovation = ref} />
+                            {this.state.err_num.indexOf(3)!=-1 && this.state.validate==false && this.innovation.get_value().length===8?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
                         </div>
 
                         <div className="form-group">
                             <label className="font-weight-bold">End Product</label>
-                            <input type="text" ref={ele => this.ep = ele} required className="form-control" />
-                            {error_html['contact']}
+                            <input type="text" ref={ele => this.ep = ele} className="form-control" />
+                            {/* {error_html['ep']} */}
+
+                            {this.state.err_num.indexOf(4)!=-1 && this.state.validate==false && this.ep.value.length===0?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Beneficiaries</label>
                             <input type="text" ref={ele => this.benef = ele} required className="form-control" />
-                            {error_html['brief']}
+                            {this.state.err_num.indexOf(5)!=-1 && this.state.validate==false && this.benef.value.length===0?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['benef']} */}
                         </div>
                      
                         <div className="form-group">
@@ -256,19 +468,29 @@ class submitIdea extends Component {
                             <select className="form-control" onChange={(e) => this.setState({pfsn: e.target.value})} ref={ele => this.sector = ele}>
                                 {sector_options}
                             </select>
-                            {error_html['sector']}
+
+                            {this.state.err_num.indexOf(6)!=-1 && this.state.validate==false && this.sector.value==="Select"?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['sector']} */}
                         </div>
                         
                         {this.state.pfsn==="Student"?<Fragment>
                         <div className="form-group">
                             <label className="font-weight-bold">Mentor Name</label>
                             <input type="text" ref={ele => this.mn = ele} required maxLength="40" className="form-control" />
-                            {error_html['name']}
+                            {this.state.err_num.indexOf(7)!=-1 && this.state.validate==false && this.mn.value.length===0?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['mn']} */}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Designation of Mentor</label>
                             <input type="text" ref={ele => this.dg = ele} required maxLength="40" className="form-control" />
-                            {error_html['name']}
+                            {this.state.err_num.indexOf(8)!=-1 && this.state.validate==false && this.dg.value.length===0?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['dg']} */}
                         </div>
                         </Fragment>:<div></div>}
 
@@ -290,17 +512,34 @@ class submitIdea extends Component {
                         <div className="form-group">
                             <label className="font-weight-bold">Email</label>
                             <input type="mail" ref={ele => this.email = ele} required className="form-control" />
-                            {error_html['brief']}
+                            {this.state.err_num.indexOf(11)!=-1 && this.state.validate==false && this.email.value.length===0?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+
+                            {this.state.err_num.indexOf(12)!=-1 && this.state.validate==false && this.email.value.length!==0 &&this.state.email_check?<Fragment>
+                                <div className="font-weight-bold text-danger">Email provided is invalid</div>
+                            </Fragment>:null}
+                            {/* {error_html['email']} */}
                         </div>
 
                         <div className="form-group">
                             <label className="font-weight-bold">Contact</label>
-                            <input type="number" ref={ele => this.contact = ele} required className="form-control" />
-                            {error_html['brief']}
+                            <input type="text" ref={ele => this.contact = ele} required className="form-control" />
+                            {this.state.err_num.indexOf(9)!=-1 && this.state.validate==false && this.contact.value.length===0?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {this.state.err_num.indexOf(10)!=-1 && this.state.validate==false && this.contact.value.length!==0 && this.state.contact_check?<Fragment>
+                                <div className="font-weight-bold text-danger">Contact is invalid</div>
+                            </Fragment>:null}
+                            {/* {error_html['contact']} */}
                         </div>
 
                         <div className="text-center">
                         {/* <button onClick={this._upload_application} disabled={this.state.uploading || this.state.success} type="submit" className="btn font-weight-bold my-4 btn-primary">{this.state.uploading ? <i className="fa fa-spinner fa-spin"></i> : 'Submit'}</button> */}
+                            
+                            <div>
+                            {this.state.validate==false?<Fragment><i className="font-weight-bold text-danger">(Some fields are empty or invalid, recheck and try again)</i></Fragment>:null}
+                            </div>
                             <button disabled={this.state.requesting || this.state.success} onClick={this._register_idea} className="btn font-weight-bold btn-primary">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'submit'}</button>
                             <button onClick={this._reset_form} className="btn font-weight-bold btn-danger">reset</button>
                         </div>
