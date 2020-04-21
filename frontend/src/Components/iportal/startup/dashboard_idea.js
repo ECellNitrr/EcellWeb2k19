@@ -11,6 +11,7 @@ class ideadashboard extends Component {
     state = {
         loading: true,
         startup: {},
+        // startup: []
     }
 
     static propTypes = {
@@ -20,7 +21,7 @@ class ideadashboard extends Component {
     componentDidMount() {
         faxios().get(`/iportal/startup/${this.props.auth.startup_id}/`)
             .then(d => {
-                console.log(d.data)
+                // console.log(d.data)
                 this.setState({
                     loading: false,
                     startup: d.data
@@ -49,7 +50,7 @@ class ideadashboard extends Component {
                 <div>
                     <div className="d-flex my-5">
                     <h1 className="text-center flex-grow-1 font-weight-bold">Idea Dashboard</h1>
-                    {/* <button onClick={() => this.props.history.push('/internship/submit_idea/edit_idea/')} className="btn btn-danger font-weight-bold">Edit</button> */}
+                    <button onClick={() => this.props.history.push('/internship/submit_idea/edit_idea/')} className="btn btn-danger font-weight-bold">Edit</button>
                     {/* {this.state.startup.can_hire_interns?null:<Fragment>
                         <button onClick={() => this.props.history.push('/internship/startup/register')} className="btn btn-success font-weight-bold">Register Startup</button>
                         </Fragment>} */}

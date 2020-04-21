@@ -4,6 +4,7 @@ import UploadLogo from './upload_logo'
 import './dashboard.scss'
 
 import {professions} from '../../constants'
+import {education_status} from '../../constants'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -363,6 +364,10 @@ class submitIdea extends Component {
 
         let sector_options = professions.map(sectors =>(
             <option value={sectors}>{sectors}</option>
+        ))
+
+        let education_options = education_status.map(i =>(
+            <option></option>
         ))
 
         if (this.state.success) {
