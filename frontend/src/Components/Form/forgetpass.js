@@ -118,7 +118,7 @@ export default class forgetPass extends Component{
         return(
             
             <Modal id="forgetPasModal">
-                <div className="text-center mt-3">OTP will be sent to the registered mobile number of the email provided below.</div>
+                <div className="text-center mt-3">OTP will be sent to the registered email provided below.</div>
 
                 {this.state.err ? errmsg:null}
                 {this.state.success ? scsmsg:null}

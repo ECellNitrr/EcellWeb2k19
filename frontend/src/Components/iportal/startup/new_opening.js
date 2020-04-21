@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,Fragment } from 'react'
 
 import faxios from '../../../axios'
 import './dashboard.scss'
@@ -6,6 +6,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Wysiwyg from '../../common/wysiwyg'
 import Datetime from 'react-datetime'
+
+var yesterday = Datetime.moment().subtract(1, 'day');
+var valid = function( current ){
+    return current.isAfter( yesterday );
+};
 
 
 class new_opening extends Component {
@@ -16,6 +21,8 @@ class new_opening extends Component {
         requesting: false,
         success: false,
         start_date: null,
+        err_num:[],
+        validate:true,
         apply_by: null,
         initial_load: true,
     }
@@ -61,8 +68,148 @@ class new_opening extends Component {
         e.preventDefault()
 
         this.setState({
-            requesting: false
+            requesting: true
         })
+
+        if(this.name.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,0],
+                validate:false,
+                requesting: false
+            })
+
+            
+
+            console.log("This runs 0")
+
+            return
+        }
+
+
+        if(this.brief.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,1],
+                validate:false,
+                requesting: false
+            })
+            return
+        }
+
+        if(this.stipend.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,2],
+                validate:false,
+                requesting: false
+            })
+            return
+        }
+
+        if(this.location.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,3],
+                validate:false,
+                requesting: false
+            })
+            return
+        }
+
+        if(this.state.apply_by===null){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,4],
+                validate:false,
+                requesting: false
+            })
+            return
+        }
+
+        if(this.state.start_date===null){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,5],
+                validate:false,
+                requesting: false
+            })
+            return
+        }
+
+        if(this.no_of_opening.value<=0 || this.no_of_opening.value===null){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,6],
+                validate:false,
+                requesting: false
+            })
+            return
+        }
+
+        if(this.duration.value.length<1){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,7],
+                validate:false,
+                requesting: false
+            })
+            return
+        }
+
+
+       
+
+        if(this.about_the_job.get_value().length<9){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,8],
+                validate:false,
+                requesting: false
+            })
+
+            console.log("This runs 2")
+            return
+        }
+
+        if(this.skills_required.get_value().length<9){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,9],
+                validate:false,
+                requesting: false
+            })
+
+            console.log("This runs 2")
+            return
+        }
+
+        if(this.who_can_apply.get_value().length<9){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,10],
+                validate:false,
+                requesting: false
+            })
+
+            console.log("This runs 2")
+            return
+        }
+
+        if(this.perks.get_value().length<9){
+            this.setState({
+                success:false,
+                err_num:[...this.state.err_num,11],
+                validate:false,
+                requesting: false
+            })
+
+            console.log("This runs 2")
+            return
+        }
+
+        
+
 
         let url = '/iportal/job/'
         let reqtype = faxios().post
@@ -124,7 +271,10 @@ class new_opening extends Component {
                             onClick={() => this.props.history.goBack()}
                             className="btn btn-info font-weight-bold">Go back</button>
                         <h1 className="text-center open font-weight-bold flex-grow-1 my-5">
-                            {this.job_id ? 'Edit Work Profile' : 'Create new Work Profile'}
+                            {this.job_id ? 'Edit Work Profile' : <Fragment>
+                                    <div>Create new work profile</div>
+                                    <div><h6><i className="font-weight-bold">(All fields are mandatory)</i></h6></div>
+                                </Fragment>}
                         </h1>
                         {this.job_id? <button 
                             onClick={this._delete_opening}
@@ -141,45 +291,70 @@ class new_opening extends Component {
                         <div className="form-group">
                             <label className="font-weight-bold">Work Profile Name</label>
                             <input type="text" ref={ele => this.name = ele} className="form-control" />
-                            {error_html['name']}
+                            {this.state.err_num.indexOf(0)!=-1 && this.state.validate==false && this.name.value.length===0 ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['name']} */}
                         </div>
 
                         <div className="form-group">
                             <label className="font-weight-bold">Brief</label>
                             <input type="text" ref={ele => this.brief = ele} className="form-control" />
-                            {error_html['name']}
+                            {this.state.err_num.indexOf(1)!=-1 && this.state.validate==false && this.brief.value.length===0 ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['name']} */}
                         </div>
 
                         <div className="form-group">
                             <label className="font-weight-bold">Stipend</label>
                             <input type="text" ref={ele => this.stipend = ele} className="form-control" />
-                            {error_html['stipend']}
+                            {this.state.err_num.indexOf(2)!=-1 && this.state.validate==false && this.stipend.value.length===0 ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['stipend']} */}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Location</label>
                             <input type="email" ref={ele => this.location = ele} className="form-control" />
-                            {error_html['location']}
+                            {this.state.err_num.indexOf(3)!=-1 && this.state.validate==false && this.location.value.length===0 ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['location']} */}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Apply by</label>
-                            <Datetime value={this.state.apply_by} onChange={e => this.setState({ apply_by: e })} />
-                            {error_html['apply_by']}
+                            <Datetime isValidDate={ valid } value={this.state.apply_by} onChange={e => this.setState({ apply_by: e })} />
+                            {this.state.err_num.indexOf(4)!=-1 && this.state.validate==false && this.state.apply_by===null ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['apply_by']} */}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Start Date</label>
-                            <Datetime value={this.state.start_date} onChange={e => this.setState({ start_date: e })} />
-                            {error_html['state_date']}
+                            <Datetime isValidDate={ valid } value={this.state.start_date} onChange={e => this.setState({ start_date: e })} />
+                            {this.state.err_num.indexOf(5)!=-1 && this.state.validate==false && this.state.start_date===null ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
+                            {/* {error_html['state_date']} */}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">No of Openings</label>
-                            <input type="text" ref={ele => this.no_of_opening = ele} className="form-control" />
-                            {error_html['no_of_opening']}
+                            <input type="number" ref={ele => this.no_of_opening = ele} className="form-control" />
+                            {this.state.err_num.indexOf(6)!=-1 && this.state.validate==false && (this.no_of_opening.value<=0 || this.no_of_opening.value===null) ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required with valid input</div>
+                            </Fragment>:null}
+                            {/* {error_html['no_of_opening']} */}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Duration</label>
                             <input type="text" ref={ele => this.duration = ele} className="form-control" />
-                            {error_html['duration']}
+                            {/* {error_html['duration']} */}
+                            {this.state.err_num.indexOf(7)!=-1 && this.state.validate==false && this.duration.value.length===0 ?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
                         </div>
+                            
                         <div className="form-group">
                             <label className='mr-2 font-weight-bold d-inline-block'>Job type</label>
                             <select className="form-control" ref={ele => this.job_type = ele}>
@@ -189,31 +364,45 @@ class new_opening extends Component {
                                 <option value='Parttime'>Part time</option>
                                 <option value='Freelance'>Freelance</option>
                             </select>
-                            {error_html['job_type']}
+                            {/* {error_html['job_type']} */}
                         </div>
                         <div className="form-group">
+
                             <label className="font-weight-bold">About the job</label>
-                            {error_html['about_the_job']}
+                            {/* {error_html['about_the_job']} */}
                             <Wysiwyg onRef={ref => this.about_the_job = ref} />
+                            {this.state.err_num.indexOf(8)!=-1 && this.state.validate==false && this.about_the_job.get_value().length===8?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Skills required</label>
-                            {error_html['skills_required']}
+                            {/* {error_html['skills_required']} */}
                             <Wysiwyg onRef={ref => this.skills_required = ref} />
+                            {this.state.err_num.indexOf(9)!=-1 && this.state.validate==false && this.skills_required.get_value().length===8?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Who can apply</label>
-                            {error_html['who_can_apply']}
+                            {/* {error_html['who_can_apply']} */}
                             <Wysiwyg onRef={ref => this.who_can_apply = ref} />
+                            {this.state.err_num.indexOf(10)!=-1 && this.state.validate==false && this.who_can_apply.get_value().length===8?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
                         </div>
                         <div className="form-group">
                             <label className="font-weight-bold">Perks</label>
-                            {error_html['perks']}
+                            {/* {error_html['perks']} */}
                             <Wysiwyg onRef={ref => this.perks = ref} />
+                            {this.state.err_num.indexOf(11)!=-1 && this.state.validate==false && this.perks.get_value().length===8?<Fragment>
+                                <div className="font-weight-bold text-danger">This field is required</div>
+                            </Fragment>:null}
                         </div>
 
 
                         <div className="text-center">
+                            <div>{this.state.validate==false?<i className="font-weight-bold text-danger">(Some fields are empty or invalid, recheck and try agin)</i>:null}</div>
                             <button disabled={this.state.requesting} onClick={this._new_opening} className="btn btn-primary font-weight-bold">{this.state.requesting ? <i className="fa fa-spinner fa-spin"></i> : 'submit'}</button>
                         </div>
                     </form>
