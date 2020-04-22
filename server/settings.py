@@ -66,11 +66,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
 
     # 'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'server.urls'
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
 
 TEMPLATES = [
     {

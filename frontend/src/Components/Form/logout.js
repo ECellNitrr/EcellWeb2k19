@@ -74,13 +74,13 @@ class logout extends Component {
 
         const phone_no_verified = this.props.auth.verified ? null : <span onClick={this._verify_otp} id='phnoverified_btn'>click to verify email id</span>
 
-        let button_to_show = this.props.auth.applied ? applied_for_ca : apply_for_ca
+        let button_to_show = null
 
-        if (this.props.auth.user_type !== 'GST') {
+        if (this.props.auth.user_type == 'CDC') {
             button_to_show =
                 <div>
                     <hr />
-                    <button onClick={this._go_to_portal} className="btn btn-primary login-button">Go to CA Portal</button>
+                    <button onClick={this._go_to_portal} className="btn btn-primary login-button">Manage Startup portal</button>
                     <hr />
                 </div>
         }

@@ -7,8 +7,53 @@ class Startup(models.Model):
         ('student','student'),
         ('faculty','faculty'),
     )
+    course_choices =(
+        ('B Tech','Bachelor of Technology'),
+        ('M Tech','Master of Technology'),
+        ('MBA','Master of Business Administration'),
+        ('B Sc','Bachelor of Science'),
+        ('B Arch','Bachelor of Architecture'),
+        ('Other','Other')
+    )
+    branch_choices =(
+        ('Biomed','Bio Medical Engineering'),
+	    ('Biotech','Bio Technology Engineering'),
+	    ('Chemical','Chemical Engineering'),
+	    ('Civil','Civil Engineering'),
+	    ('CSE','Computer Science Engineering'),
+    	('ELEX','Electronics and communication Engineering'),
+    	('Electrical','Electrical Engineering'),
+    	('IT','Information Technology'),
+    	('Mech','Mechanical Engineering'),
+    	('Meta','Metallurgical and Materials Engineering'),
+    	('Mining','Mining Engineering'),
+        ('Finance','Finance'),
+        ('Marketing','Marketing'),
+        ('HRM','Human Recourse Management'),
+        ('IB','International Business'),
+        ('OM','Operation Management'),
+        ('SCM','Supply Chain Management'),
+        ('RM','Rural Management'),
+        ('ABM','Agri Business Management'),
+        ('HCM','Health Care Management'),
+        ('LA','Landscape Architecture'),
+        ('AC','Architectural Conservation'),
+        ('HA','Housing Architecture'),
+        ('UP','Urban Planning'),
+        ('RP','Regional Planning'),
+        ('HM','Hotel Management'),
+        ('AS','Aernautical Science'),
+        ('Medical','Medical Science'),
+        ('Biology','Biologcal Science'),
+        ('AVE','Animation and Visual Effects'),
+        ('Chemistry','Applied Chemistry'),
+        ('Maths','Applied Mathemartics'),
+        ('Physics','Applied Physics'),
+        ('Other','Other'),
+    )
 
-    user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+
+    user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
 
     name = models.CharField(max_length=200, blank=True)
     email = models.EmailField(blank=True)
@@ -33,6 +78,10 @@ class Startup(models.Model):
     ideator_designation = models.TextField(max_length=30,default='student', choices=ideator_choices)
     mentor_name = models.CharField(max_length=50,blank=True)
     mentor_designation = models.CharField(max_length=50,blank=True)
+
+    course = models.CharField(max_length=100, choices= course_choices, null=True)
+    branch = models.CharField(max_length=100, choices= branch_choices, null=True)
+    semester = models.PositiveIntegerField(null=True) #max=10
 
     idea_approved = models.BooleanField(default=False)
     can_hire_interns = models.BooleanField(default=False)
@@ -175,7 +224,7 @@ class ApplicantEducation(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     result = models.CharField(max_length=200, null=True, blank=True)
-    courses = models.TextField( null=True, blank=True)
+    courses = models.TextField()
 
 class ApplicantExperience(models.Model):
     applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
