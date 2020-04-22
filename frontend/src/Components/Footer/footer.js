@@ -26,7 +26,7 @@ const footer = (props)=>{
                     </div>
 
                     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                      <h3 style={{color:"white",fontWeight:"800"}}>E-SUMMIT'19</h3>
+                      <h3 style={{color:"white",fontWeight:"800"}}>Leaders Beyond Borders</h3>
                       <p style={{color:"white",fontWeight:"600"}}>Follow us online on-</p>
                       <p style={{fontSize:"40px"}}>
                         <a href="https://www.facebook.com/ecellnitrr/" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-square"></i></a>
