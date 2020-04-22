@@ -11,6 +11,7 @@ class ideadashboard extends Component {
     state = {
         loading: true,
         startup: {},
+        // startup: []
     }
 
     static propTypes = {
@@ -20,7 +21,7 @@ class ideadashboard extends Component {
     componentDidMount() {
         faxios().get(`/iportal/startup/${this.props.auth.startup_id}/`)
             .then(d => {
-                console.log(d.data)
+                // console.log(d.data)
                 this.setState({
                     loading: false,
                     startup: d.data
