@@ -4,6 +4,7 @@ import UploadLogo from './upload_logo'
 import './dashboard.scss'
 
 import {professions} from '../../constants'
+import {education_status} from '../../constants'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -24,6 +25,9 @@ class submitIdea extends Component {
         success: false,
         startup: {},
         pfsn:"",
+        course:"",
+        branch:"",
+        semester:"",
         max_chars:"",
         email_check:true,
         contact_check:true
@@ -45,6 +49,9 @@ class submitIdea extends Component {
                     this.benef.value = data.beneficiaries
                     if(data.ideator_designation==="student"){
                         this.sector.value="Student"
+                        this.course.value=data.course
+                        this.branch.value=data.value
+                        this.semester.value=data.semester
                     }else if(data.ideator_designation==="faculty"){
                         this.sector.value="Faculty"   
                     }else{
@@ -143,6 +150,8 @@ class submitIdea extends Component {
             return
         }
 
+
+
         if(this.sector.value==="Student" && this.mn.value.length<1 ){
             this.setState({
                 success:false,
@@ -161,6 +170,39 @@ class submitIdea extends Component {
                 requesting:false
             })
             return
+        }
+
+
+        if(this.sector.value==="Student") {
+            if(this.course.value==="Select"){
+                this.setState({
+                    success:false,
+                    err_num:[...this.state.err_num,13],
+                    validate:false,
+                    requesting:false
+                })
+                return
+            }
+    
+            if(this.branch.value==="Select"){
+                this.setState({
+                    success:false,
+                    err_num:[...this.state.err_num,14],
+                    validate:false,
+                    requesting:false
+                })
+                return
+            }
+    
+            if(this.semester.value==="Select"){
+                this.setState({
+                    success:false,
+                    err_num:[...this.state.err_num,15],
+                    validate:false,
+                    requesting:false
+                })
+                return
+            }
         }
 
         if(this.email.value.length<1){
@@ -249,15 +291,17 @@ class submitIdea extends Component {
             'ideator_designation': this.sector.value==="Student"?"student":"faculty",
             'end_product':this.ep.value,
             'email':this.email.value,
+            'course':this.state.pfsn==="Student"?this.course.value:"",
+            'branch':this.state.pfsn==="Student"?this.branch.value:"",
+            'semester':this.state.pfsn==="Student"?this.semester.value:"",
             'contact':this.contact.value,
-           'mentor_name':this.state.pfsn==="Student"?this.mn.value:"",
-           'mentor_designation':this.state.pfsn==="Student"?this.dg.value:"",
-           'innovation_in_this':this.innovation.get_value(),
+            'mentor_name':this.state.pfsn==="Student"?this.mn.value:"",
+            'mentor_designation':this.state.pfsn==="Student"?this.dg.value:"",
+            'innovation_in_this':this.innovation.get_value(),
             user: this.props.auth.id
         }).then(d => {
             const data = d.data
             console.log(data)
-
             this.setState({
                 requesting:false
             })
@@ -352,6 +396,9 @@ class submitIdea extends Component {
         if(this.sector.value==="Student"){
             this.mn.value=''
             this.dg.value=''
+            this.course.value=''
+            this.branch.value=''
+            this.semester.value=''    
         }
         
     }
@@ -364,6 +411,25 @@ class submitIdea extends Component {
         let sector_options = professions.map(sectors =>(
             <option value={sectors}>{sectors}</option>
         ))
+
+        let education_options_course = education_status.map(edu =>(
+            <option value={edu.course}>{edu.display_name}</option>
+        ))
+
+        let education_options_branch = education_status.map(edu =>(
+            this.state.course === edu.course ? edu.branch.map(dept => (
+                <option value={dept.name}>{dept.display_name}</option>
+            )) : null           
+        ))
+
+        let education_options_semester = education_status.map(edu =>(
+            this.state.course === edu.course ? edu.branch.map(branch => (
+                this.state.branch === branch.name ? branch.semester.map(sem => (
+                    <option value={sem}>{sem}</option>
+                )) : null
+            )) : null           
+        ))
+
 
         if (this.state.success) {
             return (
@@ -416,7 +482,7 @@ class submitIdea extends Component {
 
                     <form>
                         <div className="form-group">
-                <label><label className="font-weight-bold">Idea in a Nutshell</label>&nbsp;&nbsp;<i>(Chars allowed: &nbsp;{idea_size_text})</i></label>
+                            <label><label className="font-weight-bold">Idea in a Nutshell</label>&nbsp;&nbsp;<i>(Chars allowed: &nbsp;{idea_size_text})</i></label>
                             <input id="idea" type="text" onChange={(e) => this.setState({max_chars: e.target.value})} ref={ele => this.idea = ele} className="form-control" />
                             {/* {error_html['idea']} */}
                             {this.state.err_num.indexOf(0)!=-1 && this.state.validate==false && this.idea.value.length===0 ?<Fragment>
@@ -475,23 +541,54 @@ class submitIdea extends Component {
                             {/* {error_html['sector']} */}
                         </div>
                         
-                        {this.state.pfsn==="Student"?<Fragment>
-                        <div className="form-group">
-                            <label className="font-weight-bold">Mentor Name</label>
-                            <input type="text" ref={ele => this.mn = ele} required maxLength="40" className="form-control" />
-                            {this.state.err_num.indexOf(7)!=-1 && this.state.validate==false && this.mn.value.length===0?<Fragment>
-                                <div className="font-weight-bold text-danger">This field is required</div>
-                            </Fragment>:null}
-                            {/* {error_html['mn']} */}
-                        </div>
-                        <div className="form-group">
-                            <label className="font-weight-bold">Designation of Mentor</label>
-                            <input type="text" ref={ele => this.dg = ele} required maxLength="40" className="form-control" />
-                            {this.state.err_num.indexOf(8)!=-1 && this.state.validate==false && this.dg.value.length===0?<Fragment>
-                                <div className="font-weight-bold text-danger">This field is required</div>
-                            </Fragment>:null}
-                            {/* {error_html['dg']} */}
-                        </div>
+                        {this.state.pfsn==="Student"?
+                        <Fragment>
+                            <div className="form-group">
+                                <label className="font-weight-bold">Mentor Name</label>
+                                <input type="text" ref={ele => this.mn = ele} required maxLength="40" className="form-control" />
+                                {this.state.err_num.indexOf(7)!=-1 && this.state.validate==false && this.mn.value.length===0?<Fragment>
+                                    <div className="font-weight-bold text-danger">This field is required</div>
+                                </Fragment>:null}
+                                {/* {error_html['mn']} */}
+                            </div>
+                            <div className="form-group">
+                                <label className="font-weight-bold">Designation of Mentor</label>
+                                <input type="text" ref={ele => this.dg = ele} required maxLength="40" className="form-control" />
+                                {this.state.err_num.indexOf(8)!=-1 && this.state.validate==false && this.dg.value.length===0?<Fragment>
+                                    <div className="font-weight-bold text-danger">This field is required</div>
+                                </Fragment>:null}
+                                {/* {error_html['dg']} */}
+                            </div>
+                            <div className="form-group">
+                                <label ><span className="font-weight-bold">Course</span>*&nbsp;</label>
+                                <select className="form-control" onChange={(e) => this.setState({course: e.target.value})} ref={ele => this.course = ele}>
+                                    <option value="Select">Select</option>
+                                    {education_options_course}
+                                </select>
+                                {this.state.err_num.indexOf(13)!=-1 && this.state.validate==false && this.course.value==="Select"?<Fragment>
+                                    <div className="font-weight-bold text-danger">This field is required</div>
+                                </Fragment>:null}
+                            </div>
+                            <div className="form-group">
+                                <label ><span className="font-weight-bold">Branch</span>*&nbsp;</label>
+                                <select className="form-control" onChange={(e) => this.setState({branch: e.target.value})} ref={ele => this.branch = ele}>
+                                    <option value="Select">Select</option>
+                                    {education_options_branch}
+                                </select>
+                                {this.state.err_num.indexOf(14)!=-1 && this.state.validate==false && this.branch.value==="Select"?<Fragment>
+                                    <div className="font-weight-bold text-danger">This field is required</div>
+                                </Fragment>:null}
+                            </div>
+                            <div className="form-group">
+                                <label ><span className="font-weight-bold">Semester</span>*&nbsp;</label>
+                                <select className="form-control" onChange={(e) => this.setState({semester: e.target.value})} ref={ele => this.semester = ele}>
+                                    <option value="Select">Select</option>
+                                    {education_options_semester}
+                                </select>
+                                {this.state.err_num.indexOf(15)!=-1 && this.state.validate==false && this.semester.value==="Select"?<Fragment>
+                                    <div className="font-weight-bold text-danger">This field is required</div>
+                                </Fragment>:null}
+                            </div>
                         </Fragment>:<div></div>}
 
                         {/* <div className="text-center font-weight-bold my-5">
