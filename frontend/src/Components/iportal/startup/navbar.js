@@ -27,7 +27,7 @@ class navbar extends Component {
     componentDidMount() {
         faxios().get(`/iportal/startup/${this.props.auth.startup_id}/`)
             .then(d => {
-                console.log(d.data)
+                // console.log(d.data)
                 this.setState({
                     loading: false,
                     startup: d.data
@@ -65,7 +65,7 @@ class navbar extends Component {
                                 <NavLink activeClassName='' exact to='/internship/idea/' className="nav-link ip-links mx-3">Your Idea</NavLink>
                             </li>
 
-                            {this.state.startup.idea_approved?<Fragment>
+                            {/* {this.state.startup.idea_approved?<Fragment>
                                 <li className="nav-item">
                                 <NavLink to='/internship/startup/register/' className="nav-link ip-links mx-3">Startup Profile</NavLink>
                                 </li>
@@ -77,7 +77,7 @@ class navbar extends Component {
                                 <li className="nav-item">
                                     <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3">Working Profile</NavLink>
                                 </li>
-                            </Fragment>:null}
+                            </Fragment>:null} */}
                             
                             <li className="nav-item mx-3">
                                 <NavLink className="nav-link ip-links" exact to='/'>Go to Main Site</NavLink>
