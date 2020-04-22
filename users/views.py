@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 from .serializers import RegistrationSerializer, LoginSerializer
 from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
-from utils.auth_utils import send_otp
+from utils.auth_utils import send_otp, send_email_otp
 from rest_framework.decorators import api_view
 from decorators import ecell_user, client_check
 from random import randint
@@ -27,6 +27,7 @@ class RegistrationAPIView(APIView):
         res_token = ""
         res_status = status.HTTP_400_BAD_REQUEST
         user = request.data
+
         otp = str(randint(1000, 9999))
         password = user['password']
         if password is None or password=='':
@@ -35,6 +36,7 @@ class RegistrationAPIView(APIView):
         else:
             user['password'] = make_password(password)
             user['otp'] = otp
+
             serializer = self.serializer_class(data=user)
             try:
                 serializer.is_valid(raise_exception=True)
@@ -52,7 +54,7 @@ class RegistrationAPIView(APIView):
                 payload = {
                     'email': serializer.validated_data['email']
                 }
-                otp = send_otp(serializer.validated_data['contact'], otp=otp)
+                otp = send_email_otp(recipient_list=[serializer.validated_data['email']], otp=otp)
                 token = jwt.encode(
                     payload,
                     settings.SECRET_KEY,
@@ -162,8 +164,8 @@ def forgot_password(request):
     except:
         message = "Account with this email id doesn't exists. Kindly signup."
     else:
-        contact = user.contact
-        otp = send_otp(contact)
+        email = user.email
+        otp = send_email_otp([email])
         user.otp = otp
         user.save()
         message = "An otp has been sent to your mobile no to reset your password"
@@ -257,13 +259,13 @@ def resend_otp(request):
     res_status = status.HTTP_400_BAD_REQUEST
     user = request.ecelluser
     otp = user.otp
-    contact = user.contact
+    email = user.email
     if otp:
         duration = user.last_modified
         if duration<=1200:
-            otp = send_otp(contact, otp=otp)
+            otp = send_email_otp([email], otp=otp)
         else:
-            otp = send_otp(contact)
+            otp = send_email_otp([email])
             user.otp = otp
             user.save()
         message = "An otp has been sent to your mobile no to reset your password"
@@ -279,11 +281,11 @@ def resend_otp(request):
 def change_contact(request):
     res_status = status.HTTP_400_BAD_REQUEST
     req_data = request.data
-    new_contact = req_data['contact']
+    new_email = req_data['email']
     user = request.ecelluser
-    otp = send_otp(new_contact)
+    otp = send_email_otp([new_email])
     user.otp = otp
-    user.contact = new_contact
+    user.email = new_email
     user.verified = False
     user.save()
     message = "An otp has been sent to new mobile no."

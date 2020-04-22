@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {NavLink, Link, withRouter} from 'react-router-dom'
-
+import faxios, { baseURL } from '../../../axios'
 import Modal from '../../Form/modal'
 import { user_type } from '../../constants'
 import {compose} from 'redux'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../../actions/authActions'
-//import { sign } from 'crypto';
+import { sign } from 'crypto';
 
 import './navbar.scss'
 
@@ -17,6 +17,22 @@ class navbar extends Component {
     static propTypes = {
         auth: PropTypes.object.isRequired,
         updateUser: PropTypes.func.isRequired,
+    }
+
+    state={
+        loading:true,
+        startup:{}
+    }
+
+    componentDidMount() {
+        faxios().get(`/iportal/startup/${this.props.auth.startup_id}/`)
+            .then(d => {
+                console.log(d.data)
+                this.setState({
+                    loading: false,
+                    startup: d.data
+                })
+            })
     }
 
     _logout = (e) => {
@@ -38,31 +54,43 @@ class navbar extends Component {
             //     <NavLink to='/iportal/startup/openings/'>Openings</NavLink>
             // </div>
             <div className='iportal_navbar'>
-                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar" style={{padding:"5px", backgroundColor:"#E91E63"}}>
-                    <Link className="navbar-brand" to='/'><img width="50px" height="50px" src={require('../../../assets/logo-white.png')} alt="img"></img></Link>
+                <nav className="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar" style={{padding:"5px"}}>
+                    <Link className="navbar-brand" to='/'><img width="50px" height="50px" src={require('../../../assets/logo-white.png')}></img></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <NavLink activeClassName='' exact to='/internship/startup/' className="nav-link ip-links mx-3 text-white">Dashboard</NavLink>
+                                <NavLink activeClassName='' exact to='/internship/idea/' className="nav-link ip-links mx-3">Your Idea</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3 text-white">Openings</NavLink>
-                            </li>
+
+                            {this.state.startup.idea_approved?<Fragment>
+                                <li className="nav-item">
+                                <NavLink to='/internship/startup/register/' className="nav-link ip-links mx-3">Startup Profile</NavLink>
+                                </li>
+
+                               
+                            </Fragment>:null}
+
+                            {this.state.startup.can_hire_interns?<Fragment>
+                                <li className="nav-item">
+                                    <NavLink to='/internship/startup/openings/' className="nav-link ip-links mx-3">Working Profile</NavLink>
+                                </li>
+                            </Fragment>:null}
+                            
                             <li className="nav-item mx-3">
-                                <NavLink className="nav-link ip-links text-white" exact to='/'>Go to Main Site</NavLink>
+                                <NavLink className="nav-link ip-links" exact to='/'>Go to Main Site</NavLink>
                             </li>
                            
                         </ul>
                         <ul className="navbar-nav nav-flex-icons">
                             <li className="nav-item">
-                                <button className="iplogout nav-link ip-links mx-3 text-white" data-toggle="modal" data-target="#ipLogout" style={{background:"#EA4763",border:"none"}} href="#">{this.props.auth.first_name} {this.props.auth.last_name}</button>
+                                <button className="iplogout" data-toggle="modal" data-target="#ipLogout" style={{background:"#EA4763",border:"none"}} className="nav-link ip-links mx-3" href="#">{this.props.auth.first_name} {this.props.auth.last_name}</button>
                             </li>
 
                             <li className="nav-item">
-                                <button style={{background:"#EA4763",border:"none"}} onClick={this._logout} className="nav-link ip-links mx-2 text-white"><i className="fas fa-power-off"></i> Logout</button>
+                                <button style={{background:"#EA4763",border:"none"}} onClick={this._logout} className="nav-link ip-links mx-2"><i className="fas fa-power-off"></i>Logout</button>
                             </li>
                         </ul>
                     </div>

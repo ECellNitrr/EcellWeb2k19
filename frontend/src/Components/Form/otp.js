@@ -33,7 +33,7 @@ class otp extends Component {
 
     _verify_otp = e => {
         e.preventDefault()
-        //let user = this.props.auth
+        let user = this.props.auth
 
         this.setState({
             success:false,
@@ -97,7 +97,7 @@ class otp extends Component {
 
         return (
             <Modal id='otpModal'>
-                <div className="text-center mt-3">OTP may take upto 10mins to be delivered.</div>
+                <div className="text-center mt-3">Please check your mail for otp</div>
                 {this.state.err ? errmsg:null}
                 {this.state.success ? scsmsg:null}
             

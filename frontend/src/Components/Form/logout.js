@@ -72,15 +72,15 @@ class logout extends Component {
                 <hr />
             </div>
 
-        const phone_no_verified = this.props.auth.verified ? null : <span onClick={this._verify_otp} id='phnoverified_btn'>click to verify phone no</span>
+        const phone_no_verified = this.props.auth.verified ? null : <span onClick={this._verify_otp} id='phnoverified_btn'>click to verify email id</span>
 
-        let button_to_show = this.props.auth.applied ? applied_for_ca : apply_for_ca
+        let button_to_show = null
 
-        if (this.props.auth.user_type !== 'GST') {
+        if (this.props.auth.user_type == 'CDC') {
             button_to_show =
                 <div>
                     <hr />
-                    <button onClick={this._go_to_portal} className="btn btn-primary login-button">Go to CA Portal</button>
+                    <button onClick={this._go_to_portal} className="btn btn-primary login-button">Manage Startup portal</button>
                     <hr />
                 </div>
         }
@@ -98,7 +98,6 @@ class logout extends Component {
                     <div className="my-3 text-center">Are your sure want to logout?</div>
                     <div className="text-center mt-2">
                         <button onClick={this._logout} className="btn font-weight-bold text-white btn-info login-button">Logout</button>
-                        &nbsp;
                         <button ref={ele => this.close_btn = ele} type="button" className="btn font-weight-bold btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                     </div>
                 </div>

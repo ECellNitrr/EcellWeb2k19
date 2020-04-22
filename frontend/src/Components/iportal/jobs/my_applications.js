@@ -69,7 +69,7 @@ class applications_list extends Component {
         )
 
         return (
-            <div className="container jumbotron hoverable " style={{marginBottom:"80px" , backgroundColor:"white"}}>
+            <div className="container jumbotron hoverable " style={{marginBottom:"80px"}}>
 
                 <div>
                     <button onClick={() => this.props.history.goBack()} className="btn align-self-center font-weight-bold btn-primary">Go Back</button>

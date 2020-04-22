@@ -20,6 +20,7 @@
     "react-datetime": "^2.16.3",
     "react-dom": "^16.8.6",
     "react-draft-wysiwyg": "^1.13.2",
+    "react-hook-form": "^5.5.0",
     "react-id-swiper": "^2.3.1",
     "react-image-gallery": "^0.8.18",
     "react-images": "^1.0.0",

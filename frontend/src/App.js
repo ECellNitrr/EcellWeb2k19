@@ -25,9 +25,12 @@ const Spons_hc = lazy(()=> import('./Components/Sponsors/sponsorship_heads'));
 const Terms = lazy(()=> import('./Components/Footer/terms'));
 const Policy= lazy(()=>import('./Components/Footer/privacy'));
 
+
 const IportalStartup  = lazy(()=>import('./Components/iportal/startup/startup'))
 const IportalJobs  = lazy(()=>import('./Components/iportal/jobs/jobs'))
 const RegisterStartup  = lazy(()=>import('./Components/iportal/startup/register_startup'))
+const submitIdea  = lazy(()=>import('./Components/iportal/startup/submit_idea'))
+const Dash  = lazy(()=>import('./Components/iportal/startup/startup'))
 const Error404 = lazy(()=>import('./Components/err404'))
 
 
@@ -66,7 +69,9 @@ class App extends Component {
 
               <Route path='/internship/jobs' component={IportalJobs} />
               <Route path='/internship/startup/register' component={RegisterStartup} />
-              <Route path='/internship/startup' component={IportalStartup} />
+              <Route path='/internship/startup/' component={Dash} />
+              <Route path='/internship/submit_idea/' component={submitIdea} />
+              <Route path='/internship/idea/' component={IportalStartup} />
               <Route path='/' component={Error404}/>
 
             </Switch>

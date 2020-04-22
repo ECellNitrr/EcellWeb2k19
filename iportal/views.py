@@ -30,9 +30,8 @@ class StartupViewset(ModelViewSet):
     serializer_class = StartupSerializer
     search_fields = ['name','job__name','sector']
     filter_backends = (filters.DjangoFilterBackend, SearchFilter)
-    filterset_fields = ('name','approved','sector','user')
+    filterset_fields = ('name','idea_approved','can_hire_interns','sector','user')
     pagination_class = GeneralPagination
-
 
 class JobViewset(ModelViewSet):
     queryset = Job.objects.all()
@@ -55,6 +54,14 @@ class LogoViewset(ModelViewSet):
     filterset_fields = ('startup',)    
     pagination_class = GeneralPagination
 
+class StartupPlanFileViewset(ModelViewSet):
+    queryset = StartupPlanFile.objects.all()
+    serializer_class = StartupPlanFileSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_fields = ('startup',)    
+    pagination_class = GeneralPagination
+
+# ansh stuff
 class ApplicantEducationViewset(ModelViewSet):
     queryset = ApplicantEducation.objects.all()
     serializer_class = ApplicantEducationSerializer

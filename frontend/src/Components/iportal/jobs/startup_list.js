@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import faxios from '../../../axios'
 import './jobs.css'
 import Pagination from "react-js-pagination";
@@ -20,7 +20,7 @@ export default class startup_list extends Component {
         console.log(`active page is ${pageNumber}`);
 
         this.setState({ loading: true })
-        faxios().get(`/iportal/startup/?page=${pageNumber}&approved=true&search=${this.search_box.value}`).then(res => {
+        faxios().get(`/iportal/startup/?page=${pageNumber}&idea_approved=true&search=${this.search_box.value}`).then(res => {
             let data = res.data.results
             this.setState({
                 loading: false,
@@ -33,7 +33,7 @@ export default class startup_list extends Component {
     }
 
     componentDidMount() {
-        faxios().get('/iportal/startup/?approved=true').then(res => {
+        faxios().get('/iportal/startup/?idea_approved=true').then(res => {
             console.log(res);
             let data = res.data.results
             console.log(data)
@@ -68,6 +68,8 @@ export default class startup_list extends Component {
     render() {
         let no_logo = require('../../../assets/no-logo.svg')
 
+        
+
         let startup_html = this.state.startups.map(startup => {
             
             let job_tab = startup.jobs
@@ -77,7 +79,8 @@ export default class startup_list extends Component {
                     return(
                         
                         <div className="" key={job.id}>
-                            <span  className="badge job-scroll badge-light p-2" style={{fontSize:"15px"}}>{job.name}</span>
+                            <div style={{fontSize:"15px"}}> <i className="font-weight-bold">{job.name}</i> : {job.brief}</div>
+                            
                         </div>
                     )
             })
@@ -89,38 +92,77 @@ export default class startup_list extends Component {
             return(
                 <div className="jumbotron text-center hoverable p-4" key={startup.id}>
                 <div className="row">
-                    <div className="col-lg-4 offset-md-1 mx-3 my-3">
+                    <div className="col-lg-3 offset-md-1 mx-3 my-3">
                         <div className="view overlay d-flex" style={{ alignItems: "center", justifyContent: "center" }}>
                             <img width="300px" height="300px" src={startup.logo ? startup.logo : no_logo} className="img-fluid" alt={startup.name}></img>
                             <Link style={{ display: "none" }} to={`/internship/jobs/${startup.name}/${startup.id}`}>
                                 <div className="mask rgba-white-slight"></div>
                             </Link>
                         </div>
+
+                        {startup.idea_in_a_nutshell!==""?<Fragment>
+                            <div className="my-3 text-center font-weight-bold">
+                                {startup.idea_in_a_nut_shell}
+                            </div>
+                        </Fragment>:null}
+
+                        {true?<Fragment><Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link></Fragment>:null}
+
                     </div>
 
-                    <div className="col-lg-7 text-md-left">
-                        <div className="green-text">
+                    <div className="col-lg-8 text-md-left">
+                        {/* <div className="green-text">
                             <h6 className="h6 pb-1"><i className="fas fa-laptop pr-1"></i> {startup.sector}</h6>
+                        </div> */}
+
+                        <div>
+                            <div className="font-weight-bold mb-4">Beneficiaries:</div>
+                            <p>{startup.beneficiaries}</p>
                         </div>
 
-                        <h4 className="h4 font-weight-bold mb-4">{startup.name}</h4>
-
-                        <p className="font-weight-normal">{startup.brief}</p>
+                        <div>
+                            <div className="font-weight-bold">Innovation:</div>
+                            <div dangerouslySetInnerHTML={{ __html:startup.innovation_in_this}}></div>
+                        </div>
 
                         
-                        <div className="my-2">
-                            <div className="font-weight-bold">Job Openings :</div>   
-                            <div className="d-flex table-responsive content-center scrollbar scrollbar-pink bordered-pink thin my-2">{jobs}</div>   
+                        {startup.can_hire_interns?<Fragment>
+                            <div className="my-2">
+                            <div className="font-weight-bold my-3">Work Profiles :</div>   
+                            <div className="d-flex">{jobs}</div>   
                         </div><br></br>
+                        </Fragment>:<Fragment>
+                            
+                            <div className="font-weight-bold">
+                                Description:
+                            </div>
 
-                        <p className="font-weight-normal"><a><strong>Location</strong> : {startup.country}</a><br></br><strong>Updated on</strong>: {format_date(startup.updated_at)}</p>
-                        <Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link>
+                            <div>
+                                <div dangerouslySetInnerHTML={{ __html: startup.describe_idea }}></div>
+                            </div>
+
+                        </Fragment>}
+
+                        {/* <div><strong className="font-weight-bold">Contacts:</strong>
+                            <p><strong>Mail</strong> : {startup.email}</p>
+                            <p>Phone: {startup.contact}</p>
+                        </div> */}
+                        
+
+                        {/* <p className="font-weight-normal"><strong>Updated on</strong>: {format_date(startup.updated_at)}</p> */}
+                        {/* {startup.can_hire_interns?<Fragment><Link className="btn font-weight-bold btn-primary" to={`/internship/jobs/${startup.id}`} >Read More</Link></Fragment>:null} */}
 
                     </div>
                 </div>
             </div>
             )
             })
+
+        if(this.state.startups.length==0 && this.state.loading == false){
+            startup_html = <h1 className="text-center my-5">
+                Great startups and ideas comming soon...
+            </h1>
+        }
 
         return (
             <div id="outer-container" style={{ background: "lightgray" }}>
