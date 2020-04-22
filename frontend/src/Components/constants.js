@@ -105,47 +105,47 @@ export const education_status= [
             {
                 name:"Biomed",
                 display_name:"Bio Medical Engineering",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"Biotech",
                 display_name:"Bio Technology Engineering",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"Chemical",
                 display_name:"Chemical Engineering",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"Civil",
                 display_name:"Civil Engineering",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"CSE",
                 display_name:"Computer Science Engineering",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"ELEX",
                 display_name:"Electronics and communication Engineering",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"Electrical",
                 display_name:"Electrical Engineering",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"IT",
                 display_name:"Information Technology",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"Mech",
                 display_name:"Mechanical Engineering",
-                semester:["2","4","6","8"]
+                semester:["2","4"]
             },
             {
                 name:"Meta",
