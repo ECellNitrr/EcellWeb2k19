@@ -70,9 +70,13 @@ export default class Intro extends Component {
 
                     <div className="row">
                         <div className="col-xs-12 col-sm-12 col-md-7 col-lg-7 banner-col">
-                            <div>
-                                <div className="banner-div" ><img alt='banner' className="banner" src={banner}></img></div>
-                                {/*countdown*/}
+                        <div class="blockquote-wrapper">
+                                <div class="blockquote">
+                                    <h1>
+                                        Leaders Beyond Borders
+                                    </h1>
+                                    
+                                </div>
                             </div>
                         </div>
                         <div className="col-xs-12 col-sm-12 col-md-5 col-lg-5 bulb-col">
