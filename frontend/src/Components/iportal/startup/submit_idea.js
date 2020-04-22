@@ -150,39 +150,6 @@ class submitIdea extends Component {
             return
         }
 
-        if(this.sector.value==="Student") {
-            if(this.course.value==="Select"){
-                this.setState({
-                    success:false,
-                    err_num:[...this.state.err_num,11],
-                    validate:false,
-                    requesting:false
-                })
-                return
-            }
-    
-            if(this.branch.value==="Select"){
-                this.setState({
-                    success:false,
-                    err_num:[...this.state.err_num,12],
-                    validate:false,
-                    requesting:false
-                })
-                return
-            }
-    
-            if(this.semester.value==="Select"){
-                this.setState({
-                    success:false,
-                    err_num:[...this.state.err_num,13],
-                    validate:false,
-                    requesting:false
-                })
-                return
-            }
-        }
-
-
 
 
         if(this.sector.value==="Student" && this.mn.value.length<1 ){
@@ -203,6 +170,39 @@ class submitIdea extends Component {
                 requesting:false
             })
             return
+        }
+
+
+        if(this.sector.value==="Student") {
+            if(this.course.value==="Select"){
+                this.setState({
+                    success:false,
+                    err_num:[...this.state.err_num,13],
+                    validate:false,
+                    requesting:false
+                })
+                return
+            }
+    
+            if(this.branch.value==="Select"){
+                this.setState({
+                    success:false,
+                    err_num:[...this.state.err_num,14],
+                    validate:false,
+                    requesting:false
+                })
+                return
+            }
+    
+            if(this.semester.value==="Select"){
+                this.setState({
+                    success:false,
+                    err_num:[...this.state.err_num,15],
+                    validate:false,
+                    requesting:false
+                })
+                return
+            }
         }
 
         if(this.email.value.length<1){
@@ -566,7 +566,7 @@ class submitIdea extends Component {
                                     <option value="Select">Select</option>
                                     {education_options_course}
                                 </select>
-                                {this.state.err_num.indexOf(11)!=-1 && this.state.validate==false && this.course.value==="Select"?<Fragment>
+                                {this.state.err_num.indexOf(13)!=-1 && this.state.validate==false && this.course.value==="Select"?<Fragment>
                                     <div className="font-weight-bold text-danger">This field is required</div>
                                 </Fragment>:null}
                             </div>
@@ -576,7 +576,7 @@ class submitIdea extends Component {
                                     <option value="Select">Select</option>
                                     {education_options_branch}
                                 </select>
-                                {this.state.err_num.indexOf(12)!=-1 && this.state.validate==false && this.branch.value==="Select"?<Fragment>
+                                {this.state.err_num.indexOf(14)!=-1 && this.state.validate==false && this.branch.value==="Select"?<Fragment>
                                     <div className="font-weight-bold text-danger">This field is required</div>
                                 </Fragment>:null}
                             </div>
@@ -586,7 +586,7 @@ class submitIdea extends Component {
                                     <option value="Select">Select</option>
                                     {education_options_semester}
                                 </select>
-                                {this.state.err_num.indexOf(13)!=-1 && this.state.validate==false && this.semester.value==="Select"?<Fragment>
+                                {this.state.err_num.indexOf(15)!=-1 && this.state.validate==false && this.semester.value==="Select"?<Fragment>
                                     <div className="font-weight-bold text-danger">This field is required</div>
                                 </Fragment>:null}
                             </div>
@@ -610,11 +610,11 @@ class submitIdea extends Component {
                         <div className="form-group">
                             <label className="font-weight-bold">Email</label>
                             <input type="mail" ref={ele => this.email = ele} required className="form-control" />
-                            {this.state.err_num.indexOf(9)!=-1 && this.state.validate==false && this.email.value.length===0?<Fragment>
+                            {this.state.err_num.indexOf(11)!=-1 && this.state.validate==false && this.email.value.length===0?<Fragment>
                                 <div className="font-weight-bold text-danger">This field is required</div>
                             </Fragment>:null}
 
-                            {this.state.err_num.indexOf(10)!=-1 && this.state.validate==false && this.email.value.length!==0 &&this.state.email_check?<Fragment>
+                            {this.state.err_num.indexOf(12)!=-1 && this.state.validate==false && this.email.value.length!==0 &&this.state.email_check?<Fragment>
                                 <div className="font-weight-bold text-danger">Email provided is invalid</div>
                             </Fragment>:null}
                             {/* {error_html['email']} */}
