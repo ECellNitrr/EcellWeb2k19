@@ -52,9 +52,10 @@ class Startup extends Component {
     faxios().get(`/iportal/startup/?user=${this.props.auth.id}`)
       .then(d => {
         const data = d.data
-        console.log(data)
+        console.log("response",data)
 
-        if (data.count == 1) {
+        if (data.count >= 1) {
+          // startup id should be a array -> kaushik
           const startup_id = data.results[0].id
           this.props.updateUser({ startup_id })
           this.props.history.push(`/internship/idea/`)

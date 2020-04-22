@@ -42,7 +42,7 @@ class ideadashboard extends Component {
     let each_idea=this.state.ideas.map((idea)=>{
         return(
 
-            <div className="row" key={idea.id}>
+            <div style={{paddingTop:"20px"}} className="row" key={idea.id}>
                 <div className="col-md-12">
                     
                     <div class="card">
@@ -73,8 +73,8 @@ class ideadashboard extends Component {
                             </div>
 
                              <div>
+                                {idea.can_hire_interns ? <Link to="/internship/startup/openings/" className='btn float-right font-weight-bold btn-primary'>Work Profile</Link> : <Link to="/internship/startup/openings/" className='btn float-right font-weight-bold btn-primary disabled'>Hire Interns</Link>}
                                 {idea.idea_approved ? <Link to="/internship/startup/register/" className='btn float-right font-weight-bold btn-primary'>Startup Profile</Link> : <Link to="/internship/startup/register/" className='btn float-right font-weight-bold btn-primary disabled'>Startup Profile</Link>}
-                                {idea.can_hire_interns ? <Link to="/internship/startup/openings/" className='btn float-right font-weight-bold btn-primary'>Hire Interns</Link> : <Link to="/internship/startup/openings/" className='btn float-right font-weight-bold btn-primary disabled'>Hire Interns</Link>}
 
                              </div>
                         </div>
