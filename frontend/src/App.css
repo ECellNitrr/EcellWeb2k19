@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600,800&display=swap');
 
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
 .btn1{
     background: white;
     color: #853F8C;

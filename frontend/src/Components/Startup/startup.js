@@ -54,7 +54,7 @@ class Startup extends Component {
         const data = d.data
         console.log(data)
 
-        if (data.count == 1) {
+        if (data.count !== 0) {
           const startup_id = data.results[0].id
           this.props.updateUser({ startup_id })
           this.props.history.push(`/internship/idea/`)
