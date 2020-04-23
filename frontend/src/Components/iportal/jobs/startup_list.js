@@ -64,11 +64,13 @@ export default class startup_list extends Component {
         })
     }
 
+    
+
 
     render() {
         let no_logo = require('../../../assets/no-logo.svg')
 
-        
+        var i=0;
 
         let startup_html = this.state.startups.map(startup => {
             
@@ -76,18 +78,15 @@ export default class startup_list extends Component {
             console.log(job_tab)
 
             let jobs = job_tab.map(job =>{
+                i++;
                     return(
-                        
-                        <div className="" key={job.id}>
-                            <div style={{fontSize:"15px"}}> <i className="font-weight-bold">{job.name}</i> : {job.brief}<br></br></div>
-                            
-                        </div>
+                            <div key={job.id} style={{fontSize:"15px"}}>{i}.&nbsp; <i className="font-weight-bold text-dark"> {job.name}</i> : {job.brief}</div>  
                     )
             })
 
-            if(job_tab.length===0){
-                jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0px"}}> <div className="text-danger font-weight-bold">No Work Profiles</div> </span>
-            }
+            // if(job_tab.length===0){
+            //     jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0px"}}> <div className="text-danger font-weight-bold">No Work Profiles</div> </span>
+            // }
 
             return(
                 <div className="jumbotron text-center hoverable p-4" key={startup.id}>
@@ -126,10 +125,10 @@ export default class startup_list extends Component {
                         </div>
 
                         
-                        {startup.can_hire_interns?<Fragment>
+                        {startup.can_hire_interns && job_tab.length!==0?<Fragment>
                             <div className="my-2">
                             <div className="font-weight-bold my-3">Work Profiles :</div>   
-                            <div className="d-flex">{jobs}</div>   
+                            <div className="">{jobs}</div>   
                         </div><br></br>
                         </Fragment>:<Fragment>
                             
@@ -160,7 +159,7 @@ export default class startup_list extends Component {
 
         if(this.state.startups.length==0 && this.state.loading == false){
             startup_html = <h1 className="text-center my-5">
-                Great startups and ideas comming soon...
+                Great startups and ideas coming soon...
             </h1>
         }
 

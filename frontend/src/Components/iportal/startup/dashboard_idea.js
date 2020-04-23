@@ -70,7 +70,9 @@ class ideadashboard extends Component {
 
     let edit = require('../../../assets/edit.svg')
 
-    let each_idea=this.state.ideas.map((idea)=>{
+    
+
+    let each_idea=this.state.ideas.reverse().map((idea)=>{
         i++;
         return(
 

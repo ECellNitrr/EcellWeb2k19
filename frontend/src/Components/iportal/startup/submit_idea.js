@@ -286,7 +286,7 @@ class submitIdea extends Component {
         let reqType = faxios().post
         let url = `/iportal/startup/?user=${this.props.auth.id}`
         
-        if(this.props.auth.startup_id){
+        if(this.isEdit){
             reqType= faxios().put
             url = `/iportal/startup/${this.props.auth.startup_id}/`
         }
@@ -444,7 +444,7 @@ class submitIdea extends Component {
                     <h2 className="mt-5 text-center">Successfully submited the idea for verification</h2>
                     <h4 className="text-center mt-3">You will receive confirmation by E-mail and SMS once the verification is complete.</h4>
                     <div className="text-center">
-                        <button className="btn btn-primary mt-5" onClick={() => this.props.history.push('/startups')}>Go to homepage</button>
+                        <button className="btn btn-primary mt-5" onClick={() => this.props.history.goBack()}>Go to Homepage</button>
                     </div>
                 </div>
             )
