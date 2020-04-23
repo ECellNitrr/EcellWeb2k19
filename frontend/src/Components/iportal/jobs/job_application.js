@@ -15,6 +15,9 @@ class job_application extends Component {
         job_detail: {},
         progress: 0,
         file: null,
+        validate:true,
+        err_num:[],
+        error:false
     }
 
     static propTypes = {
@@ -40,6 +43,26 @@ class job_application extends Component {
         this.setState({
             uploading: true
         })
+
+        if(this.ques1.get_value().length<9){
+            this.setState({
+              error:true,
+                uploading:false
+            })
+
+            console.log("This runs 2")
+            return
+        }
+
+        if(this.ques2.get_value().length<9){
+            this.setState({
+                error:true,
+                uploading:false
+            })
+
+            console.log("This runs 2")
+            return
+        }
 
         var data = new FormData();
         var request = new XMLHttpRequest();
@@ -126,7 +149,7 @@ class job_application extends Component {
                         <div className="text center text-danger">
                             {this.state.error? 'Please ensure that all questions are answered and resume file selected for upload.':null}
                         </div>
-                        <button onClick={this._upload_application} disabled={this.state.uploading} type="submit" className="btn font-weight-bold my-4 btn-primary">{this.state.uploading ? 'Uploading' : 'Submit'}</button>
+                        <button onClick={this._upload_application} disabled={this.state.uploading} type="submit" className="btn font-weight-bold my-4 btn-primary">{this.state.uploading ? 'Uploading': 'Submit'}</button>
                     </div>
                 </div>
             </div>
