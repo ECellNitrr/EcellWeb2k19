@@ -160,10 +160,30 @@ export default class indiv_startups extends Component {
                             <span className="font-weight-bold">{this.state.startup.name}</span>
                         </div> */}
 
-                        {/* <div className="form-group">
-                            <label className='font-weight-bold'>Ideator Designation : </label>
-                            <span className="font-weight-bold">{this.state.startup.ideator_designation}</span>
-                        </div> */}
+                            {startup.ideator_designation==="student"?<Fragment>
+                            <div className="form-group">
+                                <label className='font-weight-bold'>Ideator Designation : </label>
+                                <span>Student</span>
+                            </div>
+
+                            <div className="form-group">
+                                <label className='font-weight-bold'>Course Pursuing: </label>
+                                <span>{startup.course}</span>
+                            </div>
+
+                            <div className="form-group">
+                                <label className='font-weight-bold'>Branch: </label>
+                                <span>{startup.branch}</span>
+                            </div>
+
+                            <div className="form-group">
+                                <label className='font-weight-bold'>Semester: </label>
+                                <span>{startup.semester}</span>
+                            </div><br></br>
+                                </Fragment>:<Fragment>
+                                <div><span className="font-weight-bold">Ideator Designation</span> : Faculty</div><br></br>
+                                </Fragment>}
+                
 
                         
                         
