@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Pagination from "react-js-pagination";
 import Parser from 'html-react-parser'
+
 import faxios, { baseURL } from '../../../axios'
 import './dashboard.scss'
 import {withRouter} from 'react-router-dom';
@@ -67,6 +68,8 @@ class ideadashboard extends Component {
 
     var i=0;
 
+    let edit = require('../../../assets/edit.svg')
+
     let each_idea=this.state.ideas.map((idea)=>{
         i++;
         return(
@@ -75,7 +78,7 @@ class ideadashboard extends Component {
                 <div className="col-md-12">
                     
                     <div className="card">
-                        <h5 className="card-header font-weight-bold">{i}.&nbsp;{idea.idea_in_a_nut_shell}</h5>
+                        <h5 className="card-header font-weight-bold text-primary"><a onClick={()=>{this.props.updateUser({startup_id:idea.id});this.props.history.push('/internship/submit_idea/edit_idea/')}}>{i}.&nbsp;{idea.idea_in_a_nut_shell}&nbsp;<img style={{height:"20px",width:"20px"}} src={edit}></img></a></h5>
                         <div className="card-body">
 
                             <div className="mb-2"><i className="font-weight-bold">Description :</i></div>
@@ -127,14 +130,21 @@ class ideadashboard extends Component {
                 </div>
             <br/><br/>
             <div>
-                <div className="d-flex my-5">
-                <h1 className="text-center flex-grow-1 font-weight-bold">Idea Dashboard</h1>
 
-                {/* <button onClick={() => this.props.history.push('/internship/submit_idea/edit_idea/')} className="btn btn-danger font-weight-bold">Edit</button> */}
-                {/* {idea.can_hire_interns?null:<Fragment>
-                    <button onClick={() => this.props.history.push('/internship/startup/register')} className="btn btn-success font-weight-bold">Register Startup</button>
-                    </Fragment>} */}
+                    <div className="open text-center font-weight-bold my-5">
+                        <h1 className="font-weight-bold">Idea Dashboard</h1>
+                        <h6 className="font-weight-bold"><i>(Click on idea name to edit your idea)</i></h6>
+                    </div>
+
+                {/* <div className="d-flex my-5">
+
+                <div className="text-center"> 
+                    <h1 className=" text-center font-weight-bold">Idea Dashboard</h1>
+                    <div className=" font-weight-bold"><i></i></div>
                 </div>
+
+               
+                </div> */}
 
 
 

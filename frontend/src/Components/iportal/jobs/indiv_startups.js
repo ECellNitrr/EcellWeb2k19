@@ -224,7 +224,7 @@ export default class indiv_startups extends Component {
                             <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Work Profiles</h3>
                                 {jobs_html}
                             </Fragment>}
-                        </div>
+                    </div>
 
                         </Fragment>}
                 </div>

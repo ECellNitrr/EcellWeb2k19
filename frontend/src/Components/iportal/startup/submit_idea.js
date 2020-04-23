@@ -49,9 +49,15 @@ class submitIdea extends Component {
                     this.benef.value = data.beneficiaries
                     if(data.ideator_designation==="student"){
                         this.sector.value="Student"
+                        this.setState({pfsn:"Student"})
                         this.course.value=data.course
-                        this.branch.value=data.value
+                        this.setState({course:this.course.value})
+                        this.branch.value=data.branch
+                        this.setState({branch:this.branch.value})
                         this.semester.value=data.semester
+                        this.setState({semester:this.semester.value})
+                        this.mn.value=data.mentor_name
+                        this.dg.value=data.mentor_designation
                     }else if(data.ideator_designation==="faculty"){
                         this.sector.value="Faculty"   
                     }else{
@@ -59,9 +65,10 @@ class submitIdea extends Component {
                     }
                     this.description.set_value(data.describe_idea)
                     this.ep.value=data.end_product
-                    this.mn.value=data.mentor_name
-                    this.dg.value=data.mentor_designation
-                    this.innovation=data.innovation_in_this
+                    
+                    this.innovation.set_value(data.innovation_in_this)
+                    this.email.value=data.email
+                    this.contact.value=data.contact
                 })
         }
     }
@@ -277,12 +284,12 @@ class submitIdea extends Component {
         
 
         let reqType = faxios().post
-        let url = '/iportal/startup/'
+        let url = `/iportal/startup/?user=${this.props.auth.id}`
         
-        // if(this.props.auth.startup_id){
-        //     reqType= faxios().put
-        //     url = `/iportal/startup/${this.props.auth.startup_id}/`
-        // }
+        if(this.props.auth.startup_id){
+            reqType= faxios().put
+            url = `/iportal/startup/${this.props.auth.startup_id}/`
+        }
 
         reqType(url, {
             'idea_in_a_nut_shell': this.idea.value,
