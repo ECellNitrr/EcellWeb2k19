@@ -92,7 +92,7 @@ export default class indiv_startups extends Component {
 
                                 <div className="job_flex2">
                                     <div className="">
-                                        <div style={{fontSize:"13px"}}><strong>Start Date : </strong>{job.start_date}</div>
+                                        <div style={{fontSize:"13px"}}><strong>Start Date : </strong>{format_date(job.start_date)}</div>
                                         
                                     </div>
 
@@ -107,11 +107,11 @@ export default class indiv_startups extends Component {
                                     </div>
 
                                     <div className="">
-                                        <div style={{fontSize:"13px"}}><strong>Posted On : </strong>{job.posted_on}</div>
+                                        <div style={{fontSize:"13px"}}><strong>Posted On : </strong>{format_date(job.posted_on)}</div>
                                     </div>
 
                                     <div className="">
-                                        <div style={{fontSize:"13px"}}><strong>Apply By :</strong>{job.apply_by}</div>
+                                        <div style={{fontSize:"13px"}}><strong>Apply By :</strong>{format_date(job.apply_by)}</div>
                                     </div>
                                 </div>
 
