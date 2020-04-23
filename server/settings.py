@@ -202,7 +202,7 @@ CHANNEL_LAYERS = {
 
 # celery setup
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/'
-CELERY_IMPORTS = ('bquiz','users')
+CELERY_IMPORTS = ('bquiz','users','iportal')
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
 
