@@ -5,7 +5,7 @@ import Navbar from '../navbar_iportal/navbar_ip'
 import Footer from '../../Footer/footer'
 import './jobs.css'
 import { format_date } from '../../constants'
-
+import {education_status} from '../../constants'
 
 
 export default class indiv_startups extends Component {
@@ -152,7 +152,7 @@ export default class indiv_startups extends Component {
                             
                                 <div className="form-group">
                             <label className='font-weight-bold'>Idea in a Nutshell : </label>
-                            <span>{startup.idea_in_a_nut_shell}</span>
+                            <span>&nbsp;{startup.idea_in_a_nut_shell}</span>
                         </div>
 
                         {/* <div className="form-group">
@@ -162,24 +162,38 @@ export default class indiv_startups extends Component {
 
                             {startup.ideator_designation==="student"?<Fragment>
                             <div className="form-group">
-                                <label className='font-weight-bold'>Ideator Designation : </label>
+                                <label className='font-weight-bold'>Ideator Designation : &nbsp;</label>
                                 <span>Student</span>
                             </div>
-
+                                
                             <div className="form-group">
                                 <label className='font-weight-bold'>Course Pursuing: </label>
-                                <span>{startup.course}</span>
+                                <span>
+                                    {
+                                        education_status.map(status => 
+                                            startup.course===status.course ? <span>&nbsp;{status.display_name}</span>: ""
+                                        )
+                                    }
+                                </span>
                             </div>
 
                             <div className="form-group">
                                 <label className='font-weight-bold'>Branch: </label>
-                                <span>{startup.branch}</span>
+                                <span>
+                                    {
+                                        education_status.map(status => 
+                                            startup.course===status.course ? status.branch.map(b => 
+                                                b.name===startup.branch ? <span>&nbsp;{b.display_name}</span>: ""
+                                            ): ""
+                                        )
+                                    }
+                                </span>
                             </div>
 
                             <div className="form-group">
-                                <label className='font-weight-bold'>Semester: </label>
+                                <label className='font-weight-bold'>Semester:&nbsp; </label>
                                 <span>{startup.semester}</span>
-                            </div><br></br>
+                            </div>
                                 </Fragment>:<Fragment>
                                 <div><span className="font-weight-bold">Ideator Designation</span> : Faculty</div><br></br>
                                 </Fragment>}
@@ -188,22 +202,22 @@ export default class indiv_startups extends Component {
                         
                         
                         <div className="form-group">
-                            <label className='font-weight-bold'>Idea Description : </label>
+                            <label className='font-weight-bold'>Idea Description :&nbsp; </label>
                             <div dangerouslySetInnerHTML={{ __html: startup.describe_idea }}></div>
                         </div>
                         
                         <div className="form-group">
-                            <label className='font-weight-bold'>Innovation in this : </label>
+                            <label className='font-weight-bold'>Innovation in this :&nbsp; </label>
                             <div dangerouslySetInnerHTML={{ __html: startup.innovation_in_this}}></div>
                         </div>
 
                         <div className="form-group">
-                            <label className='font-weight-bold'>End Product :  </label>
+                            <label className='font-weight-bold'>End Product :&nbsp;  </label>
                             <span>{startup.end_product}</span>
                         </div>
 
                         <div className="form-group">
-                            <label className='font-weight-bold'>Beneficiaries : </label>
+                            <label className='font-weight-bold'>Beneficiaries : &nbsp;</label>
                             <span>{startup.beneficiaries}</span>
                         </div>  
                         
@@ -214,8 +228,8 @@ export default class indiv_startups extends Component {
 
                         <hr className="my-4 rgba-white-light"/> 
 
-                                    <div><span className="font-weight-bold">Email : </span>{startup.email}</div>
-                                    <div><span className="font-weight-bold">Contact : </span>{startup.contact}</div><br></br>
+                                    <div><span className="font-weight-bold">Email :&nbsp; </span>{startup.email}</div>
+                                    <div><span className="font-weight-bold">Contact : &nbsp;</span>{startup.contact}</div><br></br>
                                 </div>
                             </div>
                             <hr className="my-4 rgba-white-light"/>
