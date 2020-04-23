@@ -79,7 +79,7 @@ export default class startup_list extends Component {
                     return(
                         
                         <div className="" key={job.id}>
-                            <div style={{fontSize:"15px"}}> <i className="font-weight-bold">{job.name}</i> : {job.brief}</div>
+                            <div style={{fontSize:"15px"}}> <i className="font-weight-bold">{job.name}</i> : {job.brief}<br></br></div>
                             
                         </div>
                     )

@@ -78,7 +78,7 @@ class ideadashboard extends Component {
                 <div className="col-md-12">
                     
                     <div className="card">
-                        <h5 className="card-header font-weight-bold text-primary"><a onClick={()=>{this.props.updateUser({startup_id:idea.id});this.props.history.push('/internship/submit_idea/edit_idea/')}}>{i}.&nbsp;{idea.idea_in_a_nut_shell}&nbsp;<img style={{height:"20px",width:"20px"}} src={edit}></img></a></h5>
+                        <h5 className="card-header font-weight-bold text-primary"><a onClick={()=>{this.props.updateUser({startup_id:idea.id});this.props.history.push('/internship/submit_idea/edit_idea/')}}>{i}.&nbsp;{idea.idea_in_a_nut_shell}&nbsp;&nbsp;<img style={{height:"20px",width:"20px"}} src={edit}></img></a></h5>
                         <div className="card-body">
 
                             <div className="mb-2"><i className="font-weight-bold">Description :</i></div>

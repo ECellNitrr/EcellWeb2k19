@@ -79,9 +79,9 @@ class Startup(models.Model):
     mentor_name = models.CharField(max_length=50,blank=True)
     mentor_designation = models.CharField(max_length=50,blank=True)
 
-    course = models.CharField(max_length=100, choices= course_choices, null=True)
-    branch = models.CharField(max_length=100, choices= branch_choices, null=True)
-    semester = models.PositiveIntegerField(null=True) #max=10
+    course = models.CharField(max_length=100, choices= course_choices, null=True, default='B Tech')
+    branch = models.CharField(max_length=100, choices= branch_choices, null=True, default='CSE')
+    semester = models.PositiveIntegerField(null=True,default=2) #max=10
 
     idea_approved = models.BooleanField(default=False)
     can_hire_interns = models.BooleanField(default=False)
