@@ -219,9 +219,12 @@ export default class indiv_startups extends Component {
                         
                         <hr class="my-4 rgba-white-light"/>
                     <div style={{marginBottom:"-30px",marginTop:"50px"}}>
-                        <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Work Profiles</h3>
-                        {startup.can_hire_interns!=true && jobs_html.length===0? null:jobs_html}
-                    </div>
+                        
+                        {this.state.jobs.length===0? null:<Fragment>
+                            <h3 className="font-weight-bold my-4 p-3 text-center" style={{border:"3px solid green", borderRadius:"5px",textTransform:"uppercase"}}>Work Profiles</h3>
+                                {jobs_html}
+                            </Fragment>}
+                        </div>
 
                         </Fragment>}
                 </div>

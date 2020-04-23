@@ -86,7 +86,7 @@ export default class startup_list extends Component {
             })
 
             if(job_tab.length===0){
-                jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0px"}}> <div className="text-danger font-weight-bold">No Vacancies</div> </span>
+                jobs = <span className="badge badge-light p-2" style={{fontSize:"15px",margin:"0px"}}> <div className="text-danger font-weight-bold">No Work Profiles</div> </span>
             }
 
             return(
@@ -116,7 +116,7 @@ export default class startup_list extends Component {
                         </div> */}
 
                         <div>
-                            <div className="font-weight-bold mb-4">Beneficiaries:</div>
+                            <div className="font-weight-bold mb-1">Beneficiaries:</div>
                             <p>{startup.beneficiaries}</p>
                         </div>
 
