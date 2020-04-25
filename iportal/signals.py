@@ -1,20 +1,29 @@
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
-from .models import JobApplication
-from .consumers import BquizConsumer
-import time
-from .tasks import *
+from .models import Startup
+from .tasks import mail
+from django.template.loader import render_to_string
 
 
-# @receiver(post_save, sender=JobApplication)
-# def job_application_status_update(sender, instance, created, **kwargs):
-#     if instance.status=='RJD':
+@receiver(pre_save, sender=Startup)
+def email_update_startup(sender, instance=None, **kwargs):
+    previous = Startup.objects.get(id=instance.id)
+    subject='An Update from Career Development Cell NIT Raipur'
 
+    if instance.idea_approved!=previous.idea_approved:
+        if instance.idea_approved:
+            html_content=render_to_string('idea_approved_mail.html',{'startup_name': instance.name})
+            mail.delay(subject,html_content,instance.email)
+        else:
+            html_content=render_to_string('idea_rejected_mail.html',{'startup_name': instance.name})
+            mail.delay(subject,html_content,instance.email)
+    elif instance.can_hire_interns!=previous.can_hire_interns:
+        if instance.can_hire_interns:
+            html_content=render_to_string('hire_intern_mail.html',{'startup_name': instance.name})
+            mail.delay(subject,html_content,instance.email)
+        else:
+            html_content=render_to_string('revoke_hire_mail.html',{'startup_name': instance.name})
+            mail.delay(subject,html_content,instance.email)
 
-#     elif instance.status=='HRD':
-
-#     elif instance.status=='URV':
     
