@@ -8,7 +8,12 @@ from .models import *
 import math
 from django_filters import rest_framework as filters
 from rest_framework.pagination import PageNumberPagination
-from decorators import relax_ecell_user
+from decorators import relax_ecell_user, ecell_user
+from django.http import HttpResponseNotFound, HttpResponse
+import json
+from rest_framework import status
+from .tasks import mail
+from django.template.loader import render_to_string
 
 
 class GeneralPagination(PageNumberPagination):
@@ -124,3 +129,28 @@ class ApplicantAchievementViewset(ModelViewSet):
 #     ecelluser = req.ecelluser
 #     sdata = StartupSerializer(ecelluser.startup)
 #     return Response(sdata.data)
+@api_view(['PUT', ])
+@ecell_user
+def update_startup_permissions(request,id):
+    if request.ecelluser.user_type in ['CDC','DRT']:
+        try:
+            previous = Startup.objects.get(id=id)
+        except:
+            return Response({"message": "Startup Not Found!"}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            body_unicode = request.body.decode('utf-8')
+            body = json.loads(body_unicode)
+            previous.idea_approved = body["idea_approved"]
+            previous.save()
+            startup = Startup.objects.get(id=id)
+            subject='An Update from Career Development Cell NIT Raipur'
+            if startup.idea_approved == True:
+                html_content=render_to_string('idea_approved_mail.html',{'startup_name': startup.name})
+                mail.delay(subject,html_content,startup.email)
+            else:                
+                html_content=render_to_string('idea_rejected_mail.html',{'startup_name': startup.name})
+                mail.delay(subject,html_content,startup.email) 
+            return Response({"message": "Startup Permissions Updated!"}, status=status.HTTP_200_OK)
+    else:
+        return Response({"message": "Unauthorized Access!"}, status=status.HTTP_401_UNAUTHORIZED)
+

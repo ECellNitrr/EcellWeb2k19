@@ -18,6 +18,7 @@ router.register('applicant_interest',ApplicantInterestViewset)
 router.register('applicant_achievement',ApplicantAchievementViewset)
 
 urlpatterns = [
+    path('approve_startup/<int:id>/', update_startup_permissions),
     # path('pro_startup/',pro_get_startup),
 ]
 
