@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: redis-server
+Version: 5.0.7
+Summary: 
+Home-page: https://github.com/private-pypi/redis-server
+License: MIT
+Keywords: redis,server
+Author: huntzhan
+Author-email: huntzhan.dev@gmail.com
+Requires-Python: >=3,<4
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Project-URL: Repository, https://github.com/private-pypi/redis-server
+Description-Content-Type: text/markdown
+
+# redis-server
+
+To install the pre-compiled Redis binaries:
+
+```sh
+pip install redis-server==<redis-version>
+```
+
+Supported `redis-version`:
+
+- `5.0.7`
+- `6.0rc2`
+
+Supported platforms:
+
+- `manylinux2010_x86_64`
+- `manylinux2010_i686`
+- `macosx_10_15_x86_64`
+
+Supported python versions:
+
+- `cp35`
+- `cp36`
+- `cp37`
+- `cp38`
+
+To get the paths of pre-compiled Redis binaries:
+
+```python
+import redis_server
+
+redis_server.REDIS_SERVER_PATH  # redis-server
+redis_server.REDIS_CLI_PATH     # redis-cli
+```
+
