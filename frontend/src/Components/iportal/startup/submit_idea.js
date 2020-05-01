@@ -77,6 +77,7 @@ class submitIdea extends Component {
     _register_idea = e => {
         e.preventDefault()
 
+        console.log(this.state.err_num,this.innovation.get_value().length)
         this.setState({
             requesting: true
         })
@@ -106,7 +107,9 @@ class submitIdea extends Component {
             return
         }
 
-        if(this.description.get_value().length<9){
+        console.log(this.description.check_input())
+
+        if(!this.description.check_input()){
             this.setState({
                 success:false,
                 err_num:[...this.state.err_num,2],
@@ -118,7 +121,7 @@ class submitIdea extends Component {
             return
         }
 
-        if(this.innovation.get_value().length<9){
+        if(!this.innovation.check_input()){
             this.setState({
                 success:false,
                 err_num:[...this.state.err_num,3],
@@ -504,7 +507,7 @@ class submitIdea extends Component {
                             <label className="font-weight-bold">Describe Your Idea</label>
                             {/* {error_html['description']} */}
                             <Wysiwyg onRef={ref => this.description = ref} />
-                            {this.state.err_num.indexOf(2)!=-1 && this.state.validate==false && this.description.get_value().length===8?<Fragment>
+                            {this.state.err_num.indexOf(2)!=-1 && this.state.validate==false && !this.description.check_input()?<Fragment>
                                 <div className="font-weight-bold text-danger">This field is required</div>
                             </Fragment>:null}
                         </div>
@@ -513,7 +516,7 @@ class submitIdea extends Component {
                             <label className="font-weight-bold">Innovation in this idea?</label>
                             {/* {error_html['innovation']} */}
                             <Wysiwyg onRef={ref => this.innovation = ref} />
-                            {this.state.err_num.indexOf(3)!=-1 && this.state.validate==false && this.innovation.get_value().length===8?<Fragment>
+                            {this.state.err_num.indexOf(3)!=-1 && this.state.validate==false && !this.innovation.check_input()?<Fragment>
                                 <div className="font-weight-bold text-danger">This field is required</div>
                             </Fragment>:null}
                         </div>

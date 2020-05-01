@@ -157,7 +157,7 @@ class RegisterStartup extends Component {
 
        
 
-        if(this.description.get_value().length<9){
+        if(!this.description.check_input()){
             this.setState({
                 success:false,
                 err_num:[...this.state.err_num,2],

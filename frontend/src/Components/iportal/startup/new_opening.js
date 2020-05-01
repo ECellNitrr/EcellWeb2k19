@@ -160,7 +160,7 @@ class new_opening extends Component {
 
        
 
-        if(this.about_the_job.get_value().length<9){
+        if(!this.about_the_job.check_input()){
             this.setState({
                 success:false,
                 err_num:[...this.state.err_num,8],
@@ -172,7 +172,7 @@ class new_opening extends Component {
             return
         }
 
-        if(this.skills_required.get_value().length<9){
+        if(!this.skills_required.check_input()){
             this.setState({
                 success:false,
                 err_num:[...this.state.err_num,9],
@@ -184,7 +184,7 @@ class new_opening extends Component {
             return
         }
 
-        if(this.who_can_apply.get_value().length<9){
+        if(!this.who_can_apply.check_input()){
             this.setState({
                 success:false,
                 err_num:[...this.state.err_num,10],
@@ -196,7 +196,7 @@ class new_opening extends Component {
             return
         }
 
-        if(this.perks.get_value().length<9){
+        if(!this.perks.check_input()){
             this.setState({
                 success:false,
                 err_num:[...this.state.err_num,11],
@@ -371,7 +371,7 @@ class new_opening extends Component {
                             <label className="font-weight-bold">About the job</label>
                             {/* {error_html['about_the_job']} */}
                             <Wysiwyg onRef={ref => this.about_the_job = ref} />
-                            {this.state.err_num.indexOf(8)!=-1 && this.state.validate==false && this.about_the_job.get_value().length===8?<Fragment>
+                            {this.state.err_num.indexOf(8)!=-1 && this.state.validate==false && !this.about_the_job.check_input()?<Fragment>
                                 <div className="font-weight-bold text-danger">This field is required</div>
                             </Fragment>:null}
                         </div>
@@ -379,7 +379,7 @@ class new_opening extends Component {
                             <label className="font-weight-bold">Skills required</label>
                             {/* {error_html['skills_required']} */}
                             <Wysiwyg onRef={ref => this.skills_required = ref} />
-                            {this.state.err_num.indexOf(9)!=-1 && this.state.validate==false && this.skills_required.get_value().length===8?<Fragment>
+                            {this.state.err_num.indexOf(9)!=-1 && this.state.validate==false && !this.skills_required.check_input()?<Fragment>
                                 <div className="font-weight-bold text-danger">This field is required</div>
                             </Fragment>:null}
                         </div>
@@ -387,7 +387,7 @@ class new_opening extends Component {
                             <label className="font-weight-bold">Who can apply</label>
                             {/* {error_html['who_can_apply']} */}
                             <Wysiwyg onRef={ref => this.who_can_apply = ref} />
-                            {this.state.err_num.indexOf(10)!=-1 && this.state.validate==false && this.who_can_apply.get_value().length===8?<Fragment>
+                            {this.state.err_num.indexOf(10)!=-1 && this.state.validate==false && !this.who_can_apply.check_input()?<Fragment>
                                 <div className="font-weight-bold text-danger">This field is required</div>
                             </Fragment>:null}
                         </div>
@@ -395,7 +395,7 @@ class new_opening extends Component {
                             <label className="font-weight-bold">Perks</label>
                             {/* {error_html['perks']} */}
                             <Wysiwyg onRef={ref => this.perks = ref} />
-                            {this.state.err_num.indexOf(11)!=-1 && this.state.validate==false && this.perks.get_value().length===8?<Fragment>
+                            {this.state.err_num.indexOf(11)!=-1 && this.state.validate==false && !this.perks.check_input()?<Fragment>
                                 <div className="font-weight-bold text-danger">This field is required</div>
                             </Fragment>:null}
                         </div>
