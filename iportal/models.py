@@ -138,7 +138,7 @@ class Job(models.Model):
     duration = models.CharField(max_length=200)
     job_type = models.CharField(max_length=200, choices=job_type_choices)
 
-    brief = models.CharField(blank=False, max_length=40)
+    brief = models.CharField(blank=False, max_length=200)
     about_the_job = models.TextField(blank=False)
     no_of_opening = models.IntegerField(blank=False)
     skills_required = models.TextField(blank=False)
