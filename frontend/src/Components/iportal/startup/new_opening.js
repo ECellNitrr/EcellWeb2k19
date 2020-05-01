@@ -24,6 +24,7 @@ class new_opening extends Component {
         err_num:[],
         validate:true,
         apply_by: null,
+        max_chars:"",
         initial_load: true,
     }
 
@@ -208,7 +209,7 @@ class new_opening extends Component {
             return
         }
 
-        
+        console.log(this.state.validate)
 
 
         let url = '/iportal/job/'
@@ -261,6 +262,9 @@ class new_opening extends Component {
             )
         })
 
+        let char_size=200-this.state.max_chars.length
+
+        let idea_size_text=char_size>=0?char_size:<i className="font-weight-bold text-danger">Limit exceeded</i>;
         
 
 
@@ -298,8 +302,9 @@ class new_opening extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label className="font-weight-bold">Brief</label>
-                            <input type="text" ref={ele => this.brief = ele} className="form-control" />
+                        <label><label className="font-weight-bold">Brief</label>&nbsp;&nbsp;<i>(Chars allowed: &nbsp;{idea_size_text})</i></label>
+                            
+                            <input onChange={(e) => this.setState({max_chars: e.target.value})} type="text" ref={ele => this.brief = ele} className="form-control" />
                             {this.state.err_num.indexOf(1)!=-1 && this.state.validate==false && this.brief.value.length===0 ?<Fragment>
                                 <div className="font-weight-bold text-danger">This field is required</div>
                             </Fragment>:null}
