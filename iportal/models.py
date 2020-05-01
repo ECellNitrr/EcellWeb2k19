@@ -84,11 +84,11 @@ class Startup(models.Model):
     semester = models.PositiveIntegerField(null=True,default=2) #max=10
 
     idea_approved_choices = (
-        ('Approved','approved'),
-        ('Rejected','rejected'),
-        ('Pending','pending')
+        ('approved','Approved'),
+        ('rejected','Rejected'),
+        ('pending','Pending')
     )
-    idea_approved = models.CharField(max_length=25,choices=idea_approved_choices,default='Pending')
+    idea_approved = models.CharField(max_length=25,choices=idea_approved_choices,default='pending')
     can_hire_interns = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
