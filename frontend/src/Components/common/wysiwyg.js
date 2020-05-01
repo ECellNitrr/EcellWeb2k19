@@ -29,6 +29,9 @@ export default class summernote extends Component {
 
   get_value = () => draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
 
+  check_input =()=>{
+    return this.state.editorState.getCurrentContent().hasText()
+  }
 
 
   render() {
