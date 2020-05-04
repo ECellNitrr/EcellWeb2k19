@@ -12,12 +12,14 @@ class job_application extends Component {
 
     state = {
         uploading: false,
+        loading:false,
         job_detail: {},
         progress: 0,
         file: null,
         validate:true,
         err_num:[],
-        error:false
+        error:false,
+        check:false
     }
 
     static propTypes = {
@@ -41,26 +43,30 @@ class job_application extends Component {
     _upload_application = (e) => {
         e.preventDefault()
         this.setState({
-            uploading: true
+            uploading: true,
+            loading:true,
+            error:false
         })
 
-        if(this.ques1.get_value().length<9){
+        if(this.ques1.value.length<1){
             this.setState({
               error:true,
-                uploading:false
+                uploading:false,
+                loading:false,
             })
 
             console.log("This runs 2")
             return
         }
 
-        if(this.ques2.get_value().length<9){
+        if(this.ques2.value.length<1){
             this.setState({
                 error:true,
-                uploading:false
+                uploading:false,
+                loading:false
             })
 
-            console.log("This runs 2")
+          
             return
         }
 
@@ -69,8 +75,8 @@ class job_application extends Component {
 
 
         data.append('resume', this.resume.files[0])
-        data.append('ques1', this.ques1.get_value())
-        data.append('ques2', this.ques2.get_value())
+        data.append('ques1', this.ques1.value)
+        data.append('ques2', this.ques2.value)
         data.append('job', this.job_id)
         data.append('applicant', this.props.auth.id)
 
@@ -95,6 +101,10 @@ class job_application extends Component {
         request.upload.addEventListener('progress', (e) => {
             var progress = Math.round((e.loaded / e.total) * 100)
             console.log({ progress })
+
+            if(progress===100){
+                this.setState({loading:false,check:true})
+            }
 
             this.setState({ progress })
         })
@@ -140,16 +150,16 @@ class job_application extends Component {
                         null}
 
                     <div className="font-weight-bold my-4">How you are suitable for this job?</div>
-                    <Wysiwyg onRef={ele => this.ques1 = ele} />
+                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="12" ref={ele => this.ques1 = ele} />
 
                     <div className="font-weight-bold my-4">During what timeframe you are available for the job?</div>
-                    <Wysiwyg onRef={ele => this.ques2 = ele} />
+                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="12" ref={ele => this.ques2 = ele} />
 
                     <div className="text-center">
                         <div className="text center text-danger">
                             {this.state.error? 'Please ensure that all questions are answered and resume file selected for upload.':null}
                         </div>
-                        <button onClick={this._upload_application} disabled={this.state.uploading} type="submit" className="btn font-weight-bold my-4 btn-primary">{this.state.uploading ? 'Uploading': 'Submit'}</button>
+                        <button onClick={this._upload_application} type="submit" className="btn font-weight-bold my-4 btn-primary">{this.state.loading ?  <i className="fa fa-spinner fa-spin"></i>: this.state.check?'Redirecting..':'Submit'}</button>
                     </div>
                 </div>
             </div>

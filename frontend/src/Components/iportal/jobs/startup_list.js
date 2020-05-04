@@ -70,13 +70,13 @@ export default class startup_list extends Component {
     render() {
         let no_logo = require('../../../assets/no-logo.svg')
 
-        var i=0;
+        
 
         let startup_html = this.state.startups.map(startup => {
             
             let job_tab = startup.jobs
             console.log(job_tab)
-
+            var i=0;
             let jobs = job_tab.map(job =>{
                 i++;
                     return(
