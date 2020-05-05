@@ -61,7 +61,7 @@ export default class users_list extends Component {
 
     _dis_approve = (user) => {
 
-        faxios().put(`/iportal/startup/${user.id}/`, {...user,idea_approved:'rejected'})
+        faxios().put(`/iportal/startup/${user.id}/`, {...user,idea_approved:'rejected',can_hire_interns:false}) 
         .then(res=>{
             let startups=this.state.startups
             const appr_state= startups.findIndex(temp => temp.id === user.id)
