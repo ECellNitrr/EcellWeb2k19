@@ -99,18 +99,53 @@ class ideadashboard extends Component {
 
                             <div className="form-group">
                             <label className='font-weight-bold' style={{paddingTop:"10px"}}>Idea Approved : </label>
-                                <span style={{paddingLeft:"10px"}}>{idea.idea_approved ? <i className="fa fa-check text-success"></i> : <i className="fa fa-times text-danger"></i>}</span>
+                                <span style={{paddingLeft:"10px"}}>
+                                    { (() => {
+                                            switch (idea.idea_approved) {
+                                                case 'pending':
+                                                    return (<i className="fa fa-times text-danger"></i>)
+
+                                                case 'rejected':
+                                                    return (<i className="fa fa-ban text-danger"></i>)
+                                                    
+                                                case 'approved':    
+                                                    return (<i className="fa fa-check text-success"></i>)                                        
+                                            }
+                                        })()
+                                    }
+                                    </span>
                                 <div className="my-2">
-                                    <em>{idea.idea_approved ? null :<i className="font-weight-bold">(You will receive confirmation by E-mail and SMS once the verification is complete, and the following options will get activated)</i>}</em>
+                                    <em>
+                                        { (() => {
+                                                switch (idea.idea_approved) {
+                                                    case 'pending':
+                                                        return (<i className="font-weight-bold">(You will receive confirmation by E-mail and SMS once the verification is complete, and the following options will get activated)</i>)
+
+                                                    case 'rejected':
+                                                        return (<i className="font-weight-bold">(Sorry your idea is rejected!)</i>)
+
+                                                    case 'approved':    
+                                                        return (
+                                                                <Fragment>
+                                                                    {
+                                                                        idea.can_hire_interns ? <i className="font-weight-bold">(Your Idea is approved and now you can hire interns)</i> : <i className="font-weight-bold">(Your Idea is approved)</i>
+                                                                    }
+                                                                </Fragment>)
+                                                    default :
+                                                        return null                                        
+                                                }
+                                            })()
+                                        }
+                                    </em>
                                 </div>
 
                             </div>
 
                              <div className="text-center">
-                                {idea.idea_approved ? <button onClick={()=>{this.props.updateUser({startup_id:idea.id});this.props.history.push('/internship/startup/register/')}} className='btn  font-weight-bold btn-primary'>Startup Profile</button> : <Fragment>
+                                {idea.idea_approved==='approved' ? <button onClick={()=>{this.props.updateUser({startup_id:idea.id});this.props.history.push('/internship/startup/register/')}} className='btn  font-weight-bold btn-primary'>Startup Profile</button> : <Fragment>
                                 <span class="d-inline-block " tabIndex="0" data-toggle="tooltip" title="Allowed after verification"><button disabled className='btn  font-weight-bold btn-dark'>Startup Profile</button></span>
                                     </Fragment>}
-                                {idea.can_hire_interns ? <button onClick={()=>{this.props.updateUser({startup_id:idea.id});this.props.history.push('/internship/startup/openings/')}} className='btn  font-weight-bold btn-success'>Work Profile</button> : <Fragment>
+                                {idea.can_hire_interns && idea.idea_approved==='approved' ? <button onClick={()=>{this.props.updateUser({startup_id:idea.id});this.props.history.push('/internship/startup/openings/')}} className='btn  font-weight-bold btn-success'>Work Profile</button> : <Fragment>
                                 <span class="d-inline-block " tabIndex="0" data-toggle="tooltip" title="Allowed after verification"><button disabled className='btn  font-weight-bold btn-dark'>Work Profile</button></span>
                                     </Fragment>}
                                 
