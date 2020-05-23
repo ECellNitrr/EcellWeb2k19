@@ -74,6 +74,11 @@ export default class application_detail extends Component {
                 </div>
 
                 <div className="my-3">
+                    <div className="font-weight-bold">College Name </div>
+                    <span>{application.applicant_obj.college} {application.applicant_obj.college}</span>
+                </div>
+
+                <div className="my-3">
                     <div className="font-weight-bold">How you are suitable for this job?: </div>
                     <div dangerouslySetInnerHTML={{__html:application.ques1}}></div>
                 </div>
