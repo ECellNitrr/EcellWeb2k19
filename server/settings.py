@@ -232,9 +232,8 @@ LOGGING = {
 # CSRF_COOKIE_DOMAIN = '127.0.0.1'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django_amazon_ses.EmailBackend'
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_DEFAULT_REGION = 'eu-west-1'
+AWS_SES_REGION_ENDPOINT = 'email.us-west-1.amazonaws.com'
