@@ -7,6 +7,7 @@ attrs==19.1.0
 autobahn==19.7.2
 Automat==0.7.0
 billiard==3.6.3.0
+boto==2.49.0
 boto3==1.13.16
 botocore==1.16.16
 celery==4.4.2
@@ -19,11 +20,14 @@ constantly==15.1.0
 cryptography==2.7
 daphne==2.3.0
 Django==2.2.2
+django-amazon-ses==3.0.2
 django-cors-headers==3.0.2
 django-filter==2.1.0
+django-ses==0.8.14
 django-summernote==0.8.11.6
 djangorestframework==3.9.4
 docutils==0.15.2
+future==0.18.2
 gunicorn==19.9.0
 hiredis==1.0.0
 hyperlink==19.0.0
