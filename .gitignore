@@ -1,6 +1,7 @@
 #Virtual Environments
 env
 venv
+myenv
 
 #Database
 db.sqlite3
