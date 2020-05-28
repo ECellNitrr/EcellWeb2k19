@@ -7,7 +7,8 @@ export default class application_detail extends Component {
 
     state = {
         application: {
-            applicant_obj: {}
+            applicant_obj: {},
+            college:""
         }
     }
 
@@ -15,8 +16,11 @@ export default class application_detail extends Component {
         faxios().get(`/iportal/job_application/${this.app_id}/`)
             .then(d => {
                 let application = d.data
-                console.log(application)
-                this.setState({ application })
+                // console.log(d.data.applicant_obj,"YEh wala")
+                this.setState({ 
+                    application,
+                    college: d.data.college
+                })
             })
     }
 
@@ -36,7 +40,7 @@ export default class application_detail extends Component {
 
 
     render() {
-        const { application } = this.state
+        const { application,college } = this.state
 
         const application_status_html = Object.keys(application_status).map(status =>
             <option key={status} value={status}>{application_status[status]}</option>
@@ -71,6 +75,11 @@ export default class application_detail extends Component {
                 <div className="my-3">
                     <span className="font-weight-bold">Contact: </span>
                     <span>{application.applicant_obj.contact}</span>
+                </div>
+
+                <div className="my-3">
+                    <div className="font-weight-bold">College Name </div>
+                    <span>{college}</span>
                 </div>
 
                 <div className="my-3">

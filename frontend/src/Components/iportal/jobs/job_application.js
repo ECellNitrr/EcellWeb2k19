@@ -48,6 +48,18 @@ class job_application extends Component {
             error:false
         })
 
+        if(this.college.value.length<1){
+            this.setState({
+              error:true,
+                uploading:false,
+                loading:false,
+            })
+
+            console.log("This runs 2")
+            return
+        }
+
+
         if(this.ques1.value.length<1){
             this.setState({
               error:true,
@@ -75,6 +87,7 @@ class job_application extends Component {
 
 
         data.append('resume', this.resume.files[0])
+        data.append('college', this.college.value)
         data.append('ques1', this.ques1.value)
         data.append('ques2', this.ques2.value)
         data.append('job', this.job_id)
@@ -116,9 +129,6 @@ class job_application extends Component {
         request.send(data);
         this.setState({ uploading: false })
 
-
-
-
     }
 
 
@@ -148,6 +158,9 @@ class job_application extends Component {
                         </span>
                         :
                         null}
+
+                    <div className="font-weight-bold my-4">College Name</div>
+                    <input type="text" ref={ele => this.college = ele} className="form-control" />
 
                     <div className="font-weight-bold my-4">How you are suitable for this job?</div>
                     <textarea className="form-control" id="exampleFormControlTextarea1" rows="12" ref={ele => this.ques1 = ele} />
