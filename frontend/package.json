@@ -16,6 +16,7 @@
     "node-sass": "^4.14.0",
     "random-int": "^2.0.0",
     "react": "^16.8.6",
+    "react-alice-carousel": "^1.19.3",
     "react-burger-menu": "^2.6.11",
     "react-confetti": "^4.0.1",
     "react-datetime": "^2.16.3",
