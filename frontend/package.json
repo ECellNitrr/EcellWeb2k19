@@ -14,6 +14,7 @@
     "jquery": "^3.4.1",
     "mdbreact": "^4.18.1",
     "node-sass": "^4.14.0",
+    "npm": "^6.14.5",
     "random-int": "^2.0.0",
     "react": "^16.8.6",
     "react-alice-carousel": "^1.19.3",
