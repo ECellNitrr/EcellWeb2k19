@@ -323,7 +323,7 @@ class team extends Component {
                         {this_year === "2019" ? final_html['Director'] : null}
                         {this_year === "2019" ? final_html['Head_Career_Development'] : null}
                         {this_year === "2019" ? final_html['Faculty_Incharge'] : null}
-                        {this_year === "2013" || this_year === "2014" ? null : final_html['Overall_Coordinator']}
+                        {this_year === "2013" || this_year === "2014" || this_year === "2012" || this_year === "2011" || this_year === "2010" ? null : final_html['Overall_Coordinator']}
                         {final_html['Head_Coordinator']}
                         {this_year === "2019" ? final_html['Manager_pr'] : null}
                         {this_year === "2019" ? final_html['Manager_tech'] : null}
