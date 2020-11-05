@@ -34,8 +34,8 @@ const footer = (props)=>{
                         <a href="https://twitter.com/ecellnitrr?lang=en" target="_blank"><i className="fab fa-twitter-square"></i></a>
                         <a href="https://in.linkedin.com/company/entrepreneurship-cell-nit-raipur" target="_blank"><i className="fab fa-linkedin"></i></a>
                       </p>
-                      <div><a href='#' style={{color:"white"}} href="tel:8094966697">+91 80949 66697</a></div>
-                      <div><a href='#' style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div><br></br>
+                      {/* <div><a href='#' style={{color:"white"}} href="tel:8094966697">+91 80949 66697</a></div> */}
+                      {/* <div><a href='#' style={{color:"white"}} href="tel:8839579796">+91 88395 79796</a></div><br></br> */}
                       <Link style={{color:"white",}} to='/terms'>Terms and Conditions</Link><br></br>
                       <Link style={{color:"white"}} to="/policy">Privacy Policy</Link>
                       <p className="arr" style={{color:"white",marginTop:"5px"}}>&copy; All Rights Reserved</p>
