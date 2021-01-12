@@ -63,7 +63,7 @@ class App extends Component {
               <Route path='/caportal' component={CaPortal} />
               <Route path='/team/yearwise' component={Yearwise_team}/>
               <Route path='/team/:year' component={Team} /> 
-              <Route path='/team' component={() => <Redirect to='/team/2019' />} />
+              <Route path='/team' component={() => <Redirect to='/team/2020' />} />
               <Route path='/terms' component={Terms} />
               <Route path='/policy' component={Policy} />
 

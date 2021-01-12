@@ -320,21 +320,21 @@ class team extends Component {
                 {this.state.loading ? (<div style={{ marginTop: "10%" }}><Loader /></div>) : (
                     <div>
 
-                        {this_year === "2019" ? final_html['Director'] : null}
-                        {this_year === "2019" ? final_html['Head_Career_Development'] : null}
-                        {this_year === "2019" ? final_html['Faculty_Incharge'] : null}
+                        {this_year === "2020" ? final_html['Director'] : null}
+                        {this_year === "2020" ? final_html['Head_Career_Development'] : null}
+                        {this_year === "2020" ? final_html['Faculty_Incharge'] : null}
                         {this_year === "2013" || this_year === "2014" || this_year === "2012" || this_year === "2011" || this_year === "2010" ? null : final_html['Overall_Coordinator']}
                         {final_html['Head_Coordinator']}
-                        {this_year === "2019" ? final_html['Manager_pr'] : null}
-                        {this_year === "2019" ? final_html['Manager_tech'] : null}
-                        {this_year === "2019" ? final_html['Manager_des'] : null}
-                        {this_year === "2019" ? final_html['Manager_doc'] : null}
-                        {this_year === "2019" ? final_html['Manager_spons'] : null}
-                        {this_year === "2019" ? final_html['Executive_pr'] : null}
-                        {this_year === "2019" ? final_html['Executive_tech'] : null}
-                        {this_year === "2019" ? final_html['Executive_des'] : null}
-                        {this_year === "2019" ? final_html['Executive_doc'] : null}
-                        {this_year === "2019" ? final_html['Executive_spons'] : null}
+                        {this_year === "2020" ? final_html['Manager_pr'] : null}
+                        {this_year === "2020" ? final_html['Manager_tech'] : null}
+                        {this_year === "2020" ? final_html['Manager_des'] : null}
+                        {this_year === "2020" ? final_html['Manager_doc'] : null}
+                        {this_year === "2020" ? final_html['Manager_spons'] : null}
+                        {this_year === "2020" ? final_html['Executive_pr'] : null}
+                        {this_year === "2020" ? final_html['Executive_tech'] : null}
+                        {this_year === "2020" ? final_html['Executive_des'] : null}
+                        {this_year === "2020" ? final_html['Executive_doc'] : null}
+                        {this_year === "2020" ? final_html['Executive_spons'] : null}
                     </div>)}
                 <div className="team-div"><Link className="team-links shadow p-3 mb-5 bg-white rounded" to='/team/yearwise'>Previous Year Teams</Link></div>
                 <Footer />
